@@ -1,0 +1,40 @@
+Junta número 4
+
+en vez de fit_transform por transform
+
+
+Tarea 1: crear un solo corpus, en drive para hacer todo
+	se tiene que partir en entrenamiento y prueba
+
+	
+Tarea 2:	la parte de entrenamiento se obtienen las caracteristicas
+	la parte de entrenamiento 
+
+Tarea 3: Empezar a hacer pruebas con clasificadores
+		scki learn MultinominalNB
+		sklearn 
+		clf.fit(X(caracterisiticas),Y(clases)) //esta es la instacia que esta entredado
+		clf.predict()
+		Y=1-Cultura, 2-ecnomia ...
+			Naive Bayes
+
+		leer la primer refeerneica, naive Bayes, estudiar y explicar 
+
+
+
+
+pruebas 
+
+scikit learn logisticRegression
+fit
+predic
+
+scikit learn randomForestClassifier
+sin parametros
+fit
+predict
+
+scikit learn svm.SVC
+
+Leer sobre los metodos 
+guia de usuario

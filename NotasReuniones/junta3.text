@@ -1,0 +1,23 @@
+hacer funciones para lematizar, tokenizar por separado
+hacer la referencia, de las herramientas, spacy
+
+
+
+sky learn
+para extracción de caracteristicas
+
+
+nuevo archivo: corpusPreprocesa.csv
+preprosesamiento solo al título yla noticia
+
+sobre este se aplica la extracción de caracteristicas
+dic vectoricer scikit learn
+pandas data frame csv 
+
+fit_transform
+transform
+
+El conteo que se hace es por frecuencia(countVectoraizer)
+Cronograma mañan 
+
+

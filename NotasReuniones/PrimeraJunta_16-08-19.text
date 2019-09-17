@@ -1,0 +1,86 @@
+16 de agosto del 2019
+
+Al día de hoy tenemos 2 meses y medios
+
+Cada 15 días entregar tareas
+
+Desarrollo y experimentación: Son los 2 capitulos que faltan
+Si algo se agrega algo nuevo al marco teroico se hara al final
+
+
+1. Trabajar con el corpus
+2. Unificar nombres sin contemplar el díario 
+3. noticias que no coincidan serán descargados
+4. Si de una clasificación hay muy pocas noticias se contemplar eliminar
+5. Un archivo enorme con todas las noticias diferenciados 
+
+
+ 
+Tarea 1 %--------------------------------% Una semana
+				Corpus
+Identificador, titulo de la noticia, contenido de la noticia, clasificiación, nombre del medio
+	1.1 Estadisticas (Graficas separadas)
+	Noticias por sección en general
+	noticias por medio y sección
+	Noticas de cada periodico
+
+
+
+Tarea 2 %---------------------------------% Preprocesamiento del recurso
+	NLTK, tokenizar y lematizar 
+	(Números no separan comas)
+	.,;:?!¿
+	si no se usa nltk, hacer un programa que tokenice
+	NLTK igual tiene lematizar, cambiar la configuración de ingles a español
+	*-----Se va a letamizar y tokenizar el título y el contenido 
+
+
+Septiembre
+
+
+Tarea 3%-----------------------------------% extracción de carácteristicas
+
+	Se hace en un espacio de caracteristicas
+	Los vectores tienen que se lo mas rico posible
+	Saykilearn: extacción de caracteristicas
+	Features extration
+		Representaciones de caracteristicas: count vectoraizer: bolsa de palabras
+		*Convectorizaer, frecuencias y binario
+		*Enegramas(toman mas de una palabras para contemplar el diccionario de palabras), 	Engram_range=(1,1) o (1,2)
+		*TFID: no
+
+Tarea 4%---------------------------------% Entrenamiento
+		Texto representado en expacio vectorial
+		*Nayballed
+		*Regresioón logistica
+		*Random forest
+		La salida es un modelo, instancias con su correspondiente clase se hace con syki learn
+		Seleccionar la mejor convinación
+
+Tarea 5%----------------------------------% Pruebas
+
+	Se entrena con el mejor clasificador
+	tikenización
+	lematización 
+	espacio vectorial
+	se le pasa al algoritmo
+	Metricas
+
+Tarea 6%-----------------------------------%INtegrar
+	Manuales
+	Técnicos
+	CDS
+
+
+
+23 de agosto tarea 1
+30 de agosto tarea 2
+13 de septiembre tarea 3
+04 de octubre tarea 4
+11 de octubre tarea 5
+25 de octubre integración
+
+
+
+
+Consultar a los profesores despues de las 10 am hasta la 1pm 
