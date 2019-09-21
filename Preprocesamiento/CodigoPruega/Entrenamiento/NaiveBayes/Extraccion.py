@@ -6,7 +6,7 @@ import pandas as pd #esta libreria nos permite extraer datos de archivos csv
 from sklearn.naive_bayes import MultinomialNB #esta libreria nos permite entrenar el algoritmo Naive bayes
 
 
-data=pd.read_csv('../../NoticiasPrueba/UnionPrueba.txt', sep='&&&&&',engine='python') #se cargan los datos de archivo csv
+data=pd.read_csv('../../../NoticiasPrueba/UnionPrueba.txt', sep='&&&&&',engine='python') #se cargan los datos de archivo csv
 
 noticias=data['noticia']# se extrae todas las noticias de la columna noticia
 seccion=data['seccion']# se extraen las secciones correspondientes a cada noticia
