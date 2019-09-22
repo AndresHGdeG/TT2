@@ -1,0 +1,14 @@
+*Effective in high dimensional spaces
+*different kernel funcitons can be specified for the decision function 
+*if the number of features is grater than the number of samples we get over-fitting, we can avoid it choosing kernel functions, and regularization terms
+ *suvport vector machine has a complexity of quadratic
+
+*Kernerl function
+	-Linear:linear
+	-Polynomial:poly
+	-rbf:rbf
+	-sigmoid
+this is specified by keyword kernel initialization
+linear_svc=svm.SVC(kernel='linear'
+rbf_svc=svm.SVC(kernel='rbf')
+	
