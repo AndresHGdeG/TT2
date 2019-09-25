@@ -1,0 +1,45 @@
+Junta número 5
+
+1)Corpus (tokenizado, lematizado) 3,500
+
+
+
+
+2)VALIDACIÓN CRUZADA( k-fold cross validation)
+
+k=5,10
+
+90-10
+80-20
+
+SCIKI LEARN CROSS VALIDATION
+K-FOLD
+
+IMPORT Kfold
+
+k=5
+kf.n
+
+https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html
+
+3) MATRIZ DE CONFUCIÓN
+
+se saca por pliege
+
+accuracy:https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html
+
+sera por pliege, una matriz por cada algoritmo
+
+	PRECISION
+	RCALL
+	F-MEASURE
+
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
+
+
+
+agregar referencia, viene en sicikit lea
+
+
+4) Aprender naive Bayes 
+

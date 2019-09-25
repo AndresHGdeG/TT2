@@ -1,0 +1,25 @@
+
+Noticias de cada seccion: 70
+Noticias de entrenamiento:65
+Noticias prueba: 5
+
+Noticias totoales de entrenamiento:325
+Noticias totales probdas: 25
+
+Limpio: 90%
+Tokenizado: 100%
+Lematizado: 0%
+
+
+Exactitud de Algoritmos:
+	*No Binario
+		-SVM:			68%
+		-Naive Bayes:	72%
+		-Random Forest: 80%
+		-Regresion l:	88%
+
+	*Binario
+		-SVM:76%
+		-Naive Bayes:80 º%
+		-Random Forest:84%
+		-Regresion logística:92%
