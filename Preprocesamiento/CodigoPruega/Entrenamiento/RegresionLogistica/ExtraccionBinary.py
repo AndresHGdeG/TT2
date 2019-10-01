@@ -1,22 +1,25 @@
-
-from sklearn.feature_extraction.text import CountVectorizer#esta libreria nos permite extraer las caracteristicas de las noticias formando un espacio vectorial por cada una 
- 
+from sklearn.feature_extraction.text import CountVectorizer#esta libreria nos permite extraer las caracteristicas de las noticias formando un espacio vectorial por cada una  
 import pandas as pd #esta libreria nos permite extraer datos de archivos csv
 
 from sklearn.linear_model import LogisticRegression #esta libreria nos permite entrenar el algoritmo Regresion logistica
-data=pd.read_csv('../../../NoticiasPrueba/UnionPrueba.txt', sep='&&&&&',engine='python') #se cargan los datos de archivo csv
-
 from sklearn.model_selection import KFold # permite generar la validacion cruzada, dividiendo el conjunto de entrenamiento y conjunto de prueba
+
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix#Matriz de confucion
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import precision_score
 
+
+
+
+data=pd.read_csv('../../../NoticiasPrueba/UnionPrueba.txt', sep='&&&&&',engine='python') #se cargan los datos de archivo csv
 
 noticias=data['noticia']# se extrae todas las noticias de la columna noticia
 seccion=data['seccion']# se extraen las secciones correspondientes a cada noticia
 
 #print (data)
 #print(noticias)
-
 
 vectorizer=CountVectorizer(binary=1)
 X=vectorizer.fit_transform(noticias)# se extraer las caracteristicas de las noticias 
@@ -28,6 +31,7 @@ clf=LogisticRegression(random_state=1,solver='sag',multi_class='multinomial',max
 
 Kf=KFold(n_splits=2,random_state=1,shuffle=True)#Este metodo crea una instancia para generar la validacion  cruzada
 #print(Kf)
+
 for train_index,test_index in Kf.split(X):
 	X_train,X_test=X[train_index],X[test_index]
 	Y_train,Y_test=Y[train_index],Y[train_index]
@@ -36,13 +40,27 @@ for train_index,test_index in Kf.split(X):
 	
 	X_resultado=clf.predict(X_test)
 
-	accuP=accuracy_score(X_resultado,Y_test) # Se calcula la precicion
-	accuN=accuracy_score(X_resultado,Y_test,normalize=False) # Se calcula la precicion
-	print("precicion %: ",accuP),
-	print("numero correctas:",accuN,"de: ",len(X_resultado))
+	accuracyP=accuracy_score(X_resultado,Y_test) # Se calcula la precicion
+	accuracyN=accuracy_score(X_resultado,Y_test,normalize=False) # Se calcula la precicion
+	
+	
+	print("numero correctas:",accuracyN,"de: ",len(X_resultado))
+	print("Accuracy %: ",accuracyP)
 
+	recall=recall_score(X_resultado,Y_test,average='macro')
+	print("reacall",recall)
+	
+	fmeasure=f1_score(X_resultado,Y_test,average='macro')
+	print("Fmeasure:",fmeasure)
+	
+	precision=precision_score(X_resultado,Y_test,average='macro')
+	print("Precision:",precision)
+	
 	matrizConfusion=confusion_matrix(X_resultado,Y_test, labels=[0,1,2,3,4])
 	print(matrizConfusion)
+
+	print("")
+	
 
 #0-Deportes
 #1-Economia
