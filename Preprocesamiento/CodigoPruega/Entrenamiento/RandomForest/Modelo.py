@@ -1,5 +1,11 @@
-from sklearn.feature_extraction.text import CountVectorizer#esta libreria nos permite extraer las caracteristicas de las noticias formando un espacio vectorial por cada una  
+from sklearn.ensemble import RandomForestClassifier #esta libreria nos permite entrenar el algoritmo RamdonForest
+clf=RandomForestClassifier(n_estimators=100,max_depth=10,random_state=4)
+
+from sklearn.feature_extraction.text import CountVectorizer#esta libreria nos permite extraer las caracteristicas de las noticias formando un espacio vectorial por cada una 
+ 
 import pandas as pd #esta libreria nos permite extraer datos de archivos csv
+
+
 
 from sklearn.linear_model import LogisticRegression #esta libreria nos permite entrenar el algoritmo Regresion logistica
 from sklearn.model_selection import KFold # permite generar la validacion cruzada, dividiendo el conjunto de entrenamiento y conjunto de prueba
@@ -9,8 +15,6 @@ from sklearn.metrics import confusion_matrix#Matriz de confucion
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
-
-
 
 
 data=pd.read_csv('../../../NoticiasPrueba/UnionPrueba.txt', sep='&&&&&',engine='python') #se cargan los datos de archivo csv
@@ -24,9 +28,6 @@ seccion=data['seccion']# se extraen las secciones correspondientes a cada notici
 vectorizer=CountVectorizer(binary=1)
 X=vectorizer.fit_transform(noticias)# se extraer las caracteristicas de las noticias 
 Y=seccion #Se extraen las secciones correspondientes a cada noticia
-
-
-clf=LogisticRegression(random_state=1,solver='sag',multi_class='multinomial',max_iter=500)
 
 
 Kf=KFold(n_splits=2,random_state=1,shuffle=True)#Este metodo crea una instancia para generar la validacion  cruzada
@@ -60,11 +61,9 @@ for train_index,test_index in Kf.split(X):
 	print(matrizConfusion)
 
 	print("")
-	
 
 #0-Deportes
 #1-Economia
 #2-Politica
 #3-Cultura
 #4-Ciencia y tecnologia
-
