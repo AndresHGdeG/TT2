@@ -13,7 +13,7 @@ from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
 
-data=pd.read_csv('../../../NoticiasPrueba/UnionPrueba.txt', sep='&&&&&',engine='python') #se cargan los datos de archivo csv
+data=pd.read_csv('../../../NoticiasPrueba/CorpusBalanceadoCompleto.txt', sep='&&&&&',engine='python') #se cargan los datos de archivo csv
 
 noticias=data['noticia']# se extrae todas las noticias de la columna noticia
 seccion=data['seccion']# se extraen las secciones correspondientes a cada noticia
@@ -26,12 +26,12 @@ X=vectorizer.fit_transform(noticias)# se extraer las caracteristicas de las noti
 Y=seccion #Se extraen las secciones correspondientes a cada noticia
 
 
-Kf=KFold(n_splits=2,random_state=1,shuffle=True)#Este metodo crea una instancia para generar la validacion  cruzada
+Kf=KFold(n_splits=5,random_state=1,shuffle=True)#Este metodo crea una instancia para generar la validacion  cruzada
 #print(Kf)
 
 for train_index,test_index in Kf.split(X):
 	X_train,X_test=X[train_index],X[test_index]
-	Y_train,Y_test=Y[train_index],Y[train_index]
+	Y_train,Y_test=Y[train_index],Y[test_index]
 	
 	clf.fit(X_train,Y_train) #se crea el modelo del algoritmo, donde X es el espacio vectorial de las noticias de entrenamiento, y Y es la secciona la cula pertenece cada espacio vectoria
 	
@@ -45,7 +45,7 @@ for train_index,test_index in Kf.split(X):
 	print("Accuracy %: ",accuracyP)
 
 	recall=recall_score(X_resultado,Y_test,average='macro')
-	print("reacall",recall)
+	print("recall",recall)
 	
 	fmeasure=f1_score(X_resultado,Y_test,average='macro')
 	print("Fmeasure:",fmeasure)
