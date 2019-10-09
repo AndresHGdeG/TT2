@@ -1,0 +1,81 @@
+
+
+En esta sección se describen las reglas de negocio implementadas en el trabajo propuesto.\\\\
+
+
+%------------------RN1-----------------------%
+\DGline{RN1}{Número de palabras}
+\begin{itemize}
+  \item \textbf{Descripción:}  La noticia debe tener al menos 180 palabras
+%  \item \textbf{Ejemplo:}
+  \item \textbf{Referenciado por}: \Tref{CU1}{CU1 Recolectar noticias}
+\end{itemize}
+
+%------------------RN2-----------------------%
+\DGline{RN2}{Lenguaje de noticias}
+
+\begin{itemize}
+  \item \textbf{Descripción:} Las noticias deben estar redactadas en lenguaje español.
+%  \item \textbf{Ejemplo:}
+  \item \textbf{Referenciado por: CU2 Clasificar noticias}  \\
+\end{itemize}
+%------------------RN3-----------------------%
+\DGline{RN3}{Listado de fuentes noticiosas}
+
+\begin{itemize}
+  \item \textbf{Descripción:} Solo se puede recolectar información de los siguientes sitios.\\
+
+  \begin{itemize}
+
+    \item \textbf{El Universal}: https://www.eluniversal.com.mx/
+    \item \textbf{Azteca Noticias}: https://www.aztecanoticias.com.mx/
+    \item \textbf{Aristegui Noticias}: https://aristeguinoticias.com/
+    \item \textbf{Excelsior}: https://www.excelsior.com.mx/
+    \item \textbf{La Jornada}: https://www.jornada.com.mx/ultimas
+    \item \textbf{Milenio}: https://www.milenio.com/
+    \item \textbf{Yahoo}: https://es-us.noticias.yahoo.com/
+    \item \textbf{Sopitas}: https://www.sopitas.com/
+    \item \textbf{SDP Noticias}: https://www.sdpnoticias.com/
+    \item \textbf{Uno TV}: https://www.unotv.com/inicio/
+
+  \end{itemize} 
+%  \item \textbf{Ejemplo:}
+  \item \textbf{Referenciado por}: \Tref{CU1}{CU1 Recolectar noticias} \\
+\end{itemize}
+%------------------RN4-----------------------%
+\DGline{RN4}{Umbral de grado de pertenencia}
+
+\begin{itemize}
+  \item \textbf{Descripción:} Solo se puede mostrar una noticia si su grado de pertenencia a una sección es mayor o igual al umbral establecido.
+%  \item \textbf{Ejemplo:}
+  \item \textbf{Referenciado por: CU2 Clasificar noticias}  \\
+\end{itemize}
+
+%------------------RN5-----------------------%
+\DGline{RN5}{Orden de publicación}
+
+\begin{itemize}
+  \item \textbf{Descripción:} Las noticias se muestran de forma descendente de acuerdo al grado de pertenencia
+    a la sección.
+%  \item \textbf{Ejemplo:} 
+  \item \textbf{Referenciado por}: \Tref{CU1}{CU1 Recolectar noticias},\Tref{CU4}{CU4 Mostrar resultados} \\
+\end{itemize}
+
+%------------------RN6----------------------%
+\DGline{RN6}{Periodo de recolección}
+
+\begin{itemize}
+  \item \textbf{Descripción:} De cada sitio establecido se recolectan las noticias que se encuentren en un periodo de 3 días anterior a la fecha actual.
+  \item \textbf{Referenciado por}: \Tref{CU1}{CU1 Recolectar noticias} \\
+\end{itemize}
+
+%------------------RN7----------------------%
+\DGline{RN7}{Campos recolectados de noticia}
+
+\begin{itemize}
+  \item \textbf{Descripción:} De cada noticia se extrae \textbf{Título}, \textbf{URL al artículo}, \textbf{Fecha de publicación} y de contar con ello el \textbf{Resumen}.
+
+  \item \textbf{Referenciado por}: \Tref{CU1}{CU1 Recolectar noticias} \\
+\end{itemize}
+
+

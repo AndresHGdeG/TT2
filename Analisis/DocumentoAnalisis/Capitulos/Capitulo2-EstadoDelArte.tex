@@ -1,0 +1,228 @@
+
+\TChapter{Estado del arte}{beta}
+\ \\\\
+%-----------------------------------Introducción---------------------------------------------%
+\section{Introducción}
+
+
+El uso de la información digital ha superado la producción de libros y publicaciones impresas, este fenómeno ha influenciado la producción de bibliotecas digitales, publicaciones electrónicas; Se ha incrementado el uso de las redes sociales, correos electrónicos, creando un gran repositorio de información útil, el cual puede ser analizado\citep{CD1}.\\
+
+Debido a la necesidad de procesar grandes volúmenes de datos recolectados de Internet, se han desarrollado diversas investigaciones entorno a esta tarea. A continuación se muestran distintos artículos nacionales e internacionales relacionados al campo de investigación (clasificación de noticias), de igual forma se muestran herramientas web que desempeñan un trabajo similar al propuesto (sitio web de noticias). Cabe destacar que el área de interés cuenta con un amplio desarrollo, no obstante solo se mencionan los trabajos más relevantes para este documento.
+
+%-------------------------------Trabajos nacionales-----------------------------------------%
+
+\section{Trabajos nacionales}
+
+
+%----------------------------------TN1-------------------------------%
+\begin{large}
+	 \subsection[Clasificación de noticias de diarios]{Clasificación de noticias de diarios de circulación nacional mediante aprendizaje automático }
+\end{large}
+
+
+En este trabajo terminal de la Escuela Superior de Cómputo \citep{CD2} los autores clasifican mediante técnicas de aprendizaje automático, noticias de diarios de circulación nacional en las diferentes secciones en que en estos se dividen. Se recolectaron 4,027 artículos de tres diarios de circulación nacional: \textbf{El universal}, \textbf{La jornada} y \textbf{Excélsior}. 3,624 noticias fueron utilizadas para la etapa de entrenamiento y 407 para hacer las pruebas.\\
+
+El trabajo utiliza  pre-procesamiento de información con la técnica tokenización y lematización (ver \Tref{CP1}{Capítulo 3}). El mejor resultado en las pruebas se dio en la combinación del algoritmo \textbf{TF-IDF} para extraer las características y \textbf{Máquinas de soporte vectorial} para la clasificación de artículos, se obtuvo un 79.81\% de exactitud, \textit{i.e} 8 de cada 10 noticias son clasificadas correctamente.\\
+
+
+%----------------------------------TN2-------------------------------%
+
+\begin{large}
+	 \subsection[Desastres naturales en México]{Clasificación automática de textos de desastres naturales en México}
+\end{large}
+
+En este trabajo se propone clasificar noticias en el ámbito \textbf{desastres naturales} \citep{CD9}, utilizando estrategias de reducción de dimensionalidad conocidas como, umbral en la frecuencia y ganancia en la información, los métodos de clasificación utilizados fueron el clasificador simple de Bayes y vecinos más cercanos.\\
+
+Se utilizaron 375 noticias del periódico Reforma como conjunto de entrenamiento, se clasificaron en artículos relevantes e irrelevantes, de los cuales 11.5\% de noticias eran relevantes y el 88.5\% restante eran irrelevantes. Una vez obtenido el conjunto de noticias se procedió con un pre-procesamiento, el cual reduce el tamaño de los documentos, eliminando la parte de los textos que no brindan información útil, posteriormente se realizó un indexado: Los documentos son representados por vectores de palabras en un espacio de dimensión n, para realizar una reducción de dimencionalidad. Finalmente se utilizaron técnicas de clasificación (Algoritmo simple de Bayes) con el cual se obtuvo un resultado de 97\% de efectividad en la clasificación de noticias.\\
+
+
+%----------------------------------TN3-------------------------------%
+
+\begin{large}
+	 \subsection[Extraer información de noticias de DN]{Usando aprendizaje automático para extraer información de noticias de desastres naturales}
+\end{large}
+
+
+Este trabajo describe un sistema basado en métodos de Aprendizaje automático que mejora la adquisición de datos de desastres naturales\citep{CD11}. Este sistema automáticamente llena una base de datos de desastres naturales con la información extraída de noticias de periódicos en línea. En particular, se extrae información acerca de cinco tipos de desastres naturales: huracanes, temblores, incendios forestales, inundaciones y sequías. Los algoritmos implementados para la extracción de información son los siguientes: 
+
+\begin{itemize}
+	\item Naive bayes
+	\item Maquinas de soporte vectorial
+	\item C4.5
+\end{itemize} 
+
+Los resultados experimentales en una colección de noticias en Español muestran la eficacia del sistema propuesto tanto para detectar documentos relevantes sobre desastres naturales (alcanzando una medida-F de 98\%), así como para extraer hechos relevantes para ser insertados en una base de datos dada (alcanzando una medida-F de 76\%).
+
+%------------------------------Trabajos internacionales--------------------------------------%
+
+\section[Trabajos I]{Trabajos internacionales}
+
+%----------------------------------TI1-------------------------------%
+\begin{large}
+	 \subsection{Clasificador de noticias usando autoencoders}
+\end{large}
+
+En este trabajo se propone la clasificación de noticias utilizando \textit{Deep Learning} \citep{CD3}, las noticias se clasificaron en las siguientes categorías:
+
+\begin{itemize}
+	\item Deportes
+	\item Política
+	\item Espectáculos
+	\item Economía
+	\item Policía
+\end{itemize}
+El alcance que tiene es:
+\begin{itemize}
+	\item Local (Valparaíso)
+	\item Nacional (Chile)
+	\item Internacional (resto del mundo)
+\end{itemize}
+
+El clasificador se construyó utilizando una base de datos con 542 noticias etiquetadas con los criterios anteriores, las características se obtuvieron utilizando Autoencoders (AE) para entrenar una Red Neuronal Artificial (ANN).
+Los resultados obtenidos con 156 noticias fue una tasa de éxito del 92.3\% para la clasificación de la categoría y un 87.2\% para el clasificador de alcance.
+La tasa general de éxito, categoría y alcance fue de 83.75\%.\\
+
+%----------------------------------TI2-------------------------------%
+\begin{large}
+	 \subsection{Document classification for newspaper articles}
+\end{large}
+
+El trabajo clasifica artículos de la universidad \textit{Massachusetts Institute of Technology} \citep{CD4} en las categorías: \textit{Arts}, \textit{Features}, \textit{News}, \textit{Opinion}, \textit{Sports}, \textit{World}. Para la etapa de entrenamiento se ocupó un total de 480 artículos por sección, y para realizar las pruebas 120 noticias. El mejor resultado se obtiene utilizando \textit{Multi-Variate Bernoulli Featureset} como algoritmo de extracción de características y \textit{Naive Bayes Classification} como algoritmo clasificador ya que, obtiene  un 77\% de exactitud.\\
+
+%----------------------------------TI3-------------------------------%
+
+%----------------------------------TI4-------------------------------%
+
+\begin{large}
+	 \subsection[Category classification and topic discovery]{Category classification and topic discovery of japanese and english news articles}
+\end{large}
+
+
+Este trabajo desarrolla un algoritmo de aprendizaje supervisado (ver \Tref{CP1}{Capítulo 3}) para la clasificación de noticias en categorías (como política, deportes, tecnología) y temas (sección de deportes: tenis, fútbol, golf) en diferentes lenguajes, además se especializa en descubrir y clasificar temas emergentes en Internet \citep{CD6}. Se ocupa un método pare extraer palabras claves en cualquier idioma propuesto por Bracewell \citep{CD5}, el cual obtiene palabras de muy alta calidad de un solo documento. Se definieron 8 secciones posibles a las que puede ser clasificado el artículo proporcionado, los cuales son:
+
+\begin{itemize}
+
+	\item \textit{Business} 
+	\item \textit{Politics} 
+	\item \textit{Crime and Misfortune} 
+	\item \textit{Health} 
+	\item \textit{Sports} 
+	\item \textit{Entertainment} 
+	\item \textit{Technology} y 
+	\item \textit{Science and Nature}
+
+\end{itemize}
+
+
+
+Con ejemplos positivos el método entrena un clasificador para cada categoría.
+El proceso de clasificación consta de 4 pasos:
+
+\begin{enumerate}
+	\item Las palabras claves son extraídas del documento dado.
+	\item la probabilidad de pertenencia a cada categoría es calculado.
+	\item Se crea un umbral de pertenecía dinámico.
+	\item Finalmente se asigna el artículo a una categoría.
+\end{enumerate}
+
+Para desarrollo del método se implementó en lengua ingles y japones, se ocuparon 1,000 artículos descargados de sitios como Yahoo, de cada idioma. 800 se ocuparon en el entrenamiento y 200 para realizar pruebas. \\
+
+Para contar con un punto de comparación se clasifico con algoritmos  ya probados: \text{Naive bayes}, \text{Árboles de decisión}, \text{Máxima entropia} y el propuesto por el artículo. El mejor resultado fue dado por  el método propuesto obteniendo 63.4\% en exhaustividad, 68.6\% en precisión y 65.9\% en la media-F.\\ 
+
+
+%----------------------------------TI5-------------------------------%
+
+\begin{large}
+	 \subsection[Automatic news articles classification in indonesian]{Automatic news articles classification in indonesian language by using naive bayes classifier method}
+\end{large}
+
+El artículo clasifica noticias ocupando el algoritmo clásico \textit{Naive Bayes} \citep{CD7}. El método propuesto consiste en 3 tareas importantes: Pre-procesamiento el cual consiste en la siguiente serie de pasos: 
+ 
+\begin{enumerate}
+
+	\item \textit{Case folding}: Proceso para convertir todas letras en minúsculas.
+	\item \textit{Parsing}: Es el proceso de convertir oraciones en palabras.
+	\item \textit{Stopwords elimination}: Es el proceso de eliminar palabras que se repiten con mucha frecuencia y no es información útil (Una definición mas amplia se da en el capítulo 3).
+	\item \textit{Stemming}: Es un proceso de corte o eliminación de afijos en una palabra. Las variantes de los afijos son prefijos, sufijos, in-fijos y con-fijos (la combinación de prefijos y sufijos).
+
+\end{enumerate}	
+
+La segunda tarea es la etapa de entrenamiento del algoritmo y por último la clasificación de artículos. Cabe destacar que el método \textbf{Frecuencia de término} (Frecuencia de aparición de una palabra en un documento dado) es utilizado en la etapa de aprendizaje. Las secciones definidas en el trabajo son: 
+
+\begin{itemize}
+
+	\item \textit{Economy}
+	\item \textit{Sport}
+	\item \textit{Tecnology}
+	\item \textit{Healt} 
+	\item \textit{Metropolitan}
+
+\end{itemize}
+
+Para el proceso de aprendizaje se ocuparon 50 noticias por tópico, las cuales fueron recolectadas de los sitios web \textit{Kompas}\footnote{Sitio web Indu de noticias: https://www.kompas.com}, \textit{Republika}\footnote{Sitio ya no disponible: http://www.republika.com} y \textit{Suara pembaruan}\footnote{Sitio web Indu: https://sp.beritasatu.com}.Las pruebas fueron realizadas con 12 noticias por sección. Además para tener una métrica en la eficiencia del método se calculó la precisión, exhaustividad y la media-F. Los resultados muestran que el método de \text{Naive bayes} es un clasificador con una media-F de 92.26\%.\\ 
+
+%----------------------------------TI6-------------------------------%
+
+\begin{large}
+	 \subsection{News article text classification in indonesian language}
+\end{large}
+
+Este documento busca el mejor algoritmo de clasificación en lenguaje Indu, comparando la eficiencia de algoritmos de selección de características (Palabras clave) y de clasificación de noticias \citep{CD8}. Las secciones definidas por el artículo son las siguientes, \textit{Economy}, \textit{Health}, \textit{Sports}, \textit{Politic} y \textit{Tecnology}; El trabajo realiza pre-procesamiento de datos con  los métodos \textit{lemmatization} y \textit{Stopwords} para reducir el ruido en la información. Para la obtención de noticias se hace uso de la técnica \textit{crawling}(ver \Tref{CP1}{Capítulo 3}) en el sito \textit{ccnnindonesia}\footnote{Sitio web de noticias: wwww.ccnnindonesia.com}. Se obtuvieron 1,000 artículos para cada sección. 800 se usaron para la etapa de entrenamiento y 200 para realizar pruebas. Se muestra la lista de los algoritmos implementados:
+
+\begin{itemize}
+	\item Selección de características:
+	\begin{itemize}
+		\item \textit{Singular Value Decomposition}
+		\item \textit{Term frequency-inverse document frequency}
+	\end{itemize}
+
+	\item Clasificación:
+	\begin{itemize}
+		\item \textit{Support vector machine}
+		\item \textit{Naive bayes classifier}
+		\item \textit{Gaussean naive bayes}
+		\item \textit{Multinominal naive bayes}
+		\item \textit{Multivariate naive bayes}
+		\item \textit{Bernulli naive bayes}
+	\end{itemize}
+\end{itemize}
+
+ El mejor resultado es en combinación de \textit{Term frequency-inverse document frequency} y  \textit{Multinominal naive bayes} con la precisión y exhaustividad mas alta el cual está alrededor de 98.4\% con un tiempo de 0.702 segundos, seguido de \textit{Term frequency-inverse document frequency} y \textit{Bernulli naive bayes}(BNB)  con 98.2\% en precisión y exhaustividad con un tiempo de .701 segundos.
+
+
+%------------------------------Herramientas Disponibles-------------------------------------%
+
+\section[Herramientas D]{Herramientas disponibles}
+
+
+Entre las herramientas de trabajo que son de utilidad para el procesamiento de lenguaje natural y aprendizaje automático se encuentran:\\
+
+%------------------------------loud Natural Language-------------------------------------%
+
+\begin{large}
+	 \subsection{Cloud natural language}
+\end{large} 
+
+\textit{Google Cloud Natural Language} \citep{CD12}   revela la estructura y el significado del texto con modelos potentes de aprendizaje automático previamente entrenados en una API de REST fácil de usar y con modelos personalizados se puede utilizar para extraer información sobre personas, lugares, eventos y muchos otros datos, que se mencionan en documentos de texto, artículos periodísticos o entradas de blog. También se puede utilizar para comprender las opiniones sobre los productos expresadas en los medios sociales o analizar la intención en las conversaciones de los clientes que se den en un centro de atención telefónica o una aplicación de mensajería.\\
+
+%----------------------------------------Googlebot-------------------------------------%
+
+\begin{large}
+	 \subsection{Googlebot}
+\end{large}
+
+Es el crawler diseñado por Google para indexar el contenido nuevo o actualizado de Internet.
+Googlebot \citep{CD13} no sólo tiene la capacidad de rastrear e indexar los sitios web de Internet, sino que además puede extraer información de ficheros como pueden ser PDF, XLS, DOC, etc.
+Una vez el contenido está indexado, el servidor lo clasifica y establece un orden de relevancia para las distintas búsquedas que pueda efectuar un usuario, es decir, lo posiciona.\\
+
+
+%----------------------Watson natural language classifier----------------------------------%
+
+\begin{large}
+	 \subsection{Watson natural language classifier}
+\end{large}
+
+Watson NLC \citep{CD14} aplica técnicas de computación cognitiva para analizar un texto y proporcionar la clase que mejor encaja entre un conjunto de clases predefinidas a partir de un texto corto.
+Al ser un clasificador, esta compuesto de ciertos pasos, en primera instancia se necesitan de clases las cuales son etiquetas que identificarán el texto analizado y será la salida proporcionada por el clasificador; posteriormente se debe tomar en cuenta que se necesita de una colección de textos, los cuales proporcionarán apoyo para que el clasificador logre identificar las clases ingresadas posteriormente teniendo todos estos datos se logra entrenar al clasificador, el cual proporcionará una salida dependiendo a los datos que fueron utilizados.
+
+

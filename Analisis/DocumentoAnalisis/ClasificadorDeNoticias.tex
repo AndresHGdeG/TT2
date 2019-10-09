@@ -1,0 +1,39 @@
+
+\documentclass[12pt,twoside,onecolumn,openany]{book}
+
+\input{Configuracion/Librerias}
+\input{Configuracion/Estilo}
+\input{Configuracion/Comandos}
+
+%----------------Incluimos la sección de bibliografía a la tabla de contenidos--------%
+
+\let\OLDthebibliography=\thebibliography
+\def\thebibliography#1{\OLDthebibliography{#1}%
+\addcontentsline{toc}{chapter}{\bibname}}
+
+
+
+\begin{document}
+
+\renewcommand{\tablename}{Tabla} %Nombre de las tablas
+
+  \input{Capitulos/Portada}
+  \input{Configuracion/Indice}
+
+  %-------------------------------Capitulos----------%
+
+  \input{Capitulos/Capitulo1-Introduccion}
+  \newpage
+  \input{Capitulos/Capitulo2-EstadoDelArte}
+  \newpage
+  \input{Capitulos/Capitulo3-MarcoTeorico/Capitulo3-MarcoTeorico}
+  \newpage
+  \input{Capitulos/Capitulo4-AnalisisYdisenio/Capitulo4-AnalisisYdisenio}
+  \newpage
+  \input{Capitulos/Capitulo5-Avances}
+  
+  %-------------------------------Bibliografía----------%
+  \bibliography{Capitulos/Referencia}
+
+
+\end{document}

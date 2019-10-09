@@ -1,0 +1,110 @@
+\Tlabel{CU1}\Tsubsection{CU1 Recolectar noticias}
+
+%================================Intriodcucción==================================%
+%----------------------Resumen-----------------------------------%
+\begin{large}
+	\textbf{Resumen}\\
+\end{large}
+
+Brinda al usuario un punto de acceso para elegir una sección; Las clasificaciones son, 
+\textbf{Ciencia y técnología}, \textbf{Política}, \textbf{Deportes}, \textbf{Economía} y  
+\textbf{Cultura} en cada una se podrá consultar noticias, artículos y publicaciones dentro 
+de un intervalo de tiempo específico; La fuente de información será un diccionario de los sitios
+ web mas consultados y confiables en México. Cabe destacar que el intervalo de tiempo por defecto 
+ es la fecha actual en la que se ha ingresa al portal.\\
+
+\begin{large}
+	\textbf{Descripción}\\
+\end{large}
+
+%=====================================Tabla 1====================================%
+
+\begin{tabular}{|l|l|}
+
+%-----------------------Ecanbezado-----------------------------------%
+	\hline
+	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
+	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Seleccionar sección} }\\
+	\hline
+
+%-----------------------Actor----------------------------------------%
+	\textbf{Actor:} & 	Usuario	\\
+	\hline
+
+%-----------------------Propósito------------------------------------%
+	\textbf{Propósito:} & Proporcionar una herramienta para acceder \\
+	&a los diferentes tipos de clasificaciones disponibles.\\
+	\hline
+
+%----------------------Entradas--------------------------------%
+	\textbf{Entradas:} & Ninguna. \\
+	\hline
+
+%-----------------------Salidas--------------------------------------%
+	\textbf{Salidas:} &$\bullet$ \Tref{MSG1}{MSG1 Catálago vacio}\\
+	\hline
+
+%-----------------------Precondiciones-------------------------------%
+	\textbf{Precondición:} & El catálogo \textbf{Direcciones web} debe estar poblado.\\
+	\hline
+
+%-----------------------Postcondiciones------------------------------%
+
+%---------Post 1----------%
+	\textbf{Postcondiciones:} &$\bullet$ El usario tendrá la facultad de consultar noticias\\
+	&\ \ de la sección elegida\\
+%---------Post 2----------%
+	&$\bullet$ El usario tendrá la facultad de cambiar el \\
+	&\ \ intervalo de tiempo para buscar los artículos\\
+	\hline
+
+%-----------------------Reglas de negocio----------------------------%
+	\textbf{Reglas de negocio:}& Ninguna.\\
+	\hline
+
+%---------------------------Errores----------------------------------%
+
+%------Error 1----------%
+	\textbf{Errores:} & $\bullet$ \TError{CU1}{Uno} Cuando el  catálogo \textbf{Direcciones web}\\
+	&\ \ no contiene información se muestra el mensaje\\
+	&\ \  \Tref{MSG1}{MSG1 Catálago vacio}, fin del caso de uso\\
+%------Error 2----------%
+	&$\bullet$ \TError{CU1}{Dos} Cuando los sitios proporcionados no se\\
+	&\ \ \ encuentran redactados en lenguaje  español se\\
+	\hline
+
+%-------------------------Autor--------------------------------------%
+	\textbf{Autor:} & Carlos Andres Hernandez Gomez \\
+	\hline
+\end{tabular}\\\\
+
+%============================Trayectorias========================================%
+
+%-----------------------Trayectoria Principal-----------------------%
+
+
+\begin{large}
+	\textbf{Trayectoria principal}\\
+\end{large}	
+
+\begin{enumerate}[1.]
+	
+	\item \actor Selecciona una opción de la pantalla \Tref{UI1}{UI1 Inicio}; \textbf{Política}, \textbf{Economía}, \textbf{Deportes}, \textbf{Ciencia y tecnología} o \textbf{Cultura}. 
+	
+	\item \sistema Obtiene el catálogo \textbf{Direcciones web}.
+	
+	\item \sistema Verifica que el catálogo \textbf{Direcciones web} contenga información. \TEref{CU1}{Uno}
+
+	\item \sistema Obtiene la fecha actual.
+
+	\item \sistema Incluye en caso de uso \Tref{CU2}{CU2 Buscar noticias}.
+
+	\item \actor Consulta la información.
+	
+	\item \finCU	
+
+\end{enumerate}
+
+
+
+
