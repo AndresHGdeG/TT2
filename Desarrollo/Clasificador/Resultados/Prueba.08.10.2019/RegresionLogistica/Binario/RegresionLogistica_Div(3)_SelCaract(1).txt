@@ -1,0 +1,52 @@
+Algoritmo:RegresionLogistica
+Numero de ventanas:3
+Noticias de entrenamiento: 2298
+Noticias de test: 1149
+seleccion de caracteristicas: Modo binario
+
+Noticias clasificadas correctamente:3001 de:3447
+Accuracy promedio:0.8706121264868001
+Fmeasure promedio:0.8718070476544533
+Recall promedio:0.8721605544652391
+Precision promedio:0.87173397914938
+
+Matriz de confucion promedio
+[[219.   1.   2.   2.   2.]
+ [  3. 182.  32.   1.  14.]
+ [  5.  32. 190.   5.   6.]
+ [  1.   2.   4. 204.   7.]
+ [  2.  15.   5.   6. 205.]]
+
+Orden de etiquetas:
+ 0 1 2 3 4
+Donde 
+0:Deportes
+1:Economia
+2:Politica
+3:Cultura
+4:Ciencia y tecnologia
+
+Corpus ocupado para validacion cruzada
+../../Corpus/Procesado/Balanceado_700.txt
+
+Informacion de cada division en la validacion cruzada
+Memoria ocupada(Megabytes):11.789653333333328 MB
+Tiempo real de ejecucion(segundos):3.6702566146850586 s
+Tiempo ocupado por el usuario(segundos):3.632562 s
+Tiempo promedio ocupado en el sistema/CPU (segundos):0.02448066666666666 s
+
+Informacion total del proceso de validacion cruzada
+Memoria ocupada(Megabytes):35.36895999999999 MB
+Tiempo real de ejecucion(segundos):11.010769844055176 s
+Tiempo ocupado por el usuario(segundos):10.897686 s
+Tiempo ocupado en el sistema/CPU (segundos):0.07344199999999998 s
+
+Informacion del equipo
+System OS:Darwin
+Procesador:i386
+Numero de CPUs:4
+Numero de CPUs fisicos:2
+Version:Darwin Kernel Version 18.7.0: Tue Aug 20 16:57:14 PDT 2019; root:xnu-4903.271.2~2/RELEASE_X86_64
+
+Fecha de la prueba: 
+:2019-10-08 13:08:12.184477

@@ -1,0 +1,52 @@
+Algoritmo:RandomForest
+Numero de ventanas:5
+Noticias de entrenamiento: 2758
+Noticias de test: 689
+seleccion de caracteristicas: Modo binario
+
+Noticias clasificadas correctamente:2885 de:3447
+Accuracy promedio:0.8369584148419259
+Fmeasure promedio:0.836930922281671
+Recall promedio:0.8374000107581109
+Precision promedio:0.8377683360888248
+
+Matriz de confucion promedio
+[[131.   1.   2.   1.   5.]
+ [  1. 107.  21.   1.  12.]
+ [  3.  17. 108.   3.   5.]
+ [  2.   1.   2. 123.   9.]
+ [  1.  14.   7.   4. 108.]]
+
+Orden de etiquetas:
+ 0 1 2 3 4
+Donde 
+0:Deportes
+1:Economia
+2:Politica
+3:Cultura
+4:Ciencia y tecnologia
+
+Corpus ocupado para validacion cruzada
+../../Corpus/Procesado/Balanceado_700.txt
+
+Informacion de cada division en la validacion cruzada
+Memoria ocupada(Megabytes):8.265728000000001 MB
+Tiempo real de ejecucion(segundos):1.7079977989196777 s
+Tiempo ocupado por el usuario(segundos):1.8573188000000003 s
+Tiempo promedio ocupado en el sistema/CPU (segundos):0.0269442 s
+
+Informacion total del proceso de validacion cruzada
+Memoria ocupada(Megabytes):41.32864000000001 MB
+Tiempo real de ejecucion(segundos):8.539988994598389 s
+Tiempo ocupado por el usuario(segundos):9.286594000000001 s
+Tiempo ocupado en el sistema/CPU (segundos):0.134721 s
+
+Informacion del equipo
+System OS:Darwin
+Procesador:i386
+Numero de CPUs:4
+Numero de CPUs fisicos:2
+Version:Darwin Kernel Version 18.7.0: Tue Aug 20 16:57:14 PDT 2019; root:xnu-4903.271.2~2/RELEASE_X86_64
+
+Fecha de la prueba: 
+:2019-10-08 13:09:32.049259

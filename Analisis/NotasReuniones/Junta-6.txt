@@ -1,0 +1,40 @@
+Junta 6
+
+Fecha de presentacion: 20 de noviembre
+Fecha de entrega del acuse: 13 de noviembre
+
+22 de octubre
+Primera version del documento
+
+29 de octubre 
+segunda revisión del documento
+
+
+05 de noviemnre 
+Ultuma version del documento
+
+Lunes 11 de noviembre
+Conseguir el acuse
+
+Jueves 14 de noviembre
+ensayo 1 de la presentación
+
+Martes 19 de noviembre
+ensayo 2 
+
+
+Actividades 
+
+grid search cv scikit learn
+
+Probar diferentes parametros en validación cruzada
+
+Guardar los menores parametros,
+mejor algoritmo
+mejores parametros por clasificar, entrenar los 
+
+
+prioridad a priori aumenta al no estar valanceado
+
+
+

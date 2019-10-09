@@ -1,0 +1,11 @@
+Lematizar
+	instlar: Spacy: pip install -U spacy
+	instalar: -m spacy download es_core_news_sm// lenguaje español
+Tokenizar
+	pip install demoji
+	demoji.download_codes()
+Crawler
+	conda install -c conda-forge scrapy
+
+Selenium
+	pip install selenium
