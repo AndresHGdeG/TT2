@@ -199,3 +199,60 @@ Para estas prueba pruebas se han generado 3 pliegues en la validación cruzada, 
 
 
 Se puede observar que el mejor resultado es dado por el clasificador \textbf{Regresión logística}, al extraer las características de forma bianaria con un \textit{Accuracy, Fmeasure, Recall y Precision} de un 87\%. Cabe mencionar que esta no son las pruebas finales de los clasificadores el siguiente paso es variar los parámetros usados en cada clasificador para obtener el mejor clasificador con los mejores parámetros.
+
+\section{Aplicación Web}
+Aplicación Web.
+Dados los conocimientos adquiridos durante nuestra etapa escolar nos ha permitido decidir las tecnologías que serán utilizadas 
+para el desarrollo del sistema.
+Utilizaremos el lenguaje de programación Java para manejar las funciones que nos permitirán interactuar con el sistema, 
+Java Server Faces como framework para desarrollar las interfaces de usuario
+Utilizaremos un repositorio de Maven que nos permitirá controlar las versiones de las dependencias así como de las librerías utilizadas.
+En primera instancia se muestra la vista preliminar que tendra el usuario al ingresar al sistema.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{imagenes/Aplicacion/PantallaInicio.png}
+\caption{Pantalla de Inicio.}
+\label{fig:PantallaInicio}
+\end{figure}
+
+Una vez ingresando al sistema el usuario tendrá la posibilidad de seleccionar una opción de las secciones que han sido predefinidas:
+
+\begin{enumerate}
+	\item Cultura
+	\item Deportes
+	\item Economía
+	\item Política
+	\item tecnología
+\end{enumerate} 
+
+Una vez que ha sido seleccionada una sección se mostrará la un mensaje en la cual el usuario deberá esperar hasta que hayan 
+sido clasificadas las noticias.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{imagenes/Aplicacion/seleccionarSeccion.png}
+\caption{Pantalla que se muestra una vez seleccionada una sección.}
+\label{fig:seleccionarSeccion}
+\end{figure}
+
+Una vez que se ha llevado a cabo la recolección y clasificación de las noticias se mostrará un mensaje al usuario notificándole 
+que han sido clasificadas las noticias.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{imagenes/Aplicacion/noticiasListas.png}
+\caption{Mensaje que se muestra una vez clasificadas las noticias.}
+\label{fig:noticiasListas}
+\end{figure}
+
+Se mostrará a el usuario una vista mostrándole las noticias pertenecientes a la sección que el usuario haya seleccionado. 
+Se le mostrára una pequeña barra en la parte superior donde podrá seleccionar la fecha de las noticias clasificadas.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{imagenes/Aplicacion/mostrarNoticias.png}
+\caption{Pantalla donde se mostrarán las noticias clasificadas.}
+\label{fig:mostrarNoticias}
+\end{figure}
