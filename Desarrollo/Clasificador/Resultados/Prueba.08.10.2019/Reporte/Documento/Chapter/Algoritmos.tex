@@ -1,26 +1,26 @@
 \section{Resultados de algoritmos de clasificación}
 
-Este documento explica los avances realizados de la semana 8 a la 10 el cual corresponde al perido 22 de septiembre $-$ 12 de octubre( ver Figura \ref{fig:cronograma}) del año 2019. las actividades realizadas son:
+Este documento explica los avances realizados de la semana octava a  la décima el cual corresponde al periodo 22 de septiembre $-$ 12 de octubre( ver Figura \ref{fig:cronograma}) del año 2019. las actividades reportadas son:
 
 \begin{enumerate}
-	\item Recolección de noticias para incrementar el corpus de 500 a 700 noticias por sección
-	\item Aplicación de filtro de número de palabras mínimas	
-	\item Entrenamiento de los algoritmos \textbf{naive bayes}, \textbf{random forest}, \textbf{maquina de soporte vectorial},\textbf{regresión logística}
-	\item Reporte de resultados del entrenamiento
+	\item Incremento del corpus
+	\item Selección de noticias aptas para el proceso de entrenamiento	
+	\item Entrenamiento de algoritmos
+	\item Validación cruzada
 	\item Diseño de la página web
 \end{enumerate} 
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{imagenes/Cronograma.png}
-\caption{Crononograma correspondiente al trabajo terminal 2}
+\caption{Cronograma correspondiente al trabajo terminal 2}
 \label{fig:cronograma}
 \end{figure}
 
 %--------------------------------------------------------------------------------------------------%
-\section{Recolección de noticias para incrementar el corpus}
+\section{Incremento del corpus}
 
-Como meta del número de noticias para formar el corpus se propuso 500 noticias por cada sección ( las cuales son \textbf{ciencia y tecnología}, \textbf{deportes}, \textbf{política}, \textbf{cultura} y \textbf{economía}) sin embargo con la motivación de alcanzar mejores resultados en el entrenamiento de los algoritmos antes mencionados, se incremento el número de artículos a 700, es decir 3500 noticias en total.\\
+Como meta del número de noticias para formar el corpus se propuso 500 noticias como mínimo por cada sección ( las cuales son \textbf{ciencia y tecnología}, \textbf{deportes}, \textbf{política}, \textbf{cultura} y \textbf{economía}) sin embargo con vías de alcanzar mejores resultados en el entrenamiento de los algoritmos, se incrementó el número de artículos a 700, es decir 3500 noticias en total.\\
 
 Para este procedimiento se recolectaban noticias cada 3 días de los sitios web:
 
@@ -35,9 +35,9 @@ Para este procedimiento se recolectaban noticias cada 3 días de los sitios web:
       \item \textbf{El economista}: https://www.eleconomista.com.mx/
 \end{itemize}
 
-Se implementaron las arañas (\textit{crawlers}) desarrolladas en el trabajo terminal 1. Además se espesializaron algunos algoritmos para obtener mas noticias de las previamente programas.\\
+Se implementaron las arañas (\textit{crawler}) desarrolladas en el trabajo terminal 1. Además se especializaron algunos algoritmos para obtener mas noticias de la sección \textbf{cultura.}\\
 
-El resultado de las noticias recoleactadas se muestra en la Figura 
+El resultado de las noticias recolectadas se muestra en la Figura \ref{fig:recoleccion}:
 
 \begin{figure}[h]
 \centering
@@ -47,9 +47,10 @@ El resultado de las noticias recoleactadas se muestra en la Figura
 \end{figure}
 
 %--------------------------------------------------------------------------------------------------%
-\section{Aplicación de filtro de número de palabras mínimas}
+\section{Selección de noticias aptas para el proceso de entrenamiento}
 
-Una vez obtenidas las noticias se limpiaron y se filtraron por el número de palabras mínimas el cual es 180. El número de artículos  obtenidos se muestra en la siguiente figura.
+Una vez obtenidas las noticias se limpiaron y se seleccionaron los artículos aptos para ser usadas en el proceso de entrenamiento, mediante la aplicación de un filtro, el cual verifica que un texto contenga como mínimo 180 palabras. La meta consistió en obtener 700 noticias validas por sección, sin embargo hay secciones que obtuvieron mas de dicho número  y otras un poco menos. Cabe destacar que las secciones se  acotaron a 700 noticias, los resultados obtenidos se muestra en la figura \ref{fig:filtro}. 
+
 
 \begin{figure}[h]
 \centering
@@ -58,10 +59,56 @@ Una vez obtenidas las noticias se limpiaron y se filtraron por el número de pal
 \label{fig:filtro}
 \end{figure}
 
+%--------------------------------------------------------------------------------------------------%
+\section{Entrenamiento de algoritmos}
+
+Se entrenaron los algoritmos propuestos en trabajo terminal 1 los cuales son:
+
+\begin{itemize}
+	\item \textbf{Naive bayes}
+	\item \textbf{Random forest}
+	\item \textbf{Maquina de soporte vectorial}
+	\item \textbf{Regresión logística}
+\end{itemize}
+
+El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{imagenes/Resultados/Clasificacion.png}
+\caption{Proceso de entrenamiento}
+\label{fig:clasificacion}
+\end{figure}
+
+\begin{enumerate}
+
+	\item \textbf{Lectura del corpus}:Consiste en leer las noticias almacenadas en un archivo tipo CSV, con la librería \textbf{Pandas} de \textbf{python}. Se obtiene el título y la redacción del artículo.
+
+	\item \textbf{Selección de características}: Se identifican las palabras que son comunes para cada sección por ejemplo, fútbol, jugador y gol son palabras que aparecen en el tópico de deportes. 
+
+	\item \textbf{Extracción de características}: Se crea un espacio vectorial por cada noticia donde cada elemento del vector representa la presencia o ausencia de una característica(palabra). Cabe mencionar que las características son extraídas de 2 formas, binario(donde 1 representa la presencia de la característica y 0 la ausencia) y por frecuencia ( donde se cuenta la cantidad de veces que cada característica aparece). Se ha implementado \textbf{CountVectorizer} de la librería \textit{scikit learn} para este proceso.
+
+	\item \textbf{Creación del modelo}: Los modelos creados son entrenados de forma supervisada, se brinda un conjunto de noticias (es decir el espacio vectorial de cada artículo) y el resultado de la clasificación para crear el modelo. Se ha implementado los algoritmos de la librería \textbf{sckit learn}.
+
+	\item \textbf{Prueba del modelo}: EL corpus se divide en 2 partes, donde la primera es llamada \textbf{conjunto de entrenamiento} (el cual consiste en el 93\% las noticias) y la segunda es llamada \textbf{conjunto de prueba} (el cual consiste en 7\% del corpus).
+
+	\item \textbf{Noticias de prueba clasificadas}: Se obtiene un vector número de resultados el cual muestra la clasificación de las noticias de prueba. donde
+	\begin{itemize}
+		\item \textbf{0}:Deportes
+		\item \textbf{1}:Economía
+		\item \textbf{2}:Política
+		\item \textbf{3}:Cultura
+		\item \textbf{4}:Ciencia y tecnología
+	\end{itemize}
+
+\end{enumerate}
 
 
-\section{Reporte de resultados del entrenamiento}
+%--------------------------------------------------------------------------------------------------%
 
+\section{Validación cruzada}
+
+El proceso de validación cruz.
 
 \begin{figure}[h]
 \centering
