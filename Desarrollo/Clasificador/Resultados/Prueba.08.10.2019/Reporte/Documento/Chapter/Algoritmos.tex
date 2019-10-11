@@ -1,4 +1,4 @@
-\section{Resultados de algoritmos de clasificación}
+\section{Introdcucción}
 
 Este documento explica los avances realizados de la semana octava a  la décima el cual corresponde al periodo 22 de septiembre $-$ 12 de octubre( ver Figura \ref{fig:cronograma}) del año 2019. las actividades reportadas son:
 
@@ -41,7 +41,7 @@ El resultado de las noticias recolectadas se muestra en la Figura \ref{fig:recol
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{imagenes/Resultados/Recoleccion.png}
+\includegraphics[scale=0.4]{imagenes/Resultados/Recoleccion.png}
 \caption{Gráfica de recolección de noticias}
 \label{fig:recoleccion}
 \end{figure}
@@ -54,7 +54,7 @@ Una vez obtenidas las noticias se limpiaron y se seleccionaron los artículos ap
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{imagenes/Resultados/Filtrado.png}
+\includegraphics[scale=0.4]{imagenes/Resultados/Filtrado.png}
 \caption{Gráfica de noticias obtenidas con mas de 180 palabras}
 \label{fig:filtro}
 \end{figure}
@@ -62,14 +62,14 @@ Una vez obtenidas las noticias se limpiaron y se seleccionaron los artículos ap
 %--------------------------------------------------------------------------------------------------%
 \section{Entrenamiento de algoritmos}
 
-Se entrenaron los algoritmos propuestos en trabajo terminal 1 los cuales son:
+Se entrenaron los algoritmos propuestos en trabajo terminal 1 los cuales son: \textbf{Naive bayes}, \textbf{Random forest}, \textbf{Maquina de soporte vectorial} y \textbf{Regresión logística}.\\
 
-\begin{itemize}
-	\item \textbf{Naive bayes}
-	\item \textbf{Random forest}
-	\item \textbf{Maquina de soporte vectorial}
-	\item \textbf{Regresión logística}
-\end{itemize}
+%\begin{itemize}
+%	\item \textbf{Naive bayes}
+%	\item \textbf{Random forest}
+%	\item \textbf{Maquina de soporte vectorial}
+%	\item \textbf{Regresión logística}
+%\end{itemize}
 
 El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}
 
@@ -92,14 +92,15 @@ El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}
 
 	\item \textbf{Prueba del modelo}: EL corpus se divide en 2 partes, donde la primera es llamada \textbf{conjunto de entrenamiento} (el cual consiste en el 93\% las noticias) y la segunda es llamada \textbf{conjunto de prueba} (el cual consiste en 7\% del corpus).
 
-	\item \textbf{Noticias de prueba clasificadas}: Se obtiene un vector número de resultados el cual muestra la clasificación de las noticias de prueba. donde
-	\begin{itemize}
-		\item \textbf{0}:Deportes
-		\item \textbf{1}:Economía
-		\item \textbf{2}:Política
-		\item \textbf{3}:Cultura
-		\item \textbf{4}:Ciencia y tecnología
-	\end{itemize}
+	\item \textbf{Noticias de prueba clasificadas}: Se obtiene un vector numérico de resultados el cual muestra la clasificación de las noticias de prueba. donde \textbf{0}:Deportes, \textbf{1}:Economía, \textbf{2}:Política, \textbf{3}:Cultura y \textbf{4}:Ciencia y tecnología.
+	
+%	\begin{itemize}
+%		\item \textbf{0}:Deportes
+%		\item \textbf{1}:Economía
+%		\item \textbf{2}:Política
+%		\item \textbf{3}:Cultura
+%		\item \textbf{4}:Ciencia y tecnología
+%	\end{itemize}
 
 \end{enumerate}
 
@@ -108,18 +109,93 @@ El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}
 
 \section{Validación cruzada}
 
-El proceso de validación cruz.
+Para medir la eficiencia de cada algoritmo se genera un conjunto de noticias de entrenamiento y otro de prueba sin embargo, la selección de estas noticias puede ser manipulados para obtener mejores resultados. Para evitar esta situación se generan las pruebas con un método llamado validación cruzada el cual consiste en partir el corpus en pliegues y generar las pruebas mas de una vez (ver Figura \ref{fig:validacioncruzada} ) y calcular la eficiencia promedio del clasificador, de esta forma se obtienen resultados mas robustos y confiables.
+
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{imagenes/Resultados/MatrizFrecuencia.png}
+\includegraphics[scale=0.5]{imagenes/Resultados/validacioncruzada.png}
+\caption{Validación cruzada}
+\label{fig:validacioncruzada}
+\end{figure}
+
+
+\subsection[Métricas]{Métricas de evaluación}
+
+Para medir la eficiencia del clasificador se hace uso de la matriz de confusión.\\
+
+\textbf{Matriz de confusión}\\
+
+Una matriz de confusión es una representación de la información de los resultados obtenidos por un
+clasificador, dicha matriz suele ser de tamaño n x n, donde n es es el número de clases diferentes con
+las que se están trabajando.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=.35]{imagenes/Resultados/MatrizC.png}
+	\caption{Matriz de confusión}
+	\label{Fig:mconfu}
+\end{figure}
+
+La Figura \ref{Fig:mconfu} muestra un ejemplo de matriz de confusión con dos clases, la cual ejemplifica de
+manera adecuada las diferentes entradas de la misma, entra las que se encuentran:
+
+
+Gracias a la matriz de confusión, es posible obtener ciertas métricas que nos ayudan a evaluar el modelo
+de aprendizaje. Entre las que se encuentran:\\
+
+
+\textbf{Exactitud}: es la proporción del número total de predicciones que son correctas respecto al total.
+Se determina utilizando la ecuación:
+
+\begin{equation}\label{eq:1}
+	Exactitud = \frac{VP+VN}{VP+VN+FN+FP}
+\end{equation}
+
+\textbf{Recall}: Es la proporción de predicciones positivas que fueron correctamente clasificadas. Se determina
+utilizando la ecuación:
+
+
+\begin{equation}\label{eq:2}
+	Recall = \frac{VP}{VP+FP}
+\end{equation}
+
+
+\textbf{Precisión}: Es la proporción de predicciones positivas que se clasificaron correctamente. Se determina
+con la siguiente ecuación:
+
+
+\begin{equation}\label{eq:3}
+	Precision = \frac{VP}{VP+FN}
+\end{equation}
+
+
+\textbf{F-Measure (F1)}: Se interpreta como la media armónica entre Precisión y Recall. Se determina
+con la siguiente ecuación:
+
+\begin{equation}\label{eq:3}
+	 F-Measure = 2 \cdot \frac{precision \cdot recall}{precision+recall}
+\end{equation}
+
+
+
+
+
+Para estas prueba pruebas se han generado 3 pliegues en la validación cruzada, la Figura \ref{fig:matrizfrecuencia} muestra los resultados obtenidos al extraer las características por frecuencia y la Figura \ref{fig:matrizbinario} muestra los resultado obtenidos al extraer las características de forma binaria.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.45]{imagenes/Resultados/MatrizFrecuencia.png}
 \caption{Resultados de entrenamiento modo Frecuencia}
 \label{fig:matrizfrecuencia}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{imagenes/Resultados/MatrizBinario.png}
+\includegraphics[scale=0.45]{imagenes/Resultados/MatrizBinario.png}
 \caption{Resultados de entrenamiento en modo binario}
 \label{fig:matrizbinario}
 \end{figure}
+
+
+Se puede observar que el mejor resultado es dado por el clasificador \textbf{Regresión logística}, al extraer las características de forma bianaria con un \textit{Accuracy, Fmeasure, Recall y Precision} de un 87\%. Cabe mencionar que esta no son las pruebas finales de los clasificadores el siguiente paso es variar los parámetros usados en cada clasificador para obtener el mejor clasificador con los mejores parámetros.
