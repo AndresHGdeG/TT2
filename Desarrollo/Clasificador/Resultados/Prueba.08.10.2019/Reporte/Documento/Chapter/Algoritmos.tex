@@ -10,7 +10,7 @@ Este documento explica los avances realizados de la semana octava a  la décima 
 	\item Diseño de la página web
 \end{enumerate} 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{imagenes/Cronograma.png}
 \caption{Cronograma correspondiente al trabajo terminal 2}
@@ -39,9 +39,9 @@ Se implementaron las arañas (\textit{crawler}) desarrolladas en el trabajo term
 
 El resultado de las noticias recolectadas se muestra en la Figura \ref{fig:recoleccion}:
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
-\includegraphics[scale=0.35]{imagenes/Resultados/Recoleccion.png}
+\includegraphics[scale=0.4]{imagenes/Resultados/Recoleccion.png}
 \caption{Gráfica de recolección de noticias}
 \label{fig:recoleccion}
 \end{figure}
@@ -52,7 +52,7 @@ El resultado de las noticias recolectadas se muestra en la Figura \ref{fig:recol
 Una vez obtenidas las noticias se limpiaron y se seleccionaron los artículos aptos para ser usadas en el proceso de entrenamiento, mediante la aplicación de un filtro, el cual verifica que un texto contenga como mínimo 180 palabras. La meta consistió en obtener 700 noticias validas por sección, sin embargo hay secciones que obtuvieron mas de dicho número  y otras un poco menos. Cabe destacar que las secciones se  acotaron a 700 noticias, los resultados obtenidos se muestra en la figura \ref{fig:filtro}. 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{imagenes/Resultados/Filtrado.png}
 \caption{Gráfica de noticias obtenidas con mas de 180 palabras}
@@ -73,7 +73,7 @@ Se entrenaron los algoritmos propuestos en trabajo terminal 1 los cuales son: \t
 
 El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.35]{imagenes/Resultados/Clasificacion.png}
 \caption{Proceso de entrenamiento}
@@ -112,7 +112,7 @@ El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}
 Para medir la eficiencia de cada algoritmo se genera un conjunto de noticias de entrenamiento y otro de prueba sin embargo, la selección de estas noticias puede ser manipulados para obtener mejores resultados. Para evitar esta situación se generan las pruebas con un método llamado validación cruzada el cual consiste en partir el corpus en pliegues y generar las pruebas mas de una vez (ver Figura \ref{fig:validacioncruzada} ) y calcular la eficiencia promedio del clasificador, de esta forma se obtienen resultados mas robustos y confiables.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{imagenes/Resultados/validacioncruzada.png}
 \caption{Validación cruzada}
@@ -130,14 +130,14 @@ Una matriz de confusión es una representación de la información de los result
 clasificador, dicha matriz suele ser de tamaño n x n, donde n es es el número de clases diferentes con
 las que se están trabajando.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=.35]{imagenes/Resultados/MatrizC.png}
 	\caption{Matriz de confusión}
-	\label{Fig:mconfu}
+	\label{fig:mconfu}
 \end{figure}
 
-La Figura \ref{Fig:mconfu} muestra un ejemplo de matriz de confusión con dos clases, la cual ejemplifica de
+La Figura \ref{fig:mconfu} muestra un ejemplo de matriz de confusión con dos clases, la cual ejemplifica de
 manera adecuada las diferentes entradas de la misma, entra las que se encuentran:
 
 
@@ -173,7 +173,7 @@ con la siguiente ecuación:
 \textbf{F-Measure (F1)}: Se interpreta como la media armónica entre Precisión y Recall. Se determina
 con la siguiente ecuación:
 
-\begin{equation}\label{eq:3}
+\begin{equation}\label{eq:4}
 	 F-Measure = 2 \cdot \frac{precision \cdot recall}{precision+recall}
 \end{equation}
 
@@ -183,14 +183,14 @@ con la siguiente ecuación:
 
 Para estas prueba pruebas se han generado 3 pliegues en la validación cruzada, la Figura \ref{fig:matrizfrecuencia} muestra los resultados obtenidos al extraer las características por frecuencia y la Figura \ref{fig:matrizbinario} muestra los resultado obtenidos al extraer las características de forma binaria.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.45]{imagenes/Resultados/MatrizFrecuencia.png}
 \caption{Resultados de entrenamiento modo Frecuencia}
 \label{fig:matrizfrecuencia}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.45]{imagenes/Resultados/MatrizBinario.png}
 \caption{Resultados de entrenamiento en modo binario}
