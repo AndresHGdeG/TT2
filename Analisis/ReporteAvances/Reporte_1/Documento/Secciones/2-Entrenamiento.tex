@@ -1,8 +1,8 @@
 \section{Incremento del corpus}
 
-Como meta del número de noticias para formar el corpus se propuso 500 noticias como mínimo por cada sección ( las cuales son \textbf{ciencia y tecnología}, \textbf{deportes}, \textbf{política}, \textbf{cultura} y \textbf{economía}) sin embargo con vías de alcanzar mejores resultados en el entrenamiento de los algoritmos, se incrementó el número de artículos a 700, es decir 3500 noticias en total.\\
+Como meta el número de noticias para formar el corpus se propuso de 500 noticias como mínimo por cada sección ( las cuales son \textbf{ciencia y tecnología}, \textbf{deportes}, \textbf{política}, \textbf{cultura} y \textbf{economía}) sin embargo con vías de alcanzar mejores resultados en el entrenamiento de los algoritmos, se incrementó el número de artículos a 700, es decir 3500 noticias en total.\\
 
-Para este procedimiento se recolectaban noticias cada 3 días de los sitios web:
+Para este procedimiento se recolectaron noticias cada 3 días de los sitios web:
 
 \begin{itemize}
 	  \item \textbf{El Universal}: https://www.eluniversal.com.mx/
@@ -10,14 +10,10 @@ Para este procedimiento se recolectaban noticias cada 3 días de los sitios web:
 	  \item \textbf{Aristegui Noticias}: https://aristeguinoticias.com/
 	  \item \textbf{Sopitas}: https://www.sopitas.com/
       \item \textbf{TV Azteca}: https://www.aztecanoticias.com.mx/
-      \item \textbf{Televisa}: https://noticieros.televisa.com/
-      \item \textbf{Once Noticias}: https://www.oncenoticias.tv/
       \item \textbf{El economista}: https://www.eleconomista.com.mx/
 \end{itemize}
 
-Se implementaron las arañas (\textit{crawler}) desarrolladas en el trabajo terminal 1. Además se especializaron algunos algoritmos para obtener mas noticias de la sección \textbf{cultura.}\\
-
-El resultado de las noticias recolectadas se muestra en la Figura \ref{fig:recoleccion}:
+Se implementaron los \textit{crawlers} desarrollos en el trabajo terminal 1. Además se especializaron algunos algoritmos para obtener mas noticias de la sección \textbf{cultura} específicamente del diario \textbf{El Economista}. El resultado de las noticias recolectadas se muestra en la Figura \ref{fig:recoleccion}:
 
 \begin{figure}[ht]
 \centering
@@ -27,9 +23,9 @@ El resultado de las noticias recolectadas se muestra en la Figura \ref{fig:recol
 \end{figure}
 
 %--------------------------------------------------------------------------------------------------%
-\section{Selección de noticias aptas para el proceso de entrenamiento}
+\section{Selección de noticias}
 
-Una vez obtenidas las noticias se limpiaron y se seleccionaron los artículos aptos para ser usadas en el proceso de entrenamiento, mediante la aplicación de un filtro, el cual verifica que un texto contenga como mínimo 180 palabras. La meta consistió en obtener 700 noticias validas por sección, sin embargo hay secciones que obtuvieron mas de dicho número  y otras un poco menos. Cabe destacar que las secciones se  acotaron a 700 noticias, los resultados obtenidos se muestra en la figura \ref{fig:filtro}. 
+Una vez obtenidas las noticias se limpiaron y se seleccionaron los artículos aptos para ser usadas en el proceso de entrenamiento, mediante la aplicación de un filtro. Un texto válido debe contener como mínimo 180 palabras. La meta consistió en obtener 700 noticias validas por sección, sin embargo hay secciones que obtuvieron mas de dicho número  y otras un poco menos. Cabe destacar que las secciones se  acotaron a 700 noticias, los resultados obtenidos se muestra en la figura \ref{fig:filtro}.\\
 
 
 \begin{figure}[ht]
@@ -51,7 +47,7 @@ Se entrenaron los algoritmos propuestos en trabajo terminal 1 los cuales son: \t
 %	\item \textbf{Regresión logística}
 %\end{itemize}
 
-El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}
+El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}.\\
 
 \begin{figure}[ht]
 \centering
@@ -89,7 +85,7 @@ El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}
 
 \section{Validación cruzada}
 
-Para medir la eficiencia de cada algoritmo se genera un conjunto de noticias de entrenamiento y otro de prueba sin embargo, la selección de estas noticias puede ser manipulados para obtener mejores resultados. Para evitar esta situación se generan las pruebas con un método llamado validación cruzada el cual consiste en partir el corpus en pliegues y generar las pruebas mas de una vez (ver Figura \ref{fig:validacioncruzada} ) y calcular la eficiencia promedio del clasificador, de esta forma se obtienen resultados mas robustos y confiables.
+Para medir la eficiencia de cada algoritmo se genera un conjunto de noticias de entrenamiento y otro de prueba sin embargo, la selección de estas noticias puede ser manipulados para obtener mejores resultados. Para evitar esta situación se generan las pruebas con un método llamado validación cruzada el cual consiste en partir el corpus en pliegues y generar las pruebas mas de una vez (ver Figura \ref{fig:validacioncruzada} ) y calcular la eficiencia promedio del clasificador, de esta forma se obtienen resultados mas robustos y confiables.\\
 
 
 \begin{figure}[ht]
@@ -100,15 +96,14 @@ Para medir la eficiencia de cada algoritmo se genera un conjunto de noticias de 
 \end{figure}
 
 
-\subsection[Métricas]{Métricas de evaluación}
+\subsection{Métricas de evaluación}
 
-Para medir la eficiencia del clasificador se hace uso de la matriz de confusión.\\
+Utilizando la validación cruzada se debe medir la eficiencia del clasificador, para esto se hace uso de la matriz de confusión.\\
 
 \textbf{Matriz de confusión}\\
 
 Una matriz de confusión es una representación de la información de los resultados obtenidos por un
-clasificador, dicha matriz suele ser de tamaño n x n, donde n es es el número de clases diferentes con
-las que se están trabajando.
+clasificador, dicha matriz suele ser de tamaño n x n, donde n es es el número de clases diferentes con las que se están trabajando.\\
 
 \begin{figure}[ht]
 	\centering
@@ -117,23 +112,18 @@ las que se están trabajando.
 	\label{fig:mconfu}
 \end{figure}
 
-La Figura \ref{fig:mconfu} muestra un ejemplo de matriz de confusión con dos clases, la cual ejemplifica de
-manera adecuada las diferentes entradas de la misma, entra las que se encuentran:
+La Figura \ref{fig:mconfu} muestra un ejemplo de matriz de confusión con dos clases, la cual ejemplifica de manera adecuada las diferentes entradas de la misma.\\
+
+Gracias a la matriz de confusión, es posible obtener ciertas métricas que nos ayudan a evaluar el modelo de aprendizaje, las cuales son:\\
 
 
-Gracias a la matriz de confusión, es posible obtener ciertas métricas que nos ayudan a evaluar el modelo
-de aprendizaje. Entre las que se encuentran:\\
-
-
-\textbf{Exactitud}: es la proporción del número total de predicciones que son correctas respecto al total.
-Se determina utilizando la ecuación:
+\textbf{Exactitud}: es la proporción del número total de predicciones que son correctas respecto al total. Se determina utilizando la ecuación:
 
 \begin{equation}\label{eq:1}
 	Exactitud = \frac{VP+VN}{VP+VN+FN+FP}
 \end{equation}
 
-\textbf{Recall}: Es la proporción de predicciones positivas que fueron correctamente clasificadas. Se determina
-utilizando la ecuación:
+\textbf{Recall}: Es la proporción de predicciones positivas que fueron correctamente clasificadas. Se determina utilizando la ecuación:
 
 
 \begin{equation}\label{eq:2}
@@ -141,8 +131,7 @@ utilizando la ecuación:
 \end{equation}
 
 
-\textbf{Precisión}: Es la proporción de predicciones positivas que se clasificaron correctamente. Se determina
-con la siguiente ecuación:
+\textbf{Precisión}: Es la proporción de predicciones positivas que se clasificaron correctamente. Se determina con la siguiente ecuación:
 
 
 \begin{equation}\label{eq:3}
@@ -150,18 +139,17 @@ con la siguiente ecuación:
 \end{equation}
 
 
-\textbf{F-Measure (F1)}: Se interpreta como la media armónica entre Precisión y Recall. Se determina
-con la siguiente ecuación:
+\textbf{F-Measure (F1)}: Se interpreta como la media armónica entre Precisión y Recall. Se determina con la siguiente ecuación:
 
 \begin{equation}\label{eq:4}
 	 F-Measure = 2 \cdot \frac{precision \cdot recall}{precision+recall}
 \end{equation}
 
+\newpage 
 
+\subsection{Resultados}
 
-
-
-Para estas prueba pruebas se han generado 3 pliegues en la validación cruzada, la Figura \ref{fig:matrizfrecuencia} muestra los resultados obtenidos al extraer las características por frecuencia y la Figura \ref{fig:matrizbinario} muestra los resultado obtenidos al extraer las características de forma binaria.
+Para las pruebas se han generado 3 pliegues en la validación cruzada, la Figura \ref{fig:matrizfrecuencia} muestra los resultados obtenidos al extraer las características por frecuencia y la Figura \ref{fig:matrizbinario} muestra los resultado obtenidos al extraer las características de forma binaria.\\
 
 \begin{figure}[ht]
 \centering
@@ -178,4 +166,4 @@ Para estas prueba pruebas se han generado 3 pliegues en la validación cruzada, 
 \end{figure}
 
 
-Se puede observar que el mejor resultado es dado por el clasificador \textbf{Regresión logística}, al extraer las características de forma bianaria con un \textit{Accuracy, Fmeasure, Recall y Precision} de un 87\%. Cabe mencionar que esta no son las pruebas finales de los clasificadores el siguiente paso es variar los parámetros usados en cada clasificador para obtener el mejor clasificador con los mejores parámetros.
+Se puede observar que el mejor resultado es dado por el clasificador \textbf{Regresión logística}, al extraer las características de forma binaria con un \textit{Accuracy, Fmeasure, Recall y Precision} de un 87\%. Cabe mencionar que esta no son las pruebas finales de los clasificadores el siguiente paso es variar los parámetros usados en cada clasificador para obtener el mejor clasificador con los mejores parámetros.\\
