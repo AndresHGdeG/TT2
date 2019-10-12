@@ -17,7 +17,7 @@ Se implementaron los \textit{crawlers} desarrollos en el trabajo terminal 1. Ade
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.35]{imagenes/Resultados/Recoleccion.png}
+\includegraphics[scale=0.4]{imagenes/Resultados/Recoleccion.png}
 \caption{Gráfica de recolección de noticias}
 \label{fig:recoleccion}
 \end{figure}
@@ -35,6 +35,8 @@ Una vez obtenidas las noticias se limpiaron y se seleccionaron los artículos ap
 \label{fig:filtro}
 \end{figure}
 
+El total de noticias obtenidas es de 3447.\\
+
 %--------------------------------------------------------------------------------------------------%
 \section{Entrenamiento de algoritmos}
 
@@ -51,7 +53,7 @@ El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}.\\
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.35]{imagenes/Resultados/Clasificacion.png}
+\includegraphics[scale=0.4]{imagenes/Resultados/Clasificacion.png}
 \caption{Proceso de entrenamiento}
 \label{fig:clasificacion}
 \end{figure}
@@ -66,7 +68,7 @@ El proceso de entrenamiento se muestra en la Figura \ref{fig:clasificacion}.\\
 
 	\item \textbf{Creación del modelo}: Los modelos creados son entrenados de forma supervisada, se brinda un conjunto de noticias (es decir el espacio vectorial de cada artículo) y el resultado de la clasificación para crear el modelo. Se ha implementado los algoritmos de la librería \textbf{sckit learn}.
 
-	\item \textbf{Prueba del modelo}: EL corpus se divide en 2 partes, donde la primera es llamada \textbf{conjunto de entrenamiento} (el cual consiste en el 93\% las noticias) y la segunda es llamada \textbf{conjunto de prueba} (el cual consiste en 7\% del corpus).
+	\item \textbf{Prueba del modelo}: El corpus se divide en 2 partes, donde la primera es llamada \textbf{conjunto de entrenamiento} (el cual consiste en el 93\% las noticias) y la segunda es llamada \textbf{conjunto de prueba} (el cual consiste en 7\% del corpus).
 
 	\item \textbf{Noticias de prueba clasificadas}: Se obtiene un vector numérico de resultados el cual muestra la clasificación de las noticias de prueba. donde \textbf{0}:Deportes, \textbf{1}:Economía, \textbf{2}:Política, \textbf{3}:Cultura y \textbf{4}:Ciencia y tecnología.
 	
@@ -107,7 +109,7 @@ clasificador, dicha matriz suele ser de tamaño n x n, donde n es es el número 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=.35]{imagenes/Resultados/MatrizC.png}
+	\includegraphics[scale=.3]{imagenes/Resultados/MatrizC.png}
 	\caption{Matriz de confusión}
 	\label{fig:mconfu}
 \end{figure}
@@ -154,7 +156,7 @@ Para las pruebas se han generado 3 pliegues en la validación cruzada, la Figura
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.45]{imagenes/Resultados/MatrizFrecuencia.png}
-\caption{Resultados de entrenamiento modo Frecuencia}
+\caption{Resultados de entrenamiento modo frecuencia}
 \label{fig:matrizfrecuencia}
 \end{figure}
 
