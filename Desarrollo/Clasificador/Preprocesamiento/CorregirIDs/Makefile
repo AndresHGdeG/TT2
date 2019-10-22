@@ -1,3 +1,3 @@
 all:
 
-	python CorregirID.py '../../Corpus/No-procesado/corpusBalanceado.txt' 'SalidaID.txt'
+	python CorregirID.py '../../Corpus/No-procesado/CORPUS.txt' 'SalidaID.txt'
