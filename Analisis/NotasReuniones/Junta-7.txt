@@ -1,0 +1,73 @@
+Seleccion del algoritmo
+	Regresión logistica
+
+	Documento : Explicar la robustez de gridsearch 
+
+
+Modelo:
+Entrenar 3,150 y probar con 350 noticias de prueba
+con los mejores parametros 
+
+
+
+Aplicación:
+
+Con las 3500 noticias entrenamos con Regresión logistica y almacenamos el modelo
+
+
+Recolector:
+
+	1)Bajar noticias de internet
+	2)Se tokenizan y se lematizan(Prepocesar)
+	3)Representación de noticias (Representación binaria)
+	4)Adaptar las caracteristica a las del modelo entrenado con 3500
+
+
+Web:
+	Delimitar el número de noticiias por medio  al menos 100
+	Estadistica de la cantidad del número de noticias recolectadas por medio
+	Trabajo a futuro, crear un servicio web, trabajo por a tras 
+
+	Prueba: abrir 2 navegadores web y hacer las peticiones para verificar la sincronicidad
+
+
+Sinodales.
+
+seleccionamos metodos
+por que los seleccionamos 
+
+
+Documento
+	
+Implementación y pruebas
+
+	Recoleccion
+		Implementacion
+		Version del crauler 
+		Se depuraron las noticias, se hizo la omologación de diferente tipo de seccion
+		Etapa de depuracion
+		Selección de noticias que ocupamos
+	Entrenamiento
+		preprocesamiento
+		pruebas de kfolds
+		gridsearch: Reportar todo, así con numero se ve que trabajamos
+
+
+	Aplicación web
+		Archivo físico
+		ya no se busca por sección 
+		hacer menció de casos de uso
+Trabajo a futuro
+	Probar con otros citios de noticia
+	hacerlo un servicio web
+	Redes neuronales 
+	Otro tipo de extracción de caracteristicas 
+	Aplicar selección de caracteristicas
+
+Conclusiones
+	redactar objetivo por objetivo
+	Se cumplieron los objetivos 
+Anexo
+
+Referencias 
+
