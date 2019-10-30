@@ -1,0 +1,11 @@
+Algoritmo:NaiveBayes
+Numero de particiones en la validacion cruzada:5
+Noticias de entrenamiento: 3150
+
+Mejores Parametros
+
+Best alpha:0.5
+Best score:0.8510888331131701
+
+Fecha de la prueba: 
+:2019-10-28 15:42:14.785019

@@ -1,0 +1,2 @@
+all:
+	python crearModelo.py 'MSV' '../../Corpus/4.Final/CorpusTrain_3150.txt' 1

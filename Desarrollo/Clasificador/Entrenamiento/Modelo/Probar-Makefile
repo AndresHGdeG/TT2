@@ -1,3 +1,0 @@
-all:
-
-	ProbarModelo.py 'Modelo_NaiveBayes' '../../Corpus/Procesado/PruebasCorpus.txt'

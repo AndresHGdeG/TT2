@@ -1,4 +1,4 @@
-zall:	
+all:	
 	
 	pdflatex ClasificadorDeNoticias.tex
 	bibtex ClasificadorDeNoticias.aux

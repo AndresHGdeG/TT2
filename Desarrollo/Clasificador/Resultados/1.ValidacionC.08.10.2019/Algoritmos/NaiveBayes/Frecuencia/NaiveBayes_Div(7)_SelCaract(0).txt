@@ -1,0 +1,52 @@
+Algoritmo:NaiveBayes
+Numero de ventanas:7
+Noticias de entrenamiento: 2955
+Noticias de test: 492
+seleccion de caracteristicas: Por frecuencia
+
+Noticias clasificadas correctamente:2887 de:3447
+Accuracy promedio:0.8375385477992711
+Fmeasure promedio:0.8388014465209982
+Recall promedio:0.8480174860934214
+Precision promedio:0.8391328188764848
+
+Matriz de confucion promedio
+[[91.  0.  1.  0.  2.]
+ [ 1. 83. 14.  1. 16.]
+ [ 4. 11. 83.  3. 10.]
+ [ 1.  1.  1. 88.  4.]
+ [ 1.  5.  1.  2. 67.]]
+
+Orden de etiquetas:
+ 0 1 2 3 4
+Donde 
+0:Deportes
+1:Economia
+2:Politica
+3:Cultura
+4:Ciencia y tecnologia
+
+Corpus ocupado para validacion cruzada
+../../Corpus/Procesado/Balanceado_700.txt
+
+Informacion de cada division en la validacion cruzada
+Memoria ocupada(Megabytes):5.660086857142856 MB
+Tiempo real de ejecucion(segundos):1.3041961193084717 s
+Tiempo ocupado por el usuario(segundos):1.4089941428571429 s
+Tiempo promedio ocupado en el sistema/CPU (segundos):0.02519928571428571 s
+
+Informacion total del proceso de validacion cruzada
+Memoria ocupada(Megabytes):39.62060799999999 MB
+Tiempo real de ejecucion(segundos):9.129372835159302 s
+Tiempo ocupado por el usuario(segundos):9.862959 s
+Tiempo ocupado en el sistema/CPU (segundos):0.17639499999999997 s
+
+Informacion del equipo
+System OS:Darwin
+Procesador:i386
+Numero de CPUs:4
+Numero de CPUs fisicos:2
+Version:Darwin Kernel Version 18.7.0: Tue Aug 20 16:57:14 PDT 2019; root:xnu-4903.271.2~2/RELEASE_X86_64
+
+Fecha de la prueba: 
+:2019-10-08 17:32:47.025404

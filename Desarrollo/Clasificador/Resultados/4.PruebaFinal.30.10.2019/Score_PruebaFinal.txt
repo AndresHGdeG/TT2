@@ -1,0 +1,13 @@
+Con el corpus de CorusTest_350.txt se ha realizado esta prueba, con el modelo de maquina de soporte vectorial
+
+                      precision    recall  f1-score   support
+
+            Deportes       0.93      0.96      0.94        68
+            Economía       0.81      0.88      0.84        58
+            Política       0.87      0.86      0.86        69
+             Cultura       0.92      0.91      0.92        77
+Ciencia y Tecnología       0.92      0.86      0.89        78
+
+            accuracy                           0.89       350
+           macro avg       0.89      0.89      0.89       350
+        weighted avg       0.89      0.89      0.89       350

@@ -1,0 +1,45 @@
+skelearn.metrics.classification_report
+
+accuracy: se usa 
+covertura:No la usamos 
+
+precicion y recall: se hace por sección
+
+presicioon=verdadero positivo/suma de la columna
+recall=verdadero positivo/suma de la fila
+
+recall, fmeasure: se reporta solo para la prueba final
+
+
+1.graficas de numnoticias y periodicos
+
+2.explicar un ejemplo de las métricas
+
+3. Preprocesamiento 
+	bibliotecas
+	tokenización 
+	lematización
+
+	representación
+		frecuencia
+		binario
+		ejemplos
+	Aprendizaje automático 
+		se seleccionarion algoritmos con base en el estado del arte
+		estos metodos cuentan con diferentes parametros
+	Gridsearch
+		describir
+		selección del corupus total
+		hacer referencia al marco teórico
+		4 pliegues  de prueba 
+		verbose (tabla de resultados)
+		tabla, clasificador mejores paramotros accuray 
+		en anexo meter todas las tablas 
+	Prueba final
+		mecionar que es un corpus que se usará por primera vez
+%-----------------%
+	Aplicación web
+	web crawling 
+	tokenizaicón 
+	lematización
+	represetnación binaria

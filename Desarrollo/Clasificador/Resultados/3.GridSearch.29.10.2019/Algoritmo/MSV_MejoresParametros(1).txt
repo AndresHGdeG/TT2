@@ -1,0 +1,13 @@
+Algoritmo:MSV
+Numero de particiones en la validacion cruzada:5
+Noticias de entrenamiento: 3150
+
+Mejores Parametros
+
+Best C:100
+Best Kernel:rbf
+Best Gamma:0.0001
+Best score:0.8692109806499438
+
+Fecha de la prueba: 
+:2019-10-28 16:35:45.896591

@@ -1,0 +1,9 @@
+id:<Periodico><Número de noticia>
+100:Aristegui
+200:TVAZTECA
+300:El Economista
+400:La jornada
+500:La prensa
+500:La prensa
+600:Proceso
+700:Sopitas

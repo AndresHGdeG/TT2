@@ -1,0 +1,12 @@
+Algoritmo:RandomForest
+Numero de particiones en la validacion cruzada:5
+Noticias de entrenamiento: 3150
+
+Mejores Parametros
+
+Best max_depth:50
+Best n_estimators:1000
+Best score:0.8618947023811309
+
+Fecha de la prueba: 
+:2019-10-28 16:59:44.833531
