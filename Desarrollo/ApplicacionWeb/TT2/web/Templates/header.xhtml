@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+
+    </h:head>
+    
+    <body>
+        
+
+            <p:panelGrid columns="2" styleClass="ui-noborder" style="background-color: #036fab; width: 100%">
+                <h:graphicImage library="images" name="ipn.png" style=" align-self: left;" width="150" height="100">
+                </h:graphicImage>
+                <p:outputLabel value="Recolector y clasificador de noticias" 
+                               style="display:block; text-align: right; font-size: 36px; font-family: serif" />
+            </p:panelGrid>
+            
+            <div id="menu">
+                <h:form>
+                    <p:tabMenu activeIndex="#{mBTabMenu.index}">
+                        
+                        <p:menuitem value="Inicio"   >
+                        </p:menuitem>
+                        
+                        <p:menuitem value="Deportes" action="#{mBTabMenu.SeleccionSeccion(1)}"  >
+                        </p:menuitem>
+                       
+                        <p:menuitem value="Economía" action="#{mBTabMenu.SeleccionSeccion(2)}">
+                        </p:menuitem>
+                        
+                        <p:menuitem value="Política" action="#{mBTabMenu.SeleccionSeccion(3)}">
+                        </p:menuitem>
+                        
+                        <p:menuitem value="Cultura" action="#{mBTabMenu.SeleccionSeccion(4)}" >
+                            
+                        </p:menuitem>
+                        <p:menuitem value="Ciencia y Tecnología" action="#{mBTabMenu.SeleccionSeccion(5)}">
+                            
+                        </p:menuitem>
+     
+                        
+                    </p:tabMenu>
+                </h:form>
+            </div>
+    </body> 
+
+</html>
+
