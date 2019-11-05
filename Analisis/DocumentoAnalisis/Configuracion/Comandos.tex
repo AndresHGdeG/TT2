@@ -46,4 +46,8 @@
 \ \rule{135mm}{0.3mm}\\
 \ \rule[3.5mm]{135mm}{0.1mm}\\ }%Linea de
 
-%-----------------------------------------------------------------------------------%
+%-----------------------------Caja de texto para ejemplos---------------------------------------%
+\newtcolorbox[auto counter,number within=section,
+crefname={bluebox}{blueboxes}]%
+{mygraybox}[2][]{colbacktitle=white!30!black,colframe=white!30!black,fonttitle=\bfseries,
+title=Cuadro \thetcbcounter: #2,#1}
