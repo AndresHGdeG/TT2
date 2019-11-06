@@ -152,8 +152,8 @@ public class MBClasificador implements Serializable{
     }
 
 
-    
-    
-    
+    public void limpiarNoticias(){
+        noticias.clear();
+    }    
 
 }

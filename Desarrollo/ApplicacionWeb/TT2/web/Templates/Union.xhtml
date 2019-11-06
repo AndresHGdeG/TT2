@@ -8,24 +8,24 @@
     
     <h:body>
        
-        <div style="border-width:2px; border-color:red; border-style: solid; ">
+        <div style="border-color:white; border-style: solid; ">
             <ui:insert name="header">
                 <ui:include src="header.xhtml"/>
             </ui:insert>
         </div>
 
-        <div style="border-width:2px; border-color:green;border-style: solid">
+        <div style="border-color:white;border-style: solid">
             <ui:insert name="contents">
-                <ui:include src="contents.xhtml"/>
+                <ui:include src="#{mBClasificador.noticias.size() > 0 ? 'contents.xhtml': 'init.xhtml'}"/>
             </ui:insert>
         </div>
         
          
-        <div style="border-width: 2px; border-color:blue; border-style: solid">
+<!--        <div style="border-color:white; border-style: solid">
             <ui:insert name="footer">
                 <ui:include src="footer.xhtml"/>
             </ui:insert>
-        </div>
+        </div>-->
         
     </h:body>
 </html>
