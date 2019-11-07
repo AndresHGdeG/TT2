@@ -1,4 +1,4 @@
-import pandas as pd #Libreria ocupada para leer los archivos CSV
+	import pandas as pd #Libreria ocupada para leer los archivos CSV
 import sys#Permite extraer parametros de la linea de comandos
 import spacy
 
