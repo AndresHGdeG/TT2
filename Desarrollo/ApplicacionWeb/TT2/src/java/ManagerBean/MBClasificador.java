@@ -49,7 +49,7 @@ public class MBClasificador implements Serializable{
         String pathServer = servletContext.getRealPath("/resources");
         
       
-        FileReader f = new FileReader( pathServer+"/Noticias/noticiasClasificadas.txt");
+        FileReader f = new FileReader( pathServer+"/Recolector/Clasificador/noticiasClasificadas.txt");
 
  
              BufferedReader brNoticias=new BufferedReader(f);

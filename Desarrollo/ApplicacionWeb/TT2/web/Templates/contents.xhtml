@@ -22,7 +22,6 @@
         <ui:composition>
             <h:form id="noticias">
                 <h1 style="text-align:center"> #{mBClasificador.seccion}</h1>
-                <h3> numero de noticias : #{mBClasificador.numNoticias} </h3>
                 <p:tabView dynamic="true" cache="true" effect="fold">
                     <p:tab title="Hoy">
                         <p:dataGrid var="noticia" value="#{mBClasificador.noticias}" columns="3" layout="grid"
@@ -33,13 +32,14 @@
                             <f:facet name="header">
                                 Noticias clasificadas
                             </f:facet>
+                            <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">
+                                <p:panel header="#{noticia.titulo}" style="text-align:center">
+                                    <h:panelGrid columns="1" style="width:100%">
 
-                            <p:panel header="#{noticia.titulo}" style="text-align:center">
-                                <h:panelGrid columns="1" style="width:100%">
-                                    <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">#{noticia.titulo}</h:outputLink>
-                                    <h:outputText value="#{noticia.fecha}" />
-                                </h:panelGrid>
-                            </p:panel>
+                                        <h:outputText value="#{noticia.fecha}" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:outputLink>
                         </p:dataGrid>
                     </p:tab>
                     <p:tab title="Ayer">

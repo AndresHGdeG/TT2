@@ -66,7 +66,7 @@ public class MBTabMenu implements Serializable {
         this.index = index;
         this.seleccion = "Ya quedo" + index;
         System.out.println("Entre");
-        process(index);
+        process(index - 1);
         clasificador.CargarNoticias(index - 1);
 
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
@@ -99,7 +99,6 @@ public class MBTabMenu implements Serializable {
             bw.write("\tscrapy crawl " + sitio + " -t csv");
             bw.flush();
             fw.close();
-
         }
         File f = new File(pathServer + "/Makefile");
         fw = new FileWriter(f);
@@ -125,16 +124,60 @@ public class MBTabMenu implements Serializable {
     public void process(int seccion) throws IOException, InterruptedException {
         String pathServer = site();
         System.out.println("Creando proceso..");
-        for (String string : make) {
+//        ArrayList<Process> p = new ArrayList<Process>();
+        /*for (String string : make) {
             System.out.println(string);
-            Process p = Runtime.getRuntime().exec(string);
-        }
-        Thread.sleep(5 * 1000);
-        Process p = Runtime.getRuntime().exec(pathServer + "/Recolector/Makefile");
-        System.out.println("Noticias Recuperadas");
-//        Process p2 = Runtime.getRuntime().exec("python Clasifica.py 'noticias_prueba.csv' 'Modelo_MSV.save' " + seccion);
-        //Process p = Runtime.getRuntime().exec(m);
-        //ProcessBuilder pb = new ProcessBuilder(make);
+            Process aux = Runtime.getRuntime().exec(string);
+        }*/
+        //System.out.println("Sali de los procesos: " + p.size());
+        Thread.sleep(50000);
+//
+//        boolean no_exit = true;
+//        while (no_exit) {
+//            no_exit = false;
+//            for (Process process : p) {
+//                try {
+//                    process.exitValue();
+//                    System.out.println("Estoy dentro del try");
+//                } catch (Exception e) {
+//                    no_exit = true;
+//                    System.out.println("Estoy dentro del catch");
+//                }
+//            }
+//            Thread.sleep(1000);
+//        }
+
+        /*for (String sitio : sitios) {
+            int i = 0;
+            while (i < 7) {
+                File tempdir = new File(pathServer + "/Recolector/" + sitio);
+                if (tempdir.exists()) {
+                    i++;
+                }
+            }
+        }*/
+        System.out.println("Noticias recolectadas");
+        Process pUnit = Runtime.getRuntime().exec(pathServer + "/Recolector/Makefile");
+        pUnit.waitFor();
+        System.out.println("Noticias unidas");
+        createMakeToClassify(seccion);
+        Process pClassify = Runtime.getRuntime().exec(pathServer + "/Recolector/Clasificador/Makefile");
+        pClassify.waitFor();
+        System.out.println("Noticias Clasificadas");
+    }
+
+    public void createMakeToClassify(int seccion) throws IOException {
+        String pathServer = site() + "/Recolector/Clasificador";
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        File f = new File(pathServer + "/Makefile");
+        fw = new FileWriter(f);
+        bw = new BufferedWriter(fw);
+        bw.write("all:\n");
+        bw.write("\tcd " + pathServer + "\n");
+        bw.write("\tpython Clasifica.py 'noticias.csv' 'Modelo_MSV.save' " + seccion);
+        bw.flush();
+        fw.close();
     }
 
     public int getIndex() {
