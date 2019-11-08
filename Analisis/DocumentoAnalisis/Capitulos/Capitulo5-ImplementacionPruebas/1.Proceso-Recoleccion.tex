@@ -1,67 +1,129 @@
 \section{Recolección}
 
 %-------------------------------Recolección----------------------------------------------%
-%-----------------------------Chcecar TT1------------------------
 
-El proceso de recolección es parte fundamental del presente trabajo terminal, ya que permitió conformar el corpus necesario para llevar a cabo la etapa de entrenamiento, este proceso se llevo a cabo por etapas.
+El proceso de recolección es parte fundamental del presente trabajo terminal, ya que permitió conformar el corpus utilizado en la etapa de entrenamiento, la Figura \ref{fig:etapRecoleccion} muestra las etapas que se desarrollaron durante el proceso de recolección.\\
 
-\begin{itemize}
-	\item Seleccionar los sitios web
-	\item Información a recolectar
-	\item Análisis del sitio web
-	\item Proceso de recolección
-\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.30]{imagenes/Capitulo5/etapasRecoleccion.png}
+	\caption{Etapas de la recolección}
+	\label{fig:etapRecoleccion}
+\end{figure}
 
 \subsection{Selección de sitios web}
 
 El sitio web El Economista\footnote{https://www.eleconomista.com.mx/} contiene una sección llamada 
-\textbf{Ranking de Medios Nativos Digitales}\footnote{https://www.eleconomista.com.mx/Ranking-de-Medios-Nativos-Digitales}, 
-el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados como se muestra en la Figura \textbf{\ref{fig:rank}}
+\textbf{Ranking de Medios Nativos Digitales}\footnote{https://www.eleconomista.com.mx/Ranking-de-Medios-Nativos-Digitales}, el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados como se muestra en la Figura \ref{fig:rank}\\
+
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.28]{imagenes/Capitulo5/ranking.png}
+  \includegraphics[scale=.32]{imagenes/Capitulo5/ranking.png}
   \caption{Ranking de sitios de noticias del periódo de enero del 2018 a enero del 2019.}
   \label{fig:rank}
 \end{figure}
 
-Con base en la Figura  se han seleccionado los diarios Aristegui Noticias, El Economista, La Jornada, La Prensa, Proceso, Sopitas y TV Azteca para recolectar noticias.
-
 \Tlabel{c5:sitios}
+Con base en la Figura \ref{fig:rank} se han seleccionado los diarios Aristegui Noticias, El Economista, La Jornada, La Prensa, Proceso, Sopitas y TV Azteca para recolectar noticias. Los sitios organizan las noticias por secciones, lo cual permite una búsqueda más rápida de la información, la Tabla \textbf{\ref{tabla:sitios}}. muestra el análisis realizado a las secciones contenidas en los sitios seleccionados.
+\\
+\begin{table}[H]
+    \centering
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}[H]{|c|c|c|c|c|c|c|c|}
 
-\subsection{Información recolectada}
+ \multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Sección}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Aristegui}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{El}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{La}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{La}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Proceso}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Sopitas}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Azteca}} }
+  \\ \cline{1-8}
+%---------------------------------------------------------------------------------------%
+ \multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Noticias}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Economista}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Jornada}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Prensa}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Noticias}} }
+\\ \cline{1-8}
 
-Se llevó a cabo un análisis acerca de la información que contiene cada una de las noticias y con base en ello se determinó recolectar la siguiente información:
+%---------------------------------------------------------------------------------------%
 
-\begin{itemize}
-	\item URL de la noticia
-	\item Título
-	\item Fecha
-	\item Sección
-	\item Autor
-	\item Descripción
-	\item Noticia
-\end{itemize}
+        Nacional & México & Urbes y & - & México & Nacional & Noticias & -\\ 
+         &  & Estados & & & & &\\
+        \hline
+%---------------------------------------------------------------------------------------%
 
-Cabe destacar que no toda la información recuperada fue utilizada en el proceso de entrenamiento, sin embargo se considerarón los puntos anteriores ya que la mayor parte de las noticias cuentan con esa información.
-%-----------------------------Chcecar TT1------------------------
+        Internacional & Mundo & The Washington & Mundo & Mundo & Internacional & - & Internacional\\
+         & & Post & & & & &\\
+        \hline
+%---------------------------------------------------------------------------------------%
+
+        Ciudad & - & Urbes y & CDMX & Metrópoli & La Capital& - & -\\ 
+         &  & Estados & & & & & \\
+        \hline
+%---------------------------------------------------------------------------------------%
+
+        Estados & México & Urbes y & Estados & República & Estados & - & Estados\\ 
+         &  & Estados & & & & & \\
+        \hline
+%---------------------------------------------------------------------------------------%
+
+        Economía & Economía & Valores y & Economía & - & - & - & Finanzas\\ 
+         &  & Dinero & & & & & \\
+        \hline
+%---------------------------------------------------------------------------------------%
+
+        Deportes & Deportes & DxT & Deportes & Deportes & Deportes & Deportes & Deportes\\ 
+        \hline
+%---------------------------------------------------------------------------------------%
+
+        Espectáculos & - & - & Espectáculos & Gossip & Miscelánea &  En el show & Entretenimiento\\ 
+        \hline
+%---------------------------------------------------------------------------------------%
+
+        Cultura & - & Artes, Ideas & Cultura & - & Cultura & - & -\\ 
+         &  & Gente & & & & &\\ 
+        \hline
+%---------------------------------------------------------------------------------------%
+
+        Política & Poderes & - & Política & - & Política & - & Política\\ 
+        \hline
+%---------------------------------------------------------------------------------------%
+
+        Ciencia y & - & Política y & Tecnología & - & Tecnología  & Geek & Geek\\ 
+        tecnología &  & Sociedad & & & & &  \\ 
+        \hline        
+
+    \end{tabular}%
+}
+\caption[Secciones de los sitios web]{Secciones existentes en los sitios web}
+\label{tabla:sitios}
+\end{table}
 
 %------------------------------------------- Listo
 \subsection{Análisis de sitios web}
 
-Una vez definida la información requerida de cada noticia se realizó un análisis sobre la estructura HTML de cada sitio web, con el fin de realizar expresiones \textit{XPath} quien permitie recorrer y procesar un documento XML, dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiara.
-\\
-Una expresión \textit{XPath} de ruta permite buscar y seleccionar los distintos nodos de un documento XML(ver). En el siguiente Cuadro \ref{box:xmlEjemplo} se muestra un ejemplo con los elementos de una nota, los cuales son: \textbf{para} \textbf{de} \textbf{titulo} \textbf{texto}, en un documento XML estos son los nodos que conforman una nota.\\
+Una vez definida la información requerida de cada noticia se realizó un análisis sobre la estructura XML (\textit{Extensible Markup Language}), por sus siglas en inglés, con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML, dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiara.\\
 
-\begin{mygraybox}[label={box:xmlEjemplo}]{Documento XML} 
-<nota>\\
-	<para>Daniel</para>\\
-	<de>Andres</de>\\
-	<titulo>Recordatorio</titulo>\\
-	<texto>Recuerda despertar temprano.</texto>\\
+Una expresión \textit{XPath} de ruta permite buscar y seleccionar los distintos nodos de un documento XML(ver). En el siguiente Cuadro \ref{box:xmlEjemplo} se muestra un ejemplo con los elementos de una nota, los cuales son: \textbf{para}, \textbf{de}, \textbf{titulo}, \textbf{texto}, en un documento XML estos son los nodos que conforman una nota.\\
+
+\begin{mygraybox}[label={box:xmlEjemplo}]{Documento XML}
+\begin{tabbing}
+<nota> \= \\\kill
+\>	<para>Daniel</para>\\
+\>	<de>Andres</de>\\
+\>	<titulo>Recordatorio</titulo>\\
+\>	<texto>Recuerda despertar temprano.</texto>\\
 </nota>
+\end{tabbing}
 \end{mygraybox}
 
-La expresión \textit{XPath} que permite extraer el contenido de la etiqueta \textbf{<texto> </texto>} se muestra en el Cuadro \ref{box:xpathEjemplo}: 
+La expresión \textit{XPath} que permite extraer el contenido de la etiqueta \textbf{<texto> </texto>} se muestra en el Cuadro \ref{box:xpathEjemplo}: \\
 
 \begin{mygraybox}[label={box:xpathEjemplo}]{Expresión XPath} 
 \textbf{/nota/texto/text()}
@@ -70,10 +132,9 @@ La expresión \textit{XPath} que permite extraer el contenido de la etiqueta \te
 Para cada sitio web se crearon expresiones \textit{XPath} para recolectar el contenido.
 
 %------------------------------------------- Listo
-\subsection{Creación de recolectores}
+\subsection{Creación de recolector}
 
 Como se explicó en el capítulo 3 (ver\ref{c3:Crawler}) un \textit{Crawler} te permite descargar información de una página web, como se muestra en la Figura \ref{Fig:recoleccion}. La implementación en el trabajo terminal ha requerido diseñar 7 recolectores, uno por cada sitio web (ver \Tref{c5:sitios}{sitios web}). \\
-
 
 \begin{figure}[H]
 	\centering
@@ -82,7 +143,42 @@ Como se explicó en el capítulo 3 (ver\ref{c3:Crawler}) un \textit{Crawler} te 
 	\label{Fig:recoleccion}
 \end{figure}
 
-Para el desarrollo se ha utilizado el lenguaje de programación \textbf{Python3}, en conjunto con la librería \textbf{scrapycrawl}. Cabe destacar que las noticias recolectadas se almacenaron en un archivo CSV (ver\ref{}) con la estructura que se muestra en la Tabla \ref{tab:csv}, donde la primera fila (Encabezado) define los elementos de este archivo, además las filas consecuentes representan el contenido recolectado de cada noticia.\\
+El desarrollo del presente trabajo terminal se ha realizado en sistema operativo \textit{Linux} en su distribución Ubuntu, paa realizar la creación de los recolectores se ha utilizado el lenguaje de programación \textbf{Python 3}\footnote{https://www.python.org/}, en conjunto con \textbf{Scrapy}\footnote{https://scrapy.org/}, el cual es un framework que permite la extracción de información de sitios web. 
+\\
+El siguiente Cuadro \ref{box:libIns}, muestra los comandos utilizados para instalar las librerías utilizadas.\\
+\begin{mygraybox}[label={box:libIns}]{Comandos para instalar librerías utilizadas}
+\begin{verbatim}
+$ sudo apt-get install python3.6
+$ pip install Scrapy
+\end{verbatim}
+\end{mygraybox}
+
+La información que ha sido recuperada de las noticias se muestra a continuación:
+\begin{itemize}
+	\item \textbf{url}: La dirección web donde se encuentra localizada la noticia 
+	\item \textbf{título}: Encabezado de la noticia recolectada
+	\item \textbf{autor}: Es el nombre de la persona que redacto la noticia o el nombre de la editorial
+	\item \textbf{fecha}: Es la fecha en la cual la noticia ha sido publicada
+	\item \textbf{descripción}: Es una idea general del contenido de la noticia. Cabe mencionar que no todas las noticias cuentan con una descripción
+	\item \textbf{noticia}: Es la redacción realizada por el autor acerca de la noticia. Es de relevancia mencionar que este elemento más importante de los artículos decargados 
+\end{itemize}
+
+Cada uno de los recolectores contenia expresiones \textit{XPath} que permitían recolectar la información de cada noticia, el Cuadro \ref{box:crawlerEjemplo} muestra un ejemplo de las expresiones \textit{XPath} utilizadas para recolectar noticias del sitio web Aristegui Noticias\footnote{https://aristeguinoticias.com/}\\
+
+\begin{mygraybox}[label={box:crawlerEjemplo}]{Ejemplo de expresiones \textit{XPath} del sitio Aristegui Noticias}
+\begin{small}
+\begin{verbatim}
+url= url
+titulo = //div[@class="class_subtitular"]/h1/text()
+autor = //div[@class="share_nom"]/text()
+fecha = //div[@class="share_publicado"]/text()
+descripcion = //div[@class="class_text2"]/text())
+noticia = //div[@class="class_text"]/p/child::node()/text()
+\end{verbatim}
+\end{small}
+\end{mygraybox}
+
+Cabe destacar que las noticias recolectadas se almacenaron en un archivo CSV (ver\ref{}) con la estructura que se muestra en la Tabla \ref{tab:csv}, donde la primera fila (Encabezado) define los elementos de este archivo, además las filas consecuentes representan el contenido recolectado de cada noticia.\\
 
 %\begin{mygraybox}[label={box:csv}]{Encabezado de un archivo CSV}
 \begin{table}[H]
@@ -103,18 +199,7 @@ url ejemplo 2& título ejemplo 2& autor ejemplo 2& fecha ejemplo 2& descripción
 \end{table}
 %\end{mygraybox}
 
-donde :
-\begin{itemize}
-	\item \textbf{url}: La dirección web donde se encuentra localizada la noticia 
-	\item \textbf{título}: Encabezado de la noticia recolectada
-	\item \textbf{autor}: Es el nombre de la persona que redacto la noticia o el nombre de la editorial
-	\item \textbf{fecha}: Es la fecha en la cual la noticia ha sido publicada
-	\item \textbf{descripción}: Es una idea general del contenido de la noticia. Cabe mencionar que no todas las noticias cuentan con una descripción
-	\item \textbf{noticia}: Es la redacción realizada por el autor acerca de la noticia. Es de relevancia mencionar que este elemento más importante de los artículos decargados 
-\end{itemize}
-
-\subsection{Proceso de recolección de noticias}
-
+\subsection{Recolección de noticias}
 
 Para el desarrollo de esta etapa, se recolectaron noticias de las secciones : \textbf{ciencia y tecnología}, \textbf{cultura}, \textbf{deportes}, \textbf{economía} y \textbf{política}, de los sitios web \textbf{Aristegui Noticias}, \textbf{El Economista}, \textbf{La Jornada}, \textbf{La Prensa}, \textbf{Proceso}, \textbf{Sopitas} y \textbf{TV Azteca}, durante el periodo de julio a septiembre cada cuatro días, con el fin de no tener noticias repetidas. El almacenamiento de las noticias se realizó en un directorio por sección, dentro de cada uno de estos se dividian las noticias recolectadas por sitio web. 
 \\
@@ -128,67 +213,71 @@ Una vez finalizada la primera etapa de recolección, los resultados obtenidos po
 	\label{Fig:notseccionV1}
 \end{figure}
 
-Cabe destacar que el número de noticias no se encontraba balanceado debido a que no exite un gran número de sitios que publiquen noticias de cultura, por ello se decidió continuar con el proceso de recolección de noticias, con el fin de balancear el corpus y así los resultados obtenidos en la práctica mejoraron.
+Cabe destacar que el número de noticias recolectadas durante el primer corte, no se encontraba balanceado, por ello se decidió continuar con el proceso de recolección de noticias, con el fin de balancear el corpus.
 \\
-Una vez finalizada la segunda etapa de recolección el número de noticias se muestra en la Figura \ref{Fig:notseccion}
+Una vez finalizada la segunda etapa de recolección el número de noticias se muestra en la Figura \ref{Fig:notseccion} 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.6]{imagenes/Capitulo5/noticiasPorSeccion.png}
-	\caption{Numero total de noticias recolectadas por sección.}
+	\includegraphics[scale=.6]{imagenes/Capitulo5/noticiasPorSeccionV2.png}
+	\caption{Noticias recolectadas al finalizar el segundo corte.}
 	\label{Fig:notseccion}
 \end{figure}
 
-Los noticias recuperadas por cada sitio web, se muestran en las siguientes Figuras.
-\\
+Los resultados que obtuvimos por sitio web se muestran en la Figura \ref{Fig:notPorSit} 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.45]{imagenes/Capitulo5/aristegui.png}
-	\caption{Total de noticias recolectadas del sitio web de Aristegui Noticias}
-	\label{Fig:notsitioaristegui}
+	\includegraphics[scale=.6]{imagenes/Capitulo5/noticiasPorSitio.png}
+	\caption{Noticias recolectadas por sitio web al finalizar el segundo corte}
+	\label{Fig:notPorSit}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=.45]{imagenes/Capitulo5/azteca.png}
-	\caption{Total de noticias recolectadas del sitio web de Azteca Noticias}
-	\label{Fig:notsitioazteca}
-\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=.45]{imagenes/Capitulo5/economista.png}
-	\caption{Total de noticias recolectadas del sitio web de El Economista}
-	\label{Fig:notsitioeconomista}
-\end{figure}
+Los noticias recuperadas por cada sitio web, se muestran en la siguiente Tabla \ref{tabla:sitios}.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=.45]{imagenes/Capitulo5/jornada.png}
-	\caption{Total de noticias recolectadas del sitio web de La Jornada}
-	\label{Fig:notsitiojornada}
-\end{figure}
+\begin{table}[H]
+\begin{tabular}{|l|l|l|}
+\hline
+Sitio                               & Sección              & Número de Noticias \\ \hline
+\multirow{5}{*}{Aristegui Noticias} & Ciencia y Tecnología & 99                 \\ \cline{2-3} 
+                                    & Cultura              & 179                \\ \cline{2-3} 
+                                    & Deportes             & 308                \\ \cline{2-3} 
+                                    & Economía             & 161                \\ \cline{2-3} 
+                                    & Política             & 248                \\ \hline
+\multirow{5}{*}{Azteca Noticias}    & Ciencia y Tecnología & 986                \\ \cline{2-3} 
+                                    & Cultura              & 0                  \\ \cline{2-3} 
+                                    & Deportes             & 280                \\ \cline{2-3} 
+                                    & Economía             & 77                 \\ \cline{2-3} 
+                                    & Política             & 350                \\ \hline
+\multirow{5}{*}{El Economista}      & Ciencia y Tecnología & 18                 \\ \cline{2-3} 
+                                    & Cultura              & 267                \\ \cline{2-3} 
+                                    & Deportes             & 214                \\ \cline{2-3} 
+                                    & Economía             & 201                \\ \cline{2-3} 
+                                    & Política             & 236                \\ \hline
+\multirow{5}{*}{La Jornada}         & Ciencia y Tecnología & 4                  \\ \cline{2-3} 
+                                    & Cultura              & 424                \\ \cline{2-3} 
+                                    & Deportes             & 284                \\ \cline{2-3} 
+                                    & Economía             & 512                \\ \cline{2-3} 
+                                    & Política             & 659                \\ \hline
+\multirow{5}{*}{La Prensa}          & Ciencia y Tecnología & 68                 \\ \cline{2-3} 
+                                    & Cultura              & 90                 \\ \cline{2-3} 
+                                    & Deportes             & 93                 \\ \cline{2-3} 
+                                    & Economía             & 118                \\ \cline{2-3} 
+                                    & Política             & 77                 \\ \hline
+\multirow{5}{*}{Proceso}            & Ciencia y Tecnología & 65                 \\ \cline{2-3} 
+                                    & Cultura              & 13                 \\ \cline{2-3} 
+                                    & Deportes             & 335                \\ \cline{2-3} 
+                                    & Economía             & 0                  \\ \cline{2-3} 
+                                    & Política             & 112                \\ \hline
+\multirow{5}{*}{Sopitas}            & Ciencia y Tecnología & 549                \\ \cline{2-3} 
+                                    & Cultura              & 265                \\ \cline{2-3} 
+                                    & Deportes             & 171                \\ \cline{2-3} 
+                                    & Economía             & 0                  \\ \cline{2-3} 
+                                    & Política             & 244                \\ \hline
+\end{tabular}
+\caption[Noticias recolectadas por sitio web]{Número de noticias recolectadas por sección de los sitios web}
+\label{tabla:numNotic}
+\end{table}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=.45]{imagenes/Capitulo5/prensa.png}
-	\caption{Total de noticias recolectadas del sitio web de La Prensa}
-	\label{Fig:notsitioprensa}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=.45]{imagenes/Capitulo5/proceso.png}
-	\caption{Total de noticias recolectadas del sitio web de Proceso}
-	\label{Fig:notsitioproceso}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=.45]{imagenes/Capitulo5/sopitas.png}
-	\caption{Total de noticias recolectadas del sitio web de Sopitas}
-	\label{Fig:notsitiosopitas}
-\end{figure}
-
-Una vez concluida la recolección de noticias se procedió con el balanceo de noticias quedando un total de 700 noticias por sección.	
+Una vez concluida la recolección de noticias se procedió con eliminar aquellas noticias que hayan sido duplicadas
