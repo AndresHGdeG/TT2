@@ -1,3 +1,3 @@
 all:
 
-	python Clasifica.py 'noticias.csv' 'Modelo_MSV.save' 0
+	python Clasifica.py 'noticias_prueba.csv' 'Modelo_MSV.save'

@@ -15,17 +15,18 @@ def TokenizaLematiza(text,nlp):
 	for x in range(len(lemmas)):
 		noticiaTokLe+=str(lemmas[x])+" "
 	return noticiaTokLe
-		
+	
+
 #-------------------------------------Main()---------------------------------------------#
 
-if len(sys.argv)<4 :
-	print ("Se debe incluir <Ruta noticias> <Modelo clasificador> <Seccion> ")
+if len(sys.argv)<3 :
+	print ("Se debe incluir <Ruta noticias> <Modelo clasificador> ")
 	sys.exit(2)
 
 
 ruta=sys.argv[1]
 modelo=sys.argv[2] 
-seccion=int(sys.argv[3])
+
 
 #--------Lectura del archivo csv----------------#
 noticias_totales=pd.read_csv(ruta)
@@ -59,37 +60,136 @@ noticia_clasificada=clf.predict(caracteristicas)
 #print(noticia_clasificada)
 
 #-----Guardar noticias de la seccion seleccionada-------#
-file=open('noticiasClasificadas.txt',"w+")
+file0=open('noticiasClasificadas_0.txt',"w+")
+file1=open('noticiasClasificadas_1.txt',"w+")
+file2=open('noticiasClasificadas_2.txt',"w+")
+file3=open('noticiasClasificadas_3.txt',"w+")
+file4=open('noticiasClasificadas_4.txt',"w+")
+
 encabezado="id&&&&&url&&&&&titulo&&&&&autor&&&&&fecha&&&&&descripcion\n"
-file.write(encabezado)
+file0.write(encabezado)
+file1.write(encabezado)
+file2.write(encabezado)
+file3.write(encabezado)
+file4.write(encabezado)
 
 countNoticias=0;
 for i in range(len(noticia_clasificada)):
-	if noticia_clasificada[i] ==seccion:
-		countNoticias+=1
-		#print(noticia_clasificada[i])
+	countNoticias+=1
+	if noticia_clasificada[i] ==0:
+		file0.write(str(i+1))
+		file0.write("&&&&&")
 
-		file.write(str(i+1))
-		file.write("&&&&&")
+		file0.write(str(url[i]))
+		file0.write("&&&&&")
 
-		file.write(str(url[i]))
-		file.write("&&&&&")
+		file0.write(str(titulo[i]))
+		file0.write("&&&&&")
 
-		file.write(str(titulo[i]))
-		file.write("&&&&&")
+		file0.write(str(autor[i]))
+		file0.write("&&&&&")
 
-		file.write(str(autor[i]))
-		file.write("&&&&&")
+		file0.write(str(fecha[i]))
+		file0.write("&&&&&")
 
-		file.write(str(fecha[i]))
-		file.write("&&&&&")
+		file0.write(str(descripcion[i]))
+		file0.write("&&&&&")
 
-		file.write(str(descripcion[i]))
-		file.write("&&&&&")
+		file0.write(str(noticia_clasificada[i]))
+		file0.write("\n")
 
-		file.write(str(noticia_clasificada[i]))
-		file.write("\n")
+	if noticia_clasificada[i] ==1:
+		file1.write(str(i+1))
+		file1.write("&&&&&")
 
-file.close()
+		file1.write(str(url[i]))
+		file1.write("&&&&&")
+
+		file1.write(str(titulo[i]))
+		file1.write("&&&&&")
+
+		file1.write(str(autor[i]))
+		file1.write("&&&&&")
+
+		file1.write(str(fecha[i]))
+		file1.write("&&&&&")
+
+		file1.write(str(descripcion[i]))
+		file1.write("&&&&&")
+
+		file1.write(str(noticia_clasificada[i]))
+		file1.write("\n")
+
+	if noticia_clasificada[i] ==2:
+		file2.write(str(i+1))
+		file2.write("&&&&&")
+
+		file2.write(str(url[i]))
+		file2.write("&&&&&")
+
+		file2.write(str(titulo[i]))
+		file2.write("&&&&&")
+
+		file2.write(str(autor[i]))
+		file2.write("&&&&&")
+
+		file2.write(str(fecha[i]))
+		file2.write("&&&&&")
+
+		file2.write(str(descripcion[i]))
+		file2.write("&&&&&")
+
+		file2.write(str(noticia_clasificada[i]))
+		file2.write("\n")
+	
+	if noticia_clasificada[i] ==3:
+		file3.write(str(i+1))
+		file3.write("&&&&&")
+
+		file3.write(str(url[i]))
+		file3.write("&&&&&")
+
+		file3.write(str(titulo[i]))
+		file3.write("&&&&&")
+
+		file3.write(str(autor[i]))
+		file3.write("&&&&&")
+
+		file3.write(str(fecha[i]))
+		file3.write("&&&&&")
+
+		file3.write(str(descripcion[i]))
+		file3.write("&&&&&")
+
+		file3.write(str(noticia_clasificada[i]))
+		file3.write("\n")
+
+	if noticia_clasificada[i] ==4:
+		file4.write(str(i+1))
+		file4.write("&&&&&")
+
+		file4.write(str(url[i]))
+		file4.write("&&&&&")
+
+		file4.write(str(titulo[i]))
+		file4.write("&&&&&")
+
+		file4.write(str(autor[i]))
+		file4.write("&&&&&")
+
+		file4.write(str(fecha[i]))
+		file4.write("&&&&&")
+
+		file4.write(str(descripcion[i]))
+		file4.write("&&&&&")
+
+		file4.write(str(noticia_clasificada[i]))
+		file4.write("\n")
+
+file0.close()
+file1.close()
+file2.close()
+file3.close()
+file4.close()
 
 print("Se ha encotrado :",countNoticias,"noticias")
