@@ -21,7 +21,7 @@ public class conexion {
     public void process() throws IOException {
         System.out.println("Creando proceso..");
         Process p = Runtime.getRuntime().exec(command);
-        ProcessBuilder pb = new ProcessBuilder(command);
+        //ProcessBuilder pb = new ProcessBuilder(command);
         //BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
         try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()))) {                                
           String line;                                                                                                         

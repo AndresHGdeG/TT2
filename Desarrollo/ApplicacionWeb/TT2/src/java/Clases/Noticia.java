@@ -10,27 +10,36 @@ package Clases;
  * @author Andrew
  */
 public class Noticia {
-    
+
     private String titulo;
     private String url;
     private String fecha;
     private String resumen;
-    
-    public Noticia(){
+    private String autor;
+
+    public Noticia() {
     }
-    
-    public Noticia(String titulo, String url, String fecha){
-        this.titulo=titulo;
-        this.url=url;
-        this.fecha=fecha;
+
+    public Noticia(String titulo, String url, String fecha) {
+        this.titulo = titulo;
+        this.url = url;
+        this.fecha = fecha;
     }
-    
-    public Noticia(String titulo, String url, String fecha,String resumen){
-        this.titulo=titulo;
-        this.url=url;
-        this.fecha=fecha;
-        this.resumen=resumen;
-        
+
+    public Noticia(String titulo, String url, String fecha, String resumen) {
+        this.titulo = titulo;
+        this.url = url;
+        this.fecha = fecha;
+        this.resumen = resumen;
+
+    }
+
+    public Noticia(String titulo, String autor, String url, String fecha, String resumen) {
+        this.titulo = titulo;
+        this.url = url;
+        this.fecha = fecha;
+        this.resumen = resumen;
+        this.autor = autor;
     }
 
     public void setTitulo(String titulo) {
@@ -41,7 +50,6 @@ public class Noticia {
         this.url = url;
     }
 
-    
     public String getTitulo() {
         return titulo;
     }
@@ -65,7 +73,14 @@ public class Noticia {
     public void setResumen(String resumen) {
         this.resumen = resumen;
     }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
     
-    
-    
+
 }

@@ -35,7 +35,8 @@
                             <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">
                                 <p:panel header="#{noticia.titulo}" style="text-align:center">
                                     <h:panelGrid columns="1" style="width:100%">
-
+                                        <h:outputText value="#{noticia.resumen}" />
+                                        <h:outputText value="#{noticia.autor}" />
                                         <h:outputText value="#{noticia.fecha}" />
                                     </h:panelGrid>
                                 </p:panel>
@@ -52,18 +53,18 @@
                                 Noticias clasificadas
                             </f:facet>
 
-                            <p:panel style="text-align:center">
-                                <h:panelGrid columns="1" style="width:90%">
-                                    <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">#{noticia.titulo}</h:outputLink>
-                                    <h:outputText value="#{noticia.fecha}" />
-                                </h:panelGrid>
-                            </p:panel>
+                            <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">
+                                <p:panel header="#{noticia.titulo}" style="text-align:center">
+                                    <h:panelGrid columns="1" style="width:100%">
+                                        <h:outputText value="#{noticia.resumen}" />
+                                        <h:outputText value="#{noticia.autor}" />
+                                        <h:outputText value="#{noticia.fecha}" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:outputLink>
                         </p:dataGrid>
                     </p:tab>
                 </p:tabView>
-
-
-
 
             </h:form>
 

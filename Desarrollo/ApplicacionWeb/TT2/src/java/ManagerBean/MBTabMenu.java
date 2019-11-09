@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -63,10 +65,26 @@ public class MBTabMenu implements Serializable {
     }
 
     public void SeleccionSeccion(int index) throws IOException, InterruptedException {
+        String pathServer = site();
         this.index = index;
         this.seleccion = "Ya quedo" + index;
         System.out.println("Entre");
-        process(index - 1);
+        File tempFile = new File(pathServer + "/Recolector/Clasificador/noticias.csv");
+        System.out.println(tempFile);
+        if (tempFile.exists()) {
+            Thread.sleep(3000);
+            System.out.println("Noticias recolectadas");
+            Process pUnit = Runtime.getRuntime().exec(pathServer + "/Recolector/Makefile");
+            pUnit.waitFor();
+            System.out.println("Noticias unidas");
+            createMakeToClassify(index - 1);
+            Process pClassify = Runtime.getRuntime().exec(pathServer + "/Recolector/Clasificador/Makefile");
+            pClassify.waitFor();
+            System.out.println("Noticias Clasificadas");
+
+        } else {
+            process(index - 1);
+        }
         clasificador.CargarNoticias(index - 1);
 
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
@@ -120,17 +138,29 @@ public class MBTabMenu implements Serializable {
         make.add(pathServer + "/Recolector/Make/sopitas/Makefile");
         make.add(pathServer + "/Recolector/Make/universal/Makefile");
     }
+    
+//    public void runProcess(String command) throws IOException, InterruptedException{
+//        ProcessBuilder p = new ProcessBuilder(command);
+//        Process process = p.start();
+//        
+//        Scanner scan = new Scanner((Readable) process.getOutputStream());
+//        
+//        while(scan.hasNext()){
+//            System.out.println(scan.next());
+//        }
+//    }
 
     public void process(int seccion) throws IOException, InterruptedException {
         String pathServer = site();
         System.out.println("Creando proceso..");
-//        ArrayList<Process> p = new ArrayList<Process>();
-        /*for (String string : make) {
-            System.out.println(string);
+        for (String string : make) {
+            //runProcess(string);
+            System.out.println("...");
             Process aux = Runtime.getRuntime().exec(string);
-        }*/
-        //System.out.println("Sali de los procesos: " + p.size());
-        Thread.sleep(50000);
+            aux.waitFor(12, TimeUnit.SECONDS);
+            aux.destroyForcibly();
+        }
+        //Thread.sleep(90000);
 //
 //        boolean no_exit = true;
 //        while (no_exit) {
@@ -158,10 +188,12 @@ public class MBTabMenu implements Serializable {
         }*/
         System.out.println("Noticias recolectadas");
         Process pUnit = Runtime.getRuntime().exec(pathServer + "/Recolector/Makefile");
+//runProcess(pathServer + "/Recolector/Makefile");
         pUnit.waitFor();
         System.out.println("Noticias unidas");
         createMakeToClassify(seccion);
         Process pClassify = Runtime.getRuntime().exec(pathServer + "/Recolector/Clasificador/Makefile");
+        //runProcess(pathServer + "/Recolector/Clasificador/Makefile");
         pClassify.waitFor();
         System.out.println("Noticias Clasificadas");
     }
