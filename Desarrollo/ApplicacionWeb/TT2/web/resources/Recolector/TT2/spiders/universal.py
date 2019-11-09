@@ -40,6 +40,6 @@ class TT2Spider(CrawlSpider):
             mi_item['descripcion'] = response.xpath('normalize-space(//div[@class="field field-name-field-resumen field-type-text-long field-label-hidden"]/text())').extract()
             mi_item['noticia'] = news 
             self.item_count += 1
-            if self.item_count > 5:
+            if self.item_count > 30:
                 raise CloseSpider('item_exceeded')
             yield mi_item

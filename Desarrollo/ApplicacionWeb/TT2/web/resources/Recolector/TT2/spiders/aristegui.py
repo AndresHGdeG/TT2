@@ -71,6 +71,6 @@ class TT2Spider(CrawlSpider):
             mi_item['descripcion'] = response.xpath('//div[@class="class_text2"]/text()').extract()
             mi_item['noticia'] = news #response.xpath('//div[@class="class_text"]/p/child::node()/text()|//div[@class="class_text"]/p/text()').getall()
             self.item_count += 1
-            if self.item_count > 5:
+            if self.item_count > 30:
                 raise CloseSpider('item_exceeded')
             yield mi_item
