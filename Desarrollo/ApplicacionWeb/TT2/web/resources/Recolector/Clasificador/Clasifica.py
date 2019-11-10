@@ -93,9 +93,8 @@ for i in range(len(noticia_clasificada)):
 		file0.write("&&&&&")
 
 		file0.write(str(descripcion[i]))
-		file0.write("&&&&&")
 
-		file0.write(str(noticia_clasificada[i]))
+		
 		file0.write("\n")
 
 	if noticia_clasificada[i] ==1:
@@ -115,9 +114,8 @@ for i in range(len(noticia_clasificada)):
 		file1.write("&&&&&")
 
 		file1.write(str(descripcion[i]))
-		file1.write("&&&&&")
 
-		file1.write(str(noticia_clasificada[i]))
+		
 		file1.write("\n")
 
 	if noticia_clasificada[i] ==2:
@@ -137,9 +135,8 @@ for i in range(len(noticia_clasificada)):
 		file2.write("&&&&&")
 
 		file2.write(str(descripcion[i]))
-		file2.write("&&&&&")
 
-		file2.write(str(noticia_clasificada[i]))
+		
 		file2.write("\n")
 	
 	if noticia_clasificada[i] ==3:
@@ -159,9 +156,8 @@ for i in range(len(noticia_clasificada)):
 		file3.write("&&&&&")
 
 		file3.write(str(descripcion[i]))
-		file3.write("&&&&&")
 
-		file3.write(str(noticia_clasificada[i]))
+		
 		file3.write("\n")
 
 	if noticia_clasificada[i] ==4:
@@ -181,9 +177,8 @@ for i in range(len(noticia_clasificada)):
 		file4.write("&&&&&")
 
 		file4.write(str(descripcion[i]))
-		file4.write("&&&&&")
 
-		file4.write(str(noticia_clasificada[i]))
+		
 		file4.write("\n")
 
 file0.close()
