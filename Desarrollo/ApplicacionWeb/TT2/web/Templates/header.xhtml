@@ -59,6 +59,28 @@
                     </div>
 
                 </p:dialog>  
+                
+                
+                <p:dialog header="Error" widgetVar="tiempoagotado" modal="true" height="250">
+                    <div style=" margin: 5px;align-content: center;text-align: center">
+                    <h:outputText value="Se ha agotado el tiempo de espera " style="text-align: center;justify-content: center"/>
+                    <br></br>
+                     <h:outputText value="no se han encontrado noticias." style="text-align: center;justify-content: center"/>
+                     <br></br>
+                      <h:outputText value="Intentar mas tarde" style="text-align: center;justify-content: center"/>
+                    </div>
+
+                    <div style=" margin: 25px">
+                    <h:graphicImage library="images" name="tacheGuarache.png" style="display: block; margin: 10px auto;" width="75px" height="75px">
+                    </h:graphicImage>
+                    </div>
+
+                    <div style=" margin: 35px; align-content: center; ">
+                    
+                        <p:commandButton value="Aceptar" type="button" onclick="PF('tiempoagotado').hide();" styleClass="ui-confirmdialog-no" style=" margin-left: 60px"  />
+                    </div>
+
+                </p:dialog>  
             </h:form>
             
             <p:dialog header="Cargando" widgetVar="descarga" modal="true" height="200">

@@ -5,11 +5,14 @@
  */
 package ManagerBean;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,6 +54,7 @@ public class MBTabMenu implements Serializable {
     private final ArrayList<String> sitios = new ArrayList<>();
     private Date actualHour;
     private Date fileCreartionHour;
+    private int Error=0;
 
     public MBTabMenu() throws IOException {
         permission();
@@ -63,6 +67,7 @@ public class MBTabMenu implements Serializable {
         String pathServer = site();
         System.out.println(pathServer);
         Process p = Runtime.getRuntime().exec("chmod 777 -R " + pathServer);
+        System.out.println("Asignando permisos");
     }
 
     public void sites() {
@@ -129,6 +134,7 @@ public class MBTabMenu implements Serializable {
             //clasificador.ClasificarNoticias(index - 1);
             System.out.println("Noticias Clasificadas");
         } else {
+            this.Error=0;
             actualHour = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(System.currentTimeMillis() - 3600 * 4000)));
             System.out.println("Actual time:" + actualHour);
             fileCreartionHour = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(getCreationTime(tempFile).toMillis()));
@@ -146,10 +152,36 @@ public class MBTabMenu implements Serializable {
         //clasificador.CargarNoticias(index - 1);
         Thread.sleep(2000); //ESte sleep es para ver el modal que descarga noticias, solo es de prueba
         this.CerrarModalDescarga();
-        clasificador.setSeccionSeleccionada(index - 1);
-        clasificador.setCargarNoticias(1);
-        clasificador.ModalCargarNoticias();
+        if(this.Error==0){
+            clasificador.setSeccionSeleccionada(index - 1);
+            clasificador.setCargarNoticias(1);
+            clasificador.ModalCargarNoticias();
+        }else{
+           
+            this.ModalError();
+            clasificador.LimpiarNoticias();
+            
+            File file = new File(pathServer + "/Recolector/Clasificador/tiempoagotado.txt");
+            if(file.delete()) 
+            { System.out.println("File deleted successfully"); } 
+            else
+            { System.out.println("Failed to delete the file"); } 
 
+
+       
+           
+        }
+            
+
+
+    }
+    
+        
+    public void ModalError(){        
+
+    PrimeFaces current = PrimeFaces.current();
+    current.executeScript("PF('tiempoagotado').show();");
+       
     }
 
     public void CerrarModalDescarga() {
@@ -177,24 +209,41 @@ public class MBTabMenu implements Serializable {
     public void clasificarNoticias(int seccion) throws IOException, InterruptedException {
         String pathServer = site();
         System.out.println("Creando proceso..");
-        for (String string : make) {
+        /*for (String string : make) {
             System.out.println("...");
             Process aux = Runtime.getRuntime().exec(string);
             aux.waitFor(12, TimeUnit.SECONDS);
             aux.destroyForcibly();
-        }
+        }*/
+        
+        
         //Thread.sleep(90000);
 
         System.out.println("Noticias recolectadas");
         Process pUnit = Runtime.getRuntime().exec(pathServer + "/Recolector/Makefile");
 //      runProcess(pathServer + "/Recolector/Makefile");
+
+
         pUnit.waitFor();
         System.out.println("Noticias unidas");
-        createMakeToClassify();
-        Process pClassify = Runtime.getRuntime().exec(pathServer + "/Recolector/Clasificador/Makefile");
-        //runProcess(pathServer + "/Recolector/Clasificador/Makefile");
-        pClassify.waitFor();
-        System.out.println("Noticias Clasificadas");
+        
+        File tiempoAgotado = new File(pathServer + "/Recolector/Clasificador/tiempoagotado.txt");
+        
+        if(tiempoAgotado.exists()){
+            System.out.println("Se ha agotado el tiempo de espera");
+            this.Error=1;
+        }
+        else
+        {
+            createMakeToClassify();
+            Process pClassify = Runtime.getRuntime().exec(pathServer + "/Recolector/Clasificador/Makefile");
+            //runProcess(pathServer + "/Recolector/Clasificador/Makefile");
+            pClassify.waitFor();
+            System.out.println("Noticias Clasificadas");
+            this.Error=1;
+            
+        }
+
     }
 
     public void createMakeToClassify() throws IOException {
@@ -226,5 +275,7 @@ public class MBTabMenu implements Serializable {
     public void setClasificador(MBClasificador clasificador) {
         this.clasificador = clasificador;
     }
+    
+    
 
 }

@@ -70,6 +70,7 @@ public class MBClasificador implements Serializable {
         }
         
     }
+
         public void destroyWorld() {
             System.out.println("Funciono");
     }
@@ -245,6 +246,9 @@ public class MBClasificador implements Serializable {
         this.cargarNoticias = cargarNoticias;
     }
     
+    public void LimpiarNoticias(){
+        this.noticias.clear();
+    }
     
 
 }
