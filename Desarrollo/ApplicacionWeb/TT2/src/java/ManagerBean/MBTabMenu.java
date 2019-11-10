@@ -240,7 +240,7 @@ public class MBTabMenu implements Serializable {
             //runProcess(pathServer + "/Recolector/Clasificador/Makefile");
             pClassify.waitFor();
             System.out.println("Noticias Clasificadas");
-            this.Error=1;
+            this.Error=0;
             
         }
 
