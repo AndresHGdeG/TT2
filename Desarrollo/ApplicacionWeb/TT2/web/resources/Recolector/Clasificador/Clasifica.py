@@ -75,110 +75,104 @@ file4.write(encabezado)
 
 countNoticias=0;
 for i in range(len(noticia_clasificada)):
+	
+	
+
+	
 	countNoticias+=1
 	if noticia_clasificada[i] ==0:
 		file0.write(str(i+1))
 		file0.write("&&&&&")
 
-		file0.write(str(url[i]))
+		file0.write(str(url[i]).replace('\n',''))
 		file0.write("&&&&&")
 
-		file0.write(str(titulo[i]))
+		file0.write(str(titulo[i]).replace('\n',''))
 		file0.write("&&&&&")
 
-		file0.write(str(autor[i]))
+		file0.write(str(autor[i]).replace('\n',''))
 		file0.write("&&&&&")
 
-		file0.write(str(fecha[i]))
+		file0.write(str(fecha[i]).replace('\n',''))
 		file0.write("&&&&&")
 
-		file0.write(str(descripcion[i]))
-
-		
+		file0.write(str(descripcion[i]).replace('\n',''))
 		file0.write("\n")
 
 	if noticia_clasificada[i] ==1:
 		file1.write(str(i+1))
 		file1.write("&&&&&")
 
-		file1.write(str(url[i]))
+		file1.write(str(url[i]).replace('\n',''))
 		file1.write("&&&&&")
 
-		file1.write(str(titulo[i]))
+		file1.write(str(titulo[i]).replace('\n',''))
 		file1.write("&&&&&")
 
-		file1.write(str(autor[i]))
+		file1.write(str(autor[i]).replace('\n',''))
 		file1.write("&&&&&")
 
-		file1.write(str(fecha[i]))
+		file1.write(str(fecha[i]).replace('\n',''))
 		file1.write("&&&&&")
 
-		file1.write(str(descripcion[i]))
-
-		
+		file1.write(str(descripcion[i]).replace('\n',''))
 		file1.write("\n")
 
 	if noticia_clasificada[i] ==2:
 		file2.write(str(i+1))
 		file2.write("&&&&&")
 
-		file2.write(str(url[i]))
+		file2.write(str(url[i]).replace('\n',''))
 		file2.write("&&&&&")
 
-		file2.write(str(titulo[i]))
+		file2.write(str(titulo[i]).replace('\n',''))
 		file2.write("&&&&&")
 
-		file2.write(str(autor[i]))
+		file2.write(str(autor[i]).replace('\n',''))
 		file2.write("&&&&&")
 
-		file2.write(str(fecha[i]))
+		file2.write(str(fecha[i]).replace('\n',''))
 		file2.write("&&&&&")
 
-		file2.write(str(descripcion[i]))
-
-		
+		file2.write(str(descripcion[i]).replace('\n',''))
 		file2.write("\n")
 	
 	if noticia_clasificada[i] ==3:
 		file3.write(str(i+1))
 		file3.write("&&&&&")
 
-		file3.write(str(url[i]))
+		file3.write(str(url[i]).replace('\n',''))
 		file3.write("&&&&&")
 
-		file3.write(str(titulo[i]))
+		file3.write(str(titulo[i]).replace('\n',''))
 		file3.write("&&&&&")
 
-		file3.write(str(autor[i]))
+		file3.write(str(autor[i]).replace('\n',''))
 		file3.write("&&&&&")
 
-		file3.write(str(fecha[i]))
+		file3.write(str(fecha[i]).replace('\n',''))
 		file3.write("&&&&&")
 
-		file3.write(str(descripcion[i]))
-
-		
+		file3.write(str(descripcion[i]).replace('\n',''))		
 		file3.write("\n")
 
 	if noticia_clasificada[i] ==4:
 		file4.write(str(i+1))
 		file4.write("&&&&&")
 
-		file4.write(str(url[i]))
+		file4.write(str(url[i]).replace('\n',''))
 		file4.write("&&&&&")
 
-		file4.write(str(titulo[i]))
+		file4.write(str(titulo[i]).replace('\n',''))
 		file4.write("&&&&&")
 
-		file4.write(str(autor[i]))
+		file4.write(str(autor[i]).replace('\n',''))
 		file4.write("&&&&&")
 
-		file4.write(str(fecha[i]))
+		file4.write(str(fecha[i]).replace('\n',''))
 		file4.write("&&&&&")
 
-		file4.write(str(descripcion[i]))
-
-		
+		file4.write(str(descripcion[i]).replace('\n',''))
 		file4.write("\n")
 
 file0.close()
