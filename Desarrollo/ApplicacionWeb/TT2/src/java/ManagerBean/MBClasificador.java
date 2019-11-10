@@ -31,20 +31,28 @@ public class MBClasificador implements Serializable {
      * Creates a new instance of ImportarNoticias
      */
     private ArrayList<Noticia> noticias;
-    private int numNoticias = 0;
-    private String seccion = "";
+    private ArrayList<Noticia> noticiasAyer;
+    private ArrayList<Noticia> noticiasDosDias;
+    private ArrayList<Noticia> noticiasMasDias;
     private String dateToday;
     private String dateYesterday;
+    private String dateTwoDays;
+    private int numNoticias = 0;
+    private String seccion = "";
 
     public MBClasificador() {
-        noticias = new ArrayList<Noticia>();
         dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
-        dateYesterday = new SimpleDateFormat("dd/MM/yyyy").format(yesterday());
+        dateYesterday = new SimpleDateFormat("dd/MM/yyyy").format(yesterday(1));
+        dateTwoDays = new SimpleDateFormat("dd/MM/yyyy").format(yesterday(2));
+        noticias = new ArrayList<>();
+        noticiasAyer = new ArrayList<>();
+        noticiasDosDias = new ArrayList<>();
+        noticiasMasDias = new ArrayList<>();
     }
 
-    private Date yesterday() {
+    private Date yesterday(int day) {
         final Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -1);
+        cal.add(Calendar.DATE, -day);
         return cal.getTime();
     }
 
@@ -57,14 +65,13 @@ public class MBClasificador implements Serializable {
             ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
             String pathServer = servletContext.getRealPath("/resources");
 
-            FileReader f = new FileReader(pathServer + "/Recolector/Clasificador/noticiasClasificadas_" + seccion +".txt");
+            FileReader f = new FileReader(pathServer + "/Recolector/Clasificador/noticiasClasificadas_" + seccion + ".txt");
 
             BufferedReader brNoticias = new BufferedReader(f);
             String noticia_n = "";
             noticia_n = brNoticias.readLine();
 
             while ((noticia_n = brNoticias.readLine()) != null) {
-                // System.out.println(noticia_n);
 
                 StringTokenizer tokens = new StringTokenizer(noticia_n, "&&&&&");
                 String id = tokens.nextToken();
@@ -73,9 +80,18 @@ public class MBClasificador implements Serializable {
                 String autor = tokens.nextToken();
                 String fecha = tokens.nextToken();
                 String descripcion = tokens.nextToken();
-
+                Date temp =  new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
+                Date tempM = new SimpleDateFormat("dd/MM/yyyy").parse(dateTwoDays);
                 Noticia noticiaAux = new Noticia(titulo, autor, url, fecha, descripcion);
-                noticias.add(noticiaAux);
+                if (fecha.equalsIgnoreCase(dateToday)) {
+                    noticias.add(noticiaAux);
+                } else if (fecha.equalsIgnoreCase(dateYesterday)) {
+                    noticiasAyer.add(noticiaAux);
+                } else if(fecha.equalsIgnoreCase(dateTwoDays)){
+                    noticiasDosDias.add(noticiaAux);
+                } else if(temp.before(tempM)){
+                    noticiasMasDias.add(noticiaAux);
+                }
                 this.numNoticias = Integer.parseInt(id);
 
             }
@@ -133,6 +149,25 @@ public class MBClasificador implements Serializable {
 
     public void limpiarNoticias() {
         noticias.clear();
+        noticiasAyer.clear();
+        noticiasDosDias.clear();
+        noticiasMasDias.clear();
+    }
+
+    public ArrayList<Noticia> getNoticiasAyer() {
+        return noticiasAyer;
+    }
+
+    public void setNoticiasAyer(ArrayList<Noticia> noticiasAyer) {
+        this.noticiasAyer = noticiasAyer;
+    }
+
+    public ArrayList<Noticia> getNoticiasDosDias() {
+        return noticiasDosDias;
+    }
+
+    public void setNoticiasDosDias(ArrayList<Noticia> noticiasDosDias) {
+        this.noticiasDosDias = noticiasDosDias;
     }
 
     public String getDateToday() {
@@ -149,6 +184,22 @@ public class MBClasificador implements Serializable {
 
     public void setDateYesterday(String dateYesterday) {
         this.dateYesterday = dateYesterday;
+    }
+
+    public String getDateTwoDays() {
+        return dateTwoDays;
+    }
+
+    public void setDateTwoDays(String dateTwoDays) {
+        this.dateTwoDays = dateTwoDays;
+    }
+
+    public ArrayList<Noticia> getNoticiasMasDias() {
+        return noticiasMasDias;
+    }
+
+    public void setNoticiasMasDias(ArrayList<Noticia> noticiasMasDias) {
+        this.noticiasMasDias = noticiasMasDias;
     }
 
 }

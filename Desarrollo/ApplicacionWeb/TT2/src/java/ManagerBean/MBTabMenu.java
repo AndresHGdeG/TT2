@@ -11,7 +11,18 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import static java.time.OffsetTime.now;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -37,6 +48,8 @@ public class MBTabMenu implements Serializable {
     private int index = 0;
     private final ArrayList<String> make = new ArrayList<>();
     private final ArrayList<String> sitios = new ArrayList<>();
+    private Date actualHour;
+    private Date fileCreartionHour;
 
     public MBTabMenu() throws IOException {
         permission();
@@ -99,25 +112,48 @@ public class MBTabMenu implements Serializable {
 
     public void inicio() throws IOException {
         clasificador.limpiarNoticias();
+        //this.index =1;
 
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
     }
 
-    public void SeleccionSeccion(int index) throws IOException, InterruptedException {
+    public void SeleccionSeccion(int index) throws IOException, InterruptedException, ParseException {
         String pathServer = site();
         this.index = index;
-        File tempFile = new File(pathServer + "/Recolector/Clasificador/noticiasClasificadas_" + (this.index -1) + ".csv");
+        File tempFile = new File(pathServer + "/Recolector/Clasificador/noticiasClasificadas_" + (this.index - 1) + ".txt");
+        actualHour = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(System.currentTimeMillis() - 3600 * 4000)));
+        System.out.println("Actual time:" + actualHour);
+        fileCreartionHour = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(getCreationTime(tempFile).toMillis()));
+        System.out.println("Creation time:" + fileCreartionHour);
+        
+        if(fileCreartionHour.before(actualHour)){
+            //Aquí se debe llamar al método que recolecta noticias
+            System.out.println("Ya caduco la hora del archivo");
+        } else if (actualHour.before(fileCreartionHour)) {
+            //Quiere decir que aún no han transcurrido 4 horas
+            System.out.println("Aun no");
+            
+        }
 
         if (!tempFile.exists()) {
             //clasificarNoticias(index - 1);
             //clasificador.ClasificarNoticias(index - 1);
             System.out.println("Noticias Clasificadas");
-        } 
+        }
 
-        clasificador.CargarNoticias(index-1);
+        clasificador.CargarNoticias(index - 1);
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+    }
+
+    public static FileTime getCreationTime(File file) throws IOException {
+        Path p = Paths.get(file.getAbsolutePath());
+        BasicFileAttributes view
+                = Files.getFileAttributeView(p, BasicFileAttributeView.class)
+                        .readAttributes();
+        FileTime fileTime = view.creationTime();
+        return fileTime;
     }
 
     public String site() {

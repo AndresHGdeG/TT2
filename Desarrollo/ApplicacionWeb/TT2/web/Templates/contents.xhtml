@@ -27,38 +27,79 @@
                         <p:dataGrid var="noticia" value="#{mBClasificador.noticias}" columns="3" layout="grid"
                                     rows="12" paginator="true" id="noti"
                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                    rowsPerPageTemplate="6,12,16">
-
+                                    rowsPerPageTemplate="6,12,16"
+                                    emptyMessage="No hay noticias del día #{mBClasificador.dateToday}">
                             <f:facet name="header">
                                 Noticias clasificadas
                             </f:facet>
                             <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">
                                 <p:panel header="#{noticia.titulo}" style="text-align:center">
                                     <h:panelGrid columns="1" style="width:100%">
-                                        <h:outputText value="#{noticia.resumen}" />
-                                        <h:outputText value="#{noticia.autor}" />
-                                        <h:outputText value="#{noticia.fecha}" />
+                                        <h:outputText rendered="#{noticia.resumen ne 'nan'}" value="Resúmen: #{noticia.resumen}" />
+                                        <h:outputText rendered="#{noticia.autor ne 'nan'}" value="Autor: #{noticia.autor}" />
+                                        <h:outputText value="Fecha de publicación: #{noticia.fecha}" />
                                     </h:panelGrid>
                                 </p:panel>
                             </h:outputLink>
                         </p:dataGrid>
                     </p:tab>
                     <p:tab title="Ayer">
-                        <p:dataGrid var="noticia" value="#{mBClasificador.noticias}" columns="3" layout="grid"
+                        <p:dataGrid var="noticia" value="#{mBClasificador.noticiasAyer}" columns="3" layout="grid"
                                     rows="12" paginator="true" id="notiYest"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="6,12,16"
+                                    emptyMessage="No hay noticias del día #{mBClasificador.dateYesterday}">
+
+                            <f:facet name="header">
+                                Noticias clasificadas
+                            </f:facet>
+                            <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">
+                                <p:panel header="#{noticia.titulo}" style="text-align:center">
+                                    <h:panelGrid columns="1" style="width:100%">
+                                        <h:outputText rendered="#{noticia.resumen ne 'nan'}" value="Resúmen: #{noticia.resumen}" />
+                                        <h:outputText rendered="#{noticia.autor ne 'nan'}" value="Autor: #{noticia.autor}" />
+                                        <h:outputText value="Fecha de publicación: #{noticia.fecha}" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:outputLink>
+                        </p:dataGrid>
+                    </p:tab>
+                    <p:tab title="Dos días">
+                        <p:dataGrid var="noticia" value="#{mBClasificador.noticiasDosDias}" columns="3" layout="grid"
+                                    rows="12" paginator="true" id="notiTwoDay"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="6,12,16"
+                                    emptyMessage="No hay noticias del día #{mBClasificador.dateTwoDays}">
+
+                            <f:facet name="header">
+                                Noticias clasificadas
+                            </f:facet>
+                            <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">
+                                <p:panel header="#{noticia.titulo}" style="text-align:center">
+                                    <h:panelGrid columns="1" style="width:100%">
+                                        <h:outputText rendered="#{noticia.resumen ne 'nan'}" value="Resúmen: #{noticia.resumen}" />
+                                        <h:outputText rendered="#{noticia.autor ne 'nan'}" value="Autor: #{noticia.autor}" />
+                                        <h:outputText value="Fecha de publicación: #{noticia.fecha}" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:outputLink>
+                        </p:dataGrid>
+                    </p:tab>
+                    <p:tab title="Tres o más días">
+                        <p:dataGrid var="noticia" value="#{mBClasificador.noticiasMasDias}" columns="3" layout="grid"
+                                    rows="12" paginator="true" id="notiMoreDay"
                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                     rowsPerPageTemplate="6,12,16">
 
                             <f:facet name="header">
                                 Noticias clasificadas
                             </f:facet>
-
                             <h:outputLink value="#{noticia.url}" style="color:blue" target="_blank">
                                 <p:panel header="#{noticia.titulo}" style="text-align:center">
                                     <h:panelGrid columns="1" style="width:100%">
-                                        <h:outputText value="#{noticia.resumen}" />
-                                        <h:outputText value="#{noticia.autor}" />
-                                        <h:outputText value="#{noticia.fecha}" />
+                                        <h:outputText rendered="#{noticia.resumen ne 'nan'}" value="Resúmen: #{noticia.resumen}" />
+                                        <h:outputText rendered="#{noticia.autor ne 'nan'}" value="Autor: #{noticia.autor}" />
+                                        <h:outputText value="Fecha de publicación: #{noticia.fecha}" />
                                     </h:panelGrid>
                                 </p:panel>
                             </h:outputLink>
