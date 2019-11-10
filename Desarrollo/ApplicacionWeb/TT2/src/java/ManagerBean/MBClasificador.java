@@ -89,7 +89,7 @@ public class MBClasificador implements Serializable {
 
             //FileReader f = new FileReader(pathServer + "/Recolector/Clasificador/noticiasClasificadas_" + this.seccionSeleccionada + ".txt");
             FileReader f = new FileReader(pathServer + "/Recolector/Clasificador/noticiasClasificadas_3.txt");
-            
+
             BufferedReader brNoticias = new BufferedReader(f);
             String noticia_n = "";
             noticia_n = brNoticias.readLine();

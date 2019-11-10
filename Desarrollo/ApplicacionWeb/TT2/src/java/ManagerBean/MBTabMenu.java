@@ -113,7 +113,7 @@ public class MBTabMenu implements Serializable {
 
     public void inicio() throws IOException {
         clasificador.limpiarNoticias();
-        this.index =0;
+        this.index = 0;
 
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
@@ -123,41 +123,40 @@ public class MBTabMenu implements Serializable {
         String pathServer = site();
         this.index = index;
         File tempFile = new File(pathServer + "/Recolector/Clasificador/noticiasClasificadas_" + (this.index - 1) + ".txt");
-        actualHour = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(System.currentTimeMillis() - 3600 * 4000)));
-        System.out.println("Actual time:" + actualHour);
-        fileCreartionHour = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(getCreationTime(tempFile).toMillis()));
-        System.out.println("Creation time:" + fileCreartionHour);
-        
-        if(fileCreartionHour.before(actualHour)){
-            //Aquí se debe llamar al método que recolecta noticias
-            System.out.println("Ya caduco la hora del archivo");
-        } else if (actualHour.before(fileCreartionHour)) {
-            //Quiere decir que aún no han transcurrido 4 horas
-            System.out.println("Aun no");
-            
-        }
 
         if (!tempFile.exists()) {
-            //clasificarNoticias(index - 1);
+            clasificarNoticias(index - 1);
             //clasificador.ClasificarNoticias(index - 1);
             System.out.println("Noticias Clasificadas");
+        } else {
+            actualHour = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(System.currentTimeMillis() - 3600 * 4000)));
+            System.out.println("Actual time:" + actualHour);
+            fileCreartionHour = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(getCreationTime(tempFile).toMillis()));
+            System.out.println("Creation time:" + fileCreartionHour);
+            if (fileCreartionHour.before(actualHour)) {
+                //Aquí se debe llamar al método que recolecta noticias
+                System.out.println("Ya caduco la hora del archivo");
+            } else if (actualHour.before(fileCreartionHour)) {
+                //Quiere decir que aún no han transcurrido 4 horas
+                System.out.println("Aun no");
+
+            }
         }
 
         //clasificador.CargarNoticias(index - 1);
         Thread.sleep(2000); //ESte sleep es para ver el modal que descarga noticias, solo es de prueba
         this.CerrarModalDescarga();
-        clasificador.setSeccionSeleccionada(index-1);
+        clasificador.setSeccionSeleccionada(index - 1);
         clasificador.setCargarNoticias(1);
         clasificador.ModalCargarNoticias();
-        
 
     }
-    
-    public void CerrarModalDescarga(){
-        
+
+    public void CerrarModalDescarga() {
+
         PrimeFaces current = PrimeFaces.current();
         current.executeScript("PF('descarga').hide();");
-        
+
     }
 
     public static FileTime getCreationTime(File file) throws IOException {
