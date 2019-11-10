@@ -31,6 +31,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -112,7 +113,7 @@ public class MBTabMenu implements Serializable {
 
     public void inicio() throws IOException {
         clasificador.limpiarNoticias();
-        //this.index =1;
+        this.index =0;
 
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
@@ -142,9 +143,21 @@ public class MBTabMenu implements Serializable {
             System.out.println("Noticias Clasificadas");
         }
 
-        clasificador.CargarNoticias(index - 1);
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+        //clasificador.CargarNoticias(index - 1);
+        Thread.sleep(2000); //ESte sleep es para ver el modal que descarga noticias, solo es de prueba
+        this.CerrarModalDescarga();
+        clasificador.setSeccionSeleccionada(index-1);
+        clasificador.setCargarNoticias(1);
+        clasificador.ModalCargarNoticias();
+        
+
+    }
+    
+    public void CerrarModalDescarga(){
+        
+        PrimeFaces current = PrimeFaces.current();
+        current.executeScript("PF('descarga').hide();");
+        
     }
 
     public static FileTime getCreationTime(File file) throws IOException {

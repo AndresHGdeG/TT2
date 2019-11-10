@@ -16,8 +16,11 @@ import java.util.Date;
 import java.util.StringTokenizer;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -39,6 +42,9 @@ public class MBClasificador implements Serializable {
     private String dateTwoDays;
     private int numNoticias = 0;
     private String seccion = "";
+    
+    private int seccionSeleccionada =0;
+    private int cargarNoticias=0;
 
     public MBClasificador() {
         dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
@@ -55,18 +61,35 @@ public class MBClasificador implements Serializable {
         cal.add(Calendar.DATE, -day);
         return cal.getTime();
     }
+    
+    public void ModalCargarNoticias(){
+        
+        if (this.cargarNoticias==1){
+        PrimeFaces current = PrimeFaces.current();
+        current.executeScript("PF('mostrar').show();");
+        }
+        
+    }
+        public void destroyWorld() {
+            System.out.println("Funciono");
+    }
+    
+    
 
-    public void CargarNoticias(int seccion) {
+    public void CargarNoticias() {
 
-        this.NombreSeccion(seccion);
+        this.NombreSeccion(this.seccionSeleccionada);
+        System.out.println("Entre a cargar");
+        System.out.println("Seccion="+this.seccionSeleccionada);
         noticias.clear();
         try {
 
             ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
             String pathServer = servletContext.getRealPath("/resources");
 
-            FileReader f = new FileReader(pathServer + "/Recolector/Clasificador/noticiasClasificadas_" + seccion + ".txt");
-
+            //FileReader f = new FileReader(pathServer + "/Recolector/Clasificador/noticiasClasificadas_" + this.seccionSeleccionada + ".txt");
+            FileReader f = new FileReader(pathServer + "/Recolector/Clasificador/noticiasClasificadas_3.txt");
+            
             BufferedReader brNoticias = new BufferedReader(f);
             String noticia_n = "";
             noticia_n = brNoticias.readLine();
@@ -95,6 +118,9 @@ public class MBClasificador implements Serializable {
                 this.numNoticias = Integer.parseInt(id);
 
             }
+            
+                    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
 
         } catch (Exception e) {
             System.out.println("Error: " + e);
@@ -201,5 +227,24 @@ public class MBClasificador implements Serializable {
     public void setNoticiasMasDias(ArrayList<Noticia> noticiasMasDias) {
         this.noticiasMasDias = noticiasMasDias;
     }
+    
+    
+    public int getSeccionSeleccionada() {
+        return seccionSeleccionada;
+    }
+
+    public void setSeccionSeleccionada(int seccionSeleccionada) {
+        this.seccionSeleccionada = seccionSeleccionada;
+    }
+
+    public int getCargarNoticias() {
+        return cargarNoticias;
+    }
+
+    public void setCargarNoticias(int cargarNoticias) {
+        this.cargarNoticias = cargarNoticias;
+    }
+    
+    
 
 }

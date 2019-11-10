@@ -23,24 +23,51 @@
 
                     <p:menuitem value="Inicio" action="#{mBTabMenu.inicio()}">
                     </p:menuitem>
-                    <p:menuitem value="Deportes" action="#{mBTabMenu.SeleccionSeccion(1)}"  >
+                    <p:menuitem value="Deportes" action="#{mBTabMenu.SeleccionSeccion(1)}" onclick="PF('descarga').show();" >
                     </p:menuitem>
 
-                    <p:menuitem value="Economía" action="#{mBTabMenu.SeleccionSeccion(2)}">
+                    <p:menuitem value="Economía" action="#{mBTabMenu.SeleccionSeccion(2)}" onclick="PF('descarga').show();">
                     </p:menuitem>
 
-                    <p:menuitem value="Política" action="#{mBTabMenu.SeleccionSeccion(3)}">
+                    <p:menuitem value="Política" action="#{mBTabMenu.SeleccionSeccion(3)}" onclick="PF('descarga').show();">
                     </p:menuitem>
 
-                    <p:menuitem value="Cultura" action="#{mBTabMenu.SeleccionSeccion(4)}" >
+                    <p:menuitem value="Cultura" action="#{mBTabMenu.SeleccionSeccion(4)}" onclick="PF('descarga').show();" >
 
                     </p:menuitem>
-                    <p:menuitem value="Ciencia y Tecnología" action="#{mBTabMenu.SeleccionSeccion(5)}">
+                    <p:menuitem value="Ciencia y Tecnología" action="#{mBTabMenu.SeleccionSeccion(5)}" onclick="PF('descarga').show();">
 
                     </p:menuitem>
 
                 </p:tabMenu>
-            </h:form>  
+      
+                <p:dialog header="Completo" widgetVar="mostrar" modal="true" height="200">
+                    <div style=" margin: 5px">
+                    <h:outputText value="Noticias listas para ser mostradas" style="text-align: center"/>
+                    </div>
+
+                    <div style=" margin: 25px">
+                    <h:graphicImage library="images" name="listo.png" style="display: block; margin: 10px auto;" width="75px" height="75px">
+                    </h:graphicImage>
+                    </div>
+
+                    <div style=" margin: 35px">
+                        <p:commandButton value="Continuar" action="#{mBClasificador.CargarNoticias()}"  style="margin-right:20px;" styleClass="ui-priority-primary"  />
+
+                     <text>    </text>
+                     <p:commandButton value="Cancelar" type="button" onclick="PF('mostrar').hide();" styleClass="ui-confirmdialog-no"  />
+                    </div>
+
+                </p:dialog>  
+            </h:form>
+            
+            <p:dialog header="Cargando" widgetVar="descarga" modal="true" height="200">
+                <h:outputText value="En proceso de recolección y clasificación" />
+                 <h:graphicImage library="images" name="loading.gif" style="display: block; margin: 50px auto;" width="100px" height="100px">
+                    </h:graphicImage>
+            </p:dialog>   
+            
+
             <ui:include src="/pages/dialog1.xhtml"/>
         </div>
     </body> 
