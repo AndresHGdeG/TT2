@@ -6,6 +6,7 @@
 	\textbf{Resumen}\\
 \end{large}
 
+Realiza dos tareas fundamentales, previas al proceso de clasificación las cuales son: \textbf{Tokenizar}. Este proceso consiste en dividir el texto en sus elementos mínimos llamados tokens, donde se separan palabras, signos de puntuación, llaves y números mediante un espacio; \textbf{Lematizar}. Esta tarea reduce cada palabra en su lema, con el objetivo de simplificar el vocabulario de un texto. Es importante mencionar que, de cada artículo se extrae la \textbf{URL}, \textbf{Título}, \textbf{Fecha} \textbf{Redacción de la noticia}, y de existir un \textbf{Resumen}. Sin embargo para el proceso de clasificación solo se utiliza la redacción de la noticia.\\ 
 
 
 \begin{large}
@@ -27,42 +28,45 @@
 
 %-----------------------Propósito------------------------------------%
 
-	\textbf{Propósito:} & \\
+	\textbf{Propósito:} & Preparar el contenido de las noticias para el proceso\\
+	&de extracción de características\\
 	\hline
 
 %----------------------Entradas--------------------------------------%
 
-	\textbf{Entradas:} &  \\
+	\textbf{Entradas:} & Contenido de los artículos recolectados\\
 	\hline
 
 %-----------------------Salidas--------------------------------------%
 
-	\textbf{Salidas:} & \\	
+	\textbf{Salidas:} & Contenido procesado de los artículos \\	
 	\hline
 
 %-----------------------Precondiciones-------------------------------%
 
-	\textbf{Precondición:} & \\
+	\textbf{Precondición:} & Vocabulario en español para el proceso\\
+	& de lematización\\
 	\hline
 %-----------------------Postcondiciones------------------------------%
 
-	\textbf{Postcondiciones:} & \\
+	\textbf{Postcondiciones:} & Se podrá generar el vector de características\\
+	&de cada noticia\\
 	\hline
 
 	%-----------------------Reglas de negocio----------------------------%
 
-	\textbf{Reglas de negocio:} & \\
+	\textbf{Reglas de negocio:} & Ninguna \\
 	\hline
 
 %---------------------------Errores----------------------------------%
 
 %------Error 1----------%
-	\textbf{Errores:} & \\
+	\textbf{Errores:} & Ninguno \\
 
 	\hline
 
-\end{tabular}\\
-
+\end{tabular}
+\ \\\\
 
 
 %-----------------------Trayectoria Principal-----------------------%
@@ -75,59 +79,16 @@
 \begin{enumerate}[1.]
 
 	
-	\item \actor
-	
-	\item \sistema 
+	\item \sistema Obtiene la redacción de las noticias.
+
+	\item \sistema Obtiene el vocabulario en español.
+
+	\item \sistema Realiza el proceso de tokenización.
+
+	\item \sistema Realiza el proceso de lematización.
 	
 	\item \finCU	
 
 \end{enumerate}
 
-
-
-%-------------------------trayectoria Alternativa A-----------------%
-\begin{large}
-	\Talterna{CU1}{A}\\
-\end{large}	
-\textbf{Condición:} \textit{}
-
-\begin{enumerate}[{A-}1.]
-
-	\item \sistema
-
-	\item \finCU
-
-\end{enumerate}
-
-
-%-------------------------trayectoria Alternativa B-----------------%
-\begin{large}
-	\Talterna{CU1}{B}\\
-\end{large}	
-\textbf{Condición:} \textit{}
-
-\begin{enumerate}[{B-}1.]
-
-	\item \actor
-
-	\item \sistema
-
-	\item \finCU
-
-\end{enumerate}
-
-
-
-%================================Puntos de extención=============================%
-
-
-\begin{large}
-	\textbf{Puntos de extensión}\\
-\end{large}	
-
-%--------------------Puntos de extención 1------------------------%
-\textbf{Causa de la extensión:} \\
-\textbf{Región de la trayectoria:} \\
-\textbf{Extiende a :} \\\\
-
-
+  
