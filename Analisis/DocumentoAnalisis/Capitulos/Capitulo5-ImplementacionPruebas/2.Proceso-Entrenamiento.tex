@@ -421,8 +421,69 @@ P(t_k|c)=\frac{N_{ck}+\alpha}{N_c+\alpha n}
 Los parámetros de este algoritmo son: $l_1$ y $l_2$ que es la forma de entrenar el algoritmo; $C$ que es el equilibrio entre la simplicidad del algoritmo y la tolerancia de ruido, el cual toma los valores :$[1e-6, 1e-05, 1e-04, 1e-03, 1e-02, 1e-01]$.\\
 
 
-Ahora que se han explicado los parámetros de cada algoritmo, podemos calcular el mejor. Esta etapa consiste en variar los parámetros y aplicar validación cruzada, con el objetivo de conseguir el mejor clasificador y los mejores parámetros. Para ejemplificar este tarea la Figura \ref{fig:cp5:gridbayes} muestra la variación del parámetro \textbf{alpha} en el algoritmo \textbf{Naive bayes} (este parámetro será explicado mas adelante) tomando los valores: 0.5, 1.0, 1.5 y 2.0, aplicando 2 pliegues en la validación cruzada.\\
+%----------------%
+%\begin{Text}
+\textbf{Ramdom forest}\\
+%\end{Text}
 
+Este algoritmo está basado en la construcción de conjuntos de arboles de decisión como se explica en el capitulo 3 (ver), donde se tienen que controlar la cantidad de árboles a crear y la profundidad. Cabe señalar que a mas profundidad las características son separadas con mas homogénidad, sin embargo este es un problema, si el árbol creado es completamente homogéneo sufrirá de sobre entrenamiento, hará un buen trabajo clasificando el conjunto de entrenamiento pero lo hará mal con el conjunto de prueba.\\
+
+Los parámetros ocupados en ese algoritmo son; \textbf{n\_estimators} es la cantidad de árboles creados, el cual esta en el rango de : $[50, 100, 500, 1000]$; \textbf{max\_depth} es la profundidad del árbol y ha sido establecida en los rangos: $[50, 100, 500, 1000]$.\\
+
+%----------------%
+%\begin{Text}
+\textbf{Maquina de soporte vectorial}\\
+%\end{Text}
+
+Este algoritmo está basado en clasificar los datos con un margen que equidiste de los tipos de clases (secciones), sin embargo en el caso de que los datos no son separables en la dimensión inicial, se busca encontrar la solución con hiperplanos en dimensiones superiores (ver).\\
+
+Para dividir los datos de forma correcta se busca usar funciones de división la cual es denominada el kernel de la función. En este trabajo se han implementado 3 tipos de kernel: 
+
+\begin{itemize}
+
+	\item \textbf{Lineal}: $<x,x^{'}>$ (ver \ref{fig:cp5:klineal})
+
+	\item \textbf{Polinomial}: $(\gamma <x,x^{'}>+r)^{d}$ (ver Figura \ref{fig:cp5:kpoli})
+
+	\item \textbf{Radial}: $exp(-\gamma {\left|\left| x-x^{'} \right|\right|}^2)$ (ver \ref{fig:cp5:krbf})
+
+\end{itemize}
+
+En general este algoritmo trata de resolver el problema 
+
+\begin{equation}
+\underset{w,c,\zeta}{\ min}{\frac{1}{2}w^T  w}m+C\sum_{i=1}^{n}\zeta_i
+\label{eq:cp5:msvm}
+\end{equation}
+
+Los parámetros de este clasificador es el tipo de kernel ocupado, para el kernel \textbf{polinomial} y \textbf{Radial} se ocupa el parámetro $\gamma$ con los valores: $[1e-4, 1e-5, 1e-6]$. Ademas como se explico en \textbf{regresión logística} se varia el escalar $C$, el cual ajusta la variación y el bías de los datos, a mayor bías se sobre entrena el modelo, es decir que el modelo se ajusta demasiado a los datos de entrenamiento y al brindar el conjunto de entrenamiento la clasificación es deficiente; a mayor varíansa 
+
+
+
+\begin{figure}[h]
+\centering
+	\begin{subfigure}{.5\textwidth}
+	\centering
+	\includegraphics[scale=0.7]{imagenes/capitulo5/klineal.png}
+	\caption{Kernel lineal}
+	\label{fig:cp5:klineal}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+	\centering
+	\includegraphics[scale=0.7]{imagenes/capitulo5/kpoli.png}
+	\caption{Kernel polinomial}
+	\label{fig:cp5:kpoli}
+	\end{subfigure}%
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{imagenes/capitulo5/krbf.png}
+\caption{Kernel radial}
+\label{fig:cp5:krbf}
+\end{figure}
+
+Ahora que se han explicado los parámetros de cada algoritmo, podemos calcular el mejor. Esta etapa consiste en variar los parámetros y aplicar validación cruzada, con el objetivo de conseguir el mejor clasificador y los mejores parámetros. Para ejemplificar este tarea la Figura \ref{fig:cp5:gridbayes} muestra la variación del parámetro \textbf{alpha} en el algoritmo \textbf{Naive bayes} (este parámetro será explicado mas adelante) tomando los valores: 0.5, 1.0, 1.5 y 2.0, aplicando 2 pliegues en la validación cruzada.\\
 
 \begin{figure}[h]
 \centering

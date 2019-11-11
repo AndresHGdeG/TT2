@@ -221,6 +221,19 @@ y un conjunto de variables independientes métricas o no métricas \citep{CT6}. 
 función de otros factores. El análisis de regresión logística se enmarca en el conjunto de Modelos Lineales Generalizados que usa como función de 
 enlace la función logit. Las probabilidades que describen el posible resultado de un único ensayo se modelan, como una función de variables explicativas, 
 utilizando una función logística.\\
+% Referencia https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+
+Este algoritmo está basado en una regresión lineal, en el cual trata de optimizar la función $l_1$
+
+\begin{equation}
+\underset{w,c}{min}{\left|w\right|}_1+C\sum_{i=1}^{n}log(exp(-y_i(X_{i}^{T} w+c ))+1)
+\end{equation}
+
+Otra forma de este clasificador es usando la función $l_2$ quien minimiza el costo de la función:
+
+\begin{equation}
+\underset{w,c}{min}{\left|w\right|}_1+C\sum_{i=1}^{n}log(exp(-y_i(X_{i}^{T} w+c ))+1)
+\end{equation}
 
 La regresión logística es usada extensamente en las ciencias médicas y sociales. Otros nombres para regresión logística usados en varias áreas de 
 aplicación incluyen modelo logístico, modelo logit, y clasificador de máxima entropía.
@@ -229,18 +242,60 @@ aplicación incluyen modelo logístico, modelo logit, y clasificador de máxima 
 
 \subsection{Naive bayes}
 
-Naive Bayes es un conjunto de algoritmos de aprendizaje supervisado que se basan en la aplicación del teorema de Bayes con "Naive" 
-(ingenuo) la cual es la supuesta de independencia condicional entre cada par de características dado el valor de la variable de clase. 
 
-La clasificación Naive Bayes son aproximaciones probabilísticas, las cuales hacen especulaciones sobre como deben de ser 
-generados los datos. Generalmente utilizan aprendizaje supervisado sobre el conjunto de entrenamiento para poder estimar los parámetros 
+
+\textbf{Naive Bayes} es un conjunto de algoritmos basados en el \textbf{teorema de Bayes} y el uso de la condición \textbf{Naive}. Generalmente utilizan aprendizaje supervisado sobre el conjunto de entrenamiento  $T$ para poder estimar los parámetros 
 del modelo generativo, en tanto el conjunto de datos de entrada nuevos se realiza el teorema de Bayes, seleccionando la probable categoría 
-que se ha generado \citep{CT7}.
-\\
-Todas las características extraídas que utilizan este clasificador son independientes entre sí. La ventaja de usar este clasificador es que 
-funciona bien tanto con datos numéricos como con datos textuales y, además, es más fácil de implementar. La desventaja de este clasificador es 
-que su rendimiento empeora cuando las características extraídas se correlacionan entre sí.
+que se ha generado \citep{CT7}.\\
 
+
+Usando la condición \textbf{Naive} todas las características extraídas que utilizan este clasificador se asumen independientes entre sí. La ventaja de usar este clasificador es que 
+funciona bien tanto con datos numéricos como con datos textuales y, además, es más fácil de implementar. La desventaja de este clasificador es 
+que su rendimiento empeora cuando las características extraídas se correlacionan entre sí.\\
+
+Una derivación de este algoritmo es llamada \textit{multinomial Naive Bayes}, quien permite calcular la probabilidad de pertenencia de un texto $d$ a una clase $c$, como se muestra en la siguiente ecuación:\\
+
+%REF: https://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html
+%REF2:https://scikit-learn.org/stable/modules/naive_bayes.html#multinomial-naive-bayes
+\begin{equation}
+P(c|d) \alpha P(c)\prod_{k=1}^{n}P(t_k|c)
+\end{equation}
+
+donde:
+
+\begin{itemize}
+	\item $P(c)$ Es la probabilidad de ocurrencia de una clase
+	\item $P(t_k|c)$ Es la probabilidad condicional de aparición de una palabra en el conjunto de textos de $c$
+	\item $n$ Es el número de palabras en $d$
+\end{itemize}
+
+
+%La forma de estimar $P(c)$ y $P(t_k|c)$ es usando \textit{maximum likelihood estimate}:
+
+\begin{equation}
+P(c)=\frac{N_c}{N}
+\end{equation}
+
+donde:
+\begin{itemize}
+	\item $N_c$ Representa la cantidad de características (palabras) de $c$
+	\item $N$ Representa la cantidad total de características (es decir la unión de las palabras de cada clase)
+\end{itemize}
+
+\begin{equation}
+P(t_k|c)=\frac{N_{ck}+\alpha}{N_c+\alpha n}
+\label{eq:cp3:naiveBayes}
+\end{equation}
+
+donde:
+\begin{itemize}
+	\item $N_{ck}$=$\sum\nolimits_{k\in T}t_k$ Es el número de veces que la característica $k$ aparece en la clase $c$ del corpus de entrenamiento $T$
+	\item $N_c=\sum\nolimits_{k=1}^{n}N_{ck}$ Es el número total de características que contiene la clase $c$
+	\item $n$ Es el número de características totales (es decir el vocabulario de la clase $c_1$,$c_2$,$c_3$)
+\end{itemize}
+
+
+Cabe destacar que la complejidad de este algoritmo es $\Theta(mc)$, donde $m$ es el número de características por cada clase $c$.
 %----------------------------Maquina de soporte vectorial-------------------------------------%
 
 \subsection{Maquina de soporte vectorial}
@@ -272,7 +327,9 @@ larga colección de árboles no correlacionados y posteriormente los promedia \c
 
 Bootstrap aggregating (bagging) consiste en obtener muestras aleatorias con reemplazamiento de igual tamaño que el conjunto original\citep{CT24}. Partiendo del conjunto de entrenamiento X= (X1, X2, ...., Xn), mediante la extracción aleatoria con reemplazamiento con el mismo número de elementos que el conjunto original de n elementos, se obtienen B muestras bootstrap Xb= (X1b, X2b, ...., Xnb)
 11
-donde b=1, 2,.., B. En algunas de estas muestras se habrá eliminado o al menos reducido la presencia de observaciones ruidosas, por lo que el clasificador construido en ese conjunto presentará un mejor comportamiento que el clasificador construido en el conjunto original. Así pues Bagging puede ser útil para construir un mejor clasificador cuando el conjunto de entrenamiento presente observaciones ruidosas.
+donde b=1, 2,.., B. En algunas de estas muestras se habrá eliminado o al menos reducido la presencia de observaciones ruidosas, por lo que el clasificador construido en ese conjunto presentará un mejor comportamiento que el clasificador construido en el conjunto original. Así pues Bagging puede ser útil para construir un mejor clasificador cuando el conjunto de entrenamiento presente observaciones ruidosas.\\
+
+La clasificación es realizada mediante botos, donde un boto se define como, la clasificación regresada por un árbol, la sección con el mayor número de botos es la clasificación asignada a los datos de entrada.
 
 
 
