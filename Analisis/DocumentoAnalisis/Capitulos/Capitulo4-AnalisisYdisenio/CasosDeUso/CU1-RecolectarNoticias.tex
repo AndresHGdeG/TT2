@@ -6,7 +6,7 @@
 	\textbf{Resumen}\\
 \end{large}
 
-Brinda al usuario un punto de acceso para elegir una sección; las clasificaciones son, \textbf{Ciencia y tecnología}, \textbf{Política}, \textbf{Deportes}, \textbf{Economía} y  \textbf{Cultura}, posteriormente se recolectan noticias de la web, tomando como punto de partida los sitios establecidos previamente. Se crea un proceso de recolección independiente por cada sitio web, para simular un ambiente de extracción en paralelo; de cada sitio se recolectan las noticias publicadas; de cada artículo se obtiene \textbf{Fecha de publicación}, \textbf{Título}, \textbf{Contenido}, \textbf{URL de la noticia}, y de contar con ello el \textbf{Resumen}. Cabe destacar que las ligas contenidas en los sitios visitados son extraídas para su posterior análisis.\\
+Brinda al usuario un punto de acceso para elegir una sección; las clasificaciones son, \textbf{Ciencia y tecnología}, \textbf{Política}, \textbf{Deportes}, \textbf{Economía} y  \textbf{Cultura}, posteriormente se recolectan noticias de la web, tomando como punto de partida los sitios establecidos previamente. De cada sitio se recolectan las noticias publicadas; de cada artículo se obtiene \textbf{Fecha de publicación}, \textbf{Título}, \textbf{Contenido}, \textbf{URL de la noticia}, y de contar con ello el \textbf{Resumen}.\\
 
 \begin{large}
 	\textbf{Descripción}\\
@@ -38,14 +38,12 @@ Brinda al usuario un punto de acceso para elegir una sección; las clasificacion
 
 %-----------------------Salidas--------------------------------------%
 
-	\textbf{Salidas:} &$\bullet$ \Tref{MSG1}{MSG1 Catálogo vació}\\	
-	&$\bullet$ \Tref{MSG3}{MSG3 Fallo en la recolección}\\
+	\textbf{Salidas:} & \Tref{MSG1}{MSG1 Tiempo de recolección excedido}\\
 	\hline
 
 %-----------------------Precondiciones-------------------------------%
 
-	\textbf{Precondición:} & EL \textbf{Diccionario de URL'S} debe contener los\\
-	&vínculos de los sitios a consultar\\
+	\textbf{Precondición:} & Tener un punto de conexión a Internet\\
 	\hline
 %-----------------------Postcondiciones------------------------------%
 
@@ -61,38 +59,20 @@ Brinda al usuario un punto de acceso para elegir una sección; las clasificacion
 	&$\bullet$ \RNref{RN5}{Orden de publicación}\\
 	&$\bullet$ \RNref{RN6}{Periodo de recolección}\\
 	&$\bullet$ \RNref{RN7}{Campos recolectados de noticia}\\
+	&$\bullet$ \RNref{RN8}{Periodo de actualización}\\
 	\hline
 
 %---------------------------Errores----------------------------------%
 
 %------Error 1----------%
-	\textbf{Errores:} & $\bullet$ \TError{CU1}{Uno} Cuando no se ha recuperado \\
-	&\ \ ninguna \textbf{dirección web} se muestra el mensaje\\
-	&\ \  \Tref{MSG1}{MSG1 Catálogo vació}\\
+	\textbf{Errores:} & $\bullet$ \TError{CU1}{Uno} Cuando el tiempo de \\
+	&\ \ recolección se ha excedido se muestra el mensaje\\
+	&\ \  \Tref{MSG1}{MSG1 Tiempo de recolección excedido}\\
 	\hline
 
 \end{tabular}
 
-
-%=====================================Tabla 2====================================%
-\begin{table}[H]
-
-\begin{tabular}{|l|l|}
-%-----------------------Ecanbezado-----------------------------------%
-	\hline
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Recolectar noticias} }\\
-	\hline
-%------Error 3----------%
-	 \textbf{Errores:}&$\bullet$ \TError{CU1}{Dos} Cuando no se puede extraer información de\\
-	 &\ \  los sitios brindados, se muestra el mensaje \Tref{MSG3}{MSG3} \\
-	 &\ \ \Tref{MSG3}{Fallo en la recolección}\\
-	\hline
-
-\end{tabular}\\\\
-%\caption{ Tabla de descripción de CU1 }
-\end{table}
-
+\ \\\\
 
 %============================Trayectorias========================================%
 
@@ -107,22 +87,18 @@ Brinda al usuario un punto de acceso para elegir una sección; las clasificacion
 
 	
 	\item \actor Selecciona una opción de la pantalla \Tref{UI1}{UI1 Inicio}; \textbf{Política}, \textbf{Economía}, \textbf{Deportes}, \textbf{Ciencia y tecnología} o \textbf{Cultura}. 
-	
-	\item \sistema Obtiene las las direcciones web con base en la regla de negocio \RNref{RN3}{Listado de fuentes noticiosas.}
-	
-	\item \sistema Verifica que al menos se recupere una \textbf{Dirección web}. \TAref{CU1}{A}
 
-	\item \sistema Muestra la pantalla \Tref{UI2}{Pantalla UI2 Espera de proceso}. \TAref{CU1}{B}	
+	\item \sistema Verifica que no existan noticias recolectadas previamente. \TAref{CU1}{A}
 
-	\item \sistema Verifica que no se haya recolectado noticias previamente. \TAref{CU1}{C}
+	\item \sistema \label{CU1:Recolectar}Muestra la pantalla \Tref{UI2}{Pantalla UI2 Espera de proceso}. 
 
-	\item \sistema Por cada URL recuperada se extraen las noticias con base en la regla de negocio \RNref{RN6}{Periodo de recolección} y \RNref{RN7}{Campos recolectados de noticia.} \TAref{CU1}{D}
+	\item \sistema Por cada sitio se extraen las noticias con base en la regla de negocio {RN3}{Listado de fuentes noticiosas}, \RNref{RN6}{Periodo de recolección} y \RNref{RN7}{Campos recolectados de noticia.} \TAref{CU1}{D}
 
 	\item \label{CU1:BuscarN}\sistema Incluye el caso de uso \textbf{CU2 Clasificar noticias}.
 
-	\item \sistema Ordena las noticias clasificadas de acuerdo a la regla de negocio \RNref{RN5}{Orden de publicación.}
+	\item \sistema \label{CU1:NoticiasR} Se obtienen las noticias clasificadas de la sección seleccionada por el usuario, de acuerdo a la regla de negocio \RNref{RN5}{Orden de publicación.}
 
-	\item \sistema \label{CU1:NoticiasR} Muestra la pantalla \Tref{UI3}{Pantalla UI3 Proceso concluido}.
+	\item \sistema Muestra la pantalla \Tref{UI3}{Pantalla UI3 Proceso concluido}.
 
 	\item \finCU	
 
@@ -130,45 +106,19 @@ Brinda al usuario un punto de acceso para elegir una sección; las clasificacion
 
 
 
+
+
+
+
 %-------------------------trayectoria Alternativa A-----------------%
 \begin{large}
 	\Talterna{CU1}{A}\\
 \end{large}	
-\textbf{Condición:} \textit{No se ha recuperado ninguna dirección web \TEref{CU1}{Uno}}
+\textbf{Condición:} \textit{Existen noticias recolectadas}
 
 \begin{enumerate}[{A-}1.]
 
-	\item \sistema Muestra el mensaje \Tref{MSG1}{MSG1 Catálogo vació} en la pantalla \Tref{UI1}{UI1 Inicio}.
-
-	\item \finCU
-
-\end{enumerate}
-
-
-%-------------------------trayectoria Alternativa B-----------------%
-\begin{large}
-	\Talterna{CU1}{B}\\
-\end{large}	
-\textbf{Condición:} \textit{El usuario ha presionado el botón cancelar}
-
-\begin{enumerate}[{B-}1.]
-
-	\item \actor Presiona el botón \textbf{Cancelar} de la pantalla \Tref{UI2}{Pantalla UI2 Espera de proceso}.
-
-	\item \sistema Muestra la pantalla \Tref{UI1}{UI1 Inicio}.
-
-	\item \finCU
-
-\end{enumerate}
-
-
-%-------------------------trayectoria Alternativa C-----------------%
-\begin{large}
-	\Talterna{CU1}{C}\\
-\end{large}	
-\textbf{Condición:} \textit{Ya se han recolectado noticias}
-
-\begin{enumerate}[{C-}1.]
+	\item \sistema Verifica que la última recolección de noticias no exceda el periodo establecido, con base \RNref{RN8}{Periodo de actualización}.
 
 	\item \actor Continua en el paso \ref{CU1:NoticiasR} de la trayectoria principal.
 
@@ -176,20 +126,19 @@ Brinda al usuario un punto de acceso para elegir una sección; las clasificacion
 
 \end{enumerate}
 
-%-------------------------trayectoria Alternativa D-----------------%
+%-------------------------trayectoria Alternativa B-----------------%
 \begin{large}
-	\Talterna{CU1}{D}\\
+	\Talterna{CU1}{B}\\
 \end{large}	
-\textbf{Condición:} \textit{No se puede extraer información de los sitios web \TEref{CU1}{Dos}}
+\textbf{Condición:} \textit{La última recolección de noticias excede el periodo establecido}
 
-\begin{enumerate}[{D-}1.]
+\begin{enumerate}[{B-}1.]
 
-	\item \sistema Muestra el mensaje \Tref{MSG3}{MSG3 Fallo en la recolección} en la pantalla \Tref{UI1}{UI1 Inicio}.
+	\item \actor Continua en el paso \ref{CU1:Recolectar} de la trayectoria principal.
 
-	\item \finCU
+	\item \finTA
 
 \end{enumerate}
-
 
 
 %================================Puntos de extención=============================%
