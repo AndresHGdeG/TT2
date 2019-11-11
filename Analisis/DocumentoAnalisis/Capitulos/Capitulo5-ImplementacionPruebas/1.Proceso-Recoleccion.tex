@@ -143,7 +143,7 @@ Como se explicó en el capítulo 3 (ver\ref{c3:Crawler}) un \textit{Crawler} te 
 	\label{Fig:recoleccion}
 \end{figure}
 
-El desarrollo del presente trabajo terminal se ha realizado en sistema operativo \textit{Linux} en su distribución Ubuntu, paa realizar la creación de los recolectores se ha utilizado el lenguaje de programación \textbf{Python 3}\footnote{https://www.python.org/}, en conjunto con \textbf{Scrapy}\footnote{https://scrapy.org/}, el cual es un framework que permite la extracción de información de sitios web. 
+El desarrollo del presente trabajo terminal se ha realizado en sistema operativo \textit{Linux} en su distribución Ubuntu, paa realizar la creación de los recolectores se ha utilizado el lenguaje de programación \textbf{Python 3}\footnote{https://www.python.org/}, en conjunto con \textbf{Scrapy}\footnote{https://scrapy.org/}, Fsramework que permite la extracción de información de sitios web. 
 \\
 El siguiente Cuadro \ref{box:libIns}, muestra los comandos utilizados para instalar las librerías utilizadas.\\
 \begin{mygraybox}[label={box:libIns}]{Comandos para instalar librerías utilizadas}
@@ -155,12 +155,12 @@ $ pip install Scrapy
 
 La información que ha sido recuperada de las noticias se muestra a continuación:
 \begin{itemize}
-	\item \textbf{url}: La dirección web donde se encuentra localizada la noticia 
-	\item \textbf{título}: Encabezado de la noticia recolectada
-	\item \textbf{autor}: Es el nombre de la persona que redacto la noticia o el nombre de la editorial
-	\item \textbf{fecha}: Es la fecha en la cual la noticia ha sido publicada
-	\item \textbf{descripción}: Es una idea general del contenido de la noticia. Cabe mencionar que no todas las noticias cuentan con una descripción
-	\item \textbf{noticia}: Es la redacción realizada por el autor acerca de la noticia. Es de relevancia mencionar que este elemento más importante de los artículos decargados 
+	\item \textbf{URL}: La dirección web donde se encuentra localizada la noticia 
+	\item \textbf{TÍtulo}: Encabezado de la noticia recolectada
+	\item \textbf{Autor}: Es el nombre de la persona que redacto la noticia o el nombre de la editorial
+	\item \textbf{Fecha}: Es la fecha en la cual la noticia ha sido publicada
+	\item \textbf{Descripción}: Es una idea general del contenido de la noticia. Cabe mencionar que no todas las noticias cuentan con una descripción
+	\item \textbf{Noticia}: Es la redacción realizada por el autor acerca de la noticia. Es de relevancia mencionar que este elemento más importante de los artículos decargados 
 \end{itemize}
 
 Cada uno de los recolectores contenia expresiones \textit{XPath} que permitían recolectar la información de cada noticia, el Cuadro \ref{box:crawlerEjemplo} muestra un ejemplo de las expresiones \textit{XPath} utilizadas para recolectar noticias del sitio web Aristegui Noticias\footnote{https://aristeguinoticias.com/}\\
