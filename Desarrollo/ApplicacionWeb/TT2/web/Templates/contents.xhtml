@@ -28,7 +28,7 @@
                                     rows="12" paginator="true" id="noti"
                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                     rowsPerPageTemplate="6,12,16"
-                                    emptyMessage="No hay noticias del día #{mBClasificador.dateToday}">
+                                    emptyMessage="No hay noticias de la sección #{mBClasificador.seccion} del día #{mBClasificador.dateToday}">
                             <f:facet name="header">
                                 Noticias clasificadas
                             </f:facet>
@@ -48,7 +48,7 @@
                                     rows="12" paginator="true" id="notiYest"
                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                     rowsPerPageTemplate="6,12,16"
-                                    emptyMessage="No hay noticias del día #{mBClasificador.dateYesterday}">
+                                    emptyMessage="No hay noticias de la sección #{mBClasificador.seccion} del día #{mBClasificador.dateYesterday}">
 
                             <f:facet name="header">
                                 Noticias clasificadas
@@ -69,7 +69,7 @@
                                     rows="12" paginator="true" id="notiTwoDay"
                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                     rowsPerPageTemplate="6,12,16"
-                                    emptyMessage="No hay noticias del día #{mBClasificador.dateTwoDays}">
+                                    emptyMessage="No hay noticias de la sección #{mBClasificador.seccion} del día #{mBClasificador.dateTwoDays}">
 
                             <f:facet name="header">
                                 Noticias clasificadas
@@ -89,7 +89,8 @@
                         <p:dataGrid var="noticia" value="#{mBClasificador.noticiasMasDias}" columns="3" layout="grid"
                                     rows="12" paginator="true" id="notiMoreDay"
                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                    rowsPerPageTemplate="6,12,16">
+                                    rowsPerPageTemplate="6,12,16"
+                                    emptyMessage="No hay noticias de la sección #{mBClasificador.seccion} del tres o más días ">
 
                             <f:facet name="header">
                                 Noticias clasificadas
