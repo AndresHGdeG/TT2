@@ -6,6 +6,7 @@
 	\textbf{Resumen}\\
 \end{large}
 
+Brinda al sistema una herramienta que permite realizar la clasificación de las noticias recolectadas, en las secciones \textbf{Ciencia y tecnología}, \textbf{Política}, \textbf{Deportes}, \textbf{Economía} y  \textbf{Cultura}, utilizando como modelo clasificador el algoritmo \textbf{Máquina de Soporte Vectorial}. Además el conjunto de noticias clasificadas es almacenado en un archivo por cada sección. Cabe señlar que las descargas se hacen en un periodo establecido.\\
 
 
 \begin{large}
@@ -16,7 +17,7 @@
 
 
 \begin{tabular}{|l|l|}
-%-----------------------Ecanbezado-----------------------------------%
+%-----------------------Encabezado-----------------------------------%
 	\hline
 	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
 	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Recolectar noticias} }\\
@@ -27,42 +28,45 @@
 
 %-----------------------Propósito------------------------------------%
 
-	\textbf{Propósito:} & \\
+	\textbf{Propósito:} & Clasificar las noticias recolectadas\\
 	\hline
 
 %----------------------Entradas--------------------------------------%
 
-	\textbf{Entradas:} &  \\
+	\textbf{Entradas:} &  $\bullet$ Noticias recolectadas\\
+	& $\bullet$ Modelo clasificador\\
 	\hline
 
 %-----------------------Salidas--------------------------------------%
 
-	\textbf{Salidas:} & \\	
+	\textbf{Salidas:} & Los archivos de cada sección los cuales contienen\\	
+	& el conjunto de noticias correspondientes\\
 	\hline
 
 %-----------------------Precondiciones-------------------------------%
 
-	\textbf{Precondición:} & \\
+	\textbf{Precondiciones:} & Debe existir al menos una noticia recolectada\\
 	\hline
 %-----------------------Postcondiciones------------------------------%
 
-	\textbf{Postcondiciones:} & \\
+	\textbf{Postcondiciones:} & Las noticias clasificadas podrán ser obtenidas \\
+	& por el sistema\\
 	\hline
 
 	%-----------------------Reglas de negocio----------------------------%
 
-	\textbf{Reglas de negocio:} & \\
+	\textbf{Reglas de negocio:} & Ninguna\\
 	\hline
 
 %---------------------------Errores----------------------------------%
 
 %------Error 1----------%
-	\textbf{Errores:} & \\
+	\textbf{Errores:} & Ninguno\\
 
 	\hline
 
-\end{tabular}\\
-
+\end{tabular}
+\ \\\\
 
 
 %-----------------------Trayectoria Principal-----------------------%
@@ -74,60 +78,21 @@
 
 \begin{enumerate}[1.]
 
-	
-	\item \actor
-	
-	\item \sistema 
+		
+	\item \sistema Obtiene las noticias recolectadas.
+
+	\item \sistema Incluye el caso de uso \textbf{CU3 Pre-procesar noticias}.
+
+	\item \sistema \label{CU2:vocabulario}Obtiene el vocabulario definido, para el modelo clasificador.
+
+	\item \sistema Generá un vector de características por cada noticia, con base al vocabulario del paso \ref{CU2:vocabulario}.
+
+	\item \sistema Obtiene el modelo clasificador.
+
+	\item \sistema Clasifica las noticias recolectadas.
+
+	\item \sistema Almacena las noticias clasificadas por sección.
 	
 	\item \finCU	
 
 \end{enumerate}
-
-
-
-%-------------------------trayectoria Alternativa A-----------------%
-\begin{large}
-	\Talterna{CU1}{A}\\
-\end{large}	
-\textbf{Condición:} \textit{}
-
-\begin{enumerate}[{A-}1.]
-
-	\item \sistema
-
-	\item \finCU
-
-\end{enumerate}
-
-
-%-------------------------trayectoria Alternativa B-----------------%
-\begin{large}
-	\Talterna{CU1}{B}\\
-\end{large}	
-\textbf{Condición:} \textit{}
-
-\begin{enumerate}[{B-}1.]
-
-	\item \actor
-
-	\item \sistema
-
-	\item \finCU
-
-\end{enumerate}
-
-
-
-%================================Puntos de extención=============================%
-
-
-\begin{large}
-	\textbf{Puntos de extensión}\\
-\end{large}	
-
-%--------------------Puntos de extención 1------------------------%
-\textbf{Causa de la extensión:} \\
-\textbf{Región de la trayectoria:} \\
-\textbf{Extiende a :} \\\\
-
-
