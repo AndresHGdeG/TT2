@@ -178,16 +178,16 @@ La cantidad de noticias por sección del conjunto de entrenamiento se muestran e
 
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[scale=.6]{imagenes/capitulo5/SeccionesE.png}
+\includegraphics[scale=.55]{imagenes/capitulo5/SeccionesE.png}
 \caption{Corpus de entrenamiento}
 \label{fig:cp5:seccionE}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.6]{imagenes/capitulo5/SeccionesP.png}
+\includegraphics[scale=.55]{imagenes/capitulo5/SeccionesP.png}
 \caption{Corpus de prueba}
 \label{fig:cp5:seccionP}
 \end{figure}
@@ -264,7 +264,7 @@ es & esta & este & la & noticia & primera & segunda & tercera
 
 Después de seleccionar las características, se crea un espacio vectorial por cada noticia donde cada elemento del vector representa la presencia o ausencia de una característica (palabra). Cabe mencionar que las características son extraídas de 2 formas, binario(donde 1 representa la presencia de la característica y 0 la ausencia) y por frecuencia (donde se cuenta el número de veces que cada característica aparece). Continuando con el ejemplo del Cuadro \ref{box:cp5:corpus} se extraen las características por frecuencia y el resultado se muestra en el Cuadro \ref{box:cp5:frecuencia}, mientras que el Cuadro \ref{box:cp5:binario} muestra las características extraídas de forma binaria.\\
 
-Para el desarrollo de esta etapa se ha implementado la librería \textbf{CountVectorizer} quien permite generar la selección y extracción de características. Cabe destacar que esta es la presentación vectorial (de cada noticia) que los algoritmos de clasificación pueden entender y por ende ser entrenados.\\
+Para el desarrollo de esta etapa se ha implementado la librería \textbf{CountVectorizer} quien permite generar la selección y extracción de características, ademas esta es la presentación vectorial (de cada noticia) que los algoritmos de clasificación pueden entender y por ende ser entrenados. Cabe destacar que la extracción de características ocupada en este trabajo ha sido de forma binaria,.\\
 
 \begin{mygraybox}[label={box:cp5:frecuencia}]{Extracción por frecuencia} 
 \begin{equation*}
@@ -383,14 +383,28 @@ Este método consiste en tres pasos: el primero es dividir el corpus en entrenam
 \textbf{Variación de parámetros}\\
 \end{large}
 
-Como se ha visto, los resultados de la clasificación son medidos por la cantidad de noticias correctas clasificadas, no obstante estos resultados pueden incrementar o decrementar con base a los parámetros ingresados a cada algoritmo. A continuación se explican las entradas de cada clasificador: \\
+Como se ha visto, los resultados de la clasificación son medidos por la cantidad de noticias correctas clasificadas, no obstante estos resultados pueden incrementar o decrementar con base a los parámetros ingresados a cada algoritmo.\\
+
+Esta etapa consiste en observar el mejor resultado en la clasificación con los diferentes algoritmos, variando los parámetros y aplicar validación cruzada para medir la precisión. Para ejemplificar este tarea la Figura \ref{fig:cp5:gridbayes} muestra la variación del parámetro \textbf{alpha} en el algoritmo \textbf{Naive bayes} (este parámetro será explicado mas adelante) tomando los valores: 0.5, 1.0, 1.5 y 2.0, aplicando 2 pliegues en la validación cruzada.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{imagenes/capitulo5/gridbayes.png}
+\caption{Corpus de entrenamiento}
+\label{fig:cp5:gridbayes}
+\end{figure}
+
+Se observa que por cada parámetro implementado en la validación cruzada se muestra el resultado \textbf{score}, el cual es el promedio de la precisión de dicha prueba, se puede observar que el mejor resultado ha sido hecha con el $\alpha=0.5$, con un 85\% de precisión.\\
+
+
+A continuación se explican los parámetros de cada clasificador: \\
 
 %----------------%
 %\begin{Text}
 \textbf{Naive Bayes}\\
 %\end{Text}
  
-El parámetro en el cual se varía en este algoritmo, es un escalar llamado \textbf{Alpha} ($\alpha$). Como se explico en el capitulo 3 (ver), un valor numérico es asignado a cada palabra en el corpus con respecto a la frecuencia de aparición en un clase (como se muestra en la ecuación \ref{eq:cp5:naiveBayes}). El valor $\alpha$ evita que dicha ecuación se haga cero, en el caso de la ausencia de una palabra en una clase $c$ (es decir $N_{ck}=0$).
+El parámetro en el cual se varía en este algoritmo, es un escalar llamado \textbf{Alpha} ($\alpha$). Como se explico en el capitulo 3 (ver), un valor numérico es asignado a cada palabra en el corpus con respecto a la frecuencia de aparición en un clase (como se muestra en la ecuación \ref{eq:cp5:naiveBayes}). El valor $\alpha$ evita que dicha ecuación se haga cero, en el caso de la ausencia de una palabra en una clase $c$ (es decir $N_{ck}=0$). \textbf{Alpha} es variado en los valores [$0.5, 1.0, 1.5, 2$].
 
 
 \begin{equation}
@@ -483,21 +497,8 @@ Los parámetros de este clasificador es el tipo de kernel ocupado, para el kerne
 \label{fig:cp5:krbf}
 \end{figure}
 
-Ahora que se han explicado los parámetros de cada algoritmo, podemos calcular el mejor. Esta etapa consiste en variar los parámetros y aplicar validación cruzada, con el objetivo de conseguir el mejor clasificador y los mejores parámetros. Para ejemplificar este tarea la Figura \ref{fig:cp5:gridbayes} muestra la variación del parámetro \textbf{alpha} en el algoritmo \textbf{Naive bayes} (este parámetro será explicado mas adelante) tomando los valores: 0.5, 1.0, 1.5 y 2.0, aplicando 2 pliegues en la validación cruzada.\\
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=.5]{imagenes/capitulo5/gridbayes.png}
-\caption{Corpus de entrenamiento}
-\label{fig:cp5:gridbayes}
-\end{figure}
-
-Se observa que por cada parámetro implementado en la validación cruzada se muestra el resultado \textbf{score}, el cual es el promedio de la precisión de dicha prueba, se puede observar que el mejor resultado ha sido hecha con el $\alpha=0.5$, con un 85\% de precisión.\\
-
-Las pruebas de este trabajo terminal han implementado 5 pliegues en la validación cruzada y se ha usado el corpus con 3150 noticias como entrenamiento.\\
-
-La Tabla \ref{tab:cp5:naive} muestra los resultados de la variación del parámetro \textbf{Alpha} en 0.5, 1.0, 1.5 y 2.
-
+Las pruebas de este trabajo terminal han implementado 5 pliegues en la validación cruzada y se ha usado el corpus con 3150 noticias. Los resultados son visualizados en las siguientes tablas, donde la primera columna \textbf{Parámetros} contiene los parámetros variados de cada prueba, las columnas siguientes \textbf{P1}, \textbf{P2}, \textbf{P3}, \textbf{P4} y \textbf{P5} muestran el \textbf{accuracy} obtenido en cada pliegue, la columna \textbf{Promedio} muestra la suma de los \textbf{accuracy} obtenidos divido entre 5 (número de pliegues) y la última columna \textbf{Rank} muestra un número entero el cual indica el \textit{Ranking} de cada prueba, es decir la prueba con rank 1 es el mejor resultado, la prueba con rank 2 es el segundo mejor y así sucesivamente.\\
 
 \begin{table}[H]
 \centering
@@ -530,105 +531,6 @@ alpha: 2&0.8531&0.8418&0.8410&0.8392&0.8296&0.8409&4\\
 \caption{Naive bayes}
 \label{tab:cp5:naive}
 \end{table}
-
-
-
-\begin{table}[H]
-\centering
-\resizebox{\columnwidth}{!}{%
-	\begin{tabular}{|l|l|l|l|l|l|l|l|}
-	%-----------------------Ecanbezado-----------------------------------%
-		\hline
-\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Parámetros}} }&
-\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 1}} }&
-\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 2}} }&
-\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 3}} }&
-\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 4}} }&
-\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 5}} }&
-\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Promedio}} }&
-\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Rank}} }
-\\  \cline{1-8}
-	%------------------------------------------------%
-C: 100, gamma: 0.0001, kernel: rbf&0.8736&0.8639&0.8537&0.8726&0.8822&0.8692&1\\
-\hline
-C: 1000, gamma: 1e-05, kernel: rbf&0.8752&0.8623&0.8537&0.8710&0.8822&0.8689&2\\
-\hline
-C: 1000, gamma: 0.0001, kernel: rbf&0.8689&0.8608&0.8506&0.8694&0.8790&0.8657&3\\
-\hline
-C: 1, gamma: 0.0001, kernel: linear&0.8657&0.8592&0.8410&0.8710&0.8742&0.8622&4\\
-\hline
-C: 1, gamma: 1e-05, kernel: linear&0.8657&0.8592&0.8410&0.8710&0.8742&0.8622&4\\
-\hline
-C: 1, gamma: 1e-06, kernel: linear&0.8657&0.8592&0.8410&0.8710&0.8742&0.8622&4\\
-\hline
-C: 10, gamma: 0.0001, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 10, gamma: 1e-05, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 10, gamma: 1e-06, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 100, gamma: 0.0001, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 100, gamma: 1e-05, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 100, gamma: 1e-06, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 1000, gamma: 0.0001, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 1000, gamma: 1e-05, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 1000, gamma: 1e-06, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
-\hline
-C: 10, gamma: 0.0001, kernel: rbf&0.8641&0.8576&0.8490&0.8678&0.8503&0.8578&6\\
-\hline
-C: 100, gamma: 1e-05, kernel: rbf&0.8641&0.8576&0.8490&0.8662&0.8519&0.8578&6\\
-\hline
-C: 1000, gamma: 1e-06, kernel: rbf&0.8641&0.8576&0.8490&0.8662&0.8519&0.8578&6\\
-\hline
-C: 100, gamma: 1e-06, kernel: rbf&0.6524&0.6772&0.6073&0.6449&0.6608&0.6485&7\\
-\hline
-C: 10, gamma: 1e-05, kernel: rbf&0.6493&0.6741&0.6073&0.6401&0.6561&0.6454&8\\
-\hline
-C: 1, gamma: 0.0001, kernel: rbf&0.6193&0.6440&0.5946&0.6115&0.6306&0.6200&9\\
-\hline
-C: 1, gamma: 0.0001, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 1, gamma: 1e-05, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 1, gamma: 1e-05, kernel: rbf&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 1, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 1, gamma: 1e-06, kernel: rbf&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 10, gamma: 0.0001, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 10, gamma: 1e-05, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 10, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 10, gamma: 1e-06, kernel: rbf&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 100, gamma: 0.0001, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 100, gamma: 1e-05, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 100, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 1000, gamma: 0.0001, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 1000, gamma: 1e-05, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-C: 1000, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
-\hline
-
-	\end{tabular}
-}
-\caption{Maquina de soporte vectorial}
-\label{tab:cp5:msv}
-\end{table}
-
-
 
 
 \begin{table}[H]
@@ -733,15 +635,261 @@ max\_depth: 1000, n\_estimators: 50&0.8578&0.8212&0.8315&0.8392&0.8280&0.8355&16
 \end{table}
 
 
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Parámetros}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 1}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 2}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 3}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 4}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{P 5}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Promedio}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Rank}} }
+\\  \cline{1-8}
+	%------------------------------------------------%
+C: 100, gamma: 0.0001, kernel: rbf&0.8736&0.8639&0.8537&0.8726&0.8822&0.8692&1\\
+\hline
+C: 1000, gamma: 1e-05, kernel: rbf&0.8752&0.8623&0.8537&0.8710&0.8822&0.8689&2\\
+\hline
+C: 1000, gamma: 0.0001, kernel: rbf&0.8689&0.8608&0.8506&0.8694&0.8790&0.8657&3\\
+\hline
+C: 1, gamma: 0.0001, kernel: linear&0.8657&0.8592&0.8410&0.8710&0.8742&0.8622&4\\
+\hline
+C: 1, gamma: 1e-05, kernel: linear&0.8657&0.8592&0.8410&0.8710&0.8742&0.8622&4\\
+\hline
+C: 1, gamma: 1e-06, kernel: linear&0.8657&0.8592&0.8410&0.8710&0.8742&0.8622&4\\
+\hline
+C: 10, gamma: 0.0001, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 10, gamma: 1e-05, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 10, gamma: 1e-06, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 100, gamma: 0.0001, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 100, gamma: 1e-05, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 100, gamma: 1e-06, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 1000, gamma: 0.0001, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 1000, gamma: 1e-05, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 1000, gamma: 1e-06, kernel: linear&0.8657&0.8592&0.8394&0.8710&0.8742&0.8619&5\\
+\hline
+C: 10, gamma: 0.0001, kernel: rbf&0.8641&0.8576&0.8490&0.8678&0.8503&0.8578&6\\
+\hline
+C: 100, gamma: 1e-05, kernel: rbf&0.8641&0.8576&0.8490&0.8662&0.8519&0.8578&6\\
+\hline
+C: 1000, gamma: 1e-06, kernel: rbf&0.8641&0.8576&0.8490&0.8662&0.8519&0.8578&6\\
+\hline
+C: 100, gamma: 1e-06, kernel: rbf&0.6524&0.6772&0.6073&0.6449&0.6608&0.6485&7\\
+\hline
+C: 10, gamma: 1e-05, kernel: rbf&0.6493&0.6741&0.6073&0.6401&0.6561&0.6454&8\\
+\hline
+C: 1, gamma: 0.0001, kernel: rbf&0.6193&0.6440&0.5946&0.6115&0.6306&0.6200&9\\
+\hline
+C: 1, gamma: 0.0001, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 1, gamma: 1e-05, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 1, gamma: 1e-05, kernel: rbf&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 1, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 1, gamma: 1e-06, kernel: rbf&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 10, gamma: 0.0001, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 10, gamma: 1e-05, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 10, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 10, gamma: 1e-06, kernel: rbf&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 100, gamma: 0.0001, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 100, gamma: 1e-05, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 100, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 1000, gamma: 0.0001, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 1000, gamma: 1e-05, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+C: 1000, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10\\
+\hline
+
+	\end{tabular}
+}
+\caption{Maquina de soporte vectorial}
+\label{tab:cp5:msv}
+\end{table}
+
+
 
 
 %------------------------------------------------------------------%
 \subsection{Selección}
 
+
+Los resultados de la sección anterior ha mostrado que no existe una brecha muy grande en el \textbf{accuracy} obtenido de los mejores parámetros, como se muestra en la siguiente Tabla (\ref{tab:cp5:resultados}).
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{|l|c|c|}
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Algoritmo}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Precisión}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Ranking}} }
+\\  \cline{1-3}
+	%--------------
+
+MSV&0.8692&1\\
+\hline
+Regresión Logística&0.8619&2\\
+\hline
+Ramdom Forest&0.8682&3\\
+\hline
+Naive Bayes&0.8511&4\\
+\hline
+	\end{tabular}
+\caption{Precisión de los mejores parámetros}
+\label{tab:cp5:resultados}
+\end{table}
+
+
+El mejor resultado se ha conseguido con el algoritmo \textbf{Maquinas de soporte vectorial} con los parámetros ;$C$=100, $gamma= 0.0001$ y $kernel$= $rbf$ (radial) obteniendo .8619 de \textbf{accuracy}, por esta razón se ha elegido como el clasificador final de este trabajo terminal.
+
 %------------------------------------------------------------------%
 \subsection{Pruebas}
+
+Con base en el algoritmo elegido y los parámetros que han conseguido obtener el mejor resultado, se ha hecho una prueba final, la cual consiste en clasificar el corpus de prueba con 350 noticias (creado al final de la sección de pre-procesamiento ver), para calcular la matriz de confusión y obtener las métricas de evaluación. La tabla \ref{tab:cp5:numnoticias} muestra el número de noticias por sección contenidas en el corpus.\\
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{|l|c|}
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Sección}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Número de noticias}} }
+\\  \cline{1-2}
+	%--------------
+
+Deportes& 68\\
+\hline
+Economía& 58\\
+\hline
+Política& 69\\
+\hline
+Cultura& 77\\
+\hline
+Ciencia y Tecnología& 78\\
+\hline
+	\end{tabular}
+\caption{Número de noticias}
+\label{tab:cp5:numnoticias}
+\end{table}
+
+
+La matriz de confusión obtenida se muestra en la tabla \ref{tab:cp5:matriz}, donde las filas representan la clasificación real de la noticia y las columnas lo predicho por el clasificador. Por ejemplo se observa que en la sección \textbf{Deportes} de 68 noticias etiquetadas, 65 fueron clasificadas correctamente, y 3 fueron mal clasificadas en la sección \textbf{ciencia y tecnología} (1 noticia), \textbf{economía} (1 noticia) y \textbf{política} (1 noticia). En la sección de ciencia y tecnología de 78 noticias solo 67 fueron clasificadas de forma acertada, y 11 fueron clasificadas en las distintas secciones: 1 en \textbf{Deportes}, 5 en \textbf{Economía}, 3 en \textbf{Política} y 2 en \textbf{Cultura}.\\
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+	\begin{tabular}{|l|c|c|c|c|c|}
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Sección}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Deportes}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Economía}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Política}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Cultura}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Cienci y T}} }
+\\  \cline{1-6}
+	%--------------
+
+Deportes& 65 & 1 & 1 & 0 & 1\\
+\hline
+Economía& 1 & 51 & 4 & 1 & 1\\
+\hline
+Política& 2 & 5 & 59 & 3 & 0\\
+\hline
+Cultura& 1 & 1 & 1 & 70 & 4\\
+\hline
+Ciencia y T& 1 & 5 & 3 & 2 & 67\\
+\hline
+	\end{tabular}
+}
+\caption{Matriz de confusión}
+\label{tab:cp5:matriz}
+\end{table}
+
+
+Con base en la matriz de confusión se ha calculado \textbf{Recall}, \textbf{Fmeasure}, \textbf{Precision} (estos conceptos están explicados en el capitulo 3, ver ). Las métricas son obtenidas por cada sección, como se muestra en la tabla \ref{tab:cp5:metricas}.
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{|l|c|c|c|}
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Sección}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Precision}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Recall}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Fmeasuere}} }
+\\  \cline{1-4}
+	%--------------
+
+Deportes & 0.93 & 0.96 & 0.94\\
+\hline
+Economía & 0.81 & 0.88 & 0.84\\
+\hline
+Política & 0.87 & 0.86 & 0.86\\
+\hline
+Cultura & 0.92 & 0.91 & 0.92\\
+\hline
+Ciencia y Tecnología & 0.92 & 0.86 & 0.89\\
+\hline
+	\end{tabular}
+\caption{Metricas de evaluación}
+\label{tab:cp5:metricas}
+\end{table}
+
+
+Como se puede observar en la tabla \ref{tab:cp5:metricas} las sección con mejor \textbf{Fmeasure} (este valor sostiene una relación entre \textbf{Precision} y \textbf{Rcall}) es \textbf{Deportes} obteniendo 0.94 en la clasificación. Este resultado se puede explicar con base en el vocabulario manejado en la categoría, ya que es muy específico, por ejemplo se usan palabras como: gol, jugador, resultado, anotación. Por lo contrario el \textbf{Fmeasure} mas bajo lo obtuvo \textbf{Economía} con 0.84 (el cual no es un mal resultado), las palabras manejadas por esta sección pueden ser encontradas en otras categorías, generando así confusión en la clasificación.\\
+
+El \textbf{accuracy} obtenido (incluyen todas las secciones) se muestra en la tabla \ref{tab:cp5:accuracy}. En términos generales este resultado ha sido superior que el obtenido en la variación de parámetros, el cual fue \textbf{0.869}. Esta variación muestra que el algoritmo podrá clasificar de una forma eficaz con un resultado cercano a 0.869, es decir podemos asegurar que al menos de 100 noticias que sean clasificadas por el modelo, el 87\% estará correctamente clasificado (o un porcentaje cercano a este).\\
+
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{|l|c|}
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Métrica}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Resultado}} }
+\\  \cline{1-2}
+	%--------------
+
+\textbf{Accuracy}& .89\\
+\hline
+	\end{tabular}
+\caption{Acurracy de la prueba}
+\label{tab:cp5:accuracy}
+\end{table}
+
 %------------------------------------------------------------------%
 \subsection{Persistencia}
+
+
+Como última etapa de la clasificación, el modelo \textbf{Maquinas de soporte vectorial} debe ser persistido (almacenado) así como las características del corpus. Para esta tarea se ha ocupado el corpus completo de 3500 noticias, del cual se extraen las características, se entrena el modelo y estos conjuntos son almacenados en un archivo ocupando la librería \textbf{pickle}, de esta forma en la siguiente sección el modelo es ocupado como parte de la \textbf{Aplicación web}.
+
+
 
 %\subsection{Tokenizar}
 %\subsection{Lematizar}
