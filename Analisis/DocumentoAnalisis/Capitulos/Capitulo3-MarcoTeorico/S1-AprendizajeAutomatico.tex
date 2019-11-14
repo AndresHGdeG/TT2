@@ -95,7 +95,7 @@ La extracción de información útil con varios tipos de algoritmos estadístico
 El orden de las palabras en un texto brindan un significado semántico el cual no puede ser inferido  solo con la frecuencia de las palabras. Sin embargo, se pueden hacer varias predicciones sin contemplar la semántica. Existen dos tipos de representaciones que son populares:
 
 \begin{itemize}
-	
+	\Tlabel{cp3:bolsap}
 	\item \textbf{Texto como una bolsa de palabras}: Es la representación mas común. No se contempla el orden de las palabras el proceso. El conjunto de palabras en el documento se convierten en \textit{Sparse multidimentional reprentation}, el cual corresponde a la dimensión en esta representación. Se utiliza para la clasificación, sistemas de recomendación.
 
 	\item \textbf{Texto como un conjunto de secuencias}: En esta representación se extraen sentencias, el orden de las palabras si importa. La unidad son sentencia o párrafos. Es utilizado en aplicaciones que necesitan un fuerte uzo de la semántica, esta área se acerca mucho al modelado de lenguaje y procesamiento del lenguaje natural.
@@ -104,7 +104,9 @@ El orden de las palabras en un texto brindan un significado semántico el cual n
 
 
 %----------------------------------Representación del texto--------------------------%
+\Tlabel{cp3:representaciont}
 \subsection[Representación del T]{Representación del texto}
+
 Los métodos de Aprendizaje Automático requieren que la información de la cual aprenderán esté representada en un
 formato que facilite su procesamiento. Generalmente esta representación es mediante vectores de valores numéricos. 
 Cuando se requiere utilizar estos métodos con información en forma de texto, dicha
@@ -169,6 +171,7 @@ Ejemplo  (\ref{tabla:sencilla}): Hoy es un gran día para salir.
 
 %-----------------------------------------Lematización-------------------------------------%
 
+\Tlabel{cp3:lematizacion}
 \subsection{Lematización}
 
 Es el proceso lingüstico que, dada una palabra flexionada se encuentra su
@@ -202,6 +205,7 @@ Las palabras con poca frecuencia son mas discriminatorias que las de alta frecue
 
 %------------------------------------Aprendizaje Supervisado----------------------------------%
 
+\Tlabel{cp3:asupervisado}
 \section[A Supervisado]{Aprendizaje supervisado}
 
 Los algoritmos de aprendizaje supervisado dependen de datos previamente etiquetado, es decir se necesita un corpus de datos, para llevar acabo el entrenamiento, así 
@@ -210,9 +214,16 @@ en función del patron y asociando los patrones a los nuevos datos sin etiquetar
 un nuevo conjunto de datos para que el algoritmo de aprendizaje supervisado analice los datos y produzca un resultado 
 correcto de los datos etiquetados \citep{CT4}.\\
 
+%------------------------------------Aprendizaje Supervisado----------------------------------%
+
+\Tlabel{cp3:multinomial}
+\section[Clasificación]{Clasificación multinomial}
+
+Existen dos tipos de clasificaciones: la clasificación binaria, donde se decide si un objetivo pertenece a una clase o no; y la clasificación multinomial en el cual, se tiene un conjunto de datos etiquetados y estos pertenecen a una de $N$ clases diferentes. El objetivo en esta última es construir un algoritmo donde dado otro dato, este pueda predecir de forma correcta la clase a la cual pertenece el nuevo punto.\\
 
 %------------------------------------Regresión logistica----------------------------------%
 
+\Tlabel{cp3:regresion}
 \subsection{Regresión logística}
 
 La regresión logística es una técnica estadística multivariante que nos permite estimar la relación existente entre una variable dependiente 
@@ -240,8 +251,8 @@ aplicación incluyen modelo logístico, modelo logit, y clasificador de máxima 
 
 %------------------------------------Naive bayes----------------------------------------%
 
+\Tlabel{cp3:naive}
 \subsection{Naive bayes}
-
 
 
 \textbf{Naive Bayes} es un conjunto de algoritmos basados en el \textbf{teorema de Bayes} y el uso de la condición \textbf{Naive}. Generalmente utilizan aprendizaje supervisado sobre el conjunto de entrenamiento  $T$ para poder estimar los parámetros 
@@ -298,6 +309,7 @@ donde:
 Cabe destacar que la complejidad de este algoritmo es $\Theta(mc)$, donde $m$ es el número de características por cada clase $c$.
 %----------------------------Maquina de soporte vectorial-------------------------------------%
 
+\Tlabel{cp3:msv}
 \subsection{Maquina de soporte vectorial}
 
 Las máquinas de soporte vectorial son sistemas de aprendizaje los
@@ -318,6 +330,7 @@ cada clase para, de esta forma, conseguir lo que se denomina un margen máximo a
 Además, a la hora de definir el hiperplano, sólo se consideran los ejemplos de entrenamiento
 de cada clase que caen justo en la frontera de dichos márgenes. 
 
+\Tlabel{cp3:random}
 \subsection{Random forest}
 
 Random forest es una combinación de árboles de decisión, de modo que cada árbol depende de los valores de un vector 
@@ -336,7 +349,7 @@ La clasificación es realizada mediante botos, donde un boto se define como, la 
 
 %------------------------------------
 
-
+\Tlabel{cp3:metricase}
 \section[Métricas de evaluación]{Métricas de evaluación de un modelo de aprendizaje automático}
 
 Una vez generando un modelo de clasificación, es importante medir el desempeño del mismo, con

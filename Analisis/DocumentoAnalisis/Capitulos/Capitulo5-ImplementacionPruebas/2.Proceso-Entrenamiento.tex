@@ -1,12 +1,12 @@
 \section[Entrenamiento]{Entrenamiento de clasificador}
 
-El segundo pilar del trabajo terminal es entrenar un algoritmo (con aprendizaje supervisado), para clasificar las noticias en las secciones definidas en el capitulo 4 (ver). Cabe destacar que el clasificador resolverá un problema multiclase (ver) debido a que la entrada es una artículo y como salida brinda la pertenencia a una sección  de 5 posibilidades. El proceso de entrenamiento se muestra en la Figura \ref{fig:cp5:procesoE}.\\
+El segundo pilar del trabajo terminal es entrenar un algoritmo (de aprendizaje automático), para clasificar las noticias en las secciones \textbf{Ciencia y tecnología}, \textbf{Política}, \textbf{Deportes}, \textbf{Economía} y \textbf{Cultura}. Cabe destacar que el clasificador resolverá un problema multiclase (ver \Tref{cp3:multinomial}{Clasificación multinomial}) debido a que la entrada es una artículo y como salida brinda la pertenencia a una sección  de 5 posibilidades. El proceso de entrenamiento se muestra en la Figura \ref{fig:cp5:procesoE}.\\
 
-Como se mencionó en la etapa de recolección, el corpus ocupado contiene 700 noticias por cada sección es decir, 3500 artículos como total del dataset. Sin embargo solo el 90\% de este será ocupado en la etapa de entrenamiento y el 10\% restante se ocupará para hacer la etapa de prueba, teniendo así un total de 3,150 noticias de entrenamiento y 350 para medir la eficiencia del clasificador, estos conjuntos serán definidos al final de la etapa de preprocesamiento.\\
+Como se mencionó en la etapa de recolección, el corpus utilizado contiene 700 noticias por cada sección es decir, 3,500 artículos en total. Sin embargo solo el 90\% de este será ocupado en la etapa de entrenamiento y el 10\% restante se ocupará para hacer la etapa de prueba, teniendo así un total de 3,150 noticias de entrenamiento y 350 para medir la eficiencia del clasificador, estos conjuntos serán definidos al final de la etapa de preprocesamiento.\\
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.55]{imagenes/capitulo5/Esquema.png}
+\includegraphics[scale=.55]{imagenes/capitulo5/Entrenamiento/Esquema.png}
 \caption{Proceso de entrenamiento}
 \label{fig:cp5:procesoE}
 \end{figure}
@@ -15,13 +15,13 @@ Como se mencionó en la etapa de recolección, el corpus ocupado contiene 700 no
 %------------------------------------------------------------------%
 \subsection{Preprocesamiento}
 
-Como primera instancia, el corpus creado de 3500 noticias debe ser procesado, con el fin de crear vectores que representan el contenido de cada artículo de forma ordenada(ver), de esta manera los algoritmos de clasificación son capaces de entender la información. En cuanto a los datos que son procesados de la noticia cabe mencionar que solo se usa el título y la redacción del artículo, los demás datos(como url, fecha, sección) no son necesarios para el entrenamiento. Este proceso consta de 6 etapas, las cuales son mostradas en la Figura \ref{fig:cp5:preprocesamiento}. \\
+Como primera instancia, el corpus creado de 3,500 noticias debe ser procesado, con el fin de crear vectores que representan el contenido de cada artículo de forma ordenada (ver \Tref{cp3:representaciont}{Representación del texto}), de esta manera los algoritmos de clasificación son capaces de entender la información. En cuanto a los datos que son procesados de la noticia cabe mencionar que solo se usa el título y la redacción del artículo, los demás datos(como url, fecha, sección) no son necesarios para el entrenamiento. Este proceso consta de 6 etapas, las cuales son mostradas en la Figura \ref{fig:cp5:preprocesamiento}. \\
 
 Cabe destacar que estas etapas están desarrolladas en un script escrito en el lenguaje \textbf{python 3}, en cada sección se hará mención de las librerías ocupadas.\\
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.55]{imagenes/capitulo5/preprocesamiento.png}
+\includegraphics[scale=.55]{imagenes/capitulo5/Entrenamiento/preprocesamiento.png}
 \caption{Etapas de preprocesamiento}
 \label{fig:cp5:preprocesamiento}
 \end{figure}
@@ -33,7 +33,7 @@ Cabe destacar que estas etapas están desarrolladas en un script escrito en el l
 
 Esta etapa consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto (ver), símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis} (como \dSmiley \dCooley \dNinja). Por ejemplo el texto \ref{box:cp5:texto} muestra la redacción de una noticia con la información descargada de una pagina web. El resultado de limpiar la noticia se muestra en el texto \ref{box:cp5:limpio}. Se puede observar que se han eliminado los elementos $<p>\ </p>\ <!--\ -->$ \# $\dagger$ \dSmiley \dCooley \dInnocey.\\
 
-Para realizar esta tarea se han ocupando las librerías; \textbf{pandas} (ver) como medio de lectura de archivos tipo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en ingles); \textbf{re} (ver) la cual permite evaluar expresiones regulares con el objetivo de eliminar símbolos; \textbf{demoji} (ver) quien permite eliminar \textit{emojis} dentro del texto.\\
+Para realizar esta tarea se han ocupando las librerías; \textbf{pandas} como medio de lectura de archivos tipo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en ingles); \textbf{re} la cual permite evaluar expresiones regulares con el objetivo de eliminar símbolos; \textbf{demoji} quien permite eliminar \textit{emojis} dentro del texto.\\
 
 \begin{mygraybox}[label={box:cp5:texto}]{Texto de entrada} 
 $<p>\dagger$$\ \ \ $ El número 343 de El Trimestre Económico,$\otimes$ revista emblemática del Fondo de Cultura 
@@ -54,7 +54,7 @@ Económica (FCE), será presentado por David Ibarra Muñoz, Carlos Tello Macías
 \textbf{Filtro de longitud}\\
 \end{large}
 
-Con base en la regla de negocio (ver) se ha definido 180 palabras como longitud mínima de las noticias, incluyendo en la definición de palabra números, signos de puntuación y exclamación.
+Con base en la regla de negocio \RNref{RN1}{Número de palabras} se ha definido 180 palabras como longitud mínima de las noticias, incluyendo en la definición de palabra números, signos de puntuación y exclamación.
 Para esto después de haber concluido el proceso de limpieza se pregunta por la longitud de la cadena (sin contar los espacios) y si esta es mayor o igual a 180, entonces es un artículo válido para utilizar en el entrenamiento de lo contrario no es tomado en cuenta.\\
 
 %----------------------------------%
@@ -62,11 +62,11 @@ Para esto después de haber concluido el proceso de limpieza se pregunta por la 
 \textbf{Tokenizar}\\
 \end{large}
 
-La etapa de tokenización consiste en separar el texto en sus elementos mínimos llamados tokens, donde se separan palabras, signos de puntuación, llaves y números mediante un espacio. Continuando con el ejemplo \ref{box:cp5:limpio} donde el texto se encuentra limpio, se procede a su tokenización. El resultado es mostrado en el Cuadro \ref{box:cp5:tokenizar}. Para remarcar el ejemplo observe la palabra entre paréntesis \textbf{(FCE)} la cual es separada en \textbf{(FCE)} mostrando que ahora cada elemento representa un token individual. Para el desarrollo de esta tarea se ocupo la librería \textbf{RegexpTokenizer}.\\
+La etapa de tokenización consiste en separar el texto en sus elementos mínimos llamados tokens, donde se separan palabras, signos de puntuación, llaves y números mediante un espacio. Continuando con el ejemplo \ref{box:cp5:limpio} donde el texto se encuentra limpio, se procede a su tokenización. El resultado es mostrado en el Cuadro \ref{box:cp5:tokenizar}. Para remarcar el ejemplo observe la palabra entre paréntesis \textbf{(FCE)} la cual es separada en \textbf{( FCE )} mostrando que ahora cada elemento representa un token individual. Para el desarrollo de esta tarea se utilizó la librería \textbf{RegexpTokenizer}.\\
 
 \begin{mygraybox}[label={box:cp5:tokenizar}]{Texto tokenizado} 
 El número 343 de El Trimestre Económico , revista emblemática del Fondo de Cultura 
-Económica (FCE) , será presentado por David Ibarra Muñoz , Carlos Tello Macías , Alicia Puyana y Pablo Ruiz Nápoles el martes 27 de agosto a las 6 de la tarde , en la librería Rosario Castellanos , ubicada en avenida Tamaulipas 202 , en la colonia Condesa de la capital mexicana .
+Económica ( FCE ) , será presentado por David Ibarra Muñoz , Carlos Tello Macías , Alicia Puyana y Pablo Ruiz Nápoles el martes 27 de agosto a las 6 de la tarde , en la librería Rosario Castellanos , ubicada en avenida Tamaulipas 202 , en la colonia Condesa de la capital mexicana .
 \end{mygraybox}
 \ \\
 %----------------------------------%
@@ -74,12 +74,12 @@ Económica (FCE) , será presentado por David Ibarra Muñoz , Carlos Tello Mací
 \textbf{Lematizar}\\
 \end{large}
 
-Lematizar es el proceso de reducir cada palabra a su lemma, con el fin de eliminar ruido en el texto, por ejemplo las palabras correrás, corriendo, corrí, tienen como lema el verbo correr, el plural niños tiene como lema niño (ver). Para realizar esta tarea se ha usado \textbf{spacy} (ver) el cual es una librería de código abierto, con el diccionario \textit{es\_core\_news\_sm} quien permite analizar el léxico del lenguaje español.\\
+Lematizar es el proceso de reducir cada palabra a su lema, con el fin de disminuir la dispersión en el texto, por ejemplo las palabras correrás, corriendo, corrí, tienen como lema el verbo correr, el plural niños tiene como lema niño (ver \Tref{cp3:lematizacion}{Lematización}). Para realizar esta tarea se ha usado \textbf{spacy} el cual es una librería de código abierto, con el diccionario \textit{es\_core\_news\_sm} quien permite analizar el léxico del lenguaje español.\\
 
 Siguiendo con las etapas del proceso se toma el texto \ref{box:cp5:tokenizar} como entrada al programa y este da como salida el texto que se muestra en el Cuadro \ref{box:cp5:lematizado}.\\
 
 \begin{mygraybox}[label={box:cp5:lematizado}]{Texto lematizado} 
-el número 343 de el trimestre económico , revista emblemático del fondo de cultura económica (fce) , ser presentar por david ibarra muñoz , carlos tello macías , alicia puyana y pablo ruiz nápoles el martes 27 de agostar a los 6 de lo tardar , en lo librería rosario castellanos , ubicar en avenir tamaulipas 202 , en lo colonia condesa de lo capital mexicano .
+el número 343 de el trimestre económico , revista emblemático del fondo de cultura económica ( fce ) , ser presentar por david ibarra muñoz , carlos tello macías , alicia puyana y pablo ruiz nápoles el martes 27 de agostar a los 6 de lo tardar , en lo librería rosario castellanos , ubicar en avenir tamaulipas 202 , en lo colonia condesa de lo capital mexicano .
 \end{mygraybox}
 \ \\
 
@@ -106,7 +106,7 @@ donde \textbf{Identificador de sitio web} define un número único para hacer re
 		\textbf{200} & Tv azteca\\
 		\hline
 
-		\textbf{300} & El Economista\\
+		\textbf{300} & El economista\\
 		\hline
 
 		\textbf{400} & La jornada\\	
@@ -127,10 +127,10 @@ donde \textbf{Identificador de sitio web} define un número único para hacer re
 \end{table}
 
 
-Como segundo paso las noticias son almacenadas en un archivo con extensión \textbf{TXT}, los elementos por almacenar son \textbf{id}, \textbf{titulo}, \textbf{noticia} y \textbf{sección}, los cuales son separados por los caracteres \&\&\&\&\& . El Cuadro \ref{box:cp5:archivo} muestra un ejemplo de la estructura del archivo.\\
+Como segundo paso las noticias son almacenadas en un archivo con extensión \textbf{TXT}, los elementos por almacenar son \textbf{id}, \textbf{titulo}, \textbf{noticia} y \textbf{sección}, los cuales son separados por los caracteres \&\&\&\&\&. El Cuadro \ref{box:cp5:archivo} muestra un ejemplo de la estructura del archivo.\\
 
 \begin{mygraybox}[label={box:cp5:archivo}]{Estructura de archivo} 
-id\&\&\&\&\&titulo\&\&\&\&\&noticia\&\&\&\&\&seccion\\
+\textbf{id}\&\&\&\&\&\textbf{titulo}\&\&\&\&\&\textbf{noticia}\&\&\&\&\&\textbf{seccion}\\
 1001\&\&\&\&\&Titulo 1\&\&\&\&\&Contenido noticia 1\&\&\&\&\&0\\
 ...\\
 5003500\&\&\&\&\&Titulo 3500\&\&\&\&\&Contenido noticia 3500\&\&\&\&\&4
@@ -145,9 +145,9 @@ id\&\&\&\&\&titulo\&\&\&\&\&noticia\&\&\&\&\&seccion\\
 \end{large}
 
 
-Para el correcto diseño y evaluación del algoritmos se requiere dividir el corpus en dos conjuntos: \textbf{entrenamiento} y \textbf{prueba}, con un 90\% y 10\% del total del \textit{dataset} respectivamente. En cada grupo deben estar repartidas noticias de las 5 secciones definidas, sin embargo los artículos almacenados están ordenados de forma descendente como: \textbf{Deportes}, \textbf{Economía}, \textbf{Política}, \textbf{Cultura}, \textbf{Ciencia y tecnología}, para seleccionar deforma distribuida los datos se ha ocupado una técnica llamada \textit{Shuffle}.\\
+Para el correcto diseño y evaluación del algoritmo clasificador se requiere dividir el corpus en dos conjuntos: \textbf{entrenamiento} y \textbf{prueba}, con un 90\% y 10\% del total del corpus respectivamente. En cada grupo deben estar repartidas noticias de las 5 secciones definidas, sin embargo los artículos almacenados están ordenados de forma descendente como: \textbf{Deportes}, \textbf{Economía}, \textbf{Política}, \textbf{Cultura}, \textbf{Ciencia y tecnología}, para seleccionar deforma distribuida los datos se ha utilizado una técnica llamada \textit{Shuffle}.\\
 
-\textit{Shuffle} consiste en brindar un arreglo con los identificadores de las noticias y un número (nombrado usualmente como semilla), quien generar un nuevo orden en los identificadores de acuerdo a los números pseudo aleatorios que retorna esta función, tomando este como el nueva orden de los textos en el archivo de almacenamiento. Para el desarrollo de esta etapa se ha utilizado la librería \textbf{Shuffle} (ver) con una semilla de 5.\\
+\textit{Shuffle} consiste en brindar un arreglo con los identificadores de las noticias y un número (nombrado usualmente como semilla), quien generar un nuevo orden en los identificadores de acuerdo a los números pseudo aleatorios que retorna esta función, tomando este como el nueva orden de los textos en el archivo de almacenamiento. Para el desarrollo de esta etapa se ha utilizado la librería \textbf{Shuffle} con una semilla de 5.\\
 
 Para ilustrar un ejemplo, en el cuadro \ref{box:cp5:ids} se muestra un conjunto de identificadores ordenados por el último número del $id$, al utilizar la función \textit{Shuffle} con una semilla de 2, se genera un nuevo orden el cual es mostrado en el Cuadro \ref{box:cp5:shuffle}.\\
 
@@ -172,29 +172,29 @@ Para ilustrar un ejemplo, en el cuadro \ref{box:cp5:ids} se muestra un conjunto 
 \end{mygraybox}
 \ \\
 
-La distribución generada por esta función es almacenada en un archivo, y como último paso se han tomado las primeras 350 noticias de forma manual y se han colocado en un archivo diferente, definido así las noticias de entrenamiento (con 3150) y de prueba (con 350).\\
+La distribución generada por esta función es almacenada en un archivo, y como último paso se han tomado las primeras 350 noticias de forma manual y se han colocado en un archivo diferente, definido así las noticias de entrenamiento (con 3,150) y de prueba (con 350).\\
 
-La cantidad de noticias por sección del conjunto de entrenamiento se muestran en la Figura \ref{fig:cp5:seccionE} y del conjunto de prueba en la Figura \ref{fig:cp5:sitiosP}.
+La cantidad de noticias por sección del conjunto de entrenamiento se muestran en la Figura \ref{fig:cp5:seccionE} y del conjunto de prueba en la Figura \ref{fig:cp5:seccionP}.
 
 
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.55]{imagenes/capitulo5/SeccionesE.png}
+\includegraphics[scale=.6]{imagenes/capitulo5/Entrenamiento/SeccionesE.png}
 \caption{Corpus de entrenamiento}
 \label{fig:cp5:seccionE}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.55]{imagenes/capitulo5/SeccionesP.png}
+\includegraphics[scale=.6]{imagenes/capitulo5/Entrenamiento/SeccionesP.png}
 \caption{Corpus de prueba}
 \label{fig:cp5:seccionP}
 \end{figure}
 
 %\begin{figure}[h]
 %\centering
-%\includegraphics[scale=.6]{imagenes/capitulo5/SitiosE.png}
+%\includegraphics[scale=.6]{imagenes/capitulo5/Entrenamiento/SitiosE.png}
 %\caption{Número de noticias pertenecientes a los sitios web}
 %\label{fig:cp5:sitiosE}
 %\end{figure}
@@ -204,36 +204,38 @@ La cantidad de noticias por sección del conjunto de entrenamiento se muestran e
 %------------------------------------------------------------------%
 \subsection{Entrenamiento}
 
-Para crear un modelo clasificador (el cual resuelve un problema multinomial ver) usando aprendizaje supervisado (ver), se debe construir dos conjuntos etiquetados: entrenamiento para el proceso de aprendizaje y otro de prueba, para medir su precisión. En la sección anterior estos grupos se han formado con noticias de 5 secciones: \textbf{Deportes}, \textbf{Economía}, \textbf{Política}, \textbf{Cultura}, \textbf{Ciencia y tecnología}. Ambos dataset serán usados en 4 algoritmos (seleccionados con base en el estado del arte ver), los cuales son:
+Para crear un modelo clasificador usando aprendizaje supervisado (ver \Tref{cp3:asupervisado}{Aprendizaje supervisado}), se debe construir dos conjuntos etiquetados: entrenamiento para el proceso de aprendizaje y otro de prueba, para medir su precisión. En la sección anterior estos grupos se han formado con noticias de 5 secciones: \textbf{Deportes}, \textbf{Economía}, \textbf{Política}, \textbf{Cultura}, \textbf{Ciencia y tecnología}. Ambos conjuntos de datos serán usados por 4 algoritmos (seleccionados con base en el estado del arte ver \Tref{cp2:estadodelarte}{Estado del arte}), los cuales son:
 
 \begin{itemize}
-	\item \textbf{Naive Bayes} (ver)
-	\item \textbf{Regresión logística} (ver)
-	\item \textbf{Maquina de soporte vectorial} (ver)
-	\item \textbf{Random Forest} (ver)
+	\item \textbf{Naive Bayes} (ver \Tref{cp3:naive}{Naive Bayes})
+	\item \textbf{Regresión logística} (ver \Tref{cp3:regresion}{Regresión logística})
+	\item \textbf{Maquina de soporte vectorial} (ver \Tref{cp3:msv}{MSV})
+	\item \textbf{Random Forest} (ver \Tref{cp3:random}{Random Forest})
 \end{itemize}
 
 El proceso de entrenamiento consta de 5 pasos los cuales se muestran en la Figura \ref{fig:cp5:entrenamiento}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.5]{imagenes/capitulo5/Entrenamiento.png}
+\includegraphics[scale=.5]{imagenes/capitulo5/Entrenamiento/Entrenamiento.png}
 \caption{Etapas de entrenamiento}
 \label{fig:cp5:entrenamiento}
 \end{figure}
 
-El desarrollo se ha implementado en el lenguaje de programación \textbf{Python 3}, ocupando la librería \textbf{scikit learn} quien permite crear instancias de los algoritmos mencionados. Cabe señalar que el objetivo de este trabajo terminal es el entrenamiento de los clasificadores y no su desarrollo.
+El desarrollo se ha implementado en el lenguaje de programación \textbf{Python 3}, utilizando la librería \textbf{scikit learn} quien permite crear instancias de los algoritmos mencionados.\\
 
-Como primer paso del entrenamiento, el corpus debe ser traducido del lenguaje español a un conjunto de vectores numéricos que representan la información de las noticias, esta es llamada representación vectorial (ver). Para lograr este objetivo, del \textit{dataset} se deben seleccionar características que definan los elementos del vector numérico.\\
+Como primer paso del entrenamiento, el corpus debe ser representado mediante conjuntos de vectores numéricos, esta es llamada representación vectorial (ver \Tref{cp3:representaciont}{Representación del texto}). Para lograr este objetivo, del corpus se deben seleccionar características que definan los elementos del vector numérico.\\
 
 %----------------------------------%
 \begin{large}
-\textbf{Selección de características}\\
+\textbf{Extracción de características}\\
 \end{large}
 
-Cada clase de noticias contiene un conjunto de palabras que son comunes en su ámbito, al analizar el léxico usado se observa los tecnicismos usados, por ejemplo ; en la sección deportes se ocupa, fútbol, jugador, ganador ; en política, presidente, corrupción, PRI ; en ciencia y tecnología, investigación, descubrimiento, publicación y así sucesivamente, por lo tanto estos vocablos pueden ser definidos como características que identifican a una sección. En este sentido la selección de características es el proceso de tomar el corpus de noticias e identificar las palabras mas comunes en los artículos.\\ 
+La extracción de características cuenta con dos tareas importantes: extraer el vocabulario y crear un vector de características.\\
 
-Para ejemplificar esta tarea observe el Cuadro \ref{box:cp5:corpus} el cual es un corpus de 4 oraciones. Una vez realizado el proceso de extracción de características se obtiene las palabras relevantes las cuales son mostradas en el Cuadro \ref{box:cp5:caracteristicas}.\\
+Cada clase de noticias contiene un conjunto de palabras que son comunes en su ámbito, al analizar el léxico usado se observa los tecnicismos usados, por ejemplo ; en la sección deportes se ocupa, fútbol, jugador, ganador ; en política, presidente, corrupción, PRI ; en ciencia y tecnología, investigación, descubrimiento, publicación y así sucesivamente, por lo tanto estos vocablos pueden ser definidos como características que identifican a una sección. En este sentido la extracción de características es el proceso de tomar las palabras de las noticias par formar un vocabulario.\\
+
+Para ejemplificar esta tarea observe el Cuadro \ref{box:cp5:corpus} el cual es un corpus de 4 oraciones. Una vez realizado el proceso de extracción de características se obtiene el vocabulario el cual el mostrado en el Cuadro \ref{box:cp5:caracteristicas}.\\
 
 \begin{mygraybox}[label={box:cp5:corpus}]{Corpus} 
 \begin{equation*}
@@ -249,7 +251,7 @@ Es&este&la&primera&noticia&?
 \begin{mygraybox}[label={box:cp5:caracteristicas}]{Selección de características} 
 \begin{equation*}
 \begin{bmatrix}
-es & esta & este & la & noticia & primera & segunda & tercera
+es & esta & este & la & noticia & primera & segunda & tercera & Y
 \end{bmatrix}
 \end{equation*}
 \end{mygraybox}
@@ -258,11 +260,9 @@ es & esta & este & la & noticia & primera & segunda & tercera
 
 \ \\
 
-\begin{large}
-\textbf{Extracción de características}\\
-\end{large}
 
-Después de seleccionar las características, se crea un espacio vectorial por cada noticia donde cada elemento del vector representa la presencia o ausencia de una característica (palabra). Cabe mencionar que las características son extraídas de 2 formas, binario(donde 1 representa la presencia de la característica y 0 la ausencia) y por frecuencia (donde se cuenta el número de veces que cada característica aparece). Continuando con el ejemplo del Cuadro \ref{box:cp5:corpus} se extraen las características por frecuencia y el resultado se muestra en el Cuadro \ref{box:cp5:frecuencia}, mientras que el Cuadro \ref{box:cp5:binario} muestra las características extraídas de forma binaria.\\
+
+Después de extraer el  vocabulario, se crea un espacio vectorial por cada noticia donde cada elemento del vector representa la presencia o ausencia de una característica (palabra). Cabe mencionar que las características son extraídas de 2 formas, binario(donde 1 representa la presencia de la característica y 0 la ausencia) y por frecuencia (donde se cuenta el número de veces que cada característica aparece). Continuando con el ejemplo del Cuadro \ref{box:cp5:corpus} se extraen las características por frecuencia y el resultado se muestra en el Cuadro \ref{box:cp5:frecuencia}, mientras que el Cuadro \ref{box:cp5:binario} muestra las características extraídas de forma binaria.\\
 
 Para el desarrollo de esta etapa se ha implementado la librería \textbf{CountVectorizer} quien permite generar la selección y extracción de características, ademas esta es la presentación vectorial (de cada noticia) que los algoritmos de clasificación pueden entender y por ende ser entrenados. Cabe destacar que la extracción de características ocupada en este trabajo ha sido de forma binaria,.\\
 
@@ -298,9 +298,9 @@ Para el desarrollo de esta etapa se ha implementado la librería \textbf{CountVe
 \end{large}
 
 
-El corpus contiene noticias de varias fuentes, en  las cuales la redacción, coherencia, semántica varía, incluso en la edición de una misma noticia, por lo tanto en el entrenamiento se busca generalizar la clasificación de los artículos, analizando el texto como un conjunto de palabras, sin tomar en cuenta la semántica, esta técnica es llamada bolsa de palabras (ver).\\
+El corpus contiene noticias de varias fuentes, en  las cuales la redacción, coherencia, semántica varía, incluso en la edición de una misma noticia, por lo tanto en el entrenamiento se busca generalizar la clasificación de los artículos, analizando el texto como un conjunto de palabras, sin tomar en cuenta la semántica, esta técnica es llamada bolsa de palabras (ver \Tref{cp3:bolsap}{Bolsa de palabras}).\\
 
-En este punto del trabajo las noticias están representadas en un espacio vectorial, y serán usadas en el proceso de entrenamiento de los algoritmos: \textbf{Naive Bayes}, \textbf{Regresión logística}, \textbf{Maquina de soporte vectorial}, \textbf{Random Forest}. Cada clasificador reciben como entrada un conjunto de vectores etiquetados y como salida se genera un modelo el cual predice la sección de nuevos textos.\\ 
+En este punto del trabajo las noticias están representadas en un espacio vectorial, y serán usadas en el proceso de entrenamiento de los algoritmos: \textbf{Naive Bayes}, \textbf{Regresión logística}, \textbf{Maquina de soporte vectorial}, \textbf{Random Forest}. Cada clasificador recibe como entrada un conjunto de vectores etiquetados y como salida se genera un modelo el cual predice la sección de nuevos textos.\\ 
 
 Para este trabajo se han definido las etiquetas como se muestra en la Tabla \ref{tab:cp5:etiquetas}, esta correspondencia es de secciones de noticias a un un número único.
 
@@ -335,7 +335,7 @@ Para este trabajo se han definido las etiquetas como se muestra en la Tabla \ref
 \end{table}
 
 
-El desarrollo ha ocupado una instancia de cada algoritmo, para esto se incluye la librería correspondiente de \textbf{sciktlearn}, las cuales se muestran en la Tabla \ref{tab:cp5:librerias}, la entrada al clasificador es el conjunto de espacio vectorial y las etiquetas correspondientes, esto regresa como resultado un modelo que es capas de predecir la sección de noticias, sin que estas estén etiquetadas.
+El desarrollo ha ocupado una instancia de cada algoritmo, para esto se incluye la biblioteca correspondiente de \textbf{sciktlearn}, las cuales se muestran en la Tabla \ref{tab:cp5:librerias}, la entrada al clasificador es el conjunto de espacio vectorial y las etiquetas correspondientes, esto regresa como resultado un modelo que es capaz de predecir la sección de noticias, sin que estas estén etiquetadas.
 
 \begin{table}[h]
 \centering
@@ -375,12 +375,12 @@ El desarrollo ha ocupado una instancia de cada algoritmo, para esto se incluye l
 
 En el proceso de entrenamiento, los clasificadores reciben un conjunto noticias para ser entrenados y otro para realizar pruebas, sin embargo la selección de los artículos puede ser manipulada para obtener un resultado a conveniencia, siendo esto una mala práctica, por esta razón y en con el objetivo de obtener resultados mas robustos se ha implementado un técnica llamada Validación cruzada.\\
 
-Este método consiste en tres pasos: el primero es dividir el corpus en entrenamiento y prueba (este conjunto es llamado pliegue); después se calcula la precisión de la prueba y es almacenado; como último etapa los dos primeros paso son repetidos $n$ veces y para terminar  se calcula el promedio de la precisión. En términos generales este promedio nos brinda mayor confianza en el resultado del entrenamiento de cada clasificador (para ver una explicación mas detallada ver).\\
+Este método consiste en tres pasos: el primero es dividir el corpus en entrenamiento y prueba (este conjunto es llamado pliegue); después se calcula la exactitud de la prueba y es almacenado; como último etapa los dos primeros paso son repetidos $n$ veces y para terminar  se calcula el promedio de la exactitud. En términos generales este promedio nos brinda mayor confianza en el resultado del entrenamiento de cada clasificador (para una explicación mas detallada ver).\\
 
 %----------------------------------%
 
 \begin{large}
-\textbf{Variación de parámetros}\\
+\textbf{Ajuste de parámetros}\\
 \end{large}
 
 Como se ha visto, los resultados de la clasificación son medidos por la cantidad de noticias correctas clasificadas, no obstante estos resultados pueden incrementar o decrementar con base a los parámetros ingresados a cada algoritmo.\\
@@ -389,7 +389,7 @@ Esta etapa consiste en observar el mejor resultado en la clasificación con los 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.5]{imagenes/capitulo5/gridbayes.png}
+\includegraphics[scale=.5]{imagenes/capitulo5/Entrenamiento/gridbayes.png}
 \caption{Corpus de entrenamiento}
 \label{fig:cp5:gridbayes}
 \end{figure}
@@ -404,13 +404,8 @@ A continuación se explican los parámetros de cada clasificador: \\
 \textbf{Naive Bayes}\\
 %\end{Text}
  
-El parámetro en el cual se varía en este algoritmo, es un escalar llamado \textbf{Alpha} ($\alpha$). Como se explico en el capitulo 3 (ver), un valor numérico es asignado a cada palabra en el corpus con respecto a la frecuencia de aparición en un clase (como se muestra en la ecuación \ref{eq:cp5:naiveBayes}). El valor $\alpha$ evita que dicha ecuación se haga cero, en el caso de la ausencia de una palabra en una clase $c$ (es decir $N_{ck}=0$). \textbf{Alpha} es variado en los valores [$0.5, 1.0, 1.5, 2$].
+El parámetro en el cual se varía en este algoritmo, es un escalar llamado \textbf{Alpha} ($\alpha$). Este es un valor numérico es asignado a cada palabra en el corpus con respecto a la frecuencia de aparición en un clase. El valor $\alpha$ evita que la importancia de una palabra se haga cero, \textbf{Alpha} es variado en los valores [$0.5, 1.0, 1.5, 2$].
 
-
-\begin{equation}
-P(t_k|c)=\frac{N_{ck}+\alpha}{N_c+\alpha n}
-\label{eq:cp5:naiveBayes}
-\end{equation}
 
 %----------------%
 %\begin{Text}
@@ -418,21 +413,12 @@ P(t_k|c)=\frac{N_{ck}+\alpha}{N_c+\alpha n}
 %\end{Text}
 
 %Referencia: https://www.kaggle.com/joparga3/2-tuning-parameters-for-logistic-regression
- Este algoritmo está basado en una regresión lineal y el calculo de probabilidades como se explica en el capitulo 3(ver). Existen varias formas de implementar este algoritmo, en este trabajo se ha implementado de dos formas: optimizando la función $l_1$ (ver \ref{eq:cp5:l1}) y minimizando el costo de la función $l2$ (ver \ref{eq:cp5:l2}). Como se observa ambas ecuaciones contiene el escalar $C$, para valores pequeños de este número los valores de los pesos $w$ (la importancia de cada palabra) se decrementa, teniendo así un modelo muy simple (se pierde información), de lo contrario para valores grandes de $C$ la complejidad del modelo aumenta pero se incrementa el ruido.\\
-
-\begin{equation}
-\underset{w,c}{min}{\left|w\right|}_1+C\sum_{i=1}^{n}log(exp(-y_i(X_{i}^{T} w+c ))+1)
-\label{eq:cp5:l1}
-\end{equation}
-
-
-\begin{equation}
-\underset{w,c}{min}{\left|w\right|}_1+C\sum_{i=1}^{n}log(exp(-y_i(X_{i}^{T} w+c ))+1)
-\label{eq:cp5:l2}
-\end{equation}
-
+ Este algoritmo está basado en una regresión lineal y el calculo de probabilidades como se explica en el capitulo 3 (ver \Tref{cp3:regresion}{Regresión logística}). Existen 2  parámetros importantes en este clasificador, optimizando la función $l_1$  y minimizando el costo de la función $l_2$, en el cual existe un escalar $C$, donde: para valores pequeños de este número, los valores de los pesos $w$ (la importancia de cada palabra) se decrementa, teniendo así un modelo muy simple (se pierde información), de lo contrario para valores grandes de $C$ la complejidad del modelo aumenta pero se incrementa el ruido.\\
 
 Los parámetros de este algoritmo son: $l_1$ y $l_2$ que es la forma de entrenar el algoritmo; $C$ que es el equilibrio entre la simplicidad del algoritmo y la tolerancia de ruido, el cual toma los valores :$[1e-6, 1e-05, 1e-04, 1e-03, 1e-02, 1e-01]$.\\
+
+
+
 
 
 %----------------%
@@ -440,7 +426,7 @@ Los parámetros de este algoritmo son: $l_1$ y $l_2$ que es la forma de entrenar
 \textbf{Ramdom forest}\\
 %\end{Text}
 
-Este algoritmo está basado en la construcción de conjuntos de arboles de decisión como se explica en el capitulo 3 (ver), donde se tienen que controlar la cantidad de árboles a crear y la profundidad. Cabe señalar que a mas profundidad las características son separadas con mas homogénidad, sin embargo este es un problema, si el árbol creado es completamente homogéneo sufrirá de sobre entrenamiento, hará un buen trabajo clasificando el conjunto de entrenamiento pero lo hará mal con el conjunto de prueba.\\
+Este algoritmo está basado en la construcción de conjuntos de arboles de decisión como se explica en el capitulo 3 (ver \Tref{cp3:random}{Random Forest}), donde se tienen que controlar la cantidad de árboles a crear y la profundidad. Cabe señalar que a mas profundidad las características son separadas con mas homogénidad, sin embargo este es un problema, si el árbol creado es completamente homogéneo sufrirá de sobre entrenamiento, es decir hará un buen trabajo clasificando el conjunto de entrenamiento pero lo hará mal con el conjunto de prueba.\\
 
 Los parámetros ocupados en ese algoritmo son; \textbf{n\_estimators} es la cantidad de árboles creados, el cual esta en el rango de : $[50, 100, 500, 1000]$; \textbf{max\_depth} es la profundidad del árbol y ha sido establecida en los rangos: $[50, 100, 500, 1000]$.\\
 
@@ -449,7 +435,7 @@ Los parámetros ocupados en ese algoritmo son; \textbf{n\_estimators} es la cant
 \textbf{Maquina de soporte vectorial}\\
 %\end{Text}
 
-Este algoritmo está basado en clasificar los datos con un margen que equidiste de los tipos de clases (secciones), sin embargo en el caso de que los datos no son separables en la dimensión inicial, se busca encontrar la solución con hiperplanos en dimensiones superiores (ver).\\
+Este algoritmo está basado en clasificar los datos con un margen que equidiste de los tipos de clases (secciones), sin embargo en el caso de que los datos no son separables en la dimensión inicial, se busca encontrar la solución con hiperplanos en dimensiones superiores (ver \Tref{cp3:msv}{MSV}).\\
 
 Para dividir los datos de forma correcta se busca usar funciones de división la cual es denominada el kernel de la función. En este trabajo se han implementado 3 tipos de kernel: 
 
@@ -463,14 +449,7 @@ Para dividir los datos de forma correcta se busca usar funciones de división la
 
 \end{itemize}
 
-En general este algoritmo trata de resolver el problema 
-
-\begin{equation}
-\underset{w,c,\zeta}{\ min}{\frac{1}{2}w^T  w}m+C\sum_{i=1}^{n}\zeta_i
-\label{eq:cp5:msvm}
-\end{equation}
-
-Los parámetros de este clasificador es el tipo de kernel ocupado, para el kernel \textbf{polinomial} y \textbf{Radial} se ocupa el parámetro $\gamma$ con los valores: $[1e-4, 1e-5, 1e-6]$. Ademas como se explico en \textbf{regresión logística} se varia el escalar $C$, el cual ajusta la variación y el bías de los datos, a mayor bías se sobre entrena el modelo, es decir que el modelo se ajusta demasiado a los datos de entrenamiento y al brindar el conjunto de entrenamiento la clasificación es deficiente; a mayor varíansa 
+Los parámetros de este clasificador son definidos por el kernel utilizado, para el kernel \textbf{polinomial} y \textbf{Radial} se ocupa el parámetro $\gamma$ con los valores: $[1e-4, 1e-5, 1e-6]$. Ademas como se explico en \textbf{regresión logística} se varia el escalar $C$, el cual ajusta la variación y el bías de los datos, a mayor bías se sobre entrena el modelo, es decir que el modelo se ajusta demasiado a los datos de entrenamiento y al brindar el conjunto de entrenamiento la clasificación es deficiente; a mayor varianza los datos de entrenamiento se ajustan menos. Es decir se tiene que encontrar un equilibrio en estos datos.\\
 
 
 
@@ -478,13 +457,13 @@ Los parámetros de este clasificador es el tipo de kernel ocupado, para el kerne
 \centering
 	\begin{subfigure}{.5\textwidth}
 	\centering
-	\includegraphics[scale=0.7]{imagenes/capitulo5/klineal.png}
+	\includegraphics[scale=0.7]{imagenes/capitulo5/Entrenamiento/klineal.png}
 	\caption{Kernel lineal}
 	\label{fig:cp5:klineal}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 	\centering
-	\includegraphics[scale=0.7]{imagenes/capitulo5/kpoli.png}
+	\includegraphics[scale=0.7]{imagenes/capitulo5/Entrenamiento/kpoli.png}
 	\caption{Kernel polinomial}
 	\label{fig:cp5:kpoli}
 	\end{subfigure}%
@@ -492,13 +471,13 @@ Los parámetros de este clasificador es el tipo de kernel ocupado, para el kerne
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.7]{imagenes/capitulo5/krbf.png}
+\includegraphics[scale=0.7]{imagenes/capitulo5/Entrenamiento/krbf.png}
 \caption{Kernel radial}
 \label{fig:cp5:krbf}
 \end{figure}
 
 
-Las pruebas de este trabajo terminal han implementado 5 pliegues en la validación cruzada y se ha usado el corpus con 3150 noticias. Los resultados son visualizados en las siguientes tablas, donde la primera columna \textbf{Parámetros} contiene los parámetros variados de cada prueba, las columnas siguientes \textbf{P1}, \textbf{P2}, \textbf{P3}, \textbf{P4} y \textbf{P5} muestran el \textbf{accuracy} obtenido en cada pliegue, la columna \textbf{Promedio} muestra la suma de los \textbf{accuracy} obtenidos divido entre 5 (número de pliegues) y la última columna \textbf{Rank} muestra un número entero el cual indica el \textit{Ranking} de cada prueba, es decir la prueba con rank 1 es el mejor resultado, la prueba con rank 2 es el segundo mejor y así sucesivamente.\\
+Ahora se han explicado todos los parámetros de los algoritmos. Para las pruebas de este trabajo terminal han implementado 5 pliegues en la validación cruzada y se ha usado el corpus con 3150 noticias. Los resultados son visualizados en las siguientes tablas, donde la primera columna \textbf{Parámetros} contiene los parámetros variados de cada prueba, las columnas siguientes \textbf{P1}, \textbf{P2}, \textbf{P3}, \textbf{P4} y \textbf{P5} muestran el \textbf{exactitud} obtenido en cada pliegue, la columna \textbf{Promedio} muestra la suma de los \textbf{exactitud} obtenidos divido entre 5 (número de pliegues) y la última columna \textbf{Rank} muestra un número entero el cual indica el \textit{Ranking} de cada prueba, es decir la prueba con rank 1 es el mejor resultado, la prueba con rank 2 es el segundo mejor y así sucesivamente.\\
 
 \begin{table}[H]
 \centering
@@ -737,7 +716,7 @@ C: 1000, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10
 \subsection{Selección}
 
 
-Los resultados de la sección anterior ha mostrado que no existe una brecha muy grande en el \textbf{accuracy} obtenido de los mejores parámetros, como se muestra en la siguiente Tabla (\ref{tab:cp5:resultados}).
+Los resultados de la sección anterior ha mostrado que no existe una brecha muy grande en el \textbf{exactitud} obtenido de los mejores parámetros, como se muestra en la siguiente Tabla (\ref{tab:cp5:resultados}).
 
 \begin{table}[H]
 \centering
@@ -764,7 +743,7 @@ Naive Bayes&0.8511&4\\
 \end{table}
 
 
-El mejor resultado se ha conseguido con el algoritmo \textbf{Maquinas de soporte vectorial} con los parámetros ;$C$=100, $gamma= 0.0001$ y $kernel$= $rbf$ (radial) obteniendo .8619 de \textbf{accuracy}, por esta razón se ha elegido como el clasificador final de este trabajo terminal.
+El mejor resultado se ha conseguido con el algoritmo \textbf{Maquinas de soporte vectorial} con los parámetros ;$C$=100, $gamma= 0.0001$ y $kernel$= $rbf$ (radial) obteniendo .8619 de \textbf{exactitud}, por esta razón se ha elegido como el clasificador final de este trabajo terminal.
 
 %------------------------------------------------------------------%
 \subsection{Pruebas}
@@ -831,7 +810,7 @@ Ciencia y T& 1 & 5 & 3 & 2 & 67\\
 \end{table}
 
 
-Con base en la matriz de confusión se ha calculado \textbf{Recall}, \textbf{Fmeasure}, \textbf{Precision} (estos conceptos están explicados en el capitulo 3, ver ). Las métricas son obtenidas por cada sección, como se muestra en la tabla \ref{tab:cp5:metricas}.
+Con base en la matriz de confusión se ha calculado \textbf{Recall}, \textbf{Fmeasure}, \textbf{Precision} (estos conceptos están explicados en el capitulo 3, ver \Tref{cp3:metricase}{Métricas de evaluación}). Las métricas son obtenidas por cada sección, como se muestra en la tabla \ref{tab:cp5:metricas}.
 
 \begin{table}[H]
 \centering
@@ -863,7 +842,7 @@ Ciencia y Tecnología & 0.92 & 0.86 & 0.89\\
 
 Como se puede observar en la tabla \ref{tab:cp5:metricas} las sección con mejor \textbf{Fmeasure} (este valor sostiene una relación entre \textbf{Precision} y \textbf{Rcall}) es \textbf{Deportes} obteniendo 0.94 en la clasificación. Este resultado se puede explicar con base en el vocabulario manejado en la categoría, ya que es muy específico, por ejemplo se usan palabras como: gol, jugador, resultado, anotación. Por lo contrario el \textbf{Fmeasure} mas bajo lo obtuvo \textbf{Economía} con 0.84 (el cual no es un mal resultado), las palabras manejadas por esta sección pueden ser encontradas en otras categorías, generando así confusión en la clasificación.\\
 
-El \textbf{accuracy} obtenido (incluyen todas las secciones) se muestra en la tabla \ref{tab:cp5:accuracy}. En términos generales este resultado ha sido superior que el obtenido en la variación de parámetros, el cual fue \textbf{0.869}. Esta variación muestra que el algoritmo podrá clasificar de una forma eficaz con un resultado cercano a 0.869, es decir podemos asegurar que al menos de 100 noticias que sean clasificadas por el modelo, el 87\% estará correctamente clasificado (o un porcentaje cercano a este).\\
+El \textbf{exactitud} obtenido (incluyen todas las secciones) se muestra en la tabla \ref{tab:cp5:exactitud}. En términos generales este resultado ha sido superior que el obtenido en el ajuste de parámetros, el cual fue \textbf{0.869}. Esta variación muestra que el algoritmo podrá clasificar de una forma eficaz con un resultado cercano a 0.869, es decir podemos asegurar que al menos de 100 noticias que sean clasificadas por el modelo, el 87\% estará correctamente clasificado (o un porcentaje cercano a este).\\
 
 
 \begin{table}[H]
@@ -876,18 +855,18 @@ El \textbf{accuracy} obtenido (incluyen todas las secciones) se muestra en la ta
 \\  \cline{1-2}
 	%--------------
 
-\textbf{Accuracy}& .89\\
+\textbf{Exactitud}& .89\\
 \hline
 	\end{tabular}
 \caption{Acurracy de la prueba}
-\label{tab:cp5:accuracy}
+\label{tab:cp5:exactitud}
 \end{table}
 
 %------------------------------------------------------------------%
 \subsection{Persistencia}
 
 
-Como última etapa de la clasificación, el modelo \textbf{Maquinas de soporte vectorial} debe ser persistido (almacenado) así como las características del corpus. Para esta tarea se ha ocupado el corpus completo de 3500 noticias, del cual se extraen las características, se entrena el modelo y estos conjuntos son almacenados en un archivo ocupando la librería \textbf{pickle}, de esta forma en la siguiente sección el modelo es ocupado como parte de la \textbf{Aplicación web}.
+Como última etapa de la clasificación, el modelo \textbf{Maquinas de soporte vectorial} debe ser persistido (almacenado) así como las características del corpus. Para esta tarea se ha utilizado el corpus completo de 3500 noticias, del cual se extraen las características, se entrena el modelo y estos conjuntos son almacenados en un archivo ocupando la librería \textbf{pickle}, de esta forma en la siguiente sección el modelo es utilizado como parte de la \textbf{Aplicación web}.
 
 
 
