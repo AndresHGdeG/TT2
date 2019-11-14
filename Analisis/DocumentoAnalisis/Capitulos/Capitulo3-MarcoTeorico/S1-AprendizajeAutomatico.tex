@@ -11,15 +11,15 @@ Esta ciencia contribuye en el desarrollo de diversos campos de investigación co
 
 \begin{itemize}
 
-	\item \textbf{Vehículos robóticos}: Un auto robótico sin conductor llamado STANLEY aceleró a través del terreno de Mojave a 22 mph (\textit{miles per hour}, por sus siglas en ingles), terminando el curso de 132 millas primero para ganar el Gran Desafío DARPA 2005.
+	\item \textbf{Vehículos robóticos}: Un auto robótico sin conductor llamado STANLEY aceleró a través del terreno de Mojave a 22 mph (\textit{miles per hour}, por sus siglas en ingles), terminando el curso de 132 millas primero para ganar el Gran Desafío DARPA 2005
 
-	\item \textbf{Reconocimiento de voz}: Un viajero que llama a \textit{United Airlines} para reservar un vuelo puede tener la conversación completa guiada por un sistema automático de reconocimiento de voz y gestión de diálogos.
+	\item \textbf{Reconocimiento de voz}: Un viajero que llama a \textit{United Airlines} para reservar un vuelo puede tener la conversación completa guiada por un sistema automático de reconocimiento de voz y gestión de diálogos
 
-	\item \textbf{Planificación y programación autónoma}: A cien millones de millas de la Tierra, el programa \textit{Remote Agent} de la NASA se convirtió en el primer programa autónomo de planificación a bordo para controlar la programación de operaciones de una nave espacial.
+	\item \textbf{Planificación y programación autónoma}: A cien millones de millas de la Tierra, el programa \textit{Remote Agent} de la NASA se convirtió en el primer programa autónomo de planificación a bordo para controlar la programación de operaciones de una nave espacial
 
-	\item \textbf{Robótica}: \textit{iRobot Corporation} ha vendido más de dos millones de aspiradoras robóticas \textit{Roomba} para uso doméstico.
+	\item \textbf{Robótica}: \textit{iRobot Corporation} ha vendido más de dos millones de aspiradoras robóticas \textit{Roomba} para uso doméstico
 
-	\item \textbf{Máquina traductora}: Un programa de computadora  traduce automáticamente del árabe al inglés.
+	\item \textbf{Máquina traductora}: Un programa de computadora  traduce automáticamente del árabe al inglés
 
 \end{itemize} 
  
@@ -49,20 +49,20 @@ entrenamiento obtienen datos es posible obtener modelos más precisos. Existen c
 \begin{itemize}
 
 	\item \textbf{Aprendizaje supervisado}: Se proporciona un conjunto de datos de entrenamiento con las respuestas correctas y, con base a este conjunto de 
-	entrenamiento, el algoritmo se generaliza para responder correctamente a todas 
-	las entradas posibles.
+	entrenamiento, el algoritmo genera un modelo para responder correctamente a todas 
+	las entradas posibles
 
 	\item \textbf{Aprendizaje no supervisado}: No se proporcionan datos de entrenamiento, el algoritmo intenta identificar similitudes entre las entradas para clasificar en conjuntos. El enfoque estadístico del aprendizaje no 
-	supervisado se conoce como estimación de densidad.
+	supervisado se conoce como estimación de densidad
 
 	\item \textbf{Aprendizaje reforzado}: Está en algún lugar entre el aprendizaje supervisado y no supervisado. Se indica al algoritmo cuando la respuesta es incorrecta, sin embargo no se informa
 	cómo corregirlo. Tiene que explorar y probar diferentes posibilidades hasta que resuelva 
-	cómo obtener la respuesta correcta.
+	cómo obtener la respuesta correcta
 
 	\item \textbf{Aprendizaje evolutivo}: La evolución biológica puede verse como un proceso de aprendizaje: los organismos biológicos se adaptan para mejorar sus tasas de supervivencia 
 	y la posibilidad de tener descendientes en su entorno. Este comportamiento es modelado, 
 	usando un modelo física, el cual corresponde a una puntuación en la 
-	solución actual.
+	solución actual
 
 \end{itemize}
 
@@ -96,10 +96,9 @@ El orden de las palabras en un texto brindan un significado semántico el cual n
 
 \begin{itemize}
 	\Tlabel{cp3:bolsap}
-	\item \textbf{Texto como una bolsa de palabras}: Es la representación mas común. No se contempla el orden de las palabras el proceso. El conjunto de palabras en el documento se convierten en \textit{Sparse multidimentional reprentation}, el cual corresponde a la dimensión en esta representación. Se utiliza para la clasificación, sistemas de recomendación.
+	\item \textbf{Texto como una bolsa de palabras}: Es la representación mas común. No se contempla el orden de las palabras en el proceso. El conjunto de palabras en el documento se convierten en una representación multidimencional dispersa, el cual corresponde a la dimensión en esta representación. Se utiliza para la clasificación, sistemas de recomendación
 
-	\item \textbf{Texto como un conjunto de secuencias}: En esta representación se extraen sentencias, el orden de las palabras si importa. La unidad son sentencia o párrafos. Es utilizado en aplicaciones que necesitan un fuerte uzo de la semántica, esta área se acerca mucho al modelado de lenguaje y procesamiento del lenguaje natural.
-
+	\item \textbf{Texto como un conjunto de secuencias}: En esta representación se extraen sentencias, el orden de las palabras si importa. La unidad son sentencia o párrafos. Es utilizado en aplicaciones que necesitan un fuerte uso de la semántica, esta área se acerca mucho al modelado de lenguaje
 \end{itemize}
 
 
@@ -110,7 +109,16 @@ El orden de las palabras en un texto brindan un significado semántico el cual n
 Los métodos de Aprendizaje Automático requieren que la información de la cual aprenderán esté representada en un
 formato que facilite su procesamiento. Generalmente esta representación es mediante vectores de valores numéricos. 
 Cuando se requiere utilizar estos métodos con información en forma de texto, dicha
-información debe ser transformada para generar una representación más adecuada. 
+información debe ser transformada para generar una representación más adecuada, los métodos mas comunes son: frecuencia, binaria y TF-IDF. 
+
+
+%------------------------------Frecuencia inversa del documento-------------------------------%
+
+\subsection{Frecuencia inversa del documento}
+
+Las palabras con poca frecuencia son mas discriminatorias que las de alta frecuencia. Por lo tanto se pondera la importancia de los documentos con base al calculo de la \textbf{frecuencia inversa del documento}(\textit{fid}) en la colección. Si $\psi_i$ es el número de documentos en el cual la palabra aparece, y $\psi$ es el número total de documentos, la \textit{fid} se calcula como $log(\frac{\psi}{\psi_i})$. La importancia de un documento se calcula multiplicando la \textbf{frecuencia de término} (\textit{ft}) en el documento por la \textit{fid}. Mientras la \textit{ft} brinda la cantidad de veces  que una palabra aparece en el documento la \textit{fid} especifica la importancia en la colección; Se define como \textbf{ft-fid} o \textit{tf-idf} (Por su sigla en ingles \textit{Term frequency – Inverse document frequency}) es la multiplicación de $ft$ por $idf$ \citep{CD1}.
+
+
 
 
 %------------------------------------Pre-procesamiento------------------------%
@@ -118,11 +126,11 @@ información debe ser transformada para generar una representación más adecuad
 \subsection[Pre-procesamiento]{Pre-procesamiento}
 
 El Pre-procesamiento es necesario para convertir el formato no estructurado en un formato estructurado \citep{CD1}.
-A menudo el texto contiene información extraña como etiquetas, \textit{anchor text}\footnote{Es el texto mostrado en los enlaces o hipervínculos, \textbf{Texto de anclaje} en español.}, y otras características. En muchos casos las palabras son variaciones de otros (sinónimos) por el tipo de redacción, el contexto, para eliminar redundancia. Algunas palabras simplemente tienen faltas de ortografía. El proceso de convertir una secuencia de caracteres en una secuencia de palabras (tokens), es llamado ``Tokenización''.
+A menudo el texto contiene información extraña como etiquetas, \textit{anchor text}\footnote{Es el texto mostrado en los enlaces o hipervínculos, \textbf{Texto de anclaje} en español.}, y otras características. En muchos casos las palabras son variaciones de otros (sinónimos) por el tipo de redacción, el contexto, para eliminar redundancia. Algunas palabras simplemente tienen faltas de ortografía. A continuación se describen algunas tareas de pre-procesamiento.
 
 %---------------------------------Extracción de texto-------------------------%
 
-\subsection{Extracción de texto}
+\subsubsection{Extracción de texto}
 
 Cuando se recupera  información de la web, se tiene que limpiar el texto ya que contiene etiquetas definidas por el hipertexto. Se debe buscar los bloques que brinden información útil para el ambito de estudio, algunas secciones contienen publicidad o información no relacionada a los datos de interes. Para esto se tiene que realizar un análisis para discriminar la información útil \citep{CD1}.
 
@@ -131,17 +139,9 @@ Cuando se recupera  información de la web, se tiene que limpiar el texto ya que
 
 	%\item  \textbf{Stemming, case-folding, punctuation}: Las palabras que derivan de la misma raíz como hundimiento, se hundió, se reducen a hundir. Una palabra puede tener diferentes significados dependiendo el contexto como la palabra \'Rosa\' puede hacer referencia a una flor o el nombre de una persona, por lo tanto se requiero la heurística del lenguaje específico para poder tomar una decisión en como debe ser interpretada. Los signos de puntuación como el guión medio deben ser tratados con mucho cuidado para realizar una buena tokenización.
 
-%---------------------------------------------Corpus-----------------------------------------%
-
-\subsection{Corpus}
-
-Se le llama corpus a la recopilación de un conjunto de textos, de materiales escritos y/o hablados, 
-agrupados bajo un conjunto de criterios mínimos, para realizar ciertos análisis lingüísticos.
-
-
 %-----------------------------------------Tokenización-------------------------------------%
 
-\subsection{Tokenización}
+\subsubsection{Tokenización}
 
 Es el proceso que descompone los textos de una colección en sus unidades mínimas, las palabras
 o términos propiamente dichos. A tales elementos se les denomina tokens que conforman una lista de
@@ -172,7 +172,7 @@ Ejemplo  (\ref{tabla:sencilla}): Hoy es un gran día para salir.
 %-----------------------------------------Lematización-------------------------------------%
 
 \Tlabel{cp3:lematizacion}
-\subsection{Lematización}
+\subsubsection{Lematización}
 
 Es el proceso lingüstico que, dada una palabra flexionada se encuentra su
 lema. Una palabra flexionada es cuando esta en el plural, en femenino conjugada,
@@ -188,20 +188,12 @@ Cabe mencionar que existen diversos grados de lematización
 
 	\begin{itemize}
 		\item Mórfólogica: Es la anterior mente explicada
-		\item Sintáctica: Toma encuenta el contexto donde se encuentra la palabra
+		\item Sintáctica: Toma en cuenta el contexto donde se encuentra la palabra
 
 	\end{itemize}
 
 Una opción para lematizar es \textit{Freeling} \citep{CT18}, este es un lematizador hecho por la
-universidad de catalunia.
-
-%------------------------------Frecuencia inversa del documento-------------------------------%
-
-\subsection{Frecuencia inversa del documento}
-
-Las palabras con poca frecuencia son mas discriminatorias que las de alta frecuencia. Por lo tanto se pondera la importancia de los documentos con base al calculo de la \textbf{frecuencia inversa del documento}(\textit{fid}) en la colección. Si $\psi_i$ es el número de documentos en el cual la palabra aparece, y $\psi$ es el número total de documentos, la \textit{fid} se calcula como $log(\frac{\psi}{\psi_i})$. La importancia de un documento se calcula multiplicando la \textbf{frecuencia de término} (\textit{ft}) en el documento por la \textit{fid}. Mientras la \textit{ft} brinda la cantidad de veces  que una palabra aparece en el documento la \textit{fid} especifica la importancia en la colección; Se define como \textbf{ft-fid} o \textit{tf-idf} (Por su sigla en ingles \textit{Term frequency – Inverse document frequency}) es la multiplicación de $ft$ por $idf$ \citep{CD1}.
-
-
+universidad de Catalunia.
 
 %------------------------------------Aprendizaje Supervisado----------------------------------%
 
@@ -210,7 +202,7 @@ Las palabras con poca frecuencia son mas discriminatorias que las de alta frecue
 
 Los algoritmos de aprendizaje supervisado dependen de datos previamente etiquetado, es decir se necesita un corpus de datos, para llevar acabo el entrenamiento, así 
 el algoritmo pueda comprender los datos y con ello determinar que etiqueta debe asignarse a los nuevos datos 
-en función del patron y asociando los patrones a los nuevos datos sin etiquetar. Después de ello, la maquina recibe 
+en función del patrón y asociando los patrones a los nuevos datos sin etiquetar. Después de ello, la maquina recibe 
 un nuevo conjunto de datos para que el algoritmo de aprendizaje supervisado analice los datos y produzca un resultado 
 correcto de los datos etiquetados \citep{CT4}.\\
 
@@ -219,7 +211,7 @@ correcto de los datos etiquetados \citep{CT4}.\\
 \Tlabel{cp3:multinomial}
 \section[Clasificación]{Clasificación multinomial}
 
-Existen dos tipos de clasificaciones: la clasificación binaria, donde se decide si un objetivo pertenece a una clase o no; y la clasificación multinomial en el cual, se tiene un conjunto de datos etiquetados y estos pertenecen a una de $N$ clases diferentes. El objetivo en esta última es construir un algoritmo donde dado otro dato, este pueda predecir de forma correcta la clase a la cual pertenece el nuevo punto.\\
+Existen dos tipos de clasificaciones: la clasificación binaria, donde se decide si un objetivo pertenece a una clase o no; y la clasificación multinomial en el cual, se tiene un conjunto de datos etiquetados y estos pertenecen a una de $N$ clases diferentes. El objetivo en esta última es construir un algoritmo donde dado otro dato, este pueda predecir de forma correcta la clase a la cual pertenece el nuevo punto. A continuación se describen algunos de los métodos más utilizados de Aprendizaje Automático aplicados a tareas de texto.
 
 %------------------------------------Regresión logistica----------------------------------%
 

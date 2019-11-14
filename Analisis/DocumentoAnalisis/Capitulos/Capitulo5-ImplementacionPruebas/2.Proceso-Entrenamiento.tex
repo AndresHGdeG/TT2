@@ -1,4 +1,4 @@
-\section[Entrenamiento]{Entrenamiento de clasificador}
+\section[Entrenar C.]{Entrenamiento de clasificador}
 
 El segundo pilar del trabajo terminal es entrenar un algoritmo (de aprendizaje automático), para clasificar las noticias en las secciones \textbf{Ciencia y tecnología}, \textbf{Política}, \textbf{Deportes}, \textbf{Economía} y \textbf{Cultura}. Cabe destacar que el clasificador resolverá un problema multiclase (ver \Tref{cp3:multinomial}{Clasificación multinomial}) debido a que la entrada es una artículo y como salida brinda la pertenencia a una sección  de 5 posibilidades. El proceso de entrenamiento se muestra en la Figura \ref{fig:cp5:procesoE}.\\
 
@@ -27,9 +27,9 @@ Cabe destacar que estas etapas están desarrolladas en un script escrito en el l
 \end{figure}
 
 %----------------------------------%
-\begin{large}
-\textbf{Limpieza}\\
-\end{large}
+%\begin{large}
+\subsubsection{Limpieza}
+%\end{large}
 
 Esta etapa consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto (ver), símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis} (como \dSmiley \dCooley \dNinja). Por ejemplo el texto \ref{box:cp5:texto} muestra la redacción de una noticia con la información descargada de una pagina web. El resultado de limpiar la noticia se muestra en el texto \ref{box:cp5:limpio}. Se puede observar que se han eliminado los elementos $<p>\ </p>\ <!--\ -->$ \# $\dagger$ \dSmiley \dCooley \dInnocey.\\
 
@@ -50,17 +50,17 @@ Económica (FCE), será presentado por David Ibarra Muñoz, Carlos Tello Macías
 \ \\
 
 %----------------------------------%
-\begin{large}
-\textbf{Filtro de longitud}\\
-\end{large}
+%\begin{large}
+\subsubsection{Filtro de longitud}
+%\end{large}
 
 Con base en la regla de negocio \RNref{RN1}{Número de palabras} se ha definido 180 palabras como longitud mínima de las noticias, incluyendo en la definición de palabra números, signos de puntuación y exclamación.
 Para esto después de haber concluido el proceso de limpieza se pregunta por la longitud de la cadena (sin contar los espacios) y si esta es mayor o igual a 180, entonces es un artículo válido para utilizar en el entrenamiento de lo contrario no es tomado en cuenta.\\
 
 %----------------------------------%
-\begin{large}
-\textbf{Tokenizar}\\
-\end{large}
+%\begin{large}
+\subsubsection{Tokenizar}
+%\end{large}
 
 La etapa de tokenización consiste en separar el texto en sus elementos mínimos llamados tokens, donde se separan palabras, signos de puntuación, llaves y números mediante un espacio. Continuando con el ejemplo \ref{box:cp5:limpio} donde el texto se encuentra limpio, se procede a su tokenización. El resultado es mostrado en el Cuadro \ref{box:cp5:tokenizar}. Para remarcar el ejemplo observe la palabra entre paréntesis \textbf{(FCE)} la cual es separada en \textbf{( FCE )} mostrando que ahora cada elemento representa un token individual. Para el desarrollo de esta tarea se utilizó la librería \textbf{RegexpTokenizer}.\\
 
@@ -70,9 +70,9 @@ Económica ( FCE ) , será presentado por David Ibarra Muñoz , Carlos Tello Mac
 \end{mygraybox}
 \ \\
 %----------------------------------%
-\begin{large}
-\textbf{Lematizar}\\
-\end{large}
+%\begin{large}
+\subsubsection{Lematizar}
+%\end{large}
 
 Lematizar es el proceso de reducir cada palabra a su lema, con el fin de disminuir la dispersión en el texto, por ejemplo las palabras correrás, corriendo, corrí, tienen como lema el verbo correr, el plural niños tiene como lema niño (ver \Tref{cp3:lematizacion}{Lematización}). Para realizar esta tarea se ha usado \textbf{spacy} el cual es una librería de código abierto, con el diccionario \textit{es\_core\_news\_sm} quien permite analizar el léxico del lenguaje español.\\
 
@@ -140,9 +140,9 @@ Como segundo paso las noticias son almacenadas en un archivo con extensión \tex
 
 %----------------------------------%
 
-\begin{large}
-\textbf{División del corpus}\\
-\end{large}
+%\begin{large}
+\subsubsection{División del corpus}
+%\end{large}
 
 
 Para el correcto diseño y evaluación del algoritmo clasificador se requiere dividir el corpus en dos conjuntos: \textbf{entrenamiento} y \textbf{prueba}, con un 90\% y 10\% del total del corpus respectivamente. En cada grupo deben estar repartidas noticias de las 5 secciones definidas, sin embargo los artículos almacenados están ordenados de forma descendente como: \textbf{Deportes}, \textbf{Economía}, \textbf{Política}, \textbf{Cultura}, \textbf{Ciencia y tecnología}, para seleccionar deforma distribuida los datos se ha utilizado una técnica llamada \textit{Shuffle}.\\
@@ -180,14 +180,14 @@ La cantidad de noticias por sección del conjunto de entrenamiento se muestran e
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.6]{imagenes/capitulo5/Entrenamiento/SeccionesE.png}
+\includegraphics[scale=.55]{imagenes/capitulo5/Entrenamiento/SeccionesE.png}
 \caption{Corpus de entrenamiento}
 \label{fig:cp5:seccionE}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.6]{imagenes/capitulo5/Entrenamiento/SeccionesP.png}
+\includegraphics[scale=.55]{imagenes/capitulo5/Entrenamiento/SeccionesP.png}
 \caption{Corpus de prueba}
 \label{fig:cp5:seccionP}
 \end{figure}
@@ -217,7 +217,7 @@ El proceso de entrenamiento consta de 5 pasos los cuales se muestran en la Figur
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.5]{imagenes/capitulo5/Entrenamiento/Entrenamiento.png}
+\includegraphics[scale=.55]{imagenes/capitulo5/Entrenamiento/Entrenamiento.png}
 \caption{Etapas de entrenamiento}
 \label{fig:cp5:entrenamiento}
 \end{figure}
@@ -227,9 +227,9 @@ El desarrollo se ha implementado en el lenguaje de programación \textbf{Python 
 Como primer paso del entrenamiento, el corpus debe ser representado mediante conjuntos de vectores numéricos, esta es llamada representación vectorial (ver \Tref{cp3:representaciont}{Representación del texto}). Para lograr este objetivo, del corpus se deben seleccionar características que definan los elementos del vector numérico.\\
 
 %----------------------------------%
-\begin{large}
-\textbf{Extracción de características}\\
-\end{large}
+%\begin{large}
+\subsubsection{Extracción de características}
+%\end{large}
 
 La extracción de características cuenta con dos tareas importantes: extraer el vocabulario y crear un vector de características.\\
 
@@ -293,9 +293,9 @@ Para el desarrollo de esta etapa se ha implementado la librería \textbf{CountVe
 \ \\
 %----------------------------------%
 
-\begin{large}
-\textbf{Entrenamiento}\\
-\end{large}
+%\begin{large}
+\subsubsection{Entrenamiento}
+%\end{large}
 
 
 El corpus contiene noticias de varias fuentes, en  las cuales la redacción, coherencia, semántica varía, incluso en la edición de una misma noticia, por lo tanto en el entrenamiento se busca generalizar la clasificación de los artículos, analizando el texto como un conjunto de palabras, sin tomar en cuenta la semántica, esta técnica es llamada bolsa de palabras (ver \Tref{cp3:bolsap}{Bolsa de palabras}).\\
@@ -369,9 +369,9 @@ El desarrollo ha ocupado una instancia de cada algoritmo, para esto se incluye l
 
 %----------------------------------%
 
-\begin{large}
-\textbf{Validación cruzada}\\
-\end{large}
+%\begin{large}
+\subsubsection{Validación cruzada}
+%\end{large}
 
 En el proceso de entrenamiento, los clasificadores reciben un conjunto noticias para ser entrenados y otro para realizar pruebas, sin embargo la selección de los artículos puede ser manipulada para obtener un resultado a conveniencia, siendo esto una mala práctica, por esta razón y en con el objetivo de obtener resultados mas robustos se ha implementado un técnica llamada Validación cruzada.\\
 
@@ -379,9 +379,9 @@ Este método consiste en tres pasos: el primero es dividir el corpus en entrenam
 
 %----------------------------------%
 
-\begin{large}
-\textbf{Ajuste de parámetros}\\
-\end{large}
+%\begin{large}
+\subsubsection{Ajuste de parámetros}
+%\end{large}
 
 Como se ha visto, los resultados de la clasificación son medidos por la cantidad de noticias correctas clasificadas, no obstante estos resultados pueden incrementar o decrementar con base a los parámetros ingresados a cada algoritmo.\\
 
@@ -404,7 +404,7 @@ A continuación se explican los parámetros de cada clasificador: \\
 \textbf{Naive Bayes}\\
 %\end{Text}
  
-El parámetro en el cual se varía en este algoritmo, es un escalar llamado \textbf{Alpha} ($\alpha$). Este es un valor numérico es asignado a cada palabra en el corpus con respecto a la frecuencia de aparición en un clase. El valor $\alpha$ evita que la importancia de una palabra se haga cero, \textbf{Alpha} es variado en los valores [$0.5, 1.0, 1.5, 2$].
+El parámetro en el cual se varía en este algoritmo, es un escalar llamado \textbf{Alpha} ($\alpha$). Este es un valor numérico es asignado a cada palabra en el corpus con respecto a la frecuencia de aparición en un clase. El valor $\alpha$ evita que la importancia de una palabra se haga cero, \textbf{Alpha} es variado en los valores [$0.5, 1.0, 1.5, 2$].\\
 
 
 %----------------%
@@ -453,25 +453,25 @@ Los parámetros de este clasificador son definidos por el kernel utilizado, para
 
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 	\begin{subfigure}{.5\textwidth}
 	\centering
-	\includegraphics[scale=0.7]{imagenes/capitulo5/Entrenamiento/klineal.png}
+	\includegraphics[scale=0.8]{imagenes/capitulo5/Entrenamiento/klineal.png}
 	\caption{Kernel lineal}
 	\label{fig:cp5:klineal}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 	\centering
-	\includegraphics[scale=0.7]{imagenes/capitulo5/Entrenamiento/kpoli.png}
+	\includegraphics[scale=0.8]{imagenes/capitulo5/Entrenamiento/kpoli.png}
 	\caption{Kernel polinomial}
 	\label{fig:cp5:kpoli}
 	\end{subfigure}%
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.7]{imagenes/capitulo5/Entrenamiento/krbf.png}
+\includegraphics[scale=0.8]{imagenes/capitulo5/Entrenamiento/krbf.png}
 \caption{Kernel radial}
 \label{fig:cp5:krbf}
 \end{figure}

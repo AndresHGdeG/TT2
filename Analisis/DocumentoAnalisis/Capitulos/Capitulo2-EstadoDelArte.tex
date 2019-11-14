@@ -5,7 +5,7 @@
 \section{Introducción}
 
 
-El uso de la información digital ha superado la producción de libros y publicaciones impresas, este fenómeno ha influenciado la producción de bibliotecas digitales, publicaciones electrónicas; Se ha incrementado el uso de las redes sociales, correos electrónicos, creando un gran repositorio de información útil, el cual puede ser analizado\citep{CD1}.\\
+El uso de la información digital ha superado la producción de libros y publicaciones impresas, este fenómeno ha influenciado la producción de bibliotecas digitales, publicaciones electrónicas; se ha incrementado el uso de las redes sociales, correos electrónicos, creando un gran repositorio de información útil, el cual puede ser analizado\citep{CD1}.\\
 
 Debido a la necesidad de procesar grandes volúmenes de datos recolectados de Internet, se han desarrollado diversas investigaciones entorno a esta tarea. A continuación se muestran distintos artículos nacionales e internacionales relacionados al campo de investigación (clasificación de noticias), de igual forma se muestran herramientas web que desempeñan un trabajo similar al propuesto (sitio web de noticias). Cabe destacar que el área de interés cuenta con un amplio desarrollo, no obstante solo se mencionan los trabajos más relevantes para este documento.
 
@@ -119,10 +119,10 @@ Con ejemplos positivos el método entrena un clasificador para cada categoría.
 El proceso de clasificación consta de 4 pasos:
 
 \begin{enumerate}
-	\item Las palabras claves son extraídas del documento dado.
-	\item la probabilidad de pertenencia a cada categoría es calculado.
-	\item Se crea un umbral de pertenecía dinámico.
-	\item Finalmente se asigna el artículo a una categoría.
+	\item Las palabras claves son extraídas del documento dado
+	\item la probabilidad de pertenencia a cada categoría es calculado
+	\item Se crea un umbral de pertenecía dinámico
+	\item Finalmente se asigna el artículo a una categoría
 \end{enumerate}
 
 Para desarrollo del método se implementó en lengua ingles y japones, se ocuparon 1,000 artículos descargados de sitios como Yahoo, de cada idioma. 800 se ocuparon en el entrenamiento y 200 para realizar pruebas. \\
@@ -140,10 +140,10 @@ El artículo clasifica noticias ocupando el algoritmo clásico \textit{Naive Bay
  
 \begin{enumerate}
 
-	\item \textit{Case folding}: Proceso para convertir todas letras en minúsculas.
-	\item \textit{Parsing}: Es el proceso de convertir oraciones en palabras.
-	\item \textit{Stopwords elimination}: Es el proceso de eliminar palabras que se repiten con mucha frecuencia y no es información útil (Una definición mas amplia se da en el capítulo 3).
-	\item \textit{Stemming}: Es un proceso de corte o eliminación de afijos en una palabra. Las variantes de los afijos son prefijos, sufijos, in-fijos y con-fijos (la combinación de prefijos y sufijos).
+	\item \textit{Case folding}: Proceso para convertir todas letras en minúsculas
+	\item \textit{Parsing}: Es el proceso de convertir oraciones en palabras
+	\item \textit{Stopwords elimination}: Es el proceso de eliminar palabras que se repiten con mucha frecuencia y no es información útil (Una definición mas amplia se da en el capítulo 3)
+	\item \textit{Stemming}: Es un proceso de corte o eliminación de afijos en una palabra. Las variantes de los afijos son prefijos, sufijos, in-fijos y con-fijos (la combinación de prefijos y sufijos)
 
 \end{enumerate}	
 
@@ -167,7 +167,7 @@ Para el proceso de aprendizaje se ocuparon 50 noticias por tópico, las cuales f
 	 \subsection{News article text classification in indonesian language}
 \end{large}
 
-Este documento busca el mejor algoritmo de clasificación en lenguaje Indu, comparando la eficiencia de algoritmos de selección de características (Palabras clave) y de clasificación de noticias \citep{CD8}. Las secciones definidas por el artículo son las siguientes, \textit{Economy}, \textit{Health}, \textit{Sports}, \textit{Politic} y \textit{Tecnology}; El trabajo realiza pre-procesamiento de datos con  los métodos \textit{lemmatization} y \textit{Stopwords} para reducir el ruido en la información. Para la obtención de noticias se hace uso de la técnica \textit{crawling}(ver \Tref{CP1}{Capítulo 3}) en el sito \textit{ccnnindonesia}\footnote{Sitio web de noticias: wwww.ccnnindonesia.com}. Se obtuvieron 1,000 artículos para cada sección. 800 se usaron para la etapa de entrenamiento y 200 para realizar pruebas. Se muestra la lista de los algoritmos implementados:
+Este documento busca el mejor algoritmo de clasificación en lenguaje Indu, comparando la eficiencia de algoritmos de selección de características (Palabras clave) y de clasificación de noticias \citep{CD8}. Las secciones definidas por el artículo son las siguientes, \textit{Economy}, \textit{Health}, \textit{Sports}, \textit{Politic} y \textit{Tecnology}; el trabajo realiza pre-procesamiento de datos con  los métodos \textit{lemmatization} y \textit{Stopwords} para reducir el ruido en la información. Para la obtención de noticias se hace uso de la técnica \textit{crawling}(ver \Tref{CP1}{Capítulo 3}) en el sito \textit{ccnnindonesia}\footnote{Sitio web de noticias: wwww.ccnnindonesia.com}. Se obtuvieron 1,000 artículos para cada sección. 800 se usaron para la etapa de entrenamiento y 200 para realizar pruebas. Se muestra la lista de los algoritmos implementados:
 
 \begin{itemize}
 	\item Selección de características:
