@@ -1,6 +1,6 @@
 \section{Aplicación web}
 
-Como se muestra en la Figura \ref{fig:procesoAppWeb}, la aplicación web desarrollada consta de 7 etapas, este proceso se llevará a cabo la primera vez que se seleccione una sección o en el caso de que hayan transucurrido 4 horas de la última vez que se utilizó el sistema.
+Como se muestra en la Figura \ref{fig:procesoAppWeb}, la aplicación web desarrollada consta de 6 etapas, este proceso se llevará a cabo la primera vez que se seleccione una sección o en el caso de que hayan transucurrido 4 horas de la última vez que se utilizó el sistema.
 \\
 
 \begin{figure}[H]
@@ -11,25 +11,25 @@ Como se muestra en la Figura \ref{fig:procesoAppWeb}, la aplicación web desarro
 \end{figure}
 
 \subsubsection{Selección de sección}
-El usuario tendrá que elegir una sección (Cultura, Deportes, Economía, Política o Ciencia y Tecnología). 
+El usuario tendrá que elegir una sección (\textbf{Cultura}, \textbf{Deportes}, \textbf{Economía}, \textbf{Ciencia y Tecnología} y \textbf{Política}). 
 \\
 
 \subsubsection{Recolección de noticias}
-Una vez seleccionada la sección, se procede con la recolección de noticias de los sitios web previamente definidos, la información que se descargará de cada noticia será la siguiente:
+Una vez seleccionada la sección, se procede con la recolección de noticias de los sitios web previamente definidos (ver \Tref{cp5:sitiosWeb}{sitios web}), la información que se descargará de cada noticia será la siguiente:
 
 \begin{itemize}
-	\item URL de la noticia
-	\item Título
-	\item Fecha
-	\item Autor
-	\item Descripción \footnote{Existen sitios web, donde las noticias cuentan con una descripción}
-	\item Noticia
+	\item \textbf{URL de la noticia}
+	\item \textbf{Título}
+	\item \textbf{Fecha}
+	\item \textbf{Autor}
+	\item \textbf{Descripción} (Existen sitios web, donde las noticias cuentan con una descripción)
+	\item \textbf{Noticia}
 \end{itemize}
 
 No será necesario extraer el nombre de la sección a la cual pertenece la noticia.\\
 
 \subsubsection{Tokenización / lematización}
-Una vez que el contenido de las noticias, pasan por la etapa de tokenización, la cual consiste en separar el texto en sus elementos mínimos, posteriormente se procese con la lematización del texto, proceso que reduce cada una de las palabras tokenizadas en lemas.
+Una vez que se recolecta el contenido de las noticias, se pasa por la etapa de tokenización (ver \Tref{cp5:tokenizacion}{tokenización}), la cual consiste en separar el texto en sus elementos mínimos, posteriormente se lematiza (ver \Tref{cp5:lematizacion}{lematización}) el texto, proceso que reduce cada una de las palabras tokenizadas en lemas.
 
 
 \subsubsection{Extracción de características}
@@ -39,11 +39,12 @@ Finalizado el proceso de tokenización y lematización, se procede con la etapa 
 Una vez que se han obtenido las características de cada una de las noticias, se realizá la clasificación de las noticias, estas noticias se guardarán en un archivo, cabe destacar que cada sección contendrá su propio archivo, con el fin de mejorar el tiempo de visualización de los resultados.
 
 \subsubsection{Visualización de resultados}
-El usuario podrá visualizar las noticias extraídas y clasificadas de la sección que seleccione, 
+El usuario podrá visualizar las noticias extraídas y clasificadas de la sección que seleccione.
+Una vez que se haya realizado la recolección de noticias
 
 \subsection{Vistas de la aplicación web}
 
-El sistema cuenta con 5 secciones Deportes, Economía, Política, Cultura y Ciencia y tecnología, el usuario podrá elegir de alguna de estas secciones, se debe considerar que los sitios web de los cuales serán recolectadas las noticias, han sido definidos en el caítulo 5.1.\\
+El sistema cuenta con 5 secciones \textbf{Deportes}, \textbf{Economía}, \textbf{Política}, \textbf{Ciencia y tecnología} y \textbf{Cultura}, el usuario podrá elegir de alguna de estas secciones, se debe considerar que los sitios web de los cuales serán recolectadas las noticias, han sido definidos en el capítulo 5.1.\\
 La Figura \ref{fig:PantallaInicio} muestra la vista que tendrá el usuario al ingresar a la aplicación web
 \\
 \begin{figure}[H]

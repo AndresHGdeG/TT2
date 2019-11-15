@@ -12,20 +12,39 @@ El proceso de recolección es parte fundamental del presente trabajo terminal, y
 \end{figure}
 
 \subsection{Selección de sitios web}
-
-El sitio web El Economista\footnote{https://www.eleconomista.com.mx/} contiene una sección llamada 
-\textbf{Ranking de Medios Nativos Digitales}\footnote{https://www.eleconomista.com.mx/Ranking-de-Medios-Nativos-Digitales}, el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados como se muestra en la Figura \ref{fig:rank}\\
+\Tlabel{cp5:sitiosWeb}
+\textit{Reuters Institute}\footnote{https://reutersinstitute.politics.ox.ac.uk/} realizó un informe anual para el comprender como se consumen las noticias en distintos países, mediante el sitio \textit{YouGov}\footnote{https://mx.yougov.com/} se realizó la investigación utilizando cuestionarios en línea durante finales de enero y principios de febrero del año 2019. El informe reporto el índice de confianza que tienen los usuarios sobre los sitios noticiosos, la Figura \ref{fig:nivConfianza} muestra los sitios que tienen un mayor índice de confianza en una escala de 0 a 10.  
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.32]{imagenes/Capitulo5/ranking.png}
+  \includegraphics[scale=.35]{imagenes/Capitulo5/nivelConfianza.png}
+  \caption{Nivel de confianza de usuarios al consultar un sitio web.}
+  \label{fig:nivConfianza}
+\end{figure}
+
+El sitio web El Economista\footnote{https://www.eleconomista.com.mx/} contiene una sección llamada \textbf{Ranking de Medios Nativos Digitales}\footnote{https://www.eleconomista.com.mx/Ranking-de-Medios-Nativos-Digitales}, el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados como se muestra en la Figura \ref{fig:rank}\\
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.28]{imagenes/Capitulo5/ranking.png}
   \caption{Ranking de sitios de noticias del periódo de enero del 2018 a enero del 2019.}
   \label{fig:rank}
 \end{figure}
 
+La compañía \textit{comScore}\footnote{https://www.comscore.com/} dedicada a proporcionar datos de marketing en Internet, en el año 2018 realizó un estudio en el cual indica los sitios web de noticias más visitados, los resultados se muestran en la Figura \ref{fig:comScore}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.28]{imagenes/Capitulo5/visitantesPorSitioComScore.png}
+  \caption{Visitantes únicos a sitios de noticias durante el año 2018.}
+  \label{fig:comScore}
+\end{figure}
+
 \Tlabel{c5:sitios}
-Con base en la Figura \ref{fig:rank} se han seleccionado los diarios Aristegui Noticias, El Economista, La Jornada, La Prensa, Proceso, Sopitas y TV Azteca para recolectar noticias. Los sitios organizan las noticias por secciones, lo cual permite una búsqueda más rápida de la información, la Tabla \textbf{\ref{tabla:sitios}}. muestra el análisis realizado a las secciones contenidas en los sitios seleccionados.
+Para llevar a cabo la selección de sitios web utilizados en el presente proyecto se realizó un análisis sobre aquellos que proveen de información noticiosa, entre los cuales se consideraron \textbf{foros de noticias}, \textbf{sitios de diarios} y \textbf{sitios de televisión}, en conjunto con las Figuras \textbf{\ref{fig:nivConfianza}}, \textbf{\ref{fig:comScore}}, \textbf{\ref{fig:rank}} se han seleccionado los sitios Aristegui Noticias, El Economista, La Jornada, La Prensa, Proceso, Sopitas y TV Azteca para recolectar noticias, ya que se desea obtener noticias de diversas fuentes de información, como lo son foros, blogs y sitios de televisoras.\\ 
+Una vez definidos los sitios,  observamos que clasifican las noticias por secciones, lo cual permite una búsqueda más rápida de la información, la Tabla \ref{tabla:sitiosW}. muestra el análisis realizado a las secciones contenidas en los sitios seleccionados.
 \\
+
 \begin{table}[H]
     \centering
     \resizebox{\columnwidth}{!}{%
@@ -102,15 +121,27 @@ Con base en la Figura \ref{fig:rank} se han seleccionado los diarios Aristegui N
     \end{tabular}%
 }
 \caption[Secciones de los sitios web]{Secciones existentes en los sitios web}
-\label{tabla:sitios}
+\label{tabla:sitiosW}
 \end{table}
+
+Una vez que se analizarón las secciones con las que contaba cada sitio, se procedió a homologar las secciones en las cuales la mayoría de los sitios coincidian, por lo cual se quedarón definidas 5 secciones para clasificación de las noticias:
+
+\begin{itemize}
+    \item Política
+    \item Deportes
+    \item Ciencia y tecnología
+    \item Economía
+    \item Cultura
+\end{itemize}
+
+Cabe mencionar que hay muy pocos sitios que publican noticias de la sección \textbf{Ciencia y tecnología} y \textbf{Cultura}, por ello se consideraron éstas secciones.
 
 %------------------------------------------- Listo
 \subsection{Análisis de sitios web}
 
-Una vez definida la información requerida de cada noticia se realizó un análisis sobre la estructura XML (\textit{Extensible Markup Language}), por sus siglas en inglés, con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML, dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiara.\\
+Una vez definida la información requerida de cada noticia se realizó un análisis sobre la estructura \textbf{XML} (\textit{Extensible Markup Language}, por sus siglas en inglés), con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML, dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiara.\\
 
-Una expresión \textit{XPath} de ruta permite buscar y seleccionar los distintos nodos de un documento XML(ver). En el siguiente Cuadro \ref{box:xmlEjemplo} se muestra un ejemplo con los elementos de una nota, los cuales son: \textbf{para}, \textbf{de}, \textbf{titulo}, \textbf{texto}, en un documento XML estos son los nodos que conforman una nota.\\
+Una expresión \textit{XPath} de ruta permite buscar y seleccionar los distintos nodos de un documento XML. En el siguiente Cuadro \ref{box:xmlEjemplo} se muestra un ejemplo con los elementos de una nota, los cuales son: \textbf{para}, \textbf{de}, \textbf{titulo}, \textbf{texto}, en un documento XML estos son los nodos que conforman una nota.\\
 
 \begin{mygraybox}[label={box:xmlEjemplo}]{Documento XML}
 \begin{tabbing}
@@ -134,7 +165,7 @@ Para cada sitio web se crearon expresiones \textit{XPath} para recolectar el con
 %------------------------------------------- Listo
 \subsection{Creación de recolector}
 
-Como se explicó en el capítulo 3 (ver\ref{c3:Crawler}) un \textit{Crawler} te permite descargar información de una página web, como se muestra en la Figura \ref{Fig:recoleccion}. La implementación en el trabajo terminal ha requerido diseñar 7 recolectores, uno por cada sitio web (ver \Tref{c5:sitios}{sitios web}). \\
+Como se explicó en el capítulo 3 (ver \Tref{c3:crawler}{Crawler}) un \textit{Crawler} permite descargar información de una página web, como se muestra en la Figura \ref{Fig:recoleccion}. La implementación en el trabajo terminal ha requerido diseñar 7 recolectores, uno por cada sitio web (ver \Tref{c5:sitios}{sitios web}). \\
 
 \begin{figure}[H]
 	\centering
@@ -144,14 +175,6 @@ Como se explicó en el capítulo 3 (ver\ref{c3:Crawler}) un \textit{Crawler} te 
 \end{figure}
 
 El desarrollo del presente trabajo terminal se ha realizado en sistema operativo \textit{Linux} en su distribución Ubuntu, paa realizar la creación de los recolectores se ha utilizado el lenguaje de programación \textbf{Python 3}\footnote{https://www.python.org/}, en conjunto con \textbf{Scrapy}\footnote{https://scrapy.org/}, Fsramework que permite la extracción de información de sitios web. 
-\\
-El siguiente Cuadro \ref{box:libIns}, muestra los comandos utilizados para instalar las librerías utilizadas.\\
-\begin{mygraybox}[label={box:libIns}]{Comandos para instalar librerías utilizadas}
-\begin{verbatim}
-$ sudo apt-get install python3.6
-$ pip install Scrapy
-\end{verbatim}
-\end{mygraybox}
 
 La información que ha sido recuperada de las noticias se muestra a continuación:
 \begin{itemize}
@@ -178,7 +201,7 @@ noticia = //div[@class="class_text"]/p/child::node()/text()
 \end{small}
 \end{mygraybox}
 
-Cabe destacar que las noticias recolectadas se almacenaron en un archivo CSV (ver\ref{}) con la estructura que se muestra en la Tabla \ref{tab:csv}, donde la primera fila (Encabezado) define los elementos de este archivo, además las filas consecuentes representan el contenido recolectado de cada noticia.\\
+Cabe destacar que las noticias recolectadas se almacenaron en un archivo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en inglés), con la estructura que se muestra en la Tabla \ref{tab:csv}, donde la primera fila (Encabezado) define los elementos de este archivo, además las filas consecuentes representan el contenido recolectado de cada noticia.\\
 
 %\begin{mygraybox}[label={box:csv}]{Encabezado de un archivo CSV}
 \begin{table}[H]
@@ -201,25 +224,26 @@ url ejemplo 2& título ejemplo 2& autor ejemplo 2& fecha ejemplo 2& descripción
 
 \subsection{Recolección de noticias}
 
-Para el desarrollo de esta etapa, se recolectaron noticias de las secciones : \textbf{ciencia y tecnología}, \textbf{cultura}, \textbf{deportes}, \textbf{economía} y \textbf{política}, de los sitios web \textbf{Aristegui Noticias}, \textbf{El Economista}, \textbf{La Jornada}, \textbf{La Prensa}, \textbf{Proceso}, \textbf{Sopitas} y \textbf{TV Azteca}, durante el periodo de julio a septiembre cada cuatro días, con el fin de no tener noticias repetidas. El almacenamiento de las noticias se realizó en un directorio por sección, dentro de cada uno de estos se dividian las noticias recolectadas por sitio web. 
+Para el desarrollo de esta etapa, se recolectaron noticias de las secciones: \textbf{ciencia y tecnología}, \textbf{cultura}, \textbf{deportes}, \textbf{economía} y \textbf{política}, de los sitios web \textbf{Aristegui Noticias}, \textbf{El Economista}, \textbf{La Jornada}, \textbf{La Prensa}, \textbf{Proceso}, \textbf{Sopitas} y \textbf{TV Azteca}, durante el periodo de julio a septiembre del año 2019, cada cuatro días, con el fin de no tener noticias repetidas. El almacenamiento de las noticias se realizó en un directorio por sección, dentro de cada uno de estos se guaraban las noticias recolectadas por sitio web.
+
 \\
 
 Una vez finalizada la primera etapa de recolección, los resultados obtenidos por sección se muestran en la Figura  \ref{Fig:notseccionV1}.
 %Mencionar como nombre primer corte de recolección y poner numero de noticias
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.6]{imagenes/Capitulo5/noticiasPorSeccionV1.png}
+	\includegraphics[scale=.35]{imagenes/Capitulo5/noticiasPorSeccionV1.png}
 	\caption{Noticias recolectadas durante el primer corte.}
 	\label{Fig:notseccionV1}
 \end{figure}
 
-Cabe destacar que el número de noticias recolectadas durante el primer corte, no se encontraba balanceado, por ello se decidió continuar con el proceso de recolección de noticias, con el fin de balancear el corpus.
+Cabe destacar que el número de noticias recolectadas durante el primer corte, no se encontraba balanceadas, esto es que el número de noticias por sección era distinto, por ello se decidió continuar con el proceso de recolección de noticias, con el fin de balancear el corpus.
 \\
 Una vez finalizada la segunda etapa de recolección el número de noticias se muestra en la Figura \ref{Fig:notseccion} 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.6]{imagenes/Capitulo5/noticiasPorSeccionV2.png}
+	\includegraphics[scale=.35]{imagenes/Capitulo5/noticiasPorSeccionV2.png}
 	\caption{Noticias recolectadas al finalizar el segundo corte.}
 	\label{Fig:notseccion}
 \end{figure}
@@ -228,13 +252,13 @@ Los resultados que obtuvimos por sitio web se muestran en la Figura \ref{Fig:not
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.6]{imagenes/Capitulo5/noticiasPorSitio.png}
+	\includegraphics[scale=.35]{imagenes/Capitulo5/noticiasPorSitio.png}
 	\caption{Noticias recolectadas por sitio web al finalizar el segundo corte}
 	\label{Fig:notPorSit}
 \end{figure}
 
 
-Los noticias recuperadas por cada sitio web, se muestran en la siguiente Tabla \ref{tabla:sitios}.
+Los noticias recuperadas por cada sitio web, se muestran en la siguiente Tabla \ref{tabla:numNotic}.
 
 \begin{table}[H]
 \begin{tabular}{|l|l|l|}
@@ -280,11 +304,44 @@ Sitio                               & Sección              & Número de Noticia
 \label{tabla:numNotic}
 \end{table}
 
-Una vez concluida la recolección de noticias se procedió con eliminar aquellas noticias que hayan sido duplicadas, finalmente el número total de noticias por sección se muestra en la Figura \ref{fig:notBalanceadas}, obteniendo un total de 3,500 noticias.\\
+Una vez concluida la recolección de noticias, se eliminaron aquellas noticias que se encontraban más de una vez dentro de los archivos utilizando un listas en \textit{Python} en el cual se validaba la URL de la noticia no se encontrará en la lista; Cabe mencionar que existían noticias que contenían tuits en inglés se procedió con eliminar el texto que tuvieraen el idioma inglés, posteriormente se realizaron dos tareas fundamentales: \textbf{limpieza de texto} y \textbf{Filtro de longitud}. \\
+
+%----------------------------------%
+%\begin{large}
+\subsection{Limpieza de texto}
+%\end{large}
+
+Esta tarea consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto (ver), símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis} (como \dSmiley \dCooley \dNinja). Por ejemplo el texto \ref{box:cp5:texto} muestra la redacción de una noticia con la información descargada de una pagina web. El resultado de limpiar la noticia se muestra en el texto \ref{box:cp5:limpio}. Se puede observar que se han eliminado los elementos $<p>\ </p>\ <!--\ -->$ \# $\dagger$ \dSmiley \dCooley \dInnocey.\\
+
+Para realizar esta tarea se han ocupando las librerías; \textbf{pandas} como medio de lectura de archivos tipo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en ingles); \textbf{re} la cual permite evaluar expresiones regulares con el objetivo de eliminar símbolos; \textbf{demoji} quien permite eliminar \textit{emojis} dentro del texto.\\
+
+\begin{mygraybox}[label={box:cp5:texto}]{Texto de entrada} 
+$<p>\dagger$$\ \ \ $ El número 343 de El Trimestre Económico,$\otimes$ revista emblemática del Fondo de Cultura 
+$<!--\ -->$
+Económica (FCE), será * * * presentado por David Ibarra Muñoz \dSmiley , Carlos Tello Macías \dCooley , Alicia Puyana \dInnocey y Pablo Ruiz Nápoles el martes 27 de agosto a las 6 de la tarde, en la librería Rosario Castellanos, ubicada en avenida Tamaulipas \# 202, en la colonia Condesa de la capital mexicana.$</p>$
+\end{mygraybox}
+
+\ \\
+
+\begin{mygraybox}[label={box:cp5:limpio}]{Texto limpio} 
+El número 343 de El Trimestre Económico, revista emblemática del Fondo de Cultura 
+Económica (FCE), será presentado por David Ibarra Muñoz, Carlos Tello Macías , Alicia Puyana y Pablo Ruiz Nápoles el martes 27 de agosto a las 6 de la tarde, en la librería Rosario Castellanos, ubicada en avenida Tamaulipas 202, en la colonia Condesa de la capital mexicana.
+\end{mygraybox}
+\ \\
+
+%----------------------------------%
+%\begin{large}
+\subsection{Filtro de longitud}
+%\end{large}
+
+Con base en la regla de negocio \RNref{RN1}{Número de palabras} se ha definido 180 palabras como longitud mínima de las noticias, incluyendo en la definición de palabra números, signos de puntuación y exclamación.
+Para esto después de haber concluido el proceso de limpieza se pregunta por la longitud de la cadena (sin contar los espacios) y si esta es mayor o igual a 180, entonces es un artículo válido para utilizar en el entrenamiento de lo contrario no es tomado en cuenta.\\
+
+Una vez concluidas estas tareas, el número de noticias por sección se encontraba más cercano, por ello se definió el número de noticias por sección, el cual sería de 700, dado que algunas secciones les faltaban pocas noticias para cumplir este número, se recolectaron las noticias faltantes, las noticias debían pasar por el proceso de limpieza y cumplir por el filtro de longitud, finalmente el número total de noticias por sección se muestra en la Figura \ref{fig:notBalanceadas}, obteniendo un total de 3,500 noticias.\\
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.70]{imagenes/Capitulo5/noticiasBalanceadas.png}
-	\caption{Noticias balanceadas por sección}
+	\includegraphics[scale=.45]{imagenes/Capitulo5/noticiasBalanceadas.png}
+	\caption{Noticias por sección}
 	\label{fig:notBalanceadas}
 \end{figure}
