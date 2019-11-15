@@ -2,7 +2,8 @@
 
 El segundo pilar del trabajo terminal es entrenar un algoritmo (de aprendizaje automático), para clasificar las noticias en las secciones \textbf{Ciencia y tecnología}, \textbf{Política}, \textbf{Deportes}, \textbf{Economía} y \textbf{Cultura}. Cabe destacar que el clasificador resolverá un problema multiclase (ver \Tref{cp3:multinomial}{Clasificación multinomial}) debido a que la entrada es una artículo y como salida brinda la pertenencia a una sección  de 5 posibilidades. El proceso de entrenamiento se muestra en la Figura \ref{fig:cp5:procesoE}.\\
 
-Como se mencionó en la etapa de recolección, el corpus utilizado contiene 700 noticias por cada sección es decir, 3,500 artículos en total. Sin embargo solo el 90\% de este será ocupado en la etapa de entrenamiento y el 10\% restante se ocupará para hacer la etapa de prueba, teniendo así un total de 3,150 noticias de entrenamiento y 350 para medir la eficiencia del clasificador, estos conjuntos serán definidos al final de la etapa de preprocesamiento.\\
+
+Como se mencionó en la etapa de recolección, el corpus obtenido contiene 7,707 noticias en total. Sin embargo este contenido debe ser procesado y solo seleccionar los artículos que aporten información para el entrenamiento, al final de la etapa de pre\-procesamiento el corpus será dividió en dos conjuntos: entrenamiento con el 90\% de los artículos y prueba con el 10\%. A continuación se explica la etapa de \textbf{Pre-procesamiento}.\\
 
 \begin{figure}[h]
 \centering
@@ -12,10 +13,11 @@ Como se mencionó en la etapa de recolección, el corpus utilizado contiene 700 
 \end{figure}
 
 
+
 %------------------------------------------------------------------%
 \subsection{Preprocesamiento}
 
-Como primera instancia, el corpus creado de 3,500 noticias debe ser procesado, con el fin de crear vectores que representan el contenido de cada artículo de forma ordenada (ver \Tref{cp3:representaciont}{Representación del texto}), de esta manera los algoritmos de clasificación son capaces de entender la información. En cuanto a los datos que son procesados de la noticia cabe mencionar que solo se usa el título y la redacción del artículo, los demás datos(como url, fecha, sección) no son necesarios para el entrenamiento. Este proceso consta de 6 etapas, las cuales son mostradas en la Figura \ref{fig:cp5:preprocesamiento}. \\
+Como primera instancia, el corpus creado debe ser procesado, con el fin de crear vectores que representan el contenido de cada artículo de forma ordenada (ver \Tref{cp3:representaciont}{Representación del texto}), de esta manera los algoritmos de clasificación son capaces de entender la información. En cuanto a los datos que son procesados de la noticia cabe mencionar que solo se usa el título y la redacción del artículo, los demás datos(como url, fecha, sección) no son necesarios para el entrenamiento. Este proceso consta de 6 etapas, las cuales son mostradas en la Figura \ref{fig:cp5:preprocesamiento}. \\
 
 Cabe destacar que estas etapas están desarrolladas en un script escrito en el lenguaje \textbf{python 3}, en cada sección se hará mención de las librerías ocupadas.\\
 
@@ -47,8 +49,6 @@ Económica (FCE), será * * * presentado por David Ibarra Muñoz \dSmiley , Carl
 El número 343 de El Trimestre Económico, revista emblemática del Fondo de Cultura 
 Económica (FCE), será presentado por David Ibarra Muñoz, Carlos Tello Macías , Alicia Puyana y Pablo Ruiz Nápoles el martes 27 de agosto a las 6 de la tarde, en la librería Rosario Castellanos, ubicada en avenida Tamaulipas 202, en la colonia Condesa de la capital mexicana.
 \end{mygraybox}
-\ \\
-
 %----------------------------------%
 %\begin{large}
 \subsubsection{Filtro de longitud}
@@ -56,6 +56,31 @@ Económica (FCE), será presentado por David Ibarra Muñoz, Carlos Tello Macías
 
 Con base en la regla de negocio \RNref{RN1}{Número de palabras} se ha definido 180 palabras como longitud mínima de las noticias, incluyendo en la definición de palabra números, signos de puntuación y exclamación.
 Para esto después de haber concluido el proceso de limpieza se pregunta por la longitud de la cadena (sin contar los espacios) y si esta es mayor o igual a 180, entonces es un artículo válido para utilizar en el entrenamiento de lo contrario no es tomado en cuenta.\\
+
+
+%----------------------------------%
+%\begin{large}
+\subsubsection{Delimitación del corpus}
+%\end{large}
+
+En este punto del proceso, la cantidad de artículos ha disminuido (como se observa en la Figura \ref{fig:cp5:noticiasSecciones}), sin embargo la distribución por sección no es homogénea, esta situación crea un sesgo en el corpus y después en la etapa de \textbf{Entrenamiento} los algoritmos pueden desarrollar una preferencia por la categoría con mas datos. Por está razón se debe acotar la cantidad de noticias.\\
+
+Como se muestra en la Figura \ref{fig:cp5:noticiasSecciones} cada sección contiene al menos 700 noticias, por lo tanto este es el número definido para delimitar el número de artículos. De esta manera el corpus se ha definido como se muestra en la Figura \ref{fig:notBalanceadas}, obteniendo un total de 3,500 noticias.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.33]{imagenes/Capitulo5/Entrenamiento/noticiasSecciones.png}
+	\caption{Noticias por sección}
+	\label{fig:cp5:noticiasSecciones}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.5]{imagenes/Capitulo5/noticiasBalanceadas.png}
+	\caption{Noticias por sección}
+	\label{fig:notBalanceadas}
+\end{figure}
 
 %----------------------------------%
 %\begin{large}
@@ -68,7 +93,7 @@ La etapa de tokenización consiste en separar el texto en sus elementos mínimos
 El número 343 de El Trimestre Económico , revista emblemática del Fondo de Cultura 
 Económica ( FCE ) , será presentado por David Ibarra Muñoz , Carlos Tello Macías , Alicia Puyana y Pablo Ruiz Nápoles el martes 27 de agosto a las 6 de la tarde , en la librería Rosario Castellanos , ubicada en avenida Tamaulipas 202 , en la colonia Condesa de la capital mexicana .
 \end{mygraybox}
-\ \\
+
 %----------------------------------%
 %\begin{large}
 \subsubsection{Lematizar}
@@ -136,8 +161,6 @@ Como segundo paso las noticias son almacenadas en un archivo con extensión \tex
 5003500\&\&\&\&\&Titulo 3500\&\&\&\&\&Contenido noticia 3500\&\&\&\&\&4
 \end{mygraybox}
 
-\ \\
-
 %----------------------------------%
 
 %\begin{large}
@@ -160,8 +183,6 @@ Para ilustrar un ejemplo, en el cuadro \ref{box:cp5:ids} se muestra un conjunto 
 \end{equation*}
 \end{mygraybox}
 
-\ \\
-
 
 \begin{mygraybox}[label={box:cp5:shuffle}]{Nuevo orden de ID's} 
 \begin{equation*}
@@ -170,7 +191,6 @@ Para ilustrar un ejemplo, en el cuadro \ref{box:cp5:ids} se muestra un conjunto 
 \end{bmatrix}
 \end{equation*}
 \end{mygraybox}
-\ \\
 
 La distribución generada por esta función es almacenada en un archivo, y como último paso se han tomado las primeras 350 noticias de forma manual y se han colocado en un archivo diferente, definido así las noticias de entrenamiento (con 3,150) y de prueba (con 350).\\
 
@@ -180,14 +200,14 @@ La cantidad de noticias por sección del conjunto de entrenamiento se muestran e
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.55]{imagenes/capitulo5/Entrenamiento/SeccionesE.png}
+\includegraphics[scale=.6]{imagenes/capitulo5/Entrenamiento/SeccionesE.png}
 \caption{Corpus de entrenamiento}
 \label{fig:cp5:seccionE}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.55]{imagenes/capitulo5/Entrenamiento/SeccionesP.png}
+\includegraphics[scale=.6]{imagenes/capitulo5/Entrenamiento/SeccionesP.png}
 \caption{Corpus de prueba}
 \label{fig:cp5:seccionP}
 \end{figure}
@@ -251,14 +271,12 @@ Es&este&la&primera&noticia&?
 \begin{mygraybox}[label={box:cp5:caracteristicas}]{Selección de características} 
 \begin{equation*}
 \begin{bmatrix}
-es & esta & este & la & noticia & primera & segunda & tercera & Y
+es & esta & este & la & noticia & primera & segunda & tercera & y
 \end{bmatrix}
 \end{equation*}
 \end{mygraybox}
 
 %----------------------------------%
-
-\ \\
 
 
 

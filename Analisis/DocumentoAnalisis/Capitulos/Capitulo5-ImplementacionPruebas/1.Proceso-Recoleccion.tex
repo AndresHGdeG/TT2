@@ -11,37 +11,51 @@ El proceso de recolección es parte fundamental del presente trabajo terminal, y
 	\label{fig:etapRecoleccion}
 \end{figure}
 
-\subsection{Selección de sitios web}
 \Tlabel{cp5:sitiosWeb}
-\textit{Reuters Institute}\footnote{https://reutersinstitute.politics.ox.ac.uk/} realizó un informe anual para el comprender como se consumen las noticias en distintos países, mediante el sitio \textit{YouGov}\footnote{https://mx.yougov.com/} se realizó la investigación utilizando cuestionarios en línea durante finales de enero y principios de febrero del año 2019. El informe reporto el índice de confianza que tienen los usuarios sobre los sitios noticiosos, la Figura \ref{fig:nivConfianza} muestra los sitios que tienen un mayor índice de confianza en una escala de 0 a 10.  
+\subsection{Selección de sitios web}
+\textit{Reuters Institute}\footnote{https://reutersinstitute.politics.ox.ac.uk/} realizó un informe anual para comprender como se consumen las noticias en distintos países, mediante el sitio \textit{YouGov}\footnote{https://mx.yougov.com/} se realizó la investigación utilizando cuestionarios en línea durante finales de enero y principios de febrero del año 2019. El informe reporto el índice de confianza que tienen los usuarios sobre los sitios noticiosos, la Figura \ref{fig:nivConfianza} muestra los sitios que tienen un mayor índice de confianza en una escala de 0 a 10.  
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.35]{imagenes/Capitulo5/nivelConfianza.png}
+  \includegraphics[scale=.4]{imagenes/Capitulo5/nivelConfianza.png}
   \caption{Nivel de confianza de usuarios al consultar un sitio web.}
   \label{fig:nivConfianza}
 \end{figure}
 
-El sitio web El Economista\footnote{https://www.eleconomista.com.mx/} contiene una sección llamada \textbf{Ranking de Medios Nativos Digitales}\footnote{https://www.eleconomista.com.mx/Ranking-de-Medios-Nativos-Digitales}, el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados como se muestra en la Figura \ref{fig:rank}\\
+El sitio web El Economista\footnote{https://www.eleconomista.com.mx/} contiene una sección llamada \textbf{Ranking de Medios Nativos Digitales}\footnote{https://www.eleconomista.com.mx/Ranking-de-Medios-Nativos-Digitales}, el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados como se muestra en la Figura \ref{fig:rank}.\\
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.28]{imagenes/Capitulo5/ranking.png}
+  \includegraphics[scale=.25]{imagenes/Capitulo5/ranking.png}
   \caption{Ranking de sitios de noticias del periódo de enero del 2018 a enero del 2019.}
   \label{fig:rank}
 \end{figure}
 
-La compañía \textit{comScore}\footnote{https://www.comscore.com/} dedicada a proporcionar datos de marketing en Internet, en el año 2018 realizó un estudio en el cual indica los sitios web de noticias más visitados, los resultados se muestran en la Figura \ref{fig:comScore}
+La compañía \textit{comScore}\footnote{https://www.comscore.com/} dedicada a proporcionar datos de marketing en Internet, en el año 2018 realizó un estudio en el cual indica los sitios web de noticias más visitados, los resultados se muestran en la Figura \ref{fig:comScore}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.28]{imagenes/Capitulo5/visitantesPorSitioComScore.png}
+  \includegraphics[scale=.32]{imagenes/Capitulo5/visitantesPorSitioComScore.png}
   \caption{Visitantes únicos a sitios de noticias durante el año 2018.}
   \label{fig:comScore}
 \end{figure}
 
 \Tlabel{c5:sitios}
-Para llevar a cabo la selección de sitios web utilizados en el presente proyecto se realizó un análisis sobre aquellos que proveen de información noticiosa, entre los cuales se consideraron \textbf{foros de noticias}, \textbf{sitios de diarios} y \textbf{sitios de televisión}, en conjunto con las Figuras \textbf{\ref{fig:nivConfianza}}, \textbf{\ref{fig:comScore}}, \textbf{\ref{fig:rank}} se han seleccionado los sitios Aristegui Noticias, El Economista, La Jornada, La Prensa, Proceso, Sopitas y TV Azteca para recolectar noticias, ya que se desea obtener noticias de diversas fuentes de información, como lo son foros, blogs y sitios de televisoras.\\ 
+Para llevar a cabo la selección de sitios web utilizados en el presente proyecto se realizó un análisis sobre aquellos que proveen de información noticiosa, entre los cuales se consideraron \textbf{foros de noticias}, \textbf{sitios de diarios} y \textbf{sitios de televisión}, en conjunto con las Figuras \textbf{\ref{fig:nivConfianza}}, \textbf{\ref{fig:comScore}}, \textbf{\ref{fig:rank}} se han seleccionado los sitios siguientes sitios:
+
+\begin{itemize}
+
+  \item \textbf{Aristegui Noticias}
+  \item \textbf{El Economista}
+  \item \textbf{La Jornada}
+  \item \textbf{La Prensa}
+  \item \textbf{Proceso}
+  \item \textbf{Sopitas y TV Azteca}
+
+\end{itemize}
+
+De estas fuentes se recolectan noticias, ya que se desea obtener noticias de diversas fuentes de información, como lo son foros, blogs y sitios de televisoras.\\ 
+
 Una vez definidos los sitios,  observamos que clasifican las noticias por secciones, lo cual permite una búsqueda más rápida de la información, la Tabla \ref{tabla:sitiosW}. muestra el análisis realizado a las secciones contenidas en los sitios seleccionados.
 \\
 
@@ -127,11 +141,11 @@ Una vez definidos los sitios,  observamos que clasifican las noticias por seccio
 Una vez que se analizarón las secciones con las que contaba cada sitio, se procedió a homologar las secciones en las cuales la mayoría de los sitios coincidian, por lo cual se quedarón definidas 5 secciones para clasificación de las noticias:
 
 \begin{itemize}
-    \item Política
-    \item Deportes
-    \item Ciencia y tecnología
-    \item Economía
-    \item Cultura
+    \item \textbf{Política}
+    \item \textbf{Deportes}
+    \item \textbf{Ciencia y tecnología}
+    \item \textbf{Economía}
+    \item \textbf{Cultura}
 \end{itemize}
 
 Cabe mencionar que hay muy pocos sitios que publican noticias de la sección \textbf{Ciencia y tecnología} y \textbf{Cultura}, por ello se consideraron éstas secciones.
@@ -169,7 +183,7 @@ Como se explicó en el capítulo 3 (ver \Tref{c3:crawler}{Crawler}) un \textit{C
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.2]{imagenes/Capitulo5/recoleccion.png}
+	\includegraphics[scale=.25]{imagenes/Capitulo5/recoleccion.png}
 	\caption{Proceso de recolección}
 	\label{Fig:recoleccion}
 \end{figure}
@@ -200,7 +214,7 @@ noticia = //div[@class="class_text"]/p/child::node()/text()
 \end{verbatim}
 \end{small}
 \end{mygraybox}
-
+\ \\
 Cabe destacar que las noticias recolectadas se almacenaron en un archivo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en inglés), con la estructura que se muestra en la Tabla \ref{tab:csv}, donde la primera fila (Encabezado) define los elementos de este archivo, además las filas consecuentes representan el contenido recolectado de cada noticia.\\
 
 %\begin{mygraybox}[label={box:csv}]{Encabezado de un archivo CSV}
@@ -230,17 +244,17 @@ Una vez finalizada la primera etapa de recolección, los resultados obtenidos po
 %Mencionar como nombre primer corte de recolección y poner numero de noticias
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.35]{imagenes/Capitulo5/noticiasPorSeccionV1.png}
+	\includegraphics[scale=.4]{imagenes/Capitulo5/noticiasPorSeccionV1.png}
 	\caption{Noticias recolectadas durante el primer corte.}
 	\label{Fig:notseccionV1}
 \end{figure}
 
-Cabe destacar que el número de noticias recolectadas durante el primer corte, no se encontraba balanceadas, esto es que el número de noticias por sección era distinto, por ello se decidió continuar con el proceso de recolección de noticias, con el fin de balancear el corpus.\\
+Cabe destacar que el número de noticias recolectado durante el primer corte, no se encontraba balanceado, es decir el número de noticias por sección era distinto, por ello se decidió continuar con el proceso de recolección de noticias, con el fin de balancear el corpus.\\
 Una vez finalizada la segunda etapa de recolección el número de noticias se muestra en la Figura \ref{Fig:notseccion} 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.35]{imagenes/Capitulo5/noticiasPorSeccionV2.png}
+	\includegraphics[scale=.42]{imagenes/Capitulo5/noticiasPorSeccionV2.png}
 	\caption{Noticias recolectadas al finalizar el segundo corte.}
 	\label{Fig:notseccion}
 \end{figure}
@@ -249,49 +263,91 @@ Los resultados que obtuvimos por sitio web se muestran en la Figura \ref{Fig:not
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.35]{imagenes/Capitulo5/noticiasPorSitio.png}
+	\includegraphics[scale=.47]{imagenes/Capitulo5/noticiasPorSitio.png}
 	\caption{Noticias recolectadas por sitio web al finalizar el segundo corte}
 	\label{Fig:notPorSit}
 \end{figure}
 
+Una vez concluida la recolección de noticias, se eliminaron aquellas noticias que se encontraban más de una vez dentro de los archivos, utilizando listas en \textbf{Python} en el cual se validaba la URL de la noticia no se encontrará en la lista; Cabe mencionar que existían noticias que contenían \textit{tuits} redactados en lenguaje inglés, por esta razón se procedió a eliminar el con tenido de este idioma. Al concluir este proceso se obtuvo un total de 7,707 artículos. La Figura  \ref{fig:cp5:secciones} muestra el total de noticias por sección y la Tabla \ \ref{tabla:numNotic} muestra las noticias recuperadas por cada sitio web.
 
-Los noticias recuperadas por cada sitio web, se muestran en la siguiente Tabla \ref{tabla:numNotic}.
 
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=.32]{imagenes/Capitulo5/seccionesCr.png}
+  \caption{Noticias recolectadas secciones}
+  \label{fig:cp5:secciones}
+\end{figure}
+
+
+%
+%\begin{table}[H]
+%\centering
+%  \begin{tabular}{|l|c|}
+%  %-----------------------Ecanbezado-----------------------------------%
+%    \hline
+%\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Sección}} }&
+%\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Número de noticias%}} }%
+%\\  %\cline{1-2}%
+%  %-%-------------%
+%
+%Deportes& 1685\\
+%\hline
+%Economía& 1069\\
+%\hline
+%Política& 1926\\
+%\hline
+%Cultura& 1238\\
+%\hline
+%Ciencia y Tecnología& 1789\\
+%\hline
+%  \end{tabular}
+%\caption{Número de noticias}
+%\label{tabla:totalSeccion}
+%\end{table}
+
+%--------------------------------------------------------------------------------%
 \begin{table}[H]
-\begin{tabular}{|l|l|l|}
+\centering
+\begin{tabular}{|l|l|c|}
 \hline
-Sitio                               & Sección              & Número de Noticias \\ \hline
-\multirow{5}{*}{Aristegui Noticias} & Ciencia y Tecnología & 99                 \\ \cline{2-3} 
+ \multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Sitio}} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Sección  }} }
+&\multicolumn{1}{| >{\columncolor{myBlueChapter}}c|}{ \textcolor{myWhite}{\textbf{Número de Noticias}} }
+\\ \cline{1-3}
+
+\multirow{5}{*}{\textbf{Aristegui Noticias}} & Ciencia y Tecnología & 99                 \\ \cline{2-3} 
                                     & Cultura              & 179                \\ \cline{2-3} 
                                     & Deportes             & 308                \\ \cline{2-3} 
                                     & Economía             & 161                \\ \cline{2-3} 
                                     & Política             & 248                \\ \hline
-\multirow{5}{*}{Azteca Noticias}    & Ciencia y Tecnología & 986                \\ \cline{2-3} 
+\multirow{5}{*}{\textbf{Azteca Noticias}}& Ciencia y Tecnología & 986           \\ \cline{2-3} 
                                     & Cultura              & 0                  \\ \cline{2-3} 
                                     & Deportes             & 280                \\ \cline{2-3} 
                                     & Economía             & 77                 \\ \cline{2-3} 
                                     & Política             & 350                \\ \hline
-\multirow{5}{*}{El Economista}      & Ciencia y Tecnología & 18                 \\ \cline{2-3} 
+\multirow{5}{*}{\textbf{El Economista}}& Ciencia y Tecnología & 18              \\ \cline{2-3} 
                                     & Cultura              & 267                \\ \cline{2-3} 
                                     & Deportes             & 214                \\ \cline{2-3} 
                                     & Economía             & 201                \\ \cline{2-3} 
                                     & Política             & 236                \\ \hline
-\multirow{5}{*}{La Jornada}         & Ciencia y Tecnología & 4                  \\ \cline{2-3} 
+\multirow{5}{*}{\textbf{La Jornada}}& Ciencia y Tecnología & 4                  \\ \cline{2-3} 
                                     & Cultura              & 424                \\ \cline{2-3} 
                                     & Deportes             & 284                \\ \cline{2-3} 
                                     & Economía             & 512                \\ \cline{2-3} 
                                     & Política             & 659                \\ \hline
-\multirow{5}{*}{La Prensa}          & Ciencia y Tecnología & 68                 \\ \cline{2-3} 
+\multirow{5}{*}{\textbf{La Prensa}} & Ciencia y Tecnología & 68                 \\ \cline{2-3} 
                                     & Cultura              & 90                 \\ \cline{2-3} 
                                     & Deportes             & 93                 \\ \cline{2-3} 
                                     & Economía             & 118                \\ \cline{2-3} 
                                     & Política             & 77                 \\ \hline
-\multirow{5}{*}{Proceso}            & Ciencia y Tecnología & 65                 \\ \cline{2-3} 
+\multirow{5}{*}{\textbf{Proceso}}   & Ciencia y Tecnología & 65                 \\ \cline{2-3} 
                                     & Cultura              & 13                 \\ \cline{2-3} 
                                     & Deportes             & 335                \\ \cline{2-3} 
                                     & Economía             & 0                  \\ \cline{2-3} 
                                     & Política             & 112                \\ \hline
-\multirow{5}{*}{Sopitas}            & Ciencia y Tecnología & 549                \\ \cline{2-3} 
+\multirow{5}{*}{\textbf{Sopitas}}   & Ciencia y Tecnología & 549                \\ \cline{2-3} 
                                     & Cultura              & 265                \\ \cline{2-3} 
                                     & Deportes             & 171                \\ \cline{2-3} 
                                     & Economía             & 0                  \\ \cline{2-3} 
@@ -301,44 +357,5 @@ Sitio                               & Sección              & Número de Noticia
 \label{tabla:numNotic}
 \end{table}
 
-Una vez concluida la recolección de noticias, se eliminaron aquellas noticias que se encontraban más de una vez dentro de los archivos utilizando un listas en \textit{Python} en el cual se validaba la URL de la noticia no se encontrará en la lista; Cabe mencionar que existían noticias que contenían tuits en inglés se procedió con eliminar el texto que tuvieraen el idioma inglés, posteriormente se realizaron dos tareas fundamentales: \textbf{limpieza de texto} y \textbf{Filtro de longitud}. \\
 
-%----------------------------------%
-%\begin{large}
-\subsection{Limpieza de texto}
-%\end{large}
 
-Esta tarea consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto (ver), símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis} (como \dSmiley \dCooley \dNinja). Por ejemplo el texto \ref{box:cp5:texto} muestra la redacción de una noticia con la información descargada de una pagina web. El resultado de limpiar la noticia se muestra en el texto \ref{box:cp5:limpio}. Se puede observar que se han eliminado los elementos $<p>\ </p>\ <!--\ -->$ \# $\dagger$ \dSmiley \dCooley \dInnocey.\\
-
-Para realizar esta tarea se han ocupando las librerías; \textbf{pandas} como medio de lectura de archivos tipo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en ingles); \textbf{re} la cual permite evaluar expresiones regulares con el objetivo de eliminar símbolos; \textbf{demoji} quien permite eliminar \textit{emojis} dentro del texto.\\
-
-\begin{mygraybox}[label={box:cp5:texto}]{Texto de entrada} 
-$<p>\dagger$$\ \ \ $ El número 343 de El Trimestre Económico,$\otimes$ revista emblemática del Fondo de Cultura 
-$<!--\ -->$
-Económica (FCE), será * * * presentado por David Ibarra Muñoz \dSmiley , Carlos Tello Macías \dCooley , Alicia Puyana \dInnocey y Pablo Ruiz Nápoles el martes 27 de agosto a las 6 de la tarde, en la librería Rosario Castellanos, ubicada en avenida Tamaulipas \# 202, en la colonia Condesa de la capital mexicana.$</p>$
-\end{mygraybox}
-
-\ \\
-
-\begin{mygraybox}[label={box:cp5:limpio}]{Texto limpio} 
-El número 343 de El Trimestre Económico, revista emblemática del Fondo de Cultura 
-Económica (FCE), será presentado por David Ibarra Muñoz, Carlos Tello Macías , Alicia Puyana y Pablo Ruiz Nápoles el martes 27 de agosto a las 6 de la tarde, en la librería Rosario Castellanos, ubicada en avenida Tamaulipas 202, en la colonia Condesa de la capital mexicana.
-\end{mygraybox}
-\ \\
-
-%----------------------------------%
-%\begin{large}
-\subsection{Filtro de longitud}
-%\end{large}
-
-Con base en la regla de negocio \RNref{RN1}{Número de palabras} se ha definido 180 palabras como longitud mínima de las noticias, incluyendo en la definición de palabra números, signos de puntuación y exclamación.
-Para esto después de haber concluido el proceso de limpieza se pregunta por la longitud de la cadena (sin contar los espacios) y si esta es mayor o igual a 180, entonces es un artículo válido para utilizar en el entrenamiento de lo contrario no es tomado en cuenta.\\
-
-Una vez concluidas estas tareas, el número de noticias por sección se encontraba más cercano, por ello se definió el número de noticias por sección, el cual sería de 700, dado que algunas secciones les faltaban pocas noticias para cumplir este número, se recolectaron las noticias faltantes, las noticias debían pasar por el proceso de limpieza y cumplir por el filtro de longitud, finalmente el número total de noticias por sección se muestra en la Figura \ref{fig:notBalanceadas}, obteniendo un total de 3,500 noticias.\\
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=.45]{imagenes/Capitulo5/noticiasBalanceadas.png}
-	\caption{Noticias por sección}
-	\label{fig:notBalanceadas}
-\end{figure}
