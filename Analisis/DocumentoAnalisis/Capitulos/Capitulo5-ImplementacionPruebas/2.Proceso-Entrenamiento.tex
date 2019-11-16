@@ -30,10 +30,11 @@ Cabe destacar que estas etapas están desarrolladas en un script escrito en el l
 
 %----------------------------------%
 %\begin{large}
+\Tlabel{cp5:limpieza}
 \subsubsection{Limpieza}
 %\end{large}
 
-Esta etapa consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto (ver), símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis} (como \dSmiley \dCooley \dNinja). Por ejemplo el texto \ref{box:cp5:texto} muestra la redacción de una noticia con la información descargada de una pagina web. El resultado de limpiar la noticia se muestra en el texto \ref{box:cp5:limpio}. Se puede observar que se han eliminado los elementos $<p>\ </p>\ <!--\ -->$ \# $\dagger$ \dSmiley \dCooley \dInnocey.\\
+Esta etapa consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto (ver \Tref{cp3:html}{HTML}), símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis} (como \dSmiley \dCooley \dNinja). Por ejemplo el texto \ref{box:cp5:texto} muestra la redacción de una noticia con la información descargada de una pagina web. El resultado de limpiar la noticia se muestra en el texto \ref{box:cp5:limpio}. Se puede observar que se han eliminado los elementos $<p>\ </p>\ <!--\ -->$ \# $\dagger$ \dSmiley \dCooley \dInnocey.\\
 
 Para realizar esta tarea se han ocupando las librerías; \textbf{pandas} como medio de lectura de archivos tipo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en ingles); \textbf{re} la cual permite evaluar expresiones regulares con el objetivo de eliminar símbolos; \textbf{demoji} quien permite eliminar \textit{emojis} dentro del texto.\\
 
