@@ -138,7 +138,7 @@ Una vez definidos los sitios,  observamos que clasifican las noticias por seccio
 \label{tabla:sitiosW}
 \end{table}
 
-Una vez que se analizarón las secciones con las que contaba cada sitio, se procedió a homologar las secciones en las cuales la mayoría de los sitios coincidian, por lo cual se quedarón definidas 5 secciones para clasificación de las noticias:
+Una vez que se analizaron las secciones con las que contaba cada sitio, se procedió a homologar las secciones en las cuales la mayoría de los sitios coincidian, por lo cual se quedarón definidas 5 secciones para clasificación de las noticias:
 
 \begin{itemize}
     \item \textbf{Política}
@@ -153,7 +153,7 @@ Cabe mencionar que hay muy pocos sitios que publican noticias de la sección \te
 %------------------------------------------- Listo
 \subsection{Análisis de sitios web}
 
-Una vez definida la información requerida de cada noticia se realizó un análisis sobre la estructura \textbf{XML} (\textit{Extensible Markup Language}, por sus siglas en inglés), con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML, dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiara.\\
+Una vez definida la información requerida de cada noticia se realizó un análisis sobre la estructura \textbf{XML} (\textit{Extensible Markup Language}, por sus siglas en inglés), con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML, dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiará.\\
 
 Una expresión \textit{XPath} de ruta permite buscar y seleccionar los distintos nodos de un documento XML. En el siguiente Cuadro \ref{box:xmlEjemplo} se muestra un ejemplo con los elementos de una nota, los cuales son: \textbf{para}, \textbf{de}, \textbf{titulo}, \textbf{texto}, en un documento XML estos son los nodos que conforman una nota.\\
 
@@ -238,7 +238,7 @@ url ejemplo 2& título ejemplo 2& autor ejemplo 2& fecha ejemplo 2& descripción
 
 \subsection{Recolección de noticias}
 
-Para el desarrollo de esta etapa, se recolectaron noticias de las secciones: \textbf{ciencia y tecnología}, \textbf{cultura}, \textbf{deportes}, \textbf{economía} y \textbf{política}, de los sitios web \textbf{Aristegui Noticias}, \textbf{El Economista}, \textbf{La Jornada}, \textbf{La Prensa}, \textbf{Proceso}, \textbf{Sopitas} y \textbf{TV Azteca}, durante el periodo de julio a septiembre del año 2019, cada cuatro días, con el fin de no tener noticias repetidas. El almacenamiento de las noticias se realizó en un directorio por sección, dentro de cada uno de estos se guaraban las noticias recolectadas por sitio web.\\
+Para el desarrollo de esta etapa, se recolectaron noticias de las secciones: \textbf{ciencia y tecnología}, \textbf{cultura}, \textbf{deportes}, \textbf{economía} y \textbf{política}, de los sitios web \textbf{Aristegui Noticias}, \textbf{El Economista}, \textbf{La Jornada}, \textbf{La Prensa}, \textbf{Proceso}, \textbf{Sopitas} y \textbf{TV Azteca}, durante el periodo de julio a septiembre del año 2019, cada cuatro días, con el fin de no tener noticias repetidas. El almacenamiento de las noticias se realizó en un directorio por sección, dentro de cada uno de estos se guardaban las noticias recolectadas por sitio web.\\
 
 Una vez finalizada la primera etapa de recolección, los resultados obtenidos por sección se muestran en la Figura  \ref{Fig:notseccionV1}.
 %Mencionar como nombre primer corte de recolección y poner numero de noticias
@@ -268,7 +268,7 @@ Los resultados que obtuvimos por sitio web se muestran en la Figura \ref{Fig:not
 	\label{Fig:notPorSit}
 \end{figure}
 
-Una vez concluida la recolección de noticias, se eliminaron aquellas noticias que se encontraban más de una vez dentro de los archivos, utilizando listas en \textbf{Python} en el cual se validaba la URL de la noticia no se encontrará en la lista; Cabe mencionar que existían noticias que contenían \textit{tuits} redactados en lenguaje inglés, por esta razón se procedió a eliminar el con tenido de este idioma. Al concluir este proceso se obtuvo un total de 7,707 artículos. La Figura  \ref{fig:cp5:secciones} muestra el total de noticias por sección y la Tabla \ \ref{tabla:numNotic} muestra las noticias recuperadas por cada sitio web.
+Una vez concluida la recolección de noticias, se eliminaron aquellas noticias que se encontraban más de una vez dentro de los archivos, utilizando listas en \textbf{Python} en el cual se validaba la URL de la noticia no se encontrará en la lista. Cabe mencionar que existían noticias que contenían \textit{tuits} redactados en lenguaje inglés, por esta razón se procedió a eliminar el contenido de este idioma. Al concluir este proceso se obtuvo un total de 7,707 artículos. La Figura  \ref{fig:cp5:secciones} muestra el total de noticias por sección y la Tabla \ \ref{tabla:numNotic} muestra las noticias recuperadas por cada sitio web.
 
 
 

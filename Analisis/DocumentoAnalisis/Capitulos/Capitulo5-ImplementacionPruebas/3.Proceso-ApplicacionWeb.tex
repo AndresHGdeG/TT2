@@ -1,11 +1,11 @@
 \section[Aplicación]{Aplicación web}
 
 
-Como se estableció en el objetivo de este trabajo (ver \Tref{cp1:objetivoG}{Objetivo general}), se ha creado una aplicación para recolectar y clasificar noticias, las cuales son mostrados en un entorno web.En esta sección se explica el proceso de funcionamiento de la aplicación web.\\
+Como se estableció en el objetivo de este trabajo, se ha creado una aplicación para recolectar y clasificar noticias, las cuales son mostrados en un entorno web. En esta sección se explica el proceso de funcionamiento de la aplicación web.\\
 
-Para el desarrollo de esta  herramienta se ha ocupado \textbf{Java} para el procesamiento de los datos y para diseñar la vista se ha ocupado: \textbf{HTML}, \textbf{CSS} y \textbf{Java server faces}, ademas para conectar el proceso de recolección y clasificación (escritos en \textbf{Python 3}) se hecho uso de \textbf{subprocesos}, los cuales son proceso que corre en segundo plano.\\
+Para el desarrollo de esta  herramienta se ha utilizado \textbf{Java} para el procesamiento de los datos y para diseñar la vista se ha utilizado: \textbf{HTML}, \textbf{CSS} y \textbf{Java server faces}, ademas para conectar el proceso de recolección y clasificación (escritos en \textbf{Python 3}) se hecho uso de \textbf{subprocesos}, los cuales son procesos que corren en segundo plano.\\
 
-La aplicación esta diseñada en 4 etapas, las cuales son mostradas en la Figura \ref{fig:procesoAppWeb}, donde la etapa \textbf{Selección} describe las secciones disponibles para obtener noticias; la etapa \textbf{Recolectar} muestra la integración de los \textit{crawlwers} en la herramienta; la etapa \textbf{Clasificar} hace uzo del modelo clasificador desarrollado en la sección anterior y para concluir, la etapa \textbf{Mostrar resultados} describe la forma en que los datos son presentados al usuario. Es importante mencionar que las etapas en color azul cielo siempre son ejecutadas, sin embargo las de color gris no siempre son llevadas acabo. A continuación se explica a detalla cada una las tareas.
+La aplicación esta diseñada en 4 etapas, las cuales son mostradas en la Figura \ref{fig:procesoAppWeb}, donde la etapa \textbf{Selección} describe las secciones disponibles para obtener noticias; la etapa \textbf{Recolectar} muestra la integración de los \textit{crawlers} en la herramienta; la etapa \textbf{Clasificar} hace uso del modelo clasificador desarrollado en la sección anterior y para concluir, la etapa \textbf{Mostrar resultados} describe la forma en que los datos son presentados al usuario. Es importante mencionar que las etapas en color azul cielo siempre son ejecutadas, sin embargo las de color gris no siempre son llevadas acabo. A continuación se explica a detalla cada una las tareas.
 
 
 \begin{figure}[H]
@@ -30,7 +30,7 @@ La aplicación esta diseñada en 4 etapas, las cuales son mostradas en la Figura
 \subsection{Selección}
 
 
-Esta etapa permite elegir al usuario el tipo de noticias a buscar. La aplicación comienza en una pantalla inicial, donde se muestra un menú con las opciones \textbf{Inicio}, \textbf{Cultura}, \textbf{Deportes}, \textbf{Economía}, \textbf{Política}, \textbf{Ciencia y Tecnología}, estas categorías (excluyendo \textbf{Inicio}) son las secciones permitidas para recolectar noticias, como se muestra la el Figura \ref{fig:PantallaInicio}. Cabe mencionar que la opción \textbf{Inicio}, permite regresar a la pantalla principal.\\
+Esta etapa permite elegir al usuario la sección de noticias a buscar. La aplicación comienza en una pantalla inicial, donde se muestra un menú con las opciones \textbf{Inicio}, \textbf{Cultura}, \textbf{Deportes}, \textbf{Economía}, \textbf{Política}, \textbf{Ciencia y Tecnología}, estas categorías (excluyendo \textbf{Inicio}) son las secciones permitidas para recolectar noticias, como se muestra la el Figura \ref{fig:PantallaInicio}. Cabe mencionar que la opción \textbf{Inicio}, permite regresar a la pantalla principal.\\
 
 
 \begin{figure}[H]
@@ -45,7 +45,7 @@ Después de elegir una sección, se muestra el mensaje \textbf{En proceso de rec
 \begin{enumerate}
 	\item \textbf{Primera vez}: Esta condición hace referencia a la etapa \textbf{selección}, es decir cuando es la primera vez que se ha selecciona una sección, se debe proceder con las siguientes etapas
 
-	\item \textbf{Límite de periodo}: Esta condición define 4 horas como el periodo de recolección, es decir cuando se ha solicitado mostrar las noticias de una sección y ha transcurrido 4 horas des de la última petición, se debe proceder con las siguientes etapas
+	\item \textbf{Límite de periodo}: Esta condición define 4 horas como el periodo de recolección, es decir cuando se ha solicitado mostrar las noticias de una sección y ha transcurrido 4 horas desde la última petición (Ver regla de negocio \RNref{RN8}{Periodo de actualización}), se debe proceder con las siguientes etapas
 \end{enumerate}	
 
 Como consecuencia de no cumplirse estas condiciones, las etapas \textbf{Recolectar y Clasificar} no son iniciadas, debido a que los artículos con su clasificación correspondiente se encuentran almacenados en el sistema, por esta razón se procede directamente con la etapa \textbf{Mostrar resultado}.
@@ -98,18 +98,18 @@ Después de recolectar las noticias se inicia la etapa de clasificación, el cua
 
 	\item \textbf{Tokenizar}: Consiste en separar el texto en sus elementos mínimos por un espacio (ver \Tref{cp5:tokenizacion}{Tokenizar})
 
-	\item \textbf{Lematrizer}: Proceso que reduce cada una de las palabras tokenizadas en lemas(ver \Tref{cp5:lematizacion}{Lematizar})
+	\item \textbf{Lematizar}: Proceso que reduce cada una de las palabras tokenizadas en lemas(ver \Tref{cp5:lematizacion}{Lematizar})
 
 	\item \textbf{Extracción de características}: Se extrae palabras (características) con base al vocabulario definido al final de la etapa de entrenamiento (ver \Tref{cp5:persistencia}{Persistencia}), para crear un espacio vectorial por cada noticia (esta es la representación que el algoritmo entiende). Cabe destacar que las características son extraídas de forma binaria (ver \Tref{cp5:extraccion}{Extracción de características})
 
-	\item \textbf{Clasificar}: Al final de la sección \textbf{Entrenamiento} se persistió el modelo clasificador (ver \Tref{cp5:persistencia}{Persistencia}) el cual esta basado en el algoritmo \textbf{Maquinas de soporte vectorial} (ver \Tref{cp3:msv}{MSV}). Esta tarea utiliza el clasificador el cual recibe como entrada los vectores de características(los cuales representan el contenido de cada artículo) y como salida brinda la clasificación del conjunto de noticias, y son almacenadas por sección en un archivo \textbf{CSV}
+	\item \textbf{Clasificar}: Al final de la sección \textbf{Entrenamiento} se almacenó el modelo clasificador (ver \Tref{cp5:persistencia}{Persistencia}) el cual esta basado en el algoritmo \textbf{Maquinas de soporte vectorial} (ver \Tref{cp3:msv}{MSV}). Esta tarea utiliza el clasificador el cual recibe como entrada los vectores de características(los cuales representan el contenido de cada artículo) y como salida brinda la clasificación del conjunto de noticias, y son almacenadas por sección en un archivo \textbf{CSV}
 
 \end{enumerate}
 
 
 \subsection{Mostrar resultados}
 
-Esta etapa consiste en presentar el resultado del proceso de clasificación en la herramienta. Cuando este proceso ha concluido se muestra el mensaje \textbf{Noticias listas para ser mostradas}, donde el usuario tiene la opción de elegir visualizar las noticias o cancelar el flujo del sistema, como se visualiza en la Figura \ref{fig:notClass}.
+Esta etapa consiste en presentar el resultado del proceso de clasificación en la herramienta. Cuando este proceso ha concluido se muestra el mensaje \textbf{Noticias listas para ser mostradas}, donde el usuario tiene la opción de elegir visualizar las noticias o cancelar el flujo del sistema, como se muestra en la Figura \ref{fig:notClass}.
 
 \begin{figure}[H]
 \centering
