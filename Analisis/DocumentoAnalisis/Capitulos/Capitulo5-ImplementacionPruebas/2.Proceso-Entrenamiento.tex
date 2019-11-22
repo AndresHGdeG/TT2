@@ -283,7 +283,7 @@ es & esta & este & la & noticia & primera & segunda & tercera & y & ?
 
 
 
-Después de extraer el  vocabulario, se crea un espacio vectorial por cada noticia donde cada elemento del vector representa la presencia o ausencia de una característica (palabra). Cabe mencionar que las características son extraídas de 2 formas, binario(donde 1 representa la presencia de la característica y 0 la ausencia) y por frecuencia (donde se cuenta el número de veces que cada característica aparece). Continuando con el ejemplo del Cuadro \ref{box:cp5:corpus} se extraen las características por frecuencia y el resultado se muestra en el Cuadro \ref{box:cp5:frecuencia}, mientras que el Cuadro \ref{box:cp5:binario} muestra las características extraídas de forma binaria.\\
+Después de extraer el  vocabulario, se crea un espacio vectorial por cada noticia donde cada elemento del vector representa la presencia o ausencia de una característica (palabra). Cabe mencionar que las características son extraídas de 2 formas, binario ( donde 1 representa la presencia de la característica y 0 la ausencia ) y por frecuencia (donde se cuenta el número de veces que cada característica aparece). Continuando con el ejemplo del Cuadro \ref{box:cp5:corpus} se extraen las características por frecuencia y el resultado se muestra en el Cuadro \ref{box:cp5:frecuencia}, mientras que el Cuadro \ref{box:cp5:binario} muestra las características extraídas de forma binaria.\\
 
 Para el desarrollo de esta etapa se ha utilizado la biblioteca \textbf{CountVectorizer} quien permite generar la selección y extracción de características, ademas esta es la representación vectorial (de cada noticia) que los algoritmos de clasificación pueden entender y por ende ser entrenados. Cabe destacar que la representación vectorial usada en este trabajo ha sido de forma binaria.\\
 
@@ -488,12 +488,13 @@ Los parámetros de este clasificador son definidos por el kernel utilizado, para
 	\caption{Kernel polinomial}
 	\label{fig:cp5:kpoli}
 	\end{subfigure}%
+\caption{Kernel de la función \citep{CC1}}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{imagenes/capitulo5/Entrenamiento/krbf.png}
-\caption{Kernel radial}
+\caption{Kernel radial \citep{CC1}}
 \label{fig:cp5:krbf}
 \end{figure}
 
