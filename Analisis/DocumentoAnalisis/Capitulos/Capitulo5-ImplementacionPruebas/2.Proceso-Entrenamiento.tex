@@ -3,6 +3,23 @@
 El segundo pilar del trabajo terminal es entrenar un algoritmo (de aprendizaje automático), para clasificar las noticias en las secciones \textbf{Ciencia y tecnología}, \textbf{Política}, \textbf{Deportes}, \textbf{Economía} y \textbf{Cultura}. Cabe destacar que el clasificador resolverá un problema multiclase (ver \Tref{cp3:multinomial}{Clasificación multiclase}) debido a que la entrada es una artículo y como salida brinda la pertenencia a una sección  de 5 posibilidades. El proceso de entrenamiento se muestra en la Figura \ref{fig:cp5:procesoE}.\\
 
 
+
+En este punto es importante mencionar que existe un trabajo terminal previo (TT 2017-A042) el cual ha generado un modelo para clasificar noticias por secciones, sin embargo existen diferencias importantes entre el TT 2017-A042 y el propuesto en este documento, las cuales son mostradas en la Figura \ref{cp5:diferenciastt}.
+
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{imagenes/capitulo5/entrenamiento/diferenciastt.png}
+\caption{Diferencias del clasificador en el TT 2017-A042 y 2018-B013}
+\label{cp5:diferenciastt}
+\end{figure} 
+
+Como se puede observar en la Figura \ref{cp5:diferenciastt} el modelo del TT 2017-A042 está orientado en la clasificación de noticias de 3 diarios de circulación nacional ( \textbf{El Universal}, \textbf{La Jornada} y \textbf{Excélsior}), además de estar enfocado en las secciones particulares de cada periódico y de haber entrenado un algoritmo por cada diario. Por otra parte, este trabajo terminal (TT 2018-B013) tiene como objetivo clasificar noticias en 5 secciones (\textbf{deportes}, \textbf{economía}, \textbf{política}, \textbf{cultura}, \textbf{ciencia y tecnología}), de 7 diferentes sitios web. Es importante mencionar que se entrenará un solo modelo el cual generalice la tarea de clasificación de todas las fuentes noticiosas.\\  
+
+Dada las diferencias se decidió utilizar un nuevo corpus como entrenar un nuevo clasificador que se ajuste mejor al objetivo de este trabajo terminal.\\
+
+
 Como se mencionó en la etapa de recolección, el corpus obtenido contiene 7,707 noticias en total. Sin embargo este contenido debe ser procesado y solo seleccionar los artículos que aporten información para el entrenamiento, al final de la etapa de pre\-procesamiento el corpus será dividió en dos conjuntos: entrenamiento con el 90\% de los artículos y prueba con el 10\%. A continuación se explica la etapa de \textbf{Pre-procesamiento}.\\
 
 \begin{figure}[h]
@@ -231,7 +248,7 @@ Para crear un modelo clasificador usando aprendizaje supervisado (ver \Tref{cp3:
 \begin{itemize}
 	\item \textbf{Naive Bayes} (ver \Tref{cp3:naive}{Naive Bayes})
 	\item \textbf{Regresión logística} (ver \Tref{cp3:regresion}{Regresión logística})
-	\item \textbf{Maquina de soporte vectorial} (ver \Tref{cp3:msv}{MSV})
+	\item \textbf{Máquina de soporte vectorial} (ver \Tref{cp3:msv}{MSV})
 	\item \textbf{Random Forest} (ver \Tref{cp3:random}{Random Forest})
 \end{itemize}
 
@@ -321,7 +338,7 @@ Para el desarrollo de esta etapa se ha utilizado la biblioteca \textbf{CountVect
 
 El corpus contiene noticias de varias fuentes, en  las cuales la redacción, coherencia, semántica varía, incluso en la edición de una misma noticia, por lo tanto en el entrenamiento se busca generalizar la clasificación de los artículos, analizando el texto como un conjunto de palabras, sin tomar en cuenta la semántica, esta técnica es llamada bolsa de palabras (ver \Tref{cp3:bolsap}{Bolsa de palabras}).\\
 
-En este punto del trabajo las noticias están representadas en un espacio vectorial, y serán usadas en el proceso de entrenamiento de los algoritmos: \textbf{Naive Bayes}, \textbf{Regresión logística}, \textbf{Maquina de soporte vectorial}, \textbf{Random Forest}. Cada clasificador recibe como entrada un conjunto de vectores etiquetados y como salida se genera un modelo el cual predice la sección de nuevas noticias.\\ 
+En este punto del trabajo las noticias están representadas en un espacio vectorial, y serán usadas en el proceso de entrenamiento de los algoritmos: \textbf{Naive Bayes}, \textbf{Regresión logística}, \textbf{Máquina de soporte vectorial}, \textbf{Random Forest}. Cada clasificador recibe como entrada un conjunto de vectores etiquetados y como salida se genera un modelo el cual predice la sección de nuevas noticias.\\ 
 
 Para este trabajo se han definido las etiquetas como se muestra en la Tabla \ref{tab:cp5:etiquetas}, esta correspondencia es de secciones de noticias a un número único.\\
 
@@ -371,13 +388,13 @@ El desarrollo ha utilizado una instancia de cada algoritmo, para esto se incluye
 		\textbf{Naive Bayes} & MultinomialNB \\
 		\hline
 
-		\textbf{Maquina de soporte vectorial} & SVC\\
+		\textbf{Máquina de soporte vectorial} & SVC\\
 		\hline
 
 		\textbf{Regresión logísitica} &LogisticRegression\\
 		\hline
 
-		\textbf{Ramdon Forest} &  RandomForestClassifier\\
+		\textbf{Random Forest} &  RandomForestClassifier\\
 		\hline
 
 	\end{tabular}\\
@@ -453,7 +470,7 @@ Los parámetros utilizados en ese algoritmo son; \textbf{n\_estimators} es la ca
 
 %----------------%
 %\begin{Text}
-\textbf{Maquina de soporte vectorial}\\
+\textbf{Máquina de soporte vectorial}\\
 %\end{Text}
 
 Este algoritmo clasifica los datos con un margen que equidiste de los tipos de clases (secciones), sin embargo en el caso de que los datos no son separables en la dimensión inicial, se busca encontrar la solución con hiperplanos en dimensiones superiores (ver \Tref{cp3:msv}{MSV}).\\
@@ -470,7 +487,7 @@ Para dividir los datos de forma correcta se busca usar funciones de división la
 
 \end{itemize}
 
-Los parámetros de este clasificador son definidos por el kernel utilizado, para el kernel \textbf{polinomial} y \textbf{Radial} se usó el parámetro $\gamma$ con los valores: $[1e-4, 1e-5, 1e-6]$. Ademas como se explicó en \textbf{regresión logística} se varía el escalar $C$, el cual ajusta la variación y el bías de los datos, a mayor bías se sobre\-entrenamiento el modelo, es decir que el modelo se ajusta demasiado a los datos de entrenamiento, a mayor varianza los datos de entrenamiento se ajustan menos, en ambos casos el desempeño con nuevos datos se vuelve deficiente. Por está razón se tiene que encontrar un equilibrio en estos datos.\\
+Los parámetros de este clasificador son definidos por el kernel utilizado, para el kernel \textbf{polinomial} y \textbf{Radial} se usó el parámetro $\gamma$ con los valores: $[1e-4, 1e-5, 1e-6]$. Ademas como se explicó en \textbf{regresión logística} se varía el escalar $C$, el cual ajusta la variación y el bías de los datos, a mayor bías se sobreentrena el modelo, es decir que el modelo se ajusta demasiado a los datos de entrenamiento, a mayor varianza los datos de entrenamiento se ajustan menos, en ambos casos el desempeño con nuevos datos se vuelve deficiente. Por está razón se tiene que encontrar un equilibrio en estos datos.\\
 
 
 
@@ -727,7 +744,7 @@ C: 1000, gamma: 1e-06, kernel: poly&0.2038&0.2041&0.2035&0.2038&0.2038&0.2038&10
 
 	\end{tabular}
 }
-\caption{Maquina de soporte vectorial}
+\caption{Máquina de soporte vectorial}
 \label{tab:cp5:msv}
 \end{table}
 
@@ -765,12 +782,12 @@ Naive Bayes&0.8511&4\\
 \end{table}
 
 
-El mejor resultado se ha conseguido con el algoritmo \textbf{Maquina de soporte vectorial} con los parámetros ;$C$=100, $gamma= 0.0001$ y $kernel$= $rbf$ (radial) obteniendo .8619 de \textbf{exactitud}, por esta razón se ha elegido como el clasificador final de este trabajo terminal.
+El mejor resultado se ha conseguido con el algoritmo \textbf{Máquina de soporte vectorial} con los parámetros ;$C$=100, $gamma= 0.0001$ y $kernel$= $rbf$ (radial) obteniendo 0.8619 de \textbf{exactitud}, por esta razón se ha elegido como el clasificador final de este trabajo terminal.
 
 %------------------------------------------------------------------%
 \subsection{Pruebas}
 
-Con base en el algoritmo elegido y los parámetros que han conseguido obtener el mejor resultado, se ha hecho una prueba final, la cual consiste en clasificar el corpus de prueba con 350 noticias (creado al final de la sección de pre-procesamiento (ver \Tref{cp5:divisionC}{División del corpus}  ), para calcular la matriz de confusión y obtener las métricas de evaluación. La tabla \ref{tab:cp5:numnoticias} muestra el número de noticias por sección contenidas en el corpus.\\
+Con base en el algoritmo elegido y los parámetros que han conseguido obtener el mejor resultado, se ha hecho una prueba final, la cual consiste en clasificar el corpus de prueba con 350 noticias, creado al final de la sección de pre-procesamiento (ver \Tref{cp5:divisionC}{División del corpus}  ), para calcular la matriz de confusión y obtener las métricas de evaluación. La tabla \ref{tab:cp5:numnoticias} muestra el número de noticias por sección contenidas en el corpus.\\
 
 \begin{table}[H]
 \centering
@@ -864,7 +881,9 @@ Ciencia y Tecnología & 0.92 & 0.86 & 0.89\\
 
 Como se puede observar en la tabla \ref{tab:cp5:metricas} las sección con mejor \textbf{Fmeasure} (este valor sostiene una relación entre \textbf{Precision} y \textbf{Recall}) es \textbf{Deportes} obteniendo 0.94 en la clasificación. Este resultado se puede explicar con base en el vocabulario manejado en la categoría, ya que es muy específico, por ejemplo se usan palabras como: gol, jugador, resultado, anotación. Por lo contrario el \textbf{Fmeasure} mas bajo lo obtuvo \textbf{Economía} con 0.84 (el cual no es un mal resultado), las palabras manejadas por esta sección pueden ser encontradas en otras categorías, generando así confusión en la clasificación.\\
 
-La \textbf{exactitud} obtenida ( incluyen todas las secciones ) es de \textbf{.89}. En términos generales en el capitulo 2 ( ver \Tref{cp2:estadodelarte}{Estado del arte} ) los resultados obtenidos están en un rango de .80 hasta .90, es decir la \textbf{exactitud} alcanzada en este trabajo terminal se puede definir como bueno.
+Finalmente, considerando la exactitud de de todas las secciones, el modelo entrenado obtuvo una exactitud promedio de 0.89. Este resultado es muy bueno considerando que los trabajos descritos en el estado del arte ( ver \Tref{cp2:estadodelarte}{Estado del arte} ) obtienen una exactitud entre 0.80 y 0.90
+
+
 
 
 %------------------------------------------------------------------%
@@ -872,7 +891,7 @@ La \textbf{exactitud} obtenida ( incluyen todas las secciones ) es de \textbf{.8
 \subsection{Persistencia}
 
 
-Como última etapa de la clasificación, el modelo \textbf{Maquina de soporte vectorial} debe ser almacenado así como las características del corpus. Para esta tarea se ha utilizado el corpus completo de 3500 noticias, del cual se extraen las características, se entrena el modelo y estos conjuntos son almacenados en un archivo ocupando la biblioteca \textbf{pickle}, de esta forma en la siguiente sección el modelo es utilizado como parte de la \textbf{Aplicación web}.
+Como última etapa de la clasificación, el modelo \textbf{Máquina de soporte vectorial} debe ser almacenado así como las características del corpus. Para esta tarea se ha utilizado el corpus completo de 3500 noticias, del cual se extraen las características, se entrena el modelo y estos conjuntos son almacenados en un archivo ocupando la biblioteca \textbf{pickle}, de esta forma en la siguiente sección el modelo es utilizado como parte de la \textbf{Aplicación web}.
 
 
 

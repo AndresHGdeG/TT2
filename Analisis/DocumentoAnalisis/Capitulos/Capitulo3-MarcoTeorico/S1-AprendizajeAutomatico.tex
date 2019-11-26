@@ -39,6 +39,88 @@ de métodos porque los datos basados en texto y en voz varían ampliamente, al i
 Dentro de la amplia gama de técnicas para el procesamiento de lenguaje natural, en este trabajo se harán uso de dos de estas técnicas llamadas \textbf{Tokenización} y \textbf{Lematización}. A continuación se describen cada una de ellas junto con un proceso previo llamado pre-procesamiento.\\
 
 
+%------------------------------------Pre-procesamiento------------------------%
+
+\subsection[Pre-procesamiento]{Pre-procesamiento}
+
+
+Cuando se recupera  información de la web, se debe limpiar el texto ya que contiene etiquetas definidas por el hipertexto (ver \Tref{cp3:html}{HTML}). Se deben buscar los bloques que brinden información útil para el ámbito de estudio, algunas secciones contienen publicidad o información no relacionada a los datos de interés. Para esto se tiene que realizar un análisis para discriminar la información útil \citep{CD1}. A continuación se muestra un ejemplo de un texto que que requiere ser pre-procesado\\
+
+\begin{mygraybox}[label={box:cp3:texto}]{Texto de ejemplo} 
+$<h1>$¡Estudiantes politécnicos apoyan académicamente a alumnos de primaria!$</h1>$\\
+
+$\infty$
+$<p>$El Secretario de Educación Pública \Tribar[1][blue][blue!50][blue!20], Esteban Moctezuma Barragán, ha subrayado la importancia \#\#\# de que en la Nueva Escuela Mexicana el Instituto Politécnico Nacional (IPN)\dSmiley, contribuya a fortalecer la educación básica.$</p>$\\
+$<!--\ -->$
+\end{mygraybox}
+\ \\
+Como se puede apreciar en el Cuadro \ref{box:cp3:texto} algunas etiquetas requieren ser descartadas para poder obtener únicamente el contenido de la noticias, por ejemplo se debe eliminar el \textit{hipertexto} ( $<h1>$,$</p>$ ) los emojis ( \dSmiley,\Tribar[1][blue][blue!50][blue!20] ) y los símbolos ( $\infty$,\# ). El cuadro \ref{box:cp3:textolimpio} muestra el resultado de limpiar el contenido.\\
+
+\begin{mygraybox}[label={box:cp3:textolimpio}]{Texto limpio} 
+¡Estudiantes politécnicos apoyan académicamente a alumnos de primaria!\\
+
+El Secretario de Educación Pública, Esteban Moctezuma Barragán, ha subrayado la importancia  de que en la Nueva Escuela Mexicana el Instituto Politécnico Nacional (IPN), contribuya a fortalecer la educación básica.
+\end{mygraybox}
+	%\item \textbf{Remover stop-words}: Son pronombres y preposiciones que deben ser removidas para mejorar la compresión del texto.
+
+	%\item  \textbf{Stemming, case-folding, punctuation}: Las palabras que derivan de la misma raíz como hundimiento, se hundió, se reducen a hundir. Una palabra puede tener diferentes significados dependiendo el contexto como la palabra \'Rosa\' puede hacer referencia a una flor o el nombre de una persona, por lo tanto se requiero la heurística del lenguaje específico para poder tomar una decisión en como debe ser interpretada. Los signos de puntuación como el guión medio deben ser tratados con mucho cuidado para realizar una buena tokenización.
+
+%-----------------------------------------Tokenización-------------------------------------%
+
+\subsubsection{Tokenización}
+
+Es el proceso que descompone los textos de una colección en sus unidades mínimas, las palabras
+o términos propiamente dichos. A tales elementos se les denomina tokens que conforman una lista de
+items que se utilizan para su análisis estadístico, ling{\"u}ístico, de almacenamiento y posteriormente de
+recuperación de información. Los tokens a su vez pueden ser identificados mediante una codificación
+ASCII o en su defecto UNICODE. De hecho, este proceso permite la identificación de cadenas de caracteres de
+forma unívoca, de cara a posteriores tratamientos de depuración, eliminación de signos de puntuación
+o la reducción morfológica \citep{CT12}.\\
+
+Continuando con el ejemplo del Cuadro \ref{box:cp3:textolimpio}, se procede a realizar la tokenización del contenido. El Cuadro \ref{box:cp3:tokenizado} muestra el texto dividido en tokens.\\
+
+\begin{mygraybox}[label={box:cp3:tokenizado}]{Texto tokenizado} 
+\begin{large}\textbf{¡}\end{large} Estudiantes politécnicos apoyan académicamente a alumnos de primaria \begin{large}\textbf{!}\end{large}\\
+
+El Secretario de Educación Pública \begin{Large}\textbf{,}\end{Large} Esteban Moctezuma Barragán \begin{Large}\textbf{,}\end{Large} ha subrayado la importancia  de que en la Nueva Escuela Mexicana el Instituto Politécnico Nacional \begin{Large}\textbf{(}\end{Large} IPN \begin{Large}\textbf{)}\end{Large} \begin{Large}\textbf{,}\end{Large} contribuya a fortalecer la educación básica \begin{Large}\textbf{.}\end{Large}
+\end{mygraybox}
+\ \\
+Como se puede observar se ha separado por un espacio las palabras, donde cada una representa un token. Ademas los signos de admiración (\begin{large}\textbf{! ¡}\end{large}), los signos de puntuación (\begin{large}\textbf{. ,}\end{large}) y los paréntesis (\begin{large}\textbf{( )}\end{large}), se han divido como tokens independientes.
+
+%-----------------------------------------Lematización-------------------------------------%
+
+\Tlabel{cp3:lematizacion}
+\subsubsection{Lematización}
+
+Es el proceso lingüstico que, dada una palabra flexionada se encuentra su
+lema. Una palabra flexionada es cuando esta en plural, en femenino conjugada,
+diminutivo o en superlativo. El lema es la palabra que esta en singular para
+sustantivo, singular masculino para adjetivo e infinitivo para un verbo \citep{CT13}. Ejemplo:
+
+	\begin{itemize}
+		\item amigos, amiga, amiguitos-> Amigo
+		\item soy, son, es->Ser
+	\end{itemize}
+
+Cabe mencionar que existen diversos grados de lematización:
+
+	\begin{itemize}
+		\item Mórfólogica: Es la anteriormente explicada
+		\item Sintáctica: Toma en cuenta el contexto donde se encuentra la palabra
+
+	\end{itemize}
+
+En este trabajo se utilizado el grado morfológico. Continuando con el ejemplo tokenizado ( Cuadro \ref{box:cp3:tokenizado} ), El Cuadro \ref{box:cp3:lematizado} muestra el contenido del texto lematizado.\\
+
+\begin{mygraybox}[label={box:cp3:lematizado}]{Texto Lematizado} 
+\begin{large}\textbf{¡}\end{large} estudiante politécnicos apoyar academia a alumno de primaria \begin{large}\textbf{!}\end{large}\\
+
+el secretario de educar pública \begin{Large}\textbf{,}\end{Large} esteban moctezuma barragán \begin{Large}\textbf{,}\end{Large} haber subrayar el importar  de que en el nuevo escuela mexicano el instituto politécnico nacional \begin{Large}\textbf{(}\end{Large} ipn \begin{Large}\textbf{)}\end{Large} \begin{Large}\textbf{,}\end{Large} contribuir a fortaleza el educar básico \begin{Large}\textbf{.}\end{Large}
+\end{mygraybox}
+\ \\
+
+
+
 %------------------------------------Apredizje automático-------------------------------%
 \section{Aprendizaje Automático}
 
@@ -165,88 +247,8 @@ Las características son extraídas de 2 formas, binario(donde 1 representa la p
 \end{equation*}
 \end{mygraybox}
 
-%------------------------------------Pre-procesamiento------------------------%
-
-\subsection[Pre-procesamiento]{Pre-procesamiento}
 
 
-Cuando se recupera  información de la web, se debe limpiar el texto ya que contiene etiquetas definidas por el hipertexto (ver \Tref{cp3:html}{HTML}). Se debe buscar los bloques que brinden información útil para el ámbito de estudio, algunas secciones contienen publicidad o información no relacionada a los datos de interés. Para esto se tiene que realizar un análisis para discriminar la información útil \citep{CD1}. A continuación se muestra un ejemplo de un texto que que requiere ser pre-procesado\\
-
-\begin{mygraybox}[label={box:cp3:texto}]{Texto de ejemplo} 
-$<h1>$¡Estudiantes politécnicos apoyan académicamente a alumnos de primaria!$</h1>$\\
-
-$\infty$
-$<p>$El Secretario de Educación Pública \Tribar[1][blue][blue!50][blue!20], Esteban Moctezuma Barragán, ha subrayado la importancia \#\#\# de que en la Nueva Escuela Mexicana el Instituto Politécnico Nacional (IPN)\dSmiley, contribuya a fortalecer la educación básica.$</p>$\\
-$<!--\ -->$
-\end{mygraybox}
-\ \\
-Como se puede apreciar en el Cuadro \ref{box:cp3:texto} algunas etiquetas requieren ser descartadas para poder obtener unicamente el contenido de la noticias, por ejemplo se debe eliminar el \textit{hypertexto} ( $<h1>$,$</p>$ ) los emojis ( \dSmiley,\Tribar[1][blue][blue!50][blue!20] ) y los símbolos ( $\infty$,\# ). El cuadro \ref{box:cp3:textolimpio} muestra el resultado de limpiar el contenido.\\
-
-\begin{mygraybox}[label={box:cp3:textolimpio}]{Texto limpio} 
-¡Estudiantes politécnicos apoyan académicamente a alumnos de primaria!\\
-
-El Secretario de Educación Pública, Esteban Moctezuma Barragán, ha subrayado la importancia  de que en la Nueva Escuela Mexicana el Instituto Politécnico Nacional (IPN), contribuya a fortalecer la educación básica.
-\end{mygraybox}
-	%\item \textbf{Remover stop-words}: Son pronombres y preposiciones que deben ser removidas para mejorar la compresión del texto.
-
-	%\item  \textbf{Stemming, case-folding, punctuation}: Las palabras que derivan de la misma raíz como hundimiento, se hundió, se reducen a hundir. Una palabra puede tener diferentes significados dependiendo el contexto como la palabra \'Rosa\' puede hacer referencia a una flor o el nombre de una persona, por lo tanto se requiero la heurística del lenguaje específico para poder tomar una decisión en como debe ser interpretada. Los signos de puntuación como el guión medio deben ser tratados con mucho cuidado para realizar una buena tokenización.
-
-%-----------------------------------------Tokenización-------------------------------------%
-
-\subsubsection{Tokenización}
-
-Es el proceso que descompone los textos de una colección en sus unidades mínimas, las palabras
-o términos propiamente dichos. A tales elementos se les denomina tokens que conforman una lista de
-items que se utiliza para su análisis estadístico, ling{\"u}ístico, de almacenamiento y posteriormente de
-recuperación de información. Los tokens a su vez pueden ser identificados mediante una codificación
-ASCII o en su defecto hexadecimal, con el objeto de facilitar la identificación uno a uno cada caracter
-que compone la palabra. De hecho, este proceso permite la identificación de cadenas de caracteres de
-forma unívoca, de cara a posteriores tratamientos de depuración, eliminación de signos de puntiación
-o la reducción morfológica \citep{CT12}.\\
-
-Continuando con el ejemplo del Cuadro \ref{box:cp3:textolimpio}, se procede a realizar la tokenización del contenido. El Cuadro \ref{box:cp3:tokenizado} muestra el texto dividido en tokens.\\
-
-\begin{mygraybox}[label={box:cp3:tokenizado}]{Texto tokenizado} 
-\begin{large}\textbf{¡}\end{large} Estudiantes politécnicos apoyan académicamente a alumnos de primaria \begin{large}\textbf{!}\end{large}\\
-
-El Secretario de Educación Pública \begin{Large}\textbf{,}\end{Large} Esteban Moctezuma Barragán \begin{Large}\textbf{,}\end{Large} ha subrayado la importancia  de que en la Nueva Escuela Mexicana el Instituto Politécnico Nacional \begin{Large}\textbf{(}\end{Large} IPN \begin{Large}\textbf{)}\end{Large} \begin{Large}\textbf{,}\end{Large} contribuya a fortalecer la educación básica \begin{Large}\textbf{.}\end{Large}
-\end{mygraybox}
-\ \\
-Como se puede observar se ha separado por un espacio las palabras, donde cada una representa un token. Ademas los signos de admiración (\begin{large}\textbf{! ¡}\end{large}), los signos de puntuación (\begin{large}\textbf{. ,}\end{large}) y los paréntesis (\begin{large}\textbf{( )}\end{large}), se han divido como tokens independientes.
-
-%-----------------------------------------Lematización-------------------------------------%
-
-\Tlabel{cp3:lematizacion}
-\subsubsection{Lematización}
-
-Es el proceso lingüstico que, dada una palabra flexionada se encuentra su
-lema. Una palabra flexionada es cuando esta en el plural, en femenino conjugada,
-diminutivo o en superlativo. El lema es la palabra que esta en singular para
-sustantivo, singular masculino para adjetivo e infinitivo para un verbo \citep{CT13}. Ejemplo:
-
-	\begin{itemize}
-		\item amigos, amiga, amiguitos-> Amigo
-		\item soy, son, es->Ser
-	\end{itemize}
-
-Cabe mencionar que existen diversos grados de lematización
-
-	\begin{itemize}
-		\item Mórfólogica: Es la anterior mente explicada
-		\item Sintáctica: Toma en cuenta el contexto donde se encuentra la palabra
-
-	\end{itemize}
-
-Continuando con el ejemplo tokenizado ( Cuadro \ref{box:cp3:tokenizado} ), El Cuadro \ref{box:cp3:lematizado} muestra el contenido del texto lematizado.\\
-
-\begin{mygraybox}[label={box:cp3:lematizado}]{Texto Lematizado} 
-\begin{large}\textbf{¡}\end{large} estudiante politécnicos apoyar academia a alumno de primaria \begin{large}\textbf{!}\end{large}\\
-
-el secretario de educar pública \begin{Large}\textbf{,}\end{Large} esteban moctezuma barragán \begin{Large}\textbf{,}\end{Large} haber subrayar el importar  de que en el nuevo escuela mexicano el instituto politécnico nacional \begin{Large}\textbf{(}\end{Large} ipn \begin{Large}\textbf{)}\end{Large} \begin{Large}\textbf{,}\end{Large} contribuir a fortaleza el educar básico \begin{Large}\textbf{.}\end{Large}
-\end{mygraybox}
-\ \\
-Una opción para lematizar es \textit{Freeling} \citep{CT18}, este es un lematizador hecho por la
-universidad de Catalunia.
 
 %------------------------------------Aprendizaje Supervisado----------------------------------%
 
@@ -309,7 +311,7 @@ Usando la condición \textbf{Naive} todas las características extraídas que ut
 funciona bien tanto con datos numéricos como con datos textuales y, además, es más fácil de implementar. La desventaja de este clasificador es 
 que su rendimiento empeora cuando las características extraídas se correlacionan entre sí.\\
 
-Una derivación de este algoritmo es llamada \textit{multinomial Naive Bayes}, quien permite calcular la probabilidad de pertenencia de un texto $d$ a una clase $c$, como se muestra en la siguiente ecuación:\\
+Una derivación de este algoritmo es llamada \textit{Naive Bayes multinomial}, quien permite calcular la probabilidad de pertenencia de un texto $d$ a una clase $c$, como se muestra en la siguiente ecuación:\\
 
 %REF: https://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html
 %REF2:https://scikit-learn.org/stable/modules/naive_bayes.html#multinomial-naive-bayes
@@ -355,7 +357,7 @@ Cabe destacar que la complejidad de este algoritmo es $\Theta(mc)$, donde $m$ es
 %----------------------------Maquina de soporte vectorial-------------------------------------%
 
 \Tlabel{cp3:msv}
-\subsection{Maquina de soporte vectorial}
+\subsection{Máquina de soporte vectorial}
 
 Las máquinas de soporte vectorial son sistemas de aprendizaje los
 cuales se basan en el uso de un espacio de funciones lineales en un espacio de mayor dimensión inducido
@@ -387,8 +389,7 @@ Bootstrap aggregating (bagging) consiste en obtener muestras aleatorias con reem
 11
 donde b=1, 2,.., B. En algunas de estas muestras se habrá eliminado o al menos reducido la presencia de observaciones ruidosas, por lo que el clasificador construido en ese conjunto presentará un mejor comportamiento que el clasificador construido en el conjunto original. Así pues Bagging puede ser útil para construir un mejor clasificador cuando el conjunto de entrenamiento presente observaciones ruidosas.\\
 
-La clasificación es realizada mediante botos, donde un boto se define como, la clasificación regresada por un árbol, la sección con el mayor número de botos es la clasificación asignada a los datos de entrada.
-
+La clasificación es realizada mediante votos, donde un boto se define como, la clasificación regresada por un árbol, la sección con el mayor número de votos es la clasificación asignada a los datos de entrada.
 
 
 
@@ -408,7 +409,7 @@ las que se están trabajando \citep{CT23}.
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=.4]{imagenes/Capitulo3/MatrizC.png}
+	\includegraphics[scale=.3]{imagenes/Capitulo3/MatrizC.png}
 	\caption{Matriz de confusión}
 	\label{Fig:mconfu}
 \end{figure}
@@ -475,13 +476,11 @@ El proceso de validación cruzada es uno de los métodos mas usados para general
 
 Cabe destacar que esta prueba permite encontrar un resultado más robusto y confiable en cuanto a la eficiencia del algoritmo, ya que asegura que los datos no sean manipulados para entrenar y probar con un conjunto de datos a conveniencia (es decir la combinación de información con la exactitud más alta).
 
-
-
 %Daniel Berrar, in Encyclopedia of Bioinformatics and Computational Biology, 2019
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.75]{imagenes/Capitulo3/validacionc.png}
+\includegraphics[scale=.6]{imagenes/Capitulo3/validacionc.png}
 \caption{Validación cruzada}
 \label{cp3:diagramacv}
 \end{figure}
