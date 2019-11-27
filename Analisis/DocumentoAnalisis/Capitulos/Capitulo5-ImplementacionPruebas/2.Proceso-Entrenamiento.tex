@@ -15,7 +15,7 @@ En este punto es importante mencionar que existe un trabajo terminal previo (TT 
 \label{cp5:diferenciastt}
 \end{figure} 
 
-Como se puede observar en la Figura \ref{cp5:diferenciastt} el modelo del TT 2017-A042 está orientado en la clasificación de noticias de 3 diarios de circulación nacional ( \textbf{El Universal}, \textbf{La Jornada} y \textbf{Excélsior}), además de estar enfocado en las secciones particulares de cada periódico y de haber entrenado un algoritmo por cada diario. Por otra parte, este trabajo terminal (TT 2018-B013) tiene como objetivo clasificar noticias en 5 secciones (\textbf{deportes}, \textbf{economía}, \textbf{política}, \textbf{cultura}, \textbf{ciencia y tecnología}), de 7 diferentes sitios web. Es importante mencionar que se entrenará un solo modelo el cual generalice la tarea de clasificación de todas las fuentes noticiosas.\\  
+Como se puede observar en la Figura \ref{cp5:diferenciastt} el modelo del TT 2017-A042 está orientado en la clasificación de noticias de 3 diarios de circulación nacional (\textbf{El Universal}, \textbf{La Jornada} y \textbf{Excélsior}), además de estar enfocado en las secciones particulares de cada periódico y de haber entrenado un algoritmo por cada diario. Por otra parte, este trabajo terminal (TT 2018-B013) tiene como objetivo clasificar noticias en 5 secciones (\textbf{deportes}, \textbf{economía}, \textbf{política}, \textbf{cultura}, \textbf{ciencia y tecnología}), de 7 diferentes sitios web. Es importante mencionar que se entrenará un solo modelo el cual generalice la tarea de clasificación de todas las fuentes noticiosas.\\  
 
 Dada las diferencias se decidió utilizar un nuevo corpus como entrenar un nuevo clasificador que se ajuste mejor al objetivo de este trabajo terminal.\\
 
@@ -34,7 +34,7 @@ Como se mencionó en la etapa de recolección, el corpus obtenido contiene 7,707
 %------------------------------------------------------------------%
 \subsection{Preprocesamiento}
 
-Como primera instancia, el corpus creado debe ser procesado, con el fin de crear vectores que representan el contenido de cada artículo de forma ordenada (ver \Tref{cp3:representaciont}{Representación del texto}), de esta manera los algoritmos de clasificación son capaces de entender la información. En cuanto a los datos que son procesados de la noticia cabe mencionar que solo se usa el título y la redacción del artículo, los demás datos(como url, fecha, sección) no son necesarios para el entrenamiento. Este proceso consta de 6 etapas, las cuales son mostradas en la Figura \ref{fig:cp5:preprocesamiento}. \\
+Como primera instancia, el corpus creado debe ser procesado, con el fin de crear vectores que representan el contenido de cada artículo de forma ordenada (ver \Tref{cp3:representaciont}{Representación del texto}), de esta manera los algoritmos de clasificación son capaces de entender la información. En cuanto a los datos que son procesados de la noticia cabe mencionar que solo se usa el título y la redacción del artículo, los demás datos (como url, fecha, sección) no son necesarios para el entrenamiento. Este proceso consta de 6 etapas, las cuales son mostradas en la Figura \ref{fig:cp5:preprocesamiento}. \\
 
 Cabe destacar que estas etapas están desarrolladas en un script escrito en el lenguaje \textbf{python 3}, en cada sección se hará mención de las bibliotecas ocupadas.\\
 
@@ -53,7 +53,7 @@ Cabe destacar que estas etapas están desarrolladas en un script escrito en el l
 
 Esta etapa consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto (ver \Tref{cp3:html}{HTML}), símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis} (como \dSmiley \dCooley \dNinja). Por ejemplo el texto \ref{box:cp5:texto} muestra la redacción de una noticia con la información descargada de una pagina web. El resultado de limpiar la noticia se muestra en el texto \ref{box:cp5:limpio}. Se puede observar que se han eliminado los elementos $<p>\ </p>\ <!--\ -->$ \# $\dagger$ \dSmiley \dCooley \dInnocey.\\
 
-Para realizar esta tarea se han utilizado las bibliotecas; \textbf{pandas} como medio de lectura de archivos tipo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en ingles); \textbf{re} la cual permite evaluar expresiones regulares con el objetivo de eliminar símbolos; \textbf{demoji} quien permite eliminar \textit{emojis} dentro del texto.\\
+Para realizar esta tarea se han utilizado las bibliotecas: \textbf{pandas} como medio de lectura de archivos tipo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en ingles); \textbf{re} la cual permite evaluar expresiones regulares con el objetivo de eliminar símbolos; \textbf{demoji} quien permite eliminar \textit{emojis} dentro del texto.\\
 
 \begin{mygraybox}[label={box:cp5:texto}]{Texto de entrada} 
 $<p>\dagger$$\ \ \ $ El número 343 de El Trimestre Económico,$\otimes$ revista emblemática del Fondo de Cultura 
@@ -273,7 +273,7 @@ Como primer paso del entrenamiento, el corpus debe ser representado mediante con
 
 La extracción de características cuenta con dos tareas importantes: extraer el vocabulario y crear un vector de características.\\
 
-Cada clase de noticias contiene un conjunto de palabras que son comunes en su ámbito, al analizar el léxico usado se observa los tecnicismos usados, por ejemplo ; en la sección deportes se ocupa, fútbol, jugador, ganador ; en política, presidente, corrupción, PRI ; en ciencia y tecnología, investigación, descubrimiento, publicación y así sucesivamente, por lo tanto estos vocablos pueden ser definidos como características que identifican a una sección. En este sentido la extracción de características es el proceso de tomar las palabras de las noticias para formar un vocabulario.\\
+Cada clase de noticias contiene un conjunto de palabras que son comunes en su ámbito, al analizar el léxico usado se observa los tecnicismos usados, por ejemplo en la sección deportes se ocupa, fútbol, jugador, ganador; en política, presidente, corrupción, PRI; en ciencia y tecnología, investigación, descubrimiento, publicación y así sucesivamente, por lo tanto estos vocablos pueden ser definidos como características que identifican a una sección. En este sentido la extracción de características es el proceso de tomar las palabras de las noticias para formar un vocabulario.\\
 
 Para ejemplificar esta tarea observe el Cuadro \ref{box:cp5:corpus} el cual es un corpus de 4 oraciones. Una vez realizado el proceso de extracción de características se obtiene el vocabulario el cual el mostrado en el Cuadro \ref{box:cp5:caracteristicas}.\\
 
@@ -300,7 +300,7 @@ es & esta & este & la & noticia & primera & segunda & tercera & y & ?
 
 
 
-Después de extraer el  vocabulario, se crea un espacio vectorial por cada noticia donde cada elemento del vector representa la presencia o ausencia de una característica (palabra). Cabe mencionar que las características son extraídas de 2 formas, binario ( donde 1 representa la presencia de la característica y 0 la ausencia ) y por frecuencia (donde se cuenta el número de veces que cada característica aparece). Continuando con el ejemplo del Cuadro \ref{box:cp5:corpus} se extraen las características por frecuencia y el resultado se muestra en el Cuadro \ref{box:cp5:frecuencia}, mientras que el Cuadro \ref{box:cp5:binario} muestra las características extraídas de forma binaria.\\
+Después de extraer el  vocabulario, se crea un espacio vectorial por cada noticia donde cada elemento del vector representa la presencia o ausencia de una característica (palabra). Cabe mencionar que las características son extraídas de 2 formas, binario (donde 1 representa la presencia de la característica y 0 la ausencia ) y por frecuencia (donde se cuenta el número de veces que cada característica aparece). Continuando con el ejemplo del Cuadro \ref{box:cp5:corpus} se extraen las características por frecuencia y el resultado se muestra en el Cuadro \ref{box:cp5:frecuencia}, mientras que el Cuadro \ref{box:cp5:binario} muestra las características extraídas de forma binaria.\\
 
 Para el desarrollo de esta etapa se ha utilizado la biblioteca \textbf{CountVectorizer} quien permite generar la selección y extracción de características, ademas esta es la representación vectorial (de cada noticia) que los algoritmos de clasificación pueden entender y por ende ser entrenados. Cabe destacar que la representación vectorial usada en este trabajo ha sido de forma binaria.\\
 
@@ -464,7 +464,7 @@ Los parámetros de este algoritmo son: $l_1$ y $l_2$ que es la forma de entrenar
 \textbf{Ramdom forest}\\
 %\end{Text}
 
-Este algoritmo está basado en la construcción de conjuntos de arboles de decisión como se explica en el capitulo 3 ( ver \Tref{cp3:random}{Random Forest} ), donde se tienen que controlar la cantidad de árboles a crear y la profundidad. Cabe señalar que a mas profundidad las características son separadas con mas homogénidad, sin embargo este es un problema, si el árbol creado es completamente homogéneo sufrirá de sobre\-entrenamiento, es decir hará un buen trabajo clasificando el conjunto de entrenamiento pero lo hará mal con el conjunto de prueba.\\
+Este algoritmo está basado en la construcción de conjuntos de arboles de decisión como se explica en el capitulo 3 (ver \Tref{cp3:random}{Random Forest}), donde se tienen que controlar la cantidad de árboles a crear y la profundidad. Cabe señalar que a mas profundidad las características son separadas con mas homogénidad, sin embargo este es un problema, si el árbol creado es completamente homogéneo sufrirá de sobre\-entrenamiento, es decir hará un buen trabajo clasificando el conjunto de entrenamiento pero lo hará mal con el conjunto de prueba.\\
 
 Los parámetros utilizados en ese algoritmo son; \textbf{n\_estimators} es la cantidad de árboles creados, el cual esta en el rango de : $[50, 100, 500, 1000]$; \textbf{max\_depth} es la profundidad del árbol y ha sido establecida en los rangos: $[50, 100, 500, 1000]$.\\
 
@@ -479,11 +479,11 @@ Para dividir los datos de forma correcta se busca usar funciones de división la
 
 \begin{itemize}
 
-	\item \textbf{Lineal}: $<x,x^{'}>$ ( Figura \ref{fig:cp5:klineal} )
+	\item \textbf{Lineal}: $<x,x^{'}>$ (Figura \ref{fig:cp5:klineal})
 
-	\item \textbf{Polinomial}: $(\gamma <x,x^{'}>+r)^{d}$ ( Figura Figura \ref{fig:cp5:kpoli} )
+	\item \textbf{Polinomial}: $(\gamma <x,x^{'}>+r)^{d}$ (Figura Figura \ref{fig:cp5:kpoli})
 
-	\item \textbf{Radial}: $exp(-\gamma {\left|\left| x-x^{'} \right|\right|}^2)$ ( Figura \ref{fig:cp5:krbf} )
+	\item \textbf{Radial}: $exp(-\gamma {\left|\left| x-x^{'} \right|\right|}^2)$ (Figura \ref{fig:cp5:krbf})
 
 \end{itemize}
 
@@ -849,7 +849,7 @@ Ciencia y T& 1 & 5 & 3 & 2 & 67\\
 \end{table}
 
 
-Con base en la matriz de confusión se ha calculado \textbf{Recall}, \textbf{Fmeasure}, \textbf{Precision} ( ver \Tref{cp3:metricase}{Métricas de evaluación} ). Las métricas son obtenidas por cada sección, como se muestra en la tabla \ref{tab:cp5:metricas}.
+Con base en la matriz de confusión se ha calculado \textbf{Recall}, \textbf{Fmeasure}, \textbf{Precision} (ver \Tref{cp3:metricase}{Métricas de evaluación}). Las métricas son obtenidas por cada sección, como se muestra en la tabla \ref{tab:cp5:metricas}.
 
 \begin{table}[H]
 \centering
@@ -881,7 +881,7 @@ Ciencia y Tecnología & 0.92 & 0.86 & 0.89\\
 
 Como se puede observar en la tabla \ref{tab:cp5:metricas} las sección con mejor \textbf{Fmeasure} (este valor sostiene una relación entre \textbf{Precision} y \textbf{Recall}) es \textbf{Deportes} obteniendo 0.94 en la clasificación. Este resultado se puede explicar con base en el vocabulario manejado en la categoría, ya que es muy específico, por ejemplo se usan palabras como: gol, jugador, resultado, anotación. Por lo contrario el \textbf{Fmeasure} mas bajo lo obtuvo \textbf{Economía} con 0.84 (el cual no es un mal resultado), las palabras manejadas por esta sección pueden ser encontradas en otras categorías, generando así confusión en la clasificación.\\
 
-Finalmente, considerando la exactitud de de todas las secciones, el modelo entrenado obtuvo una exactitud promedio de 0.89. Este resultado es muy bueno considerando que los trabajos descritos en el estado del arte ( ver \Tref{cp2:estadodelarte}{Estado del arte} ) obtienen una exactitud entre 0.80 y 0.90
+Finalmente, considerando la exactitud de de todas las secciones, el modelo entrenado obtuvo una exactitud promedio de 0.89. Este resultado es muy bueno considerando que los trabajos descritos en el estado del arte (ver \Tref{cp2:estadodelarte}{Estado del arte}) obtienen una exactitud entre 0.80 y 0.90
 
 
 
