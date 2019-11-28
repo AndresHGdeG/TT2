@@ -35,7 +35,9 @@
 \newcommand{\Talterna}[2]{\hypertarget{TA#1:#2}{ }\textbf{Trayectoria alternativa #2:}}
 \newcommand{\TAref}[2]{\hyperlink{TA#1:#2}{[Trayectoria #2]}}
 %-----------------------Titulo de los capítulos-----------------
-\newcommand{\TChapter}[2]{\begin{tcolorbox}[adjusted title=flush center,halign title=flush center,titlerule=3mm,title=\ ] \chapter{#1} \centering \includegraphics[scale=1]{imagenes/alfabetoG/#2.png}  \end{tcolorbox}}
+\newcommand{\TChapter}[2]{\begin{tcolorbox}[adjusted title=flush center,halign title=flush center,titlerule=3mm,title=\ ] \chapter{#1} \centering \includegraphics[scale=1]{imagenes/alfabetoG/#2.png}  \end{tcolorbox}
+\chaptermark{#1}% Nombre en el header
+}
 
 
 
@@ -51,3 +53,35 @@
 crefname={bluebox}{blueboxes}]%
 {mygraybox}[2][]{colbacktitle=white!30!black,colframe=white!30!black,fonttitle=\bfseries,
 title=Cuadro \thetcbcounter: #2,#1}
+
+
+%--------------Definimos un estilo con formato corto------------------------------------%
+
+\newcommand{\HSection}[1]{
+	
+\fancypagestyle{plain#1}{
+%\fancyhead[LE,RO]{\textsl{TRABAJOS I}}
+\fancyhead[LE,RO]{\thesection.\textsl{ #1}}
+%\renewcommand{\sectionmark}[1]{}
+}
+%\thispagestyle{plain#1}
+\pagestyle{plain#1}
+
+}
+
+\newcommand{\HNSection}{
+
+\fancypagestyle{plain}{
+ \fancyhead[LE,RO]{\textsl{\rightmark}}
+}
+%\thispagestyle{plain#1}
+\pagestyle{plain}
+
+}
+
+
+
+\renewcommand{\chaptermark}[1]{%
+ \markboth{\MakeUppercase{%
+ \chaptername\ \thechapter.%
+ \ #1}}{}}
