@@ -93,8 +93,8 @@ Como se puede observar se ha separado por un espacio las palabras, donde cada un
 \subsubsection{Lematización}
 
 Es el proceso lingüstico que, dada una palabra flexionada se encuentra su
-lema. Una palabra flexionada es cuando esta en plural, en femenino conjugada,
-diminutivo o en superlativo. El lema es la palabra que esta en singular para
+lema. Una palabra flexionada es cuando está en plural, en femenino conjugada,
+diminutivo o en superlativo. El lema es la palabra que está en singular para
 sustantivo, singular masculino para adjetivo e infinitivo para un verbo \citep{CT13}. Ejemplo:
 
 	\begin{itemize}
@@ -150,7 +150,7 @@ entrenamiento obtienen datos es posible obtener modelos más precisos. Existen c
 
 \end{itemize}
 
-Cabe mencionar que el método implementado en este trabajo es el aprendizaje supervisado, más adelante se da una explicación detalla.\\
+Cabe mencionar que el método implementado en este trabajo es el aprendizaje supervisado, en la sección 3.5 (ver \Tref{cp3:asupervisado}{Aprendizaje supervisado} ) se detalla este enfoque.\\
 
 El aprendizaje automático se puede aplicar a una amplia gama de problemas comerciales, desde la detección de fraudes hasta la orientación al cliente y la recomendación de productos, al monitoreo industrial en tiempo real, el análisis de sentimientos y el diagnóstico médico. Puede asumir problemas que no pueden administrarse manualmente debido a la gran cantidad de datos que deben procesarse \citep{CT22}. Cuando se aplica a grandes conjuntos de datos, a veces puede encontrar relaciones tan sutiles que ninguna cantidad de escrutinio manual las descubriría nunca. Y cuando muchas de estas relaciones ``débiles'' se combinan, se convierten en predictores fuertes.
 
@@ -389,7 +389,7 @@ Bootstrap aggregating (bagging) consiste en obtener muestras aleatorias con reem
 11
 donde b=1, 2,.., B. En algunas de estas muestras se habrá eliminado o al menos reducido la presencia de observaciones ruidosas, por lo que el clasificador construido en ese conjunto presentará un mejor comportamiento que el clasificador construido en el conjunto original. Así pues Bagging puede ser útil para construir un mejor clasificador cuando el conjunto de entrenamiento presente observaciones ruidosas.\\
 
-La clasificación es realizada mediante votos, donde un boto se define como, la clasificación regresada por un árbol, la sección con el mayor número de votos es la clasificación asignada a los datos de entrada.
+La clasificación es realizada mediante votos, donde un voto se define como, la clasificación regresada por un árbol, la sección con el mayor número de votos es la clasificación asignada a los datos de entrada.
 
 
 
@@ -472,15 +472,13 @@ con la siguiente ecuación:
 \section{Validación cruzada}
 
 
-El proceso de validación cruzada es uno de los métodos mas usados para generalizar la capacidad de predecir de un modelo clasificador y para prevenir el sobre\-entrenamiento, ademas es usado en la etapa de entrenamiento de un algoritmo de aprendizaje supervisado \citep{CTValidacionC}. Este método consiste en dividir el corpus en $n$ pliegues como se muestra en la Figura \ref{cp3:diagramacv}, cada pliegue está conformado por \textbf{Dobleces} los cuales definen un conjunto de entrenamiento (doblez de color azul cielo) y otro de prueba (doblez de color azul rey). En cada pliegue se entrena el modelo y se prueba, para calcular la exactitud de este conjunto, al terminar el proceso se obtiene el promedio. El objetivo de la validación cruzada es estimar la exactitud del modelo en nuevos datos.\\
-
-Cabe destacar que esta prueba permite encontrar un resultado más robusto y confiable en cuanto a la eficiencia del algoritmo, ya que asegura que los datos no sean manipulados para entrenar y probar con un conjunto de datos a conveniencia (es decir la combinación de información con la exactitud más alta).
+El proceso de validación cruzada es uno de los métodos mas usados para generalizar la capacidad de predecir de un modelo clasificador y para prevenir el sobre\-entrenamiento, ademas es usado en la etapa de entrenamiento de un algoritmo de aprendizaje supervisado \citep{CTValidacionC}. Este método consiste en dividir el corpus en $n$ pliegues como se muestra en la Figura \ref{cp3:diagramacv}, cada pliegue está conformado por \textbf{Dobleces} los cuales definen un conjunto de entrenamiento (doblez de color azul cielo) y otro de prueba (doblez de color azul rey). En cada pliegue se entrena el modelo y se prueba, para calcular la exactitud de este conjunto, al terminar el proceso se obtiene el promedio. El objetivo de la validación cruzada es estimar la exactitud del modelo en nuevos datos. Cabe destacar que esta prueba permite encontrar un resultado más robusto y confiable en cuanto a la eficiencia del algoritmo, ya que asegura que los datos no sean manipulados para entrenar y probar con un conjunto de datos a conveniencia (es decir la combinación de información con la exactitud más alta).
 
 %Daniel Berrar, in Encyclopedia of Bioinformatics and Computational Biology, 2019
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.6]{imagenes/Capitulo3/validacionc.png}
+\includegraphics[scale=.55]{imagenes/Capitulo3/validacionc.png}
 \caption{Validación cruzada}
 \label{cp3:diagramacv}
 \end{figure}

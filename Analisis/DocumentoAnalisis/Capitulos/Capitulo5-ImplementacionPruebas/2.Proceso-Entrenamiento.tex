@@ -17,7 +17,7 @@ En este punto es importante mencionar que existe un trabajo terminal previo (TT 
 
 Como se puede observar en la Figura \ref{cp5:diferenciastt} el modelo del TT 2017-A042 está orientado en la clasificación de noticias de 3 diarios de circulación nacional (\textbf{El Universal}, \textbf{La Jornada} y \textbf{Excélsior}), además de estar enfocado en las secciones particulares de cada periódico y de haber entrenado un algoritmo por cada diario. Por otra parte, este trabajo terminal (TT 2018-B013) tiene como objetivo clasificar noticias en 5 secciones (\textbf{deportes}, \textbf{economía}, \textbf{política}, \textbf{cultura}, \textbf{ciencia y tecnología}), de 7 diferentes sitios web. Es importante mencionar que se entrenará un solo modelo el cual generalice la tarea de clasificación de todas las fuentes noticiosas.\\  
 
-Dada las diferencias se decidió utilizar un nuevo corpus como entrenar un nuevo clasificador que se ajuste mejor al objetivo de este trabajo terminal.\\
+Dada las diferencias se decidió utilizar un nuevo corpus, así como entrenar un nuevo clasificador que se ajuste mejor al objetivo de este trabajo terminal.\\
 
 
 Como se mencionó en la etapa de recolección, el corpus obtenido contiene 7,707 noticias en total. Sin embargo este contenido debe ser procesado y solo seleccionar los artículos que aporten información para el entrenamiento, al final de la etapa de pre\-procesamiento el corpus será dividió en dos conjuntos: entrenamiento con el 90\% de los artículos y prueba con el 10\%. A continuación se explica la etapa de \textbf{Pre-procesamiento}.\\
@@ -461,7 +461,7 @@ Los parámetros de este algoritmo son: $l_1$ y $l_2$ que es la forma de entrenar
 
 %----------------%
 %\begin{Text}
-\textbf{Ramdom forest}\\
+\textbf{Random forest}\\
 %\end{Text}
 
 Este algoritmo está basado en la construcción de conjuntos de arboles de decisión como se explica en el capitulo 3 (ver \Tref{cp3:random}{Random Forest}), donde se tienen que controlar la cantidad de árboles a crear y la profundidad. Cabe señalar que a mas profundidad las características son separadas con mas homogénidad, sin embargo este es un problema, si el árbol creado es completamente homogéneo sufrirá de sobre\-entrenamiento, es decir hará un buen trabajo clasificando el conjunto de entrenamiento pero lo hará mal con el conjunto de prueba.\\
@@ -770,9 +770,9 @@ Los resultados de la sección anterior ha mostrado que no existe una brecha muy 
 
 MSV&0.8692&1\\
 \hline
-Regresión Logística&0.8619&2\\
+Regresión Logística&0.8682&2\\
 \hline
-Ramdom Forest&0.8682&3\\
+Random Forest&0.8619&3\\
 \hline
 Naive Bayes&0.8511&4\\
 \hline
@@ -782,7 +782,7 @@ Naive Bayes&0.8511&4\\
 \end{table}
 
 
-El mejor resultado se ha conseguido con el algoritmo \textbf{Máquina de soporte vectorial} con los parámetros ;$C$=100, $gamma= 0.0001$ y $kernel$= $rbf$ (radial) obteniendo 0.8619 de \textbf{exactitud}, por esta razón se ha elegido como el clasificador final de este trabajo terminal.
+El mejor resultado se ha conseguido con el algoritmo \textbf{Máquina de soporte vectorial} con los parámetros ;$C$=100, $gamma$=0.0001 y $kernel$= $rbf$ (radial) obteniendo 0.8619 de \textbf{exactitud}, por esta razón se ha elegido como el clasificador final de este trabajo terminal.
 
 %------------------------------------------------------------------%
 \subsection{Pruebas}
