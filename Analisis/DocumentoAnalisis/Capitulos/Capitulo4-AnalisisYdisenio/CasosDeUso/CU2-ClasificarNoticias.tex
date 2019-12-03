@@ -15,57 +15,59 @@ Brinda al sistema una herramienta que permite realizar la clasificación de las 
 
 %=====================================Tabla 1====================================%
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|}
+	%-----------------------Encabezado-----------------------------------%
+		\hline
+		\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
+		\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Recolectar noticias} }\\
+		\hline
+	%-----------------------Actor----------------------------------------%
+		\textbf{Actor:} & 	Usuario\\
+		\hline
 
-\begin{tabular}{|l|l|}
-%-----------------------Encabezado-----------------------------------%
-	\hline
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Recolectar noticias} }\\
-	\hline
-%-----------------------Actor----------------------------------------%
-	\textbf{Actor:} & 	Usuario\\
-	\hline
+	%-----------------------Propósito------------------------------------%
 
-%-----------------------Propósito------------------------------------%
+		\textbf{Propósito:} & Clasificar las noticias recolectadas\\
+		\hline
 
-	\textbf{Propósito:} & Clasificar las noticias recolectadas\\
-	\hline
+	%----------------------Entradas--------------------------------------%
 
-%----------------------Entradas--------------------------------------%
+		\textbf{Entradas:} &  $\bullet$ Noticias recolectadas\\
+		& $\bullet$ Modelo clasificador\\
+		\hline
 
-	\textbf{Entradas:} &  $\bullet$ Noticias recolectadas\\
-	& $\bullet$ Modelo clasificador\\
-	\hline
+	%-----------------------Salidas--------------------------------------%
 
-%-----------------------Salidas--------------------------------------%
+		\textbf{Salidas:} & Los archivos de cada sección los cuales contienen\\	
+		& el conjunto de noticias correspondientes\\
+		\hline
 
-	\textbf{Salidas:} & Los archivos de cada sección los cuales contienen\\	
-	& el conjunto de noticias correspondientes\\
-	\hline
+	%-----------------------Precondiciones-------------------------------%
 
-%-----------------------Precondiciones-------------------------------%
+		\textbf{Precondiciones:} & Debe existir al menos una noticia recolectada\\
+		\hline
+	%-----------------------Postcondiciones------------------------------%
 
-	\textbf{Precondiciones:} & Debe existir al menos una noticia recolectada\\
-	\hline
-%-----------------------Postcondiciones------------------------------%
+		\textbf{Postcondiciones:} & Las noticias clasificadas podrán ser obtenidas \\
+		& por el sistema\\
+		\hline
 
-	\textbf{Postcondiciones:} & Las noticias clasificadas podrán ser obtenidas \\
-	& por el sistema\\
-	\hline
+		%-----------------------Reglas de negocio----------------------------%
 
-	%-----------------------Reglas de negocio----------------------------%
+		\textbf{Reglas de negocio:} & Ninguna\\
+		\hline
 
-	\textbf{Reglas de negocio:} & Ninguna\\
-	\hline
+	%---------------------------Errores----------------------------------%
 
-%---------------------------Errores----------------------------------%
+	%------Error 1----------%
+		\textbf{Errores:} & Ninguno\\
 
-%------Error 1----------%
-	\textbf{Errores:} & Ninguno\\
+		\hline
 
-	\hline
-
-\end{tabular}
+	\end{tabular}
+\end{table}
 \ \\\\
 
 

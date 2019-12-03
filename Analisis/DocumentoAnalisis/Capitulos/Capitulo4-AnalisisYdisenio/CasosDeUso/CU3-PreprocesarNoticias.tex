@@ -15,57 +15,59 @@ Realiza dos tareas fundamentales, previas al proceso de clasificación las cuale
 
 %=====================================Tabla 1====================================%
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|}
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+		\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
+		\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Recolectar noticias} }\\
+		\hline
+	%-----------------------Actor----------------------------------------%
+		\textbf{Actor:} & 	Usuario\\
+		\hline
 
-\begin{tabular}{|l|l|}
-%-----------------------Ecanbezado-----------------------------------%
-	\hline
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Recolectar noticias} }\\
-	\hline
-%-----------------------Actor----------------------------------------%
-	\textbf{Actor:} & 	Usuario\\
-	\hline
+	%-----------------------Propósito------------------------------------%
 
-%-----------------------Propósito------------------------------------%
+		\textbf{Propósito:} & Preparar el contenido de las noticias para el proceso\\
+		&de extracción de características\\
+		\hline
 
-	\textbf{Propósito:} & Preparar el contenido de las noticias para el proceso\\
-	&de extracción de características\\
-	\hline
+	%----------------------Entradas--------------------------------------%
 
-%----------------------Entradas--------------------------------------%
+		\textbf{Entradas:} & Contenido de los artículos recolectados\\
+		\hline
 
-	\textbf{Entradas:} & Contenido de los artículos recolectados\\
-	\hline
+	%-----------------------Salidas--------------------------------------%
 
-%-----------------------Salidas--------------------------------------%
+		\textbf{Salidas:} & Contenido procesado de los artículos \\	
+		\hline
 
-	\textbf{Salidas:} & Contenido procesado de los artículos \\	
-	\hline
+	%-----------------------Precondiciones-------------------------------%
 
-%-----------------------Precondiciones-------------------------------%
+		\textbf{Precondición:} & Vocabulario en español para el proceso\\
+		& de lematización\\
+		\hline
+	%-----------------------Postcondiciones------------------------------%
 
-	\textbf{Precondición:} & Vocabulario en español para el proceso\\
-	& de lematización\\
-	\hline
-%-----------------------Postcondiciones------------------------------%
+		\textbf{Postcondiciones:} & Se podrá generar el vector de características\\
+		&de cada noticia\\
+		\hline
 
-	\textbf{Postcondiciones:} & Se podrá generar el vector de características\\
-	&de cada noticia\\
-	\hline
+		%-----------------------Reglas de negocio----------------------------%
 
-	%-----------------------Reglas de negocio----------------------------%
+		\textbf{Reglas de negocio:} & Ninguna \\
+		\hline
 
-	\textbf{Reglas de negocio:} & Ninguna \\
-	\hline
+	%---------------------------Errores----------------------------------%
 
-%---------------------------Errores----------------------------------%
+	%------Error 1----------%
+		\textbf{Errores:} & Ninguno \\
 
-%------Error 1----------%
-	\textbf{Errores:} & Ninguno \\
+		\hline
 
-	\hline
-
-\end{tabular}
+	\end{tabular}
+\end{table}
 \ \\\\
 
 

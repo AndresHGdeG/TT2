@@ -213,7 +213,7 @@ Es&este&el&primer&texto&????\\
 \end{bmatrix}
 \end{equation*}
 \end{mygraybox}
-
+\ \\
 \begin{mygraybox}[label={box:cp3:caracteristicas}]{Vocabulario} 
 \begin{equation*}
 \begin{bmatrix}
@@ -372,7 +372,9 @@ Pertenecen a la categoría de los clasificadores lineales, debido a que inducen 
 (también conocidos como hiperplanos), ya sea en el espacio original de los ejemplos de entrada, si éstos son separables o cuasi-separables (ruido), o en un espacio transformado (espacio de características),
 si los ejemplos no son separables linealmente en el espacio original. La búsqueda del hiperplano
 de separación en estos espacios transformados, normalmente de muy alta dimensión, se hará de forma
-implícita utilizando las denominadas funciones kernel. Mientras la mayoría de los métodos de aprendizaje
+implícita utilizando las denominadas funciones kernel.\\ 
+
+Mientras la mayoría de los métodos de aprendizaje
 se centran en minimizar los errores cometidos por el modelo generado a partir de los ejemplos
 de entrenamiento (error empírico), el sesgo inductivo asociado a la SVM radica en la minimización
 del denominado riesgo estructural.
@@ -415,7 +417,7 @@ las que se están trabajando \citep{CT23}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.3]{imagenes/Capitulo3/MatrizC.png}
+	\includegraphics[scale=.45]{imagenes/Capitulo3/MatrizC.png}
 	\caption{Matriz de confusión}
 	\label{Fig:mconfu}
 \end{figure}
@@ -478,13 +480,15 @@ con la siguiente ecuación:
 \section{Validación cruzada}
 \HSection{VALIDACÓN CRUZADA}
 
-El proceso de validación cruzada es uno de los métodos mas usados para generalizar la capacidad de predecir de un modelo clasificador y para prevenir el sobre\-entrenamiento, ademas es usado en la etapa de entrenamiento de un algoritmo de aprendizaje supervisado \citep{CTValidacionC}. Este método consiste en dividir el corpus en $n$ pliegues como se muestra en la Figura \ref{cp3:diagramacv}, cada pliegue está conformado por \textbf{Dobleces} los cuales definen un conjunto de entrenamiento (doblez de color azul cielo) y otro de prueba (doblez de color azul rey). En cada pliegue se entrena el modelo y se prueba, para calcular la exactitud de este conjunto, al terminar el proceso se obtiene el promedio. El objetivo de la validación cruzada es estimar la exactitud del modelo en nuevos datos. Cabe destacar que esta prueba permite encontrar un resultado más robusto y confiable en cuanto a la eficiencia del algoritmo, ya que asegura que los datos no sean manipulados para entrenar y probar con un conjunto de datos a conveniencia (es decir la combinación de información con la exactitud más alta).
+El proceso de validación cruzada es uno de los métodos mas usados para generalizar la capacidad de predecir de un modelo clasificador y para prevenir el sobre\-entrenamiento, ademas es usado en la etapa de entrenamiento de un algoritmo de aprendizaje supervisado \citep{CTValidacionC}. Este método consiste en dividir el corpus en $n$ pliegues como se muestra en la Figura \ref{cp3:diagramacv}, cada pliegue está conformado por \textbf{Dobleces} los cuales definen un conjunto de entrenamiento (doblez de color azul cielo) y otro de prueba (doblez de color azul rey). En cada pliegue se entrena el modelo y se prueba, para calcular la exactitud de este conjunto, al terminar el proceso se obtiene el promedio.\\
+
+El objetivo de la validación cruzada es estimar la exactitud del modelo en nuevos datos. Cabe destacar que esta prueba permite encontrar un resultado más robusto y confiable en cuanto a la eficiencia del algoritmo, ya que asegura que los datos no sean manipulados para entrenar y probar con un conjunto de datos a conveniencia (es decir la combinación de información con la exactitud más alta).
 
 %Daniel Berrar, in Encyclopedia of Bioinformatics and Computational Biology, 2019
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.55]{imagenes/Capitulo3/validacionc.png}
+\includegraphics[scale=.75]{imagenes/Capitulo3/validacionc.png}
 \caption{Validación cruzada}
 \label{cp3:diagramacv}
 \end{figure}

@@ -17,61 +17,62 @@ Permite al actor visualizar las noticias correspondiente a la sección elegida, 
 
 %=====================================Tabla 1====================================%
 \begin{table}[H]
-\begin{tabular}{|l|l|}
+	\centering
+	\begin{tabular}{|l|l|}
 
-%-----------------------Ecanbezado-----------------------------------%
-	\hline
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU4 Mostrar resultados} }\\
-	\hline
-%-----------------------Actor----------------------------------------%
-	\textbf{Actor:} & 	Usuario	\\
-	\hline
-%-----------------------Propósito------------------------------------%
-	\textbf{Propósito:} & Brindar una herramienta que permita consultar las\\
-	&noticias clasificadas y filtradas por su fecha de publicación\\
-	\hline
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+		\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
+		\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU4 Mostrar resultados} }\\
+		\hline
+	%-----------------------Actor----------------------------------------%
+		\textbf{Actor:} & 	Usuario	\\
+		\hline
+	%-----------------------Propósito------------------------------------%
+		\textbf{Propósito:} & Brindar una herramienta que permita consultar las\\
+		&noticias clasificadas y filtradas por su fecha de publicación\\
+		\hline
 
-%----------------------Entradas--------------------------------------%
-	\textbf{Entradas:} &Periodo de búsqueda\\
-	\hline
+	%----------------------Entradas--------------------------------------%
+		\textbf{Entradas:} &Periodo de búsqueda\\
+		\hline
 
-%-----------------------Salidas--------------------------------------%
-	\textbf{Salidas:}&$\bullet$ \Tref{MSG2}{MSG2 Petición vacía}\\
-	&$\bullet$ Noticias clasificadas; de cada una se muestra:\\
-	&\ \ $\circ$ \textbf{Título}\\
-	&\ \ $\circ$ \textbf{URL al artículo}\\
-	&\ \ $\circ$ \textbf{Fecha de publicación}\\
-	&\ \ $\circ$ \textbf{Autor}\\
-	&\ \ $\circ$ \textbf{Resumen}\\
-	\hline
+	%-----------------------Salidas--------------------------------------%
+		\textbf{Salidas:}&$\bullet$ \Tref{MSG2}{MSG2 Petición vacía}\\
+		&$\bullet$ Noticias clasificadas; de cada una se muestra:\\
+		&\ \ $\circ$ \textbf{Título}\\
+		&\ \ $\circ$ \textbf{URL al artículo}\\
+		&\ \ $\circ$ \textbf{Fecha de publicación}\\
+		&\ \ $\circ$ \textbf{Autor}\\
+		&\ \ $\circ$ \textbf{Resumen}\\
+		\hline
 
-%-----------------------Precondiciones-------------------------------%
+	%-----------------------Precondiciones-------------------------------%
 
-	\textbf{Precondición:} & Las noticias clasificadas deben estar \\
-	&almacenadas por sección\\
-	\hline
+		\textbf{Precondición:} & Las noticias clasificadas deben estar \\
+		&almacenadas por sección\\
+		\hline
 
-%-----------------------Postcondiciones------------------------------%
+	%-----------------------Postcondiciones------------------------------%
 
-%---------Post 1----------%
-	\textbf{Postcondiciones:}& Ninguna\\
-	\hline
+	%---------Post 1----------%
+		\textbf{Postcondiciones:}& Ninguna\\
+		\hline
 
-%-----------------------Reglas de negocio----------------------------%
-	\textbf{Reglas de negocio:}& \RNref{RN5}{Orden de publicación}\\
-	\hline
-%---------------------------Errores----------------------------------%
+	%-----------------------Reglas de negocio----------------------------%
+		\textbf{Reglas de negocio:}& \RNref{RN5}{Orden de publicación}\\
+		\hline
+	%---------------------------Errores----------------------------------%
 
-%------Error 1----------%
-	\textbf{Errores:} &\TError{CU4}{Uno} Cuando no se ha encontrado noticias en el\\
-	&\ \ día seleccionado se muestra el mensaje \Tref{MSG2}{MSG2}\\
-	&\ \ \Tref{MSG2}{Petición vacía}\\
-	\hline
+	%------Error 1----------%
+		\textbf{Errores:} &\TError{CU4}{Uno} Cuando no se ha encontrado noticias en el\\
+		&\ \ día seleccionado se muestra el mensaje \Tref{MSG2}{MSG2}\\
+		&\ \ \Tref{MSG2}{Petición vacía}\\
+		\hline
 
-\end{tabular}
+	\end{tabular}
 
-%\caption{ Tabla de descripción de CU4 }
+	%\caption{ Tabla de descripción de CU4 }
 \end{table}
 %============================Trayectorias========================================%
 

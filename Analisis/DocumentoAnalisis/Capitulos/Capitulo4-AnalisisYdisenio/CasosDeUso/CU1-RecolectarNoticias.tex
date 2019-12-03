@@ -14,64 +14,65 @@ Brinda al usuario un punto de acceso para elegir una sección; las clasificacion
 
 %=====================================Tabla 1====================================%
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|}
+	%-----------------------Ecanbezado-----------------------------------%
+		\hline
+		\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
+		\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Recolectar noticias} }\\
+		\hline
+	%-----------------------Actor----------------------------------------%
+		\textbf{Actor:} & 	Usuario\\
+		\hline
 
-\begin{tabular}{|l|l|}
-%-----------------------Ecanbezado-----------------------------------%
-	\hline
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{\textbf{Caso de uso: }} }&
-	\multicolumn{1}{| >{\columncolor{black}}l|}{ \textcolor{myWhite}{CU1 Recolectar noticias} }\\
-	\hline
-%-----------------------Actor----------------------------------------%
-	\textbf{Actor:} & 	Usuario\\
-	\hline
+	%-----------------------Propósito------------------------------------%
 
-%-----------------------Propósito------------------------------------%
+		\textbf{Propósito:} & Brindar una herramienta de recolección de noticias\\
+		& de Internet(Crawler) \\
+		\hline
 
-	\textbf{Propósito:} & Brindar una herramienta de recolección de noticias\\
-	& de Internet(Crawler) \\
-	\hline
+	%----------------------Entradas--------------------------------------%
 
-%----------------------Entradas--------------------------------------%
+		\textbf{Entradas:} & URL de las paginas por consultar\\
+		\hline
 
-	\textbf{Entradas:} & URL de las paginas por consultar\\
-	\hline
+	%-----------------------Salidas--------------------------------------%
 
-%-----------------------Salidas--------------------------------------%
+		\textbf{Salidas:} & \Tref{MSG1}{MSG1 Tiempo de recolección excedido}\\
+		\hline
 
-	\textbf{Salidas:} & \Tref{MSG1}{MSG1 Tiempo de recolección excedido}\\
-	\hline
+	%-----------------------Precondiciones-------------------------------%
 
-%-----------------------Precondiciones-------------------------------%
+		\textbf{Precondición:} & Tener un punto de conexión a Internet\\
+		\hline
+	%-----------------------Postcondiciones------------------------------%
 
-	\textbf{Precondición:} & Tener un punto de conexión a Internet\\
-	\hline
-%-----------------------Postcondiciones------------------------------%
+		\textbf{Postcondiciones:} &$\bullet$  El usuario tendrá la facultad\\
+		&\ \  de visualizar las noticias clasificadas\\
+		&$\bullet$ El usuario podrá cambiar el periodo de búsqueda\\
+		\hline
 
-	\textbf{Postcondiciones:} &$\bullet$  El usuario tendrá la facultad\\
-	&\ \  de visualizar las noticias clasificadas\\
-	&$\bullet$ El usuario podrá cambiar el periodo de búsqueda\\
-	\hline
+		%-----------------------Reglas de negocio----------------------------%
 
-	%-----------------------Reglas de negocio----------------------------%
+		\textbf{Reglas de negocio:} &$\bullet$ \RNref{RN1}{Número de palabras}\\
+		&$\bullet$ \RNref{RN3}{Listado de fuentes noticiosas}\\
+		&$\bullet$ \RNref{RN5}{Orden de publicación}\\
+		&$\bullet$ \RNref{RN6}{Periodo de recolección}\\
+		&$\bullet$ \RNref{RN7}{Campos recolectados de noticia}\\
+		&$\bullet$ \RNref{RN8}{Periodo de actualización}\\
+		\hline
 
-	\textbf{Reglas de negocio:} &$\bullet$ \RNref{RN1}{Número de palabras}\\
-	&$\bullet$ \RNref{RN3}{Listado de fuentes noticiosas}\\
-	&$\bullet$ \RNref{RN5}{Orden de publicación}\\
-	&$\bullet$ \RNref{RN6}{Periodo de recolección}\\
-	&$\bullet$ \RNref{RN7}{Campos recolectados de noticia}\\
-	&$\bullet$ \RNref{RN8}{Periodo de actualización}\\
-	\hline
+	%---------------------------Errores----------------------------------%
 
-%---------------------------Errores----------------------------------%
+	%------Error 1----------%
+		\textbf{Errores:} & $\bullet$ \TError{CU1}{Uno} Cuando el tiempo de \\
+		&\ \ recolección se ha excedido se muestra el mensaje\\
+		&\ \  \Tref{MSG1}{MSG1 Tiempo de recolección excedido}\\
+		\hline
 
-%------Error 1----------%
-	\textbf{Errores:} & $\bullet$ \TError{CU1}{Uno} Cuando el tiempo de \\
-	&\ \ recolección se ha excedido se muestra el mensaje\\
-	&\ \  \Tref{MSG1}{MSG1 Tiempo de recolección excedido}\\
-	\hline
-
-\end{tabular}
-
+	\end{tabular}
+\end{table}
 \ \\\\
 
 %============================Trayectorias========================================%

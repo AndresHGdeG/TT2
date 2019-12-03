@@ -27,16 +27,18 @@
 
 %--------------Definimos el estilo del piede página------------------------------------%
 
+\fancyheadoffset{0.005cm} 
+
 \fancypagestyle{plain}{
   
   %\fancyfoot[LE]{\begin{picture}(0,0) \put(-165,-95){ \includegraphics[scale=1]{imagenes/foot.png}}\end{picture}}
 
   %-------------Imagen de pie de página pares---------%
 
-    \fancyfoot[LE]{\begin{picture}(0,0) \put(-140,-95){ \includegraphics[scale=1]{imagenes/foot-azul.png}}\end{picture}}
+    \fancyfoot[LE]{\begin{picture}(0,0) \put(-62,-63){ \includegraphics[scale=1]{imagenes/foot-azul.png}}\end{picture}}
 
   %-------------Imagen de pie de página impares---------%
-    \fancyfoot[LO]{\begin{picture}(0,0) \put(-95,-95){ \includegraphics[scale=1]{imagenes/foot-azul.png}}\end{picture}}
+    \fancyfoot[LO]{\begin{picture}(0,0) \put(-90,-63){ \includegraphics[scale=1]{imagenes/foot-azul.png}}\end{picture}}
 
   \renewcommand{\headrulewidth}{0.5pt}
   \renewcommand{\footrulewidth}{0.5pt}
@@ -63,3 +65,12 @@
 %----------------------Profundidad de subsection ---------
 
 \setcounter{secnumdepth}{5}% Se agrega has 5 de profundidad por ejemplo \subsubsectino{}
+
+
+%----------------------------Ajuste de margenes-------------------------%
+\geometry{
+  top=3.2cm,
+  bottom=3.2cm,
+  left=3cm,
+  right=2cm
+}
