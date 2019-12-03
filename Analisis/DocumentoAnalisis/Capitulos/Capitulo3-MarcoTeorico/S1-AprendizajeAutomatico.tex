@@ -27,7 +27,7 @@ Esta ciencia contribuye en el desarrollo de diversos campos de investigación co
 %----------------------Procesamiento de lenguaje natural-------------------------------------%
 
 \section{Procesamiento de lenguaje natural}
-\HSection{PROCESAMIENTO DE LN}
+%\HSection{PROCESAMIENTO DE LENGUAJE N}
 
 El procesamiento de lenguaje natural es una disciplina de la Inteligencia Artificial que se ocupa de la formulación e 
 investigación de mecanismos computacionales para la comunicación entre personas y maquinas mediante el uso de Lenguajes 
@@ -42,7 +42,7 @@ Dentro de la amplia gama de técnicas para el procesamiento de lenguaje natural,
 
 %------------------------------------Pre-procesamiento------------------------%
 
-\subsection[Pre-procesamiento]{Pre-procesamiento}
+\subsection{Pre-procesamiento}
 
 
 Cuando se recupera  información de la web, se debe limpiar el texto ya que contiene etiquetas definidas por el hipertexto (ver \Tref{cp3:html}{HTML}). Se deben buscar los bloques que brinden información útil para el ámbito de estudio, algunas secciones contienen publicidad o información no relacionada a los datos de interés. Para esto se tiene que realizar un análisis para discriminar la información útil \citep{CD1}. A continuación se muestra un ejemplo de un texto que que requiere ser pre-procesado\\
@@ -162,7 +162,7 @@ El aprendizaje automático se puede aplicar a una amplia gama de problemas comer
 %------------------------------------Apredizje automático para texto------------------------%
 
 \section{Aprendizaje automático para texto}
-\HSection{AA PARA TEXTO}
+%%\HSection{AA PARA TEXTO}
 
 La extracción de información útil con varios tipos de algoritmos estadísticos es denominado \textbf{Extracción de datos} (\textit{text mining}), \textbf{Analítica de texto} (\textit{text analytics}) o \textbf{Aprendizaje automático para texto} (\textit{Machine learning for text}) \citep{CD1}. En los últimos años este campo ha incrementado por el desarrollo de la web, redes sociales, correos electrónicos, bibliotecas virtuales. Algunas de las aplicaciones son las siguientes:
 
@@ -256,7 +256,7 @@ Las características son extraídas de 2 formas, binario(donde 1 representa la p
 
 \Tlabel{cp3:asupervisado}
 \section{Aprendizaje supervisado}
-\HSection{A SUPERVISADO}
+%\HSection{A SUPERVISADO}
 
 Los algoritmos de aprendizaje supervisado dependen de datos previamente etiquetado, es decir se necesita un corpus de datos, para llevar acabo el entrenamiento, así 
 el algoritmo pueda comprender los datos y con ello determinar que etiqueta debe asignarse a los nuevos datos 
@@ -268,7 +268,7 @@ correcto de los datos etiquetados \citep{CT4}.\\
 
 \Tlabel{cp3:multinomial}
 \section{Clasificación multiclase}
-\HSection{CLASIFICACIÓN}
+%\HSection{CLASIFICACIÓN}
 
 Existen dos tipos de clasificaciones: la clasificación binaria, donde se decide si un objetivo pertenece a una clase o no; y la clasificación multiclase en el cual, se tiene un conjunto de datos etiquetados y estos pertenecen a una de $N$ clases diferentes. El objetivo en esta última es construir un algoritmo donde dado otro dato, este pueda predecir de forma correcta la clase a la cual pertenece el nuevo punto. A continuación se describen algunos de los métodos más utilizados de Aprendizaje Automático aplicados a tareas de texto.
 
@@ -403,7 +403,7 @@ La clasificación es realizada mediante votos, donde un voto se define como, la 
 
 \Tlabel{cp3:metricase}
 \section{Métricas de evaluación de un modelo de aprendizaje automático}
-\HSection{MÉTRICAS}
+%\HSection{MÉTRICAS}
 
 
 Una vez generando un modelo de clasificación, es importante medir el desempeño del mismo, con
@@ -478,7 +478,7 @@ con la siguiente ecuación:
 
 \Tlabel{cp3:validacionc}
 \section{Validación cruzada}
-\HSection{VALIDACÓN CRUZADA}
+%\HSection{VALIDACÓN CRUZADA}
 
 El proceso de validación cruzada es uno de los métodos mas usados para generalizar la capacidad de predecir de un modelo clasificador y para prevenir el sobre\-entrenamiento, ademas es usado en la etapa de entrenamiento de un algoritmo de aprendizaje supervisado \citep{CTValidacionC}. Este método consiste en dividir el corpus en $n$ pliegues como se muestra en la Figura \ref{cp3:diagramacv}, cada pliegue está conformado por \textbf{Dobleces} los cuales definen un conjunto de entrenamiento (doblez de color azul cielo) y otro de prueba (doblez de color azul rey). En cada pliegue se entrena el modelo y se prueba, para calcular la exactitud de este conjunto, al terminar el proceso se obtiene el promedio.\\
 
