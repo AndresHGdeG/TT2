@@ -15,59 +15,77 @@ Recolectar y clasificar noticias de acuerdo a su contenido y periodo de publicac
   \item Mostrar las noticias que cumplieron con los filtros establecidos, así como su enlace (URL) para redirigirlos a la página de la noticia
 \end{itemize}
 
-\section{Instalación}
+\section{Reglas de negocio}
+%------------------RN1-----------------------%
+\DGline{RN1}{Número de palabras}
+\begin{itemize}
+  \item \textbf{Descripción:}  La noticia debe tener al menos 180 palabras
+%  \item \textbf{Ejemplo:}
+\end{itemize}
 
-	El presente sistema web ha sido desarrollado bajo el sistema operativo \textit{Ubuntu} en su versión 18.04.3, las siguientes bibliotecas serán instaladas utilizando la terminal del sistema operativo, son necesarias para el correcto funcionamiento del sistema
-	\subsection{Recolector}
-	El recolector ha sido construido bajo el lenguaje de programación \textit{Python} utilizando el framework \textif{Scrapy} el cual se utiliza para recuperar información de diversos sitios, para su instalación se utiliza el siguiente comando:
-	\begin{lstlisting}[language=bash]
-  		$ pip3 install Scrapy
-	\end{lstlisting}
+%------------------RN2-----------------------%
+\DGline{RN2}{Lenguaje de noticias}
 
-	\subsection{Clasificador}
-	El clasificador ha sido programado bajo el lenguaje de programación \textit{Python}, previó a llevar a cabo el proceso de clasificación, se procede a realizar dos tareas importantes, tokenizar y lematizar; para realizar estas tareas se ha utilizado la biblioteca \textit{Spacy}, para su instalación se utiliza el comando:
-	\begin{lstlisting}[language=bash]
-  		$ pip3 install -U spacy
-  		$ python -m spacy download es_core_news_sm
-	\end{lstlisting}
+\begin{itemize}
+  \item \textbf{Descripción:} Las noticias deben estar redactadas en lenguaje español
+%  \item \textbf{Ejemplo:}
+\end{itemize}
+%------------------RN3-----------------------%
+\DGline{RN3}{Listado de fuentes noticiosas}
 
-	Para el clasificador se ha utilizado la biblioteca \textit{Scikit Learn}, para su instalacións se utiliza el siguiente comando:
-	\begin{lstlisting}[language=bash]
-		$ pip3 install -U scikit-learn
-	\end{lstlisting}
+\begin{itemize}
+  \item \textbf{Descripción:} Solo se puede recolectar información de los siguientes sitios\\
 
-	\subsection{Aplicación Web}
-	La presente aplicación Web ha sido desarrollada bajo el lenguaje de programación \textit{Java} es necesario instalar NetBeans en su versión 8.2, en la siguiente liga \textit{https://netbeans.org/downloads/8.2/} se encuentra la versión 8.2, debido a que se realiza una aplicación web es necesario instalar la versión \textit{Java EE} la cual incluye \textit{Apache TomCat}.
-	\\
-	Una vez que se ha descargado NetBeans nos ubicamos en la carpeta donde se haya descargado nuestro archivo y ejecutamos el siguiente comando:
-	\begin{lstlisting}[language=bash]
-		$ chmod +x netbeans-8.2-javaee-linux.sh 
-		$ -/netbeans-8.2-javaee-linux.sh 
-	\end{lstlisting}
+  \begin{itemize}
 
-	Una vez instaladas todas las bibliotecas previas, es necesario ubicarnos en la siguiente carpeta:
-	\begin{lstlisting}[language=bash]
-		/ApplicacionWeb/TT2/web/resources/Recolector$
-	\end{lstlisting}
-	Una vez ubicados en dicha carpeta ejecutaremos el siguiente comando:
-	\begin{lstlisting}[language=bash]
-		$ scrapy startproject TT2
-	\end{lstlisting}
-	
-\section{Ejecución}
-Una vez finalizada la instalación y creación del recolector, se procederá a abrir NetBeans, una vez ingresado se procederá a abrir el proyecto, como se muestra en la Figura \ref{fig:seleccionarProyecto}
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.6]{imagenes/abrirProyecto.png}
-	\caption{Se selecciona el proyecto TT2}
-	\label{fig:seleccionarProyecto}
-\end{figure}
+    \item \textbf{El Universal}: https://www.eluniversal.com.mx/
+    \item \textbf{Azteca Noticias}: https://www.aztecanoticias.com.mx/
+    \item \textbf{Aristegui Noticias}: https://aristeguinoticias.com/
+    \item \textbf{La Jornada}: https://www.jornada.com.mx/ultimas
+    \item \textbf{Sopitas}: https://www.sopitas.com/
+    \item \textbf{El Economista}: https://www.eleconomista.com.mx/
+    \item \textbf{Proceso}: https://www.proceso.com.mx/
 
-Una vez abierto el proyecto se ejecutará el sistema, dando click derecho sobre el archivo \textit{inicio.xhtml} y seleccionando la opción ejecutar, el archivo se muestra en la Figura \ref{fig:inicio}
+  \end{itemize} 
+%  \item \textbf{Ejemplo:}
+\end{itemize}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.6]{imagenes/ejecutar.png}
-	\caption{Se ejecuta el archivo inicio.xhtml}
-	\label{fig:inicio}
-\end{figure}
+\DGline{RN4}{Número de noticias recolectadas}
+
+\begin{itemize}
+  \item \textbf{Descripción:} El número máximo de noticias recolectadas por sitio web debe ser 30
+
+%  \item \textbf{Ejemplo:}%
+\end{itemize}
+
+%------------------RN5-----------------------%
+\DGline{RN5}{Orden de publicación}
+
+\begin{itemize}
+  \item \textbf{Descripción:} Las noticias se muestran con base a la fecha de publicación
+%  \item \textbf{Ejemplo:} 
+\end{itemize}
+
+%------------------RN6----------------------%
+\DGline{RN6}{Periodo de recolección}
+
+\begin{itemize}
+  \item \textbf{Descripción:} De cada sitio establecido se recolectan las noticias que se encuentren en un periodo de al menos 3 días anterior a la fecha actual
+\end{itemize}
+
+%------------------RN7----------------------%
+\DGline{RN7}{Campos recolectados de noticia}
+
+\begin{itemize}
+  \item \textbf{Descripción:} De cada noticia se extrae \textbf{Título}, \textbf{URL al artículo}, \textbf{Fecha de publicación} y de contar con ello el \textbf{Resumen}
+
+\end{itemize}
+
+
+%------------------RN8----------------------%
+\DGline{RN8}{Periodo de actualización}
+
+\begin{itemize}
+  \item \textbf{Descripción:} El proceso de recolección de noticias se hará en periodos de 4 horas 
+
+\end{itemize}
