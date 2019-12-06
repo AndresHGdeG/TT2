@@ -1,9 +1,19 @@
+\documentclass[12pt,twoside,onecolumn,openany]{book}
+
+\input{Configuracion/Bibliotecas}
+\input{Configuracion/Estilo}
+
+
+\begin{document}
+
+\input{Secciones/Portada}
+
 %Manual de Usuario
 \section{Instalación}
 
 	El presente sistema web ha sido desarrollado bajo el sistema operativo \textit{Ubuntu} en su versión 18.04.3, las siguientes bibliotecas serán instaladas utilizando la terminal del sistema operativo, son necesarias para el correcto funcionamiento del sistema
 	\subsection{Recolector}
-	El recolector ha sido construido bajo el lenguaje de programación \textit{Python} utilizando el framework \textif{Scrapy} el cual se utiliza para recuperar información de diversos sitios, para su instalación se utiliza el siguiente comando:
+	El recolector ha sido construido bajo el lenguaje de programación \textit{Python} utilizando el framework \textit{Scrapy} el cual se utiliza para recuperar información de diversos sitios, para su instalación se utiliza el siguiente comando:
 	\begin{lstlisting}[language=bash]
   		$ pip3 install Scrapy
 	\end{lstlisting}
@@ -200,3 +210,5 @@ Si el usuario ha presionado la opción \textbf{Cancelar}, el proceso concluye y 
 \label{fig:vistaNoticiasAyer}
 \end{figure}
 
+
+\end{document}
