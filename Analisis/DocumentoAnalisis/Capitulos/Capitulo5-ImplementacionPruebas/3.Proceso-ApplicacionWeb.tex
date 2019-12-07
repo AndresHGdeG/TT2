@@ -61,7 +61,7 @@ Como consecuencia de no cumplirse estas condiciones, las etapas \textbf{Recolect
 \subsection{Recolectar}
 
 
-Esta etapa genera un subproceso el cual activa un script (desarrollado en \textbf{Python 3}) el cual activa la recolección de noticias en los sitio web definidos previamente (ver \Tref{cp5:sitiosWeb}{Sitios web}), la información que se obtiene de cada artículo es la siguiente:
+Esta etapa genera un subproceso el cual activa un script (desarrollado en \textbf{Python 3}) el cual inicia la recolección de noticias en los sitio web definidos previamente (ver \Tref{cp5:sitiosWeb}{Sitios web}), la información que se obtiene de cada artículo es la siguiente:
 
 \begin{itemize}
 	\item \textbf{URL de la noticia}
@@ -72,7 +72,7 @@ Esta etapa genera un subproceso el cual activa un script (desarrollado en \textb
 	\item \textbf{Noticia}
 \end{itemize}
 
-La extracción de las noticias se hace en la página principal de los sitios web. Cabe destacar que en el proceso de recolección se valida que las noticias contengan al menos 180 palabras (en la redacción de \textbf{Noticia}), de lo contrario no se extrae. Ademas se ha definido un tiempo máximo de espera en esta etapa, el cual es de 84 segundos, después de concluir el periodo y haber recolectado la información, se procede con la etapa de \textbf{Clasificación}, de lo contrario si no se recolecto ninguna noticia se muestra el mensaje \textbf{Se ha agotado el tiempo de espera, no se han encontrado noticias, intentar mas tarde} (como se visualiza en la Figura \ref{fig:notNoRec}) y se detiene el proceso.
+La extracción de las noticias se hace en la página principal de los sitios web. Cabe destacar que en el proceso de recolección se valida que las noticias contengan al menos 180 palabras (en la redacción de \textbf{Noticia}), de lo contrario no se extrae. Ademas se ha definido un tiempo máximo de espera en esta etapa, el cual es de 30 segundos, después de concluir el periodo y haber recolectado la información, se procede con la etapa de \textbf{Clasificación}, de lo contrario si no se recolecto ninguna noticia se muestra el mensaje \textbf{Se ha agotado el tiempo de espera, no se han encontrado noticias, intentar mas tarde} (como se visualiza en la Figura \ref{fig:notNoRec}) y se detiene el proceso.
 
 \begin{figure}[H]
 \centering

@@ -253,7 +253,7 @@ Para crear un modelo clasificador usando aprendizaje supervisado (ver \Tref{cp3:
 	\item \textbf{Random Forest} (ver \Tref{cp3:random}{Random Forest})
 \end{itemize}
 
-El proceso de entrenamiento consta de 5 pasos los cuales se muestran en la Figura \ref{fig:cp5:entrenamiento}.
+El proceso de entrenamiento consta de 4 pasos los cuales se muestran en la Figura \ref{fig:cp5:entrenamiento}.
 
 \begin{figure}[h]
 \centering
@@ -882,7 +882,7 @@ Ciencia y Tecnología & 0.92 & 0.86 & 0.89\\
 
 Como se puede observar en la tabla \ref{tab:cp5:metricas} las sección con mejor \textbf{Fmeasure} (este valor sostiene una relación entre \textbf{Precision} y \textbf{Recall}) es \textbf{Deportes} obteniendo 0.94 en la clasificación. Este resultado se puede explicar con base en el vocabulario manejado en la categoría, ya que es muy específico, por ejemplo se usan palabras como: gol, jugador, resultado, anotación. Por lo contrario el \textbf{Fmeasure} mas bajo lo obtuvo \textbf{Economía} con 0.84 (el cual no es un mal resultado), las palabras manejadas por esta sección pueden ser encontradas en otras categorías, generando así confusión en la clasificación.\\
 
-Finalmente, considerando la exactitud de de todas las secciones, el modelo entrenado obtuvo una exactitud promedio de 0.89. Este resultado es muy bueno considerando que los trabajos descritos en el estado del arte (ver \Tref{cp2:estadodelarte}{Estado del arte}) obtienen una exactitud entre 0.80 y 0.90
+Finalmente, considerando la exactitud de de todas las secciones, el modelo entrenado obtuvo una exactitud promedio de 0.89. Este resultado es muy bueno considerando que los trabajos descritos en el estado del arte (ver \Tref{cp2:estadodelarte}{Estado del arte}) obtienen una exactitud entre 0.80 y 0.90.
 
 
 
@@ -892,7 +892,7 @@ Finalmente, considerando la exactitud de de todas las secciones, el modelo entre
 \subsection{Persistencia}
 
 
-Como última etapa de la clasificación, el modelo \textbf{Máquina de soporte vectorial} debe ser almacenado así como las características del corpus. Para esta tarea se ha utilizado el corpus completo de 3500 noticias, del cual se extraen las características, se entrena el modelo y estos conjuntos son almacenados en un archivo ocupando la biblioteca \textbf{pickle}, de esta forma en la siguiente sección el modelo es utilizado como parte de la \textbf{Aplicación web}.
+Como última etapa de la clasificación, el modelo \textbf{Máquina de soporte vectorial} debe ser almacenado así como las características del corpus. Para esta tarea se ha utilizado el corpus completo de 3,500 noticias, del cual se extraen las características, se entrena el modelo y estos conjuntos son almacenados en un archivo ocupando la biblioteca \textbf{pickle}, de esta forma en la siguiente sección el modelo es utilizado como parte de la \textbf{Aplicación web}.
 
 
 

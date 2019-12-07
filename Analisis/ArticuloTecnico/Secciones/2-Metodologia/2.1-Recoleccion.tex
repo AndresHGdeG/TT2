@@ -1,10 +1,7 @@
 \subsection{Recolección}
 
 \begin{enumerate}
-  \item \textbf{Selección de sitios}: Consiste en seleccionar los sitios web utilizados para la recolección de las noticias con base en tres consideraciones: número de visitas, accesibilidad al contenido y nivel de confianza, por ejemplo, 
-
-
-  \textit{Reuters Institute}\footnote{https://reutersinstitute.politics.ox.ac.uk/} realizó un informe anual para comprender como se consumen las noticias en distintos países, mediante el sitio \textit{YouGov}\footnote{https://mx.yougov.com/} se realizó la investigación utilizando cuestionarios en línea durante finales de enero y principios de febrero del año 2019. Además el sitio web El Economista\footnote{https://www.eleconomista.com.mx/} contiene una sección llamada \textbf{Ranking de Medios Nativos Digitales}, el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados[3]. Con base a estas estadisticas los sitios seleccionados son los siguientes:\\
+  \item \textbf{Selección de sitios}: Consiste en seleccionar los sitios web utilizados para la recolección de las noticias con base en tres consideraciones: número de visitas, accesibilidad al contenido y nivel de confianza, por ejemplo, \textit{Reuters Institute}\footnote{https://reutersinstitute.politics.ox.ac.uk/} realizó un informe anual para comprender como se consumen las noticias en distintos países, mediante el sitio \textit{YouGov}\footnote{https://mx.yougov.com/} se realizó la investigación utilizando cuestionarios en línea durante finales de enero y principios de febrero del año 2019. Además el sitio web El Economista\footnote{https://www.eleconomista.com.mx/} contiene una sección llamada \textbf{Ranking de Medios Nativos Digitales}, el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados[3]. Con base a esta información los sitios seleccionados son los siguientes:\\
 
   \begin{itemize}
     \item \text{Aristegui Noticias}
@@ -15,12 +12,12 @@
     \item \text{Sopitas y TV Azteca}\\
   \end{itemize}
 
-  \item \textbf{Análisis de sitio web}: Consiste en realizar un análisis sobre la estructura \textbf{XML} (\textit{Extensible Markup Language}, por sus siglas en inglés), con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML. Dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiará.\\
+  \item \textbf{Análisis de sitio web}: Consiste en realizar un análisis sobre la estructura \textbf{XML} (\textit{Extensible Markup Language}, por sus siglas en inglés), con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML. Dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiara.\\
 
-  Una expresión \textit{XPath} de ruta permite buscar y seleccionar los distintos nodos de un documento XML. En el siguiente Cuadro se muestra un ejemplo con los elementos de una nota, los cuales son: \textbf{para}, \textbf{de}, \textbf{titulo}, \textbf{texto}, en un documento XML estos son los nodos que conforman una nota.\\
+  Una expresión \textit{XPath} de ruta permite buscar y seleccionar los distintos nodos de un documento XML. En el  Cuadro \ref{box:xml} se muestra un ejemplo con los elementos de una nota, los cuales son: \textbf{para}, \textbf{de}, \textbf{titulo}, \textbf{texto}, estos son los nodos que conforman una nota.\\
 
 
-\begin{tcolorbox}[label=box:xmlEjemplo,adjusted title=flush center,halign title=flush center,titlerule=3mm,title= XML] 
+\begin{mygraybox}[label={box:xml}]{XML} 
 
 \begin{tabbing}
 <nota> \= \\\kill
@@ -31,12 +28,16 @@
 </nota>
 \end{tabbing}
 
-\end{tcolorbox}
+\end{mygraybox}
+
+La expresión \textit{XPath} que permite extraer el contenido de la etiqueta \textbf{<texto> </texto>} se muestra en el Cuadro \ref{box:xpathEjemplo}: \\
+
+\begin{mygraybox}[label={box:xpathEjemplo}]{Expresión XPath} 
+\textbf{/nota/texto/text()}
+\end{mygraybox}
 \ \\
 
-
-
-  \item \textbf{Creación del recolector}: Consiste en implementar un programa en \textbf{python 3} utilizando la librearía  \textbf{scrapy}, para cada uno de los sitios web, donde la información recuperada de cada noticia es la siguiente:
+  \item \textbf{Creación del recolector}: Consiste en implementar un programa en \textbf{python 3}\footnote{https://www.python.org/} utilizando la librearía  \textbf{scrapy}\footnote{https://scrapy.org/}, para cada uno de los sitios web, donde la información recuperada de cada noticia es la siguiente:\\
 
   \begin{itemize}
   \item \textbf{URL}: La dirección web donde se encuentra localizada la noticia 
@@ -49,7 +50,7 @@
 
 
 
-  \item \textbf{Recolección de noticias}: Para el desarrollo de esta etapa, se recolectaron noticias durante un  periodo de 3 meses en el cual se obtuvo un total de 7,707 artículos, la siguiente tabla muestra el número de noticias por sección:
+  \item \textbf{Recolección de noticias}: Para el desarrollo de esta etapa, se recolectaron noticias durante un  periodo de 3 meses en el cual se obtuvo un total de 7,707 artículos, la tabla \ref{tabla:totalSeccion} muestra el número de noticias por sección. Cabe destacar que las noticias recolectadas se almacenaron en un archivo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en inglés).
 
 \begin{table}[h]
 \centering
@@ -73,7 +74,7 @@ Cultura& 1238\\
 Ciencia y Tecnología& 1789\\
 \hline
   \end{tabular}
-
+  \caption{Noticias por sección}
 \label{tabla:totalSeccion}
 \end{table}
 

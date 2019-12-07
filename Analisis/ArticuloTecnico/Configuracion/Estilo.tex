@@ -7,8 +7,7 @@
 \definecolor{myBlueTable}{HTML}{002D6E}
 
 
-%-----------------Color para las cajas de texto de los capítulos-----------
-\tcbset{colback=myBlueChapter!5!white,colframe=myBlueChapter!50!black, colbacktitle=myBlueChapter!80!black}
+
 
 %---------Estilo de la página------------%
 \thispagestyle{empty}
@@ -25,3 +24,9 @@
 
 %-----------------Nombre de las tablas-----------
 \renewcommand{\tablename}{Tabla} 
+
+%-----------------------------Caja de texto para ejemplos---------------------------------------%
+\newtcolorbox[auto counter,number within=section,
+crefname={bluebox}{blueboxes}]%
+{mygraybox}[2][]{colback=myBlueChapter!5!white,colframe=myBlueChapter!50!black, colbacktitle=myBlueChapter!80!black,titlerule=3mm,
+title=\center{Cuadro \thetcbcounter: #2},#1}
