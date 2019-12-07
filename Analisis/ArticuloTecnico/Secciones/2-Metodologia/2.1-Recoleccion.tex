@@ -1,0 +1,80 @@
+\subsection{Recolección}
+
+\begin{enumerate}
+  \item \textbf{Selección de sitios}: Consiste en seleccionar los sitios web utilizados para la recolección de las noticias con base en tres consideraciones: número de visitas, accesibilidad al contenido y nivel de confianza, por ejemplo, 
+
+
+  \textit{Reuters Institute}\footnote{https://reutersinstitute.politics.ox.ac.uk/} realizó un informe anual para comprender como se consumen las noticias en distintos países, mediante el sitio \textit{YouGov}\footnote{https://mx.yougov.com/} se realizó la investigación utilizando cuestionarios en línea durante finales de enero y principios de febrero del año 2019. Además el sitio web El Economista\footnote{https://www.eleconomista.com.mx/} contiene una sección llamada \textbf{Ranking de Medios Nativos Digitales}, el cual muestra las estadísticas que realiza mes con mes acerca de los sitios de noticias web más consultados[3]. Con base a estas estadisticas los sitios seleccionados son los siguientes:\\
+
+  \begin{itemize}
+    \item \text{Aristegui Noticias}
+    \item \text{El Economista}
+    \item \text{La Jornada}
+    \item \text{La Prensa}
+    \item \text{Proceso}
+    \item \text{Sopitas y TV Azteca}\\
+  \end{itemize}
+
+  \item \textbf{Análisis de sitio web}: Consiste en realizar un análisis sobre la estructura \textbf{XML} (\textit{Extensible Markup Language}, por sus siglas en inglés), con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML. Dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiará.\\
+
+  Una expresión \textit{XPath} de ruta permite buscar y seleccionar los distintos nodos de un documento XML. En el siguiente Cuadro se muestra un ejemplo con los elementos de una nota, los cuales son: \textbf{para}, \textbf{de}, \textbf{titulo}, \textbf{texto}, en un documento XML estos son los nodos que conforman una nota.\\
+
+
+\begin{tcolorbox}[label=box:xmlEjemplo,adjusted title=flush center,halign title=flush center,titlerule=3mm,title= XML] 
+
+\begin{tabbing}
+<nota> \= \\\kill
+\>  <para>Daniel</para>\\
+\>  <de>Andres</de>\\
+\>  <titulo>Recordatorio</titulo>\\
+\>  <texto>Despertar temprano.</texto>\\
+</nota>
+\end{tabbing}
+
+\end{tcolorbox}
+\ \\
+
+
+
+  \item \textbf{Creación del recolector}: Consiste en implementar un programa en \textbf{python 3} utilizando la librearía  \textbf{scrapy}, para cada uno de los sitios web, donde la información recuperada de cada noticia es la siguiente:
+
+  \begin{itemize}
+  \item \textbf{URL}: La dirección web donde se encuentra localizada la noticia 
+  \item \textbf{TÍtulo}: Encabezado de la noticia recolectada
+  \item \textbf{Autor}: Es el nombre de la persona que redacto la noticia o el nombre de la editorial
+  \item \textbf{Fecha}: Es la fecha en la cual la noticia ha sido publicada
+  \item \textbf{Descripción}: Es una idea general del contenido de la noticia. Cabe mencionar que no todas las noticias cuentan con una descripción
+  \item \textbf{Noticia}: Es la redacción realizada por el autor acerca de la noticia. Es de relevancia mencionar que este elemento más importante de los artículos decargados\\ 
+\end{itemize}
+
+
+
+  \item \textbf{Recolección de noticias}: Para el desarrollo de esta etapa, se recolectaron noticias durante un  periodo de 3 meses en el cual se obtuvo un total de 7,707 artículos, la siguiente tabla muestra el número de noticias por sección:
+
+\begin{table}[h]
+\centering
+  \begin{tabular}{|l|c|}
+  %-----------------------Ecanbezado-----------------------------------%
+    \hline
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Sección}} }&
+\multicolumn{1}{| >{\columncolor{myBlueChapter}}l|}{ \textcolor{myWhite}{\textbf{Número de oticias}} }%
+\\  
+\cline{1-2}%
+  %-%-------------%
+
+Deportes& 1685\\
+\hline
+Economía& 1069\\
+\hline
+Política& 1926\\
+\hline
+Cultura& 1238\\
+\hline
+Ciencia y Tecnología& 1789\\
+\hline
+  \end{tabular}
+
+\label{tabla:totalSeccion}
+\end{table}
+
+\end{enumerate}

@@ -1,0 +1,27 @@
+%------------------Definimos los colores a usar----------------%
+\definecolor{myWhite}{rgb}{250,250,250}
+\definecolor{myBlue}{HTML}{166995}
+\definecolor{myDarkBlue}{HTML}{0D547B}
+\definecolor{myBlueRef}{HTML}{0277bd}
+\definecolor{myBlueChapter}{HTML}{004784}
+\definecolor{myBlueTable}{HTML}{002D6E}
+
+
+%-----------------Color para las cajas de texto de los capítulos-----------
+\tcbset{colback=myBlueChapter!5!white,colframe=myBlueChapter!50!black, colbacktitle=myBlueChapter!80!black}
+
+%---------Estilo de la página------------%
+\thispagestyle{empty}
+\pagestyle{empty}
+
+%---------configuracion de palabras clave-----%
+% Keywords command
+\providecommand{\keywords}[1]
+{
+\ \\
+  \small  
+  \textbf{\textit{Palabras clave---}} #1
+}
+
+%-----------------Nombre de las tablas-----------
+\renewcommand{\tablename}{Tabla} 

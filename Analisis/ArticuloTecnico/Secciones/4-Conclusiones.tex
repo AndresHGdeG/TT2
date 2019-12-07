@@ -1,0 +1,7 @@
+\section{CONCLUSIONS}
+
+Se recolectó un corpus de 3,500 noticias, con el fin de tener información suficiente para entrenar y probar 4 algoritmos de clasificación los cuales son: \textbf{Naive Bayes}, \textbf{Regresión logística}, \textbf{Random Forest} y \textbf{Máquina de soporte vectorial}. Además para medir la exactitud de los algoritmos se ha hecho uso de la técnica validación cruzada. \textbf{Máquina de soporte vectorial} ha tenido el mejor resultado en la etapa de entrenamiento, obteniendo 0.89 de exactitud en el conjunto de pruebas. Por esta razón el modelo clasificador se ha entrenado con este algoritmo.\\
+
+Para recolectar las noticias se ha utilizado la biblioteca \textbf{scrapy}, la cual permite crear arañas que extraen los elementos de las noticias (\textbf{título}, \textbf{URL}, \textbf{Contenido}, etc) de 7 sitios web. Cabe destacar que el desarrollo de ambas herramientas (modelo clasificador y recolector) se ha hecho en el lenguaje \textbf{python 3}.\\
+
+Con todo lo desarrollado se puede concluir que la herramienta permite recolectar y clasificar las noticias con muy buena exactitud y es una mejora con respecto a las herramientas existentes ya que la clasificación se basa en su contenido y no en etiquetas, además que permite definir filtros de secciones y periodos de fecha. Por lo anterior se han cumplido todos los objetivos planteados en este trabajo.
