@@ -1,3 +1,5 @@
+Prueba final
+La prueba final debe ser reportad con las metricas de 
 skelearn.metrics.classification_report
 
 accuracy: se usa 

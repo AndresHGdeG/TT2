@@ -1,0 +1,25 @@
+Junta extraordinaria
+
+
+
+Dentro de las noticias que recolectemos 
+encontremos casos de un medio
+
+clasificador: recupere una noticia relacionada con deportes en un periodico que no tenga esa sección, esto daría relevancia al clasificador 
+
+hacerlo por sección en etiquetas del periodico, dependes de etiquetas
+nuestro trabajo tiene ventaja en que se contempla  el contendio.
+
+
+
+La mayoria de los servicios se basa en como alguien etiqueto el contenido
+
+
+Un problema, son las noticias clasificadas en otras secciones
+Que pasa si se cambia el nombre de las secciones
+Dependencia del path se elimina en la sección
+
+Mostrar noticias basadas en su contenido, no relación de la secciones co las noticias
+Crawlwer de rutas, al eliminar bailo el crawl
+El lenguaje de la redacción cambia por diferentes medios, el clasificador  se ha genaralizado
+Otro plues es agregar nuevos medios

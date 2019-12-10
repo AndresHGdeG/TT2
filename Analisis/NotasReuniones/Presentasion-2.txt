@@ -1,0 +1,85 @@
+***Eliminar marco teorico, poner los ejemplos en la sección del desarollo
+
+Problematica
+	no dependemos de la sección para poder recuperar las noticias relaccionadas 
+	hay noticias 
+
+Analogía del dector
+
+Marco teorico
+comenzar con un diagrama general
+
+Dos días-> hace dos días
+Tres o mas días-> hace tres o mas días
+
+Para el video: poner ejemplo, donde
+
+Presentacoin
+	Logos orden
+		primero politecnico
+		segundo escom
+	Nombre: primero nombres y luego apellidos
+
+en general
+	revisar el espaciado
+	Hablar en pasodo
+
+Herramientas similares
+	explicar mejor google news
+	agregar imagen de la pantalla de google despues de esta diapositiva
+Árbol de elemenots y xpath
+	Explicar mejor
+
+Clasificadores
+	Explicar mejor aprensizaje supervisado
+
+Metricas de evaluación
+	aclar que las metricas mas usadas son tales
+
+Bolsa de palabras
+	Representación del texto (Bolsa de palabras)
+
+En listar las tecnologis usadas
+	mencionar las tecnologías usadas y en que bloques se utilizaron
+
+Requisitos funcionales
+	machear las reglas de negocio
+
+
+Consideraciones
+	lamina previa(seccion del desarrollo) (recolección de noticias)
+	permiso para recoledtar lainfomración-> Accecibilidad de las noticias
+Resultado de los exactitud
+	arreglar tablas
+
+Entrenamiento
+	se se creo el modelo a partir del clasificador a partir del que tuvo mejor exactitud
+
+Concluciones
+	topicos-> secciones
+
+Trabajo a futuro 
+
+
+Desarrollo
+	Recolección
+		Tabla del corrección de noticias
+	Proceo de entrenamiento 
+		Como mencionamos al principio del trabajo
+		mencionar las diferencisa con el TT pasado y anterior
+		debido a las diferencias, hicimos un nuevo corpus y nuevo modelo
+		ya no se ocupo el modelo del tt anterior
+
+Marco teorico
+	ejemplo del rearl con noticias
+
+
+
+Video
+	Ejemplo; Cultura en programa y cultura en medio
+	Ejeplo2: Cultrua en programa y otra seccion en medio
+
+Conclusiones
+	match con docuemnto y presentación
+
+
