@@ -3,28 +3,34 @@
 El segundo pilar del trabajo terminal es entrenar un algoritmo ( de aprendizaje automático [4]), para clasificar las noticias en secciones. Cabe destacar que el clasificador resolverá un problema multiclase debido a que la entrada es una noticia y como salida brinda la pertenencia a una sección de 5 posibilidades. El proceso de entrenamiento consta la los siguientes pasos:\\
 
 \begin{enumerate}
-  \item \textbf{Pre-procesamiento}:Como primera instancia, el corpus creado debe ser procesado, con el fin de crear vectores que representan el contenido de cada artículo de forma ordenada, de esta manera los algoritmos de clasificación son capaces de entender la información. En cuanto a los datos que son procesados de la noticia cabe mencionar que solo se usa el título y la redacción del artículo, los demás datos (como url, fecha, sección) no son necesarios para el entrenamiento. Este proceso consta de 6 etapas: \\
+  \item \textbf{Pre-procesamiento}: Como primera instancia, el corpus creado debe ser procesado, con el fin de crear vectores que representan el contenido de cada artículo de forma ordenada, de esta manera los algoritmos de clasificación son capaces de entender la información. En cuanto a los datos que son procesados de la noticia cabe mencionar que solo se usa el título y la redacción del artículo, los demás datos (como url, fecha, sección) no son necesarios para el entrenamiento. Este proceso consta de 6 etapas: \\
 
   \begin{itemize}
-    \item Limpieza: Esta etapa consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto, símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis}
-    \item Filtro de longitud: Se ha definido 180 palabras como longitud mínima de las noticias, incluyendo en la definición de palabra números, signos de puntuación y exclamación
-    \item Delimitación del corpus: Consiste en seleccionar las noticias de forma balanceada para cada sección, se ha establecido 700 noticias por cada tópico, creando así un corpus de 3,500 datos etiquetados
-    \item Tokenziar: La etapa de tokenización consiste en separar el texto en sus elementos mínimos llamados tokens, donde se separan palabras, signos de puntuación, llaves y números mediante un espacio
-    \item Lematizar: Es el proceso de reducir cada palabra a su lema, con el fin de disminuir la dispersión en el texto, por ejemplo las palabras correrás, corriendo, corrí, tienen como lema el verbo correr, el plural niños tiene como lema niño
-    \item División del corpus: Para el correcto diseño y evaluación del algoritmo clasificador se requiere dividir el corpus en dos conjuntos: \textbf{entrenamiento} y \textbf{prueba}, con un 90\% y 10\% del total del corpus respectivamente\\
+    
+    \item Limpieza: Esta etapa consiste en eliminar texto que no brinda información útil para el entrenamiento como, hipertexto, símbolos especiales (como \# $\dagger$ $\sqrt{ }$), \textit{emojis}.\\
+    
+    \item Filtro de longitud: Se ha definido 180 palabras como longitud mínima de las noticias, incluyendo en la definición de palabra números, signos de puntuación y exclamación.\\
+    
+    \item Delimitación del corpus: Consiste en seleccionar las noticias de forma balanceada para cada sección, se ha establecido 700 noticias por cada tópico, creando así un corpus de 3,500 datos etiquetados.\\
+    
+    \item Tokenziar: La etapa de tokenización consiste en separar el texto en sus elementos mínimos llamados tokens, donde se separan palabras, signos de puntuación, llaves y números mediante un espacio.\\
+    
+    \item Lematizar: Es el proceso de reducir cada palabra a su lema, con el fin de disminuir la dispersión en el texto, por ejemplo las palabras correrás, corriendo, corrí, tienen como lema el verbo correr, el plural niños tiene como lema niño.\\
+    
+    \item División del corpus: Para el correcto diseño y evaluación del algoritmo clasificador se requiere dividir el corpus en dos conjuntos: \textbf{entrenamiento} y \textbf{prueba}, con un 90\% y 10\% del total del corpus respectivamente.\\
   \end{itemize}
 
   \item \textbf{Entrenamiento}: Para crear un modelo clasificador implementado aprendizaje supervisado, se utiliza el corpus de entrenamiento creado, para entrenar los algoritmos: \textbf{Naive Bayes} , \textbf{Regresión logística} , \textbf{Máquina de soporte vectorial} y \textbf{Random forest}. El proceso de entrenamiento consta de 4 pasos:\\
 
   \begin{itemize}
 
-    \item Extracción de características: La extracción de características cuenta con dos tareas importantes: extraer el vocabulario y crear un vector de características. Cada clase de noticias contiene un conjunto de palabras que son comunes en su ámbito, al analizar el léxico usado se observa los tecnicismos usados, por ejemplo en la sección deportes se ocupa, fútbol, jugador, ganador; en política, presidente, corrupción, PRI; en ciencia y tecnología, investigación, descubrimiento, publicación y así sucesivamente, por lo tanto estos vocablos pueden ser definidos como características que identifican a una sección. En este sentido la extracción de características es el proceso de tomar las palabras ( sin repeticiones ) de las noticias para formar un vocabulario\\
+    \item Extracción de características: La extracción de características cuenta con dos tareas importantes: extraer el vocabulario y crear un vector de características. Cada clase de noticias contiene un conjunto de palabras que son comunes en su ámbito, al analizar el léxico usado se observa los tecnicismos usados, por ejemplo en la sección deportes se ocupa, fútbol, jugador, ganador; en política, presidente, corrupción, PRI; en ciencia y tecnología, investigación, descubrimiento, publicación y así sucesivamente, por lo tanto estos vocablos pueden ser definidos como características que identifican a una sección. En este sentido la extracción de características es el proceso de tomar las palabras ( sin repeticiones ) de las noticias para formar un vocabulario.\\
 
-    \item Entrenamiento: El corpus contiene noticias de varias fuentes, en  las cuales la redacción, coherencia, semántica varía, incluso en la edición de una misma noticia, por lo tanto en el entrenamiento se busca generalizar la clasificación de los artículos, analizando el texto como un conjunto de palabras, sin tomar en cuenta la semántica, esta técnica es llamada bolsa de palabras. Las noticias están representadas en un espacio vectorial, y son usadas en el proceso de entrenamiento de los algoritmos: \textbf{Naive Bayes}, \textbf{Regresión logística}, \textbf{Máquina de soporte vectorial}, \textbf{Random Forest}. Cada clasificador recibe como entrada un conjunto de vectores etiquetados y como salida se genera un modelo el cual predice la sección de nuevas noticias. El desarrollo ha utilizado una instancia de cada algoritmo de la biblioteca \textbf{sciktlearn}\\
+    \item Entrenamiento: El corpus contiene noticias de varias fuentes, en  las cuales la redacción, coherencia, semántica varía, incluso en la edición de una misma noticia, por lo tanto en el entrenamiento se busca generalizar la clasificación de los artículos, analizando el texto como un conjunto de palabras, sin tomar en cuenta la semántica, esta técnica es llamada bolsa de palabras. Las noticias están representadas en un espacio vectorial, y son usadas en el proceso de entrenamiento de los algoritmos: \textbf{Naive Bayes}, \textbf{Regresión logística}, \textbf{Máquina de soporte vectorial}, \textbf{Random Forest}. Cada clasificador recibe como entrada un conjunto de vectores etiquetados y como salida se genera un modelo el cual predice la sección de nuevas noticias. El desarrollo ha utilizado una instancia de cada algoritmo de la biblioteca \textbf{sciktlearn}.\\
 
-    \item Validación cruzada: En el proceso de entrenamiento, los clasificadores reciben un conjunto noticias para ser entrenados y otro para realizar pruebas, sin embargo la selección de los artículos puede ser manipulada para obtener un resultado a conveniencia, siendo esto una mala práctica, por esta razón y en con el objetivo de obtener resultados mas robustos se ha implementado un técnica llamada Validación cruzada, el cual consiste en tres pasos: el primero es dividir el corpus en entrenamiento y prueba (este conjunto es llamado pliegue); después se calcula la exactitud de la prueba y es almacenado; como último etapa los dos primeros paso son repetidos $n$ veces y para terminar  se calcula el promedio de la exactitud. En términos generales este promedio nos brinda mayor confianza en el resultado del entrenamiento de cada clasificador\\
+    \item Validación cruzada: En el proceso de entrenamiento, los clasificadores reciben un conjunto noticias para ser entrenados y otro para realizar pruebas, sin embargo la selección de los artículos puede ser manipulada para obtener un resultado a conveniencia, siendo esto una mala práctica, por esta razón y en con el objetivo de obtener resultados mas robustos se ha implementado un técnica llamada Validación cruzada, el cual consiste en tres pasos: el primero es dividir el corpus en entrenamiento y prueba (este conjunto es llamado pliegue); después se calcula la exactitud de la prueba y es almacenado; como último etapa los dos primeros paso son repetidos $n$ veces y para terminar  se calcula el promedio de la exactitud. En términos generales este promedio nos brinda mayor confianza en el resultado del entrenamiento de cada clasificador.\\
 
-    \item Ajuste de parámetros: Como se ha visto, los resultados de la clasificación son medidos por la cantidad de noticias correctas clasificadas, no obstante estos resultados pueden incrementar o decrementar con base a los parámetros ingresados a cada algoritmo. Esta etapa consiste en observar el mejor resultado en la clasificación con los diferentes algoritmos, variando los parámetros y aplicar validación cruzada para medir la exactitud, por ejemplo maquina de soporte vectorial puede dividir los dados utilizando, rectas, polinomios entre otras funciones,  esto es denominada el kernel de la función. En este trabajo se han probado 3 tipos de kernel: \textbf{Lineal} ( Figura \ref{fig:cp5:klineal} ), \textbf{Polinomial} ( Figura Figura \ref{fig:cp5:kpoli} ), \textbf{Radial} (Figura \ref{fig:cp5:krbf}). Se varia este parámetros para obtener el mejor resultado, el mismo proceso sucede con los demás algoritmos
+    \item Ajuste de parámetros: Como se ha visto, los resultados de la clasificación son medidos por la cantidad de noticias correctas clasificadas, no obstante estos resultados pueden incrementar o decrementar con base a los parámetros ingresados a cada algoritmo. Esta etapa consiste en observar el mejor resultado en la clasificación con los diferentes algoritmos, variando los parámetros y aplicar validación cruzada para medir la exactitud, por ejemplo máquina de soporte vectorial puede dividir los dados utilizando, rectas o polinomios, entre otras funciones, esto es denominada el kernel de la función. En este algortimo se han probado 3 tipos de kernel: \textbf{Lineal} ( Figura \ref{fig:cp5:klineal} ), \textbf{Polinomial} ( Figura Figura \ref{fig:cp5:kpoli} ), \textbf{Radial} (Figura \ref{fig:cp5:krbf}). Se varia este parámetros para obtener el mejor resultado, el mismo proceso sucede con los demás algoritmos. A continuación se menciona cada parámetro usado en los clasificadores:
 
     \begin{figure}[h]
       \centering
@@ -49,6 +55,15 @@ El segundo pilar del trabajo terminal es entrenar un algoritmo ( de aprendizaje 
         \end{subfigure}
       \caption{Kernel de la función [5]}
     \end{figure}
+
+    \begin{enumerate}
+      \item \textbf{Naive Bayes}: $\alpha$ (Alpha), este es un valor numérico asignado a cada palabra en el corpus con respecto a la frecuencia de aparición en un clase.\\
+
+      \item \textbf{Regresión Logística}: $l_1$ esta es una función de optimizan; $l_2$ se minimiza el costo de esta función ; $C$, donde: para valores pequeños de este número, los valores de los pesos $w$ (la importancia de cada palabra) se decrementa, teniendo así un modelo muy simple (se pierde información), de lo contrario para valores grandes de $C$ la complejidad del modelo aumenta pero se incrementa el ruido.\\
+      
+      \item \textbf{Random forest}: n\_estimators es la cantidad de árboles creados y max\_depth es la profundidad del árbol\\
+      \item \textbf{Máquina de soporte vectorial}: Kernel de la función, $C$ y $\gamma$ ( gamma )\\
+    \end{enumerate} 
 
 
   \end{itemize}
@@ -80,7 +95,7 @@ El segundo pilar del trabajo terminal es entrenar un algoritmo ( de aprendizaje 
     \label{tab:cp5:resultados}
     \end{table}
 
-  \item \textbf{Pruebas}: Con base en el algoritmo elegido y los parámetros que han conseguido obtener el mejor resultado, se ha hecho una prueba final, la cual consiste en clasificar el corpus de prueba con 350 noticias, creado al final de la sección de pre-procesamiento, para calcular la matriz de confusión y obtener las métricas de evaluación. La tabla \ref{tab:cp5:numnoticias} muestra el número de noticias por sección contenidas en el corpus.
+  \item \textbf{Pruebas}: Con base en el algoritmo elegido y los parámetros que han conseguido obtener el mejor resultado, se ha hecho una prueba final, la cual consiste en clasificar el corpus de prueba con 350 noticias, creado al final de la sección de pre-procesamiento, para calcular la matriz de confusión y obtener las métricas de evaluación. La Tabla \ref{tab:cp5:numnoticias} muestra el número de noticias por sección contenidas en el corpus.
 
   \begin{table}[h]
     \centering
@@ -107,7 +122,7 @@ El segundo pilar del trabajo terminal es entrenar un algoritmo ( de aprendizaje 
     \label{tab:cp5:numnoticias}
   \end{table}
 
-  La matriz de confusión obtenida se muestra en la tabla \ref{tab:cp5:matriz}, donde las filas representan la clasificación real de la noticia y las columnas lo predicho por el clasificador. 
+  La matriz de confusión obtenida se muestra en la Tabla \ref{tab:cp5:matriz}, donde las filas representan la clasificación real de la noticia y las columnas lo predicho por el clasificador. 
 
 
   \begin{table}[h]
@@ -141,7 +156,7 @@ El segundo pilar del trabajo terminal es entrenar un algoritmo ( de aprendizaje 
   \label{tab:cp5:matriz}
   \end{table}
 
-  Con base en la matriz de confusión se ha calculado \textbf{Recall}, \textbf{Fmeasure}, \textbf{Precision}. Las métricas son obtenidas por cada sección, como se muestra en la tabla \ref{tab:cp5:metricas}.
+  Con base en la matriz de confusión se ha calculado \textbf{Recall}, \textbf{Fmeasure}, \textbf{Precision}. Las métricas son obtenidas por cada sección, como se muestra en la Tabla \ref{tab:cp5:metricas}.
 
 
   \begin{table}[h]

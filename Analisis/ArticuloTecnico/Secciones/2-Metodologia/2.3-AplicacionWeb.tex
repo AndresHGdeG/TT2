@@ -7,7 +7,7 @@ La aplicación esta diseñada en 4 módulos ( ver Figura \ref{fig:procesoAppWeb}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.35]{imagenes/Aplicacion/Proceso.png}
+	\includegraphics[scale=0.4]{imagenes/Aplicacion/Proceso.png}
 	\caption{Etapas de la aplicación web}
 	\label{fig:procesoAppWeb}
 \end{figure}
@@ -32,13 +32,13 @@ La aplicación esta diseñada en 4 módulos ( ver Figura \ref{fig:procesoAppWeb}
 	\end{figure}
 
 
-  \item \textbf{Recolección}:Esta etapa genera un subproceso el cual activa un script (desarrollado en \textbf{Python 3}) el cual inicia la recolección de noticias en los sitio web definidos previamente, la información que se obtiene de cada artículo es la siguiente: \textbf{URL de la noticia},\textbf{Título},\textbf{Fecha},\textbf{Autor},\textbf{Descripción} ,\textbf{Noticia}.\\
+  \item \textbf{Recolección}: Esta etapa genera un subproceso el cual activa un script (desarrollado en \textbf{Python 3}) el cual inicia la recolección de noticias en los sitio web definidos previamente, la información que se obtiene de cada artículo es la siguiente: \textbf{URL de la noticia},\textbf{Título},\textbf{Fecha},\textbf{Autor},\textbf{Descripción} ,\textbf{Noticia}.\\
 
-  La extracción de las noticias se hace en la página principal de los sitios web. Cabe destacar que en el proceso de recolección se valida que las noticias contengan al menos 180 palabras (en la redacción de \textbf{Noticia}), de lo contrario no se extrae. Ademas se ha definido un tiempo máximo de espera en esta etapa, el cual es de 30 segundos, después de concluir el periodo y haber recolectado la información, se procede con la etapa de \textbf{Clasificación}.
+  La extracción de las noticias se hace en la página principal de los sitios web. Cabe destacar que en el proceso de recolección se valida que las noticias contengan al menos 180 palabras (en la redacción de \textbf{Noticia}), de lo contrario no se extrae. Ademas se ha definido un tiempo máximo de espera en esta etapa, el cual es de 30 segundos, después de concluir el periodo y haber recolectado la información, se procede con la etapa de \textbf{Clasificación}.\\
 
-  \item \textbf{Clasificación}:Después de recolectar las noticias se inicia la etapa de clasificación, el cual esta conformado por 5 tareas: \textbf{Limpieza}, \textbf{Tokenizar},\textbf{Lematizar}, \textbf{Extracción de características} y \textbf{Clasificar}. Esta etapa genera un subproceso para ejecutar un script desarrollado en \textbf{Python 3}, el cual está encargado de llevar acabo cada tarea de esta sección. Cabe destacar que el proceso de clasificación solo utiliza el contenido de la noticia, los demás datos no son necesarios en esta etapa.
+  \item \textbf{Clasificación}: Después de recolectar las noticias se inicia la etapa de clasificación, el cual esta conformado por 5 tareas: \textbf{Limpieza}, \textbf{Tokenizar},\textbf{Lematizar}, \textbf{Extracción de características} y \textbf{Clasificar}. Esta etapa genera un subproceso para ejecutar un script desarrollado en \textbf{Python 3}, el cual está encargado de llevar acabo cada tarea de esta sección. Cabe destacar que el proceso de clasificación solo utiliza el contenido de la noticia, los demás datos no son necesarios en esta etapa.\\
 
-  \item \textbf{Mostrar resultados}:Esta etapa consiste en presentar el resultado del proceso de clasificación en la herramienta. Cuando este proceso ha concluido se muestra el mensaje \textbf{Noticias listas para ser mostradas}, donde el usuario tiene la opción de elegir visualizar las noticias o cancelar el flujo del sistema, como se muestra en la Figura \ref{fig:notClass}. 
+  \item \textbf{Mostrar resultados}: Esta etapa consiste en presentar el resultado del proceso de clasificación en la herramienta. Cuando este proceso ha concluido se muestra el mensaje \textbf{Noticias listas para ser mostradas}, donde el usuario tiene la opción de elegir visualizar las noticias o cancelar el flujo del sistema, como se muestra en la Figura \ref{fig:notClass}.\\
 
 	\begin{figure}[h]
 		\centering

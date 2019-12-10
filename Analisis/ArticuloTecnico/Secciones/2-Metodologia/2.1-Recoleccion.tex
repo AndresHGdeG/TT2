@@ -9,7 +9,8 @@
     \item \text{La Jornada}
     \item \text{La Prensa}
     \item \text{Proceso}
-    \item \text{Sopitas y TV Azteca}\\
+    \item \text{Sopitas}
+    \item \text{TV Azteca}\\
   \end{itemize}
 
   \item \textbf{Análisis de sitio web}: Consiste en realizar un análisis sobre la estructura \textbf{XML} (\textit{Extensible Markup Language}, por sus siglas en inglés), con el fin de realizar expresiones \textit{XPath} que permiten recorrer y procesar un documento XML. Dado que cada sitio web cuenta con una estructura diferente, ha sido necesario realizar el análisis individual. Cabe mencionar que existen sitios los cuales realizan actualizaciones a su página, por esta razón cada dos meses se analizaban, con el fin de verificar que la estructura XML no cambiara.\\
@@ -29,28 +30,38 @@
 \end{tabbing}
 
 \end{mygraybox}
-
-La expresión \textit{XPath} que permite extraer el contenido de la etiqueta \textbf{<texto> </texto>} se muestra en el Cuadro \ref{box:xpathEjemplo}: \\
+\ \\ 
+La expresión \textit{XPath} que permite extraer el contenido de la etiqueta \textbf{<texto> </texto>} se muestra en el Cuadro \ref{box:xpathEjemplo} y el Cuadro \ref{box:xpathTexto} muestra el contenido obtenido: \\
 
 \begin{mygraybox}[label={box:xpathEjemplo}]{Expresión XPath} 
 \textbf{/nota/texto/text()}
+\end{mygraybox}
+
+\begin{mygraybox}[label={box:xpathTexto}]{Texto} 
+\textbf{Despertar temprano.}
 \end{mygraybox}
 \ \\
 
   \item \textbf{Creación del recolector}: Consiste en implementar un programa en \textbf{python 3}\footnote{https://www.python.org/} utilizando la librearía  \textbf{scrapy}\footnote{https://scrapy.org/}, para cada uno de los sitios web, donde la información recuperada de cada noticia es la siguiente:\\
 
   \begin{itemize}
-  \item \textbf{URL}: La dirección web donde se encuentra localizada la noticia 
-  \item \textbf{TÍtulo}: Encabezado de la noticia recolectada
-  \item \textbf{Autor}: Es el nombre de la persona que redacto la noticia o el nombre de la editorial
-  \item \textbf{Fecha}: Es la fecha en la cual la noticia ha sido publicada
-  \item \textbf{Descripción}: Es una idea general del contenido de la noticia. Cabe mencionar que no todas las noticias cuentan con una descripción
+  
+  \item \textbf{URL}: La dirección web donde se encuentra localizada la noticia \\
+  
+  \item \textbf{TÍtulo}: Encabezado de la noticia recolectada\\
+  
+  \item \textbf{Autor}: Es el nombre de la persona que redacto la noticia o el nombre de la editorial\\
+  
+  \item \textbf{Fecha}: Es la fecha en la cual la noticia ha sido publicada\\
+  
+  \item \textbf{Descripción}: Es una idea general del contenido de la noticia. Cabe mencionar que no todas las noticias cuentan con una descripción\\
+  
   \item \textbf{Noticia}: Es la redacción realizada por el autor acerca de la noticia. Es de relevancia mencionar que este elemento más importante de los artículos decargados\\ 
 \end{itemize}
 
 
 
-  \item \textbf{Recolección de noticias}: Para el desarrollo de esta etapa, se recolectaron noticias durante un  periodo de 3 meses en el cual se obtuvo un total de 7,707 artículos, la tabla \ref{tabla:totalSeccion} muestra el número de noticias por sección. Cabe destacar que las noticias recolectadas se almacenaron en un archivo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en inglés).
+  \item \textbf{Recolección de noticias}: Para el desarrollo de esta etapa, se recolectaron noticias durante un  periodo de 3 meses en el cual se obtuvo un total de 7,707 artículos, la Tabla \ref{tabla:totalSeccion} muestra el número de noticias por sección. Cabe destacar que las noticias recolectadas se almacenaron en un archivo \textbf{CSV} (\textit{comma separeted values}, por sus siglas en inglés).
 
 \begin{table}[h]
 \centering
