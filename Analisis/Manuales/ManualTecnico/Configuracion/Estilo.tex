@@ -17,9 +17,10 @@
 
   %-------------Imagen de pie de página impares---------%
     
-    \fancyhead[RE]{
+    \fancyhead[RE,RO]{
     %\includegraphics[scale=0.1]{Imagenes/ipnLogo.png} 
-    \slshape \rightmark}
+    \textsl{\slshape \rightmark}}
+
 
     %\fancyhead[RE]{
     %\begin{picture}(0,0) \put(-40,0){ \includegraphics[scale=0.03]{Imagenes/logoEscom.png}}
@@ -84,4 +85,10 @@
   left=3cm,
   right=2cm
 }
+
+%---------------Caja de texto para ejemplos---------------------------%
+\newtcolorbox[auto counter,number within=section,
+crefname={bluebox}{blueboxes}]%
+{mygraybox}[2][]{colback=myBlueChapter!5!white,colframe=myBlueChapter!50!black, colbacktitle=myBlueChapter!80!black,titlerule=3mm,
+title=\center{Cuadro \thetcbcounter: #2},#1}
 

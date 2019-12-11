@@ -1,0 +1,60 @@
+\section{Instalación de herramientas}
+El presente sistema web ha sido desarrollado bajo el sistema operativo \textbf{Ubuntu} en su versión 18.04.3 y \textbf{macOS} 10.14.6, las siguientes bibliotecas serán instaladas utilizando la terminal del sistema operativo,las cuales son necesarias para el correcto funcionamiento del sistema.
+
+
+\subsection{Recolector}
+El recolector ha sido construido bajo el lenguaje de programación \textbf{Python 3} utilizando el framework \textbf{Scrapy} el cual se utiliza para recuperar información de diversos sitios, para su instalación se utiliza el comando mostrado en el Cuadro \ref{box:scrapy}:\\
+
+\begin{mygraybox}[label={box:scrapy}]{Instalación de scrapy} 
+\begin{itemize}
+	\item \textbf{Ubuntu}: \$ pip3 install Scrapy
+
+	\item \textbf{Mac Os}: \$ pip install Scrapy
+\end{itemize}
+\end{mygraybox}
+
+
+\subsection{Clasificador}
+El clasificador ha sido programado bajo el lenguaje de programación \textbf{Python}, previó a llevar a cabo el proceso de clasificación, se procede a realizar dos tareas importantes, tokenizar y lematizar; para realizar estas tareas se ha utilizado la biblioteca \textbf{Spacy} y un diccionario en español, para su instalación se utiliza los comandos mostrados en el Cuadro \ref{box:spacy}:\\
+
+\begin{mygraybox}[label={box:spacy}]{Instalación de spacy} 
+\begin{itemize}
+	\item \textbf{Ubuntu y Mac Os}
+	\begin{itemize}
+		\item \$ pip install -U spacy
+		\item \$ python -m spacy download es\_core\_news\_sm
+	\end{itemize}	
+\end{itemize}
+\end{mygraybox}
+\ \\
+Para el clasificador se ha utilizado la biblioteca \textbf{scikit-learn}, para su instalación se utiliza el comando mostrado el en Cuadro \ref{box:scikit}:\\
+
+\begin{mygraybox}[label={box:scikit}]{Instalación de scikit-learn} 
+\begin{itemize}
+	\item \textbf{Ubuntu}: \$ pip3 install -U scikit-learn
+
+	\item \textbf{Mac Os}: \$ pip install -U scikit-learn
+\end{itemize}
+\end{mygraybox}
+\ \\
+Pandas es una biblioteca utilizada para el manejo de archivos en formato CSV ( \textit{Comma Separated Value}, por sus siglas en Ingles ), permitiendo el uso y la obtención de información de archivos en este formato, para su instalación se utiliza el comando del Cuadro \ref{box:pandas}:\\
+\begin{mygraybox}[label={box:pandas}]{Instalación de pandas} 
+\begin{itemize}
+	\item \textbf{Ubuntu y Mac Os}: \$ pip install pandas
+\end{itemize}	
+\end{mygraybox}
+
+\subsection{Aplicación Web}
+La aplicación web ha sido desarrollada bajo el lenguaje de programación \textit{Java} es necesario instalar el IDE NetBeans en su versión 8.2, en la URL \textcolor{myDarkBlue}{\textbf{https://netbeans.org/downloads/8.2/}} se encuentra la versión 8.2, debido a que se realiza una aplicación web es necesario instalar la versión \textit{Java EE} la cual incluye \textit{Apache TomCat}.\\
+
+Una vez que se ha descargado NetBeans nos ubicamos en la carpeta donde se haya descargado nuestro archivo y ejecutamos el siguiente comando:\\
+
+\begin{mygraybox}[label={box:netbeans}]{Instalación de netBeans} 
+\begin{itemize}
+	\item \textbf{Ubuntu y Mac Os}:
+	\begin{itemize}
+		\item \$ chmod +x netbeans-8.2-javaee-linux.sh
+		\item \$ -/netbeans-8.2-javaee-linux.sh 
+	\end{itemize}	
+\end{itemize}
+\end{mygraybox}
