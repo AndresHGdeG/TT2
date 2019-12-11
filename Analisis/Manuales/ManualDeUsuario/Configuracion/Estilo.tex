@@ -19,7 +19,10 @@
     
     \fancyhead[RE]{
     %\includegraphics[scale=0.1]{Imagenes/ipnLogo.png} 
-    \slshape \rightmark}
+    \uppercase{\textsl{\slshape \rightmark}}
+    %\thesection
+     %\slshape \leftmark
+    }
 
     %\fancyhead[RE]{
     %\begin{picture}(0,0) \put(-40,0){ \includegraphics[scale=0.03]{Imagenes/logoEscom.png}}
@@ -48,7 +51,11 @@
 \pagestyle{plain}% aplicamos el estilo para todas las páginas
 
 
+%---------HEADER PORTADA---------%
 
+\fancypagestyle{plainPortada}{
+\fancyhead[LO]{\rightmark}
+}
 
 
 

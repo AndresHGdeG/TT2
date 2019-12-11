@@ -1,5 +1,5 @@
 all:
 	pdflatex manual.tex
-	bibtex manual
+	bibtex manual.aux
 	pdflatex manual.tex
 	latexmk -c 

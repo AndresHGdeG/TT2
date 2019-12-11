@@ -1,5 +1,12 @@
+\decimalpoint %Cambiamos de comas a puntos en las ecuaciones
+
 %-----------Eliminamos la identación de los párrafos-------%
 \setlength{\parindent}{0pt}
+
+
+%--------------Cambiamos el margen del encabezado----------------------------%
+
+\fancyheadoffset{0.005cm} 
 
 
 %-------- Se define las lineas del pie y encabezado de de página
@@ -9,13 +16,45 @@
    % \fancyfoot[L]{\begin{picture}(0,0) \put(0,-75){ \includegraphics[scale=0.7]{Imagenes/Foot-blue.png}}\end{picture}}
 
   %-------------Imagen de pie de página impares---------%
-    \fancyfoot[L]{\begin{picture}(0,0) \put(-145,-65){ \includegraphics[scale=0.7]{Imagenes/Foot-blue.png}}\end{picture}}
+    
+    \fancyhead[RE]{
+    %\includegraphics[scale=0.1]{Imagenes/ipnLogo.png} 
+    \slshape \rightmark}
+
+    %\fancyhead[RE]{
+    %\begin{picture}(0,0) \put(-40,0){ \includegraphics[scale=0.03]{Imagenes/logoEscom.png}}
+    %\end{picture}
+   %\slshape \leftmark
+    %}
+
+    \fancyhead[LE,LO]{
+    \includegraphics[scale=0.1]{Imagenes/ipnLogo.png} 
+    \includegraphics[scale=0.03]{Imagenes/logoEscom.png} 
+   }
+
+%   \fancyhead[C]{Manual de usuario}
+
+
+
+
+    \fancyfoot[LE]{\begin{picture}(0,0) \put(-90,-60){ \includegraphics[scale=0.7]{Imagenes/Foot-blue.png}}\end{picture}}
+
+    \fancyfoot[LO]{\begin{picture}(0,0) \put(-120,-60){ \includegraphics[scale=0.7]{Imagenes/Foot-blue.png}}\end{picture}}
 	
   \renewcommand{\headrulewidth}{0.5pt}
   \renewcommand{\footrulewidth}{0.5pt}	
 }
 
 \pagestyle{plain}% aplicamos el estilo para todas las páginas
+
+
+%---------HEADER PORTADA---------%
+
+\fancypagestyle{plainPortada}{
+\fancyhead[LO]{\rightmark}
+}
+
+
 
 
 %------------------Definimos los colores a usar----------------%
@@ -36,3 +75,13 @@
     citecolor=myBlueRef,
     pdftitle={Sharelatex Example}
 }
+
+
+%----------------------------Ajuste de margenes-------------------------%
+\geometry{
+  top=3.2cm,
+  bottom=3.2cm,
+  left=3cm,
+  right=2cm
+}
+
